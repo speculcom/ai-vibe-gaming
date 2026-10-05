@@ -4,13 +4,18 @@ en: "Godot's scene tree"
 kind: "keyword"
 ord: 110
 what: "Godot 用 .tscn 文本文件存场景 —— 但它不该由人手写，也不该由 AI 写。"
+whatEn: "Godot stores scenes in .tscn text files — but they should be written by neither humans nor AI."
 decision: "让 AI 写 GDScript，场景在编辑器里搭。这条不清楚，你会浪费几个小时。"
+decisionEn: "Let AI write the GDScript and build the scene in the editor. Without this rule you will waste hours."
 confidence: our-judgement
 ---
 
-# Godot 的场景树
+# Godot's scene tree
 
 **一句话**：`.tscn` 是 Godot 的场景文件。**它长得很像文本，所以 AI 很想写它 —— 但它不该被写。**
+
+<!-- EN -->
+> **In one line**: `.tscn` is Godot's scene file. **It looks like text, so AI is keen to write it — but it should not be written.**
 
 ## 为什么 AI 不该写 .tscn
 
@@ -23,6 +28,16 @@ confidence: our-judgement
 ⚠ **根本原因**：这个格式是**工具的输出**，不是**人写的代码**。
 让 AI 模仿工具的输出，就像让它模仿编译器的中间表示 —— 偶尔能对，但不该这么干。
 
+<!-- EN -->
+> ## Why AI should not write .tscn
+>
+> `.tscn` is a **generated format**. Its field order, `uid`s and `ext_resource` ids emerge from the editor's maintenance over time. What AI produces is usually:
+>
+> - Openable, but **with broken resource references** (red textures, missing scripts)
+> - ⚠ **Worse: it runs, but the structure is a mess** and you will not be able to maintain it afterwards
+>
+> ⚠ **The root reason**: this format is **an output of a tool**, not code a person writes. Asking AI to imitate a tool's output is like asking it to imitate a compiler's intermediate representation — occasionally right, but never the right approach.
+
 ## 正确的分工
 
 | 谁 | 做什么 |
@@ -33,6 +48,18 @@ confidence: our-judgement
 
 ⚠ 这与 S2「给明确的边界」是同一条原则：
 **明确说出「不要做什么」，比说「要做什么」更重要。**
+
+<!-- EN -->
+> ## The right division of labour
+>
+> | Who | Does what |
+> |---|---|
+> | **AI** | Writes the GDScript logic |
+> | **You** | Build the scene tree, drag nodes, wire signals in the editor |
+> | **The editor** | Generates and maintains `.tscn` |
+>
+> ⚠ This is the same rule as S2's "give explicit boundaries":
+> **saying what NOT to do matters more than saying what to do.**
 
 ## 提示词该怎么写
 
@@ -50,7 +77,28 @@ confidence: our-judgement
 ```
 帮我做一个 Godot 平台跳跃游戏，包含场景文件和脚本
 ```
+
 → 你会得到一个能打开但资源全断的场景。
+
+<!-- EN -->
+> ## How to word the prompt
+>
+> ✅ A good prompt:
+>
+> ```
+> Write Godot GDScript:
+> - A CharacterBody2D script handling left/right movement and jumping
+> - Do not create a scene file (.tscn) — I will wire it up in the editor myself
+> - Export two @export variables: jump_velocity and gravity
+> ```
+>
+> ❌ The common wrong prompt:
+>
+> ```
+> Make me a Godot platformer, including the scene file and scripts
+> ```
+>
+> → You get a scene that opens with every resource reference broken.
 
 ## ⚠ 一个例外
 
@@ -58,6 +106,13 @@ confidence: our-judgement
 写脚本生成 `.tscn` 反而是对的 —— 那属于工具用途，不是手写场景。
 
 ⚠ 判断标准：**你要造的是「一个场景」还是「一批场景」？**
+
+<!-- EN -->
+> ## ⚠ One exception
+>
+> ⚠ If you are **generating many repeated scenes** (say 50 enemies with different configurations), scripting the generation of `.tscn` is correct — that is tool usage, not hand-authoring scenes.
+>
+> ⚠ The test: **are you building "one scene" or "a batch of scenes"?**
 
 ---
 
