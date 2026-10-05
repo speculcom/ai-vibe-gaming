@@ -1,16 +1,21 @@
 ---
 zh: "上下文窗口与 AI 写游戏"
-kind: "keyword"
 en: "Context window and AI-written games"
+kind: "keyword"
 ord: 130
 what: "游戏代码天然是大文件、多文件、强耦合 —— 这正好是上下文窗口最弱的场景。"
+whatEn: "Game code is naturally large, multi-file and tightly coupled — exactly where the context window is weakest."
 decision: "单文件控制在几百行内；每次只让 AI 处理一个模块。"
+decisionEn: "Keep single files to a few hundred lines, and let AI work on one module at a time."
 confidence: our-judgement
 ---
 
-# 上下文窗口与 AI 写游戏
+# Context window and AI-written games
 
 **一句话**：游戏代码的形态（长期演化、多文件耦合）与 AI 的上下文限制**正好相冲**。
+
+<!-- EN -->
+> **In one line**: the shape of game code (long-lived, multi-file, coupled) runs directly into the limits of AI context.
 
 ## ⚠ 为什么这是个真问题
 
@@ -18,12 +23,26 @@ confidence: our-judgement
 |---|---|
 | **单个文件很大** | 玩家控制器、敌人 AI、关卡逻辑都几百行起 |
 | **跨文件耦合** | 改一个参数要看三个文件才知道影响 |
-| ⚠ **长程一致性** | ⚠ 游戏逻辑要前后一致（这个变量在第3 章出现过）|
+| ⚠ **长程一致性** | ⚠ 游戏逻辑要前后一致（这个变量在第 3 章出现过） |
 
 ⚠ 模型**一次只能看到一部分代码** —— 所以它会：
 - 重复定义已经存在的函数
 - 用不同的命名做同一件事
 - ⚠ **忘记自己在第 200 行时约定过什么**
+
+<!-- EN -->
+> ## ⚠ Why this is a real problem
+>
+> | Property of game code | Effect on the context window |
+> |---|---|
+> | **Large single files** | Player controllers, enemy AI and level logic run to hundreds of lines |
+> | **Cross-file coupling** | Changing one parameter means reading three files to see the effect |
+> | ⚠ **Long-range consistency** | ⚠ Game logic must stay consistent (this variable appeared in chapter 3) |
+>
+> A model **sees only part of the code at a time** — so it will:
+> - redefine functions that already exist
+> - use different names for the same thing
+> - ⚠ **forget what it agreed at line 200**
 
 ## 实操建议
 
@@ -50,13 +69,46 @@ AI 看不到「上次的约定」，但它**能读注释**：
 ⚠ 让它写一份「这个项目现在有什么」的文档，
 然后**每次新会话先让它读这份文档**。这比硬塞代码进上下文有效得多。
 
+<!-- EN -->
+> ## Practical advice
+>
+> **1. Keep single files to a few hundred lines**
+>
+> ⚠ Split them when they grow past that. ⚠ This helps humans too, not only AI.
+>
+> **2. Let AI work on one module at a time**
+>
+> ✅ Good: "expand the enemy AI from 80 to 200 lines, keeping the existing state-machine structure"
+> ❌ Bad: "add enemy AI, levels and UI"
+>
+> **3. ⚠ Put key conventions in comments or a document**
+>
+> AI cannot see "what we agreed last time", but it **can read comments**:
+>
+> ```python
+> # Convention: all damage goes through damage(); do not modify hp directly
+> # ⚠ This convention is project-level — do not break it inside a single function
+> ```
+>
+> **4. ⚠ Have AI summarise the project state regularly**
+>
+> ⚠ Ask it to write a document listing "what this project currently has", then **have it read that document at the start of every new session**. That works far better than stuffing code into the context.
+
 ## ⚠ 一个诚实的说明
 
 本站**没有实测**不同模型在不同上下文长度下的表现。
 以上是基于「上下文窗口是硬约束」这个事实的推断。
 
 ⚠ 具体某个模型会怎么退化，请自己测 —— 这恰好也符合
-[上下文窗口那条](../learn.html) 的精神：**说「未知」比猜好**。
+本站的精神：**说「未知」比猜好**。
+
+<!-- EN -->
+> ## ⚠ An honest caveat
+>
+> This site has **not measured** how different models degrade at different context lengths.
+> What follows is an inference from the one hard fact: the context window is bounded.
+>
+> ⚠ Test how your model of choice actually degrades — which is itself in the spirit of this site: **saying "unknown" beats guessing.**
 
 ---
 
