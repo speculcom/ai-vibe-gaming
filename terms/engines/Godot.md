@@ -14,6 +14,13 @@ decision: "拿不准就用 Godot。这不是推荐，是「出错的代价最小
 decisionEn: "If you are undecided, use Godot. This is not a recommendation — it is the smallest cost of being wrong."
 bestFor: "第一次用 AI 做游戏、玩法驱动的 2D 或 3D 原型"
 bestForEn: "A first AI-assisted game, or a gameplay-driven 2D/3D prototype"
+install: "官网下 Windows 包 → **解压即用，无需安装**（官方原文：Godot is self-contained and does not require installation）。当前稳定版 4.7.2（2026-08-18）。只有要 C# 才另装 .NET SDK；导出时需另下 Export templates。商店版（Steam / itch / EGS）不含 .NET 支持。"
+installEn: "Download the Windows build from the official site and **extract it — there is no installation step** (official wording: Godot is self-contained and does not require installation). Current stable is 4.7.2 (18 Aug 2026). Only C# needs the .NET SDK on top; export templates are a separate download. Store builds (Steam / itch / EGS) do not include .NET support."
+installSrc: "https://godotengine.org/download/windows/"
+installVerified: "2026-10-09"
+difficulty: low
+difficultyWhy: "零安装、零构建工具：解压、双击、新建项目，就能写第一行 GDScript。上面五个里只有它不需要额外运行时。"
+difficultyWhyEn: "No installer and no build toolchain: extract, double-click, create a project, write your first GDScript. It is the only one of the five that needs no extra runtime."
 confidence: our-judgement
 verified: "2026-10-05 · GitHub API 快照"
 ---
