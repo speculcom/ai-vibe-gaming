@@ -19,12 +19,18 @@
 
 | 路径 | 内容 | 状态 |
 |---|---|---|
-| `claims/` | **立论层**（三张判定表）| ⏳ P1 待写 |
-| `terms/` | 五阶段教学词条（Markdown + frontmatter）| ⏳ P2 待写 |
-| `terms/engines/` | 引擎档案（5~8 个）| ⏳ P3 待写 |
+| `claims/` | **立论层**（三张判定表）| ✅ 已完成 |
+| `terms/` | 五阶段教学词条（Markdown + frontmatter）| ✅ 已完成 |
+| `terms/engines/` | 引擎档案（Godot · three.js · Pixi · libGDX · Bevy）| ✅ 已完成 |
 | `basement/` | 自研基座占位 | ⏸ 暂缓（用户定案）|
-| `data/` | 双语映射（`*.en.json`）| P5 |
 | `site/` | **产物**（推 `vibe-gaming` 仓）| 自动生成 |
+
+> **数量不写在这里** —— 本文末尾「实测规模」由 `_audit/gen-repo-docs.mjs` 从数据算出。
+> 之前这行手写的「25 个 HTML 页面」在页面加到 27 个之后就过期了（A8 发现）。
+
+⚠ **英文版不在 `data/*.en.json` 里**，而是走 `scripts/i18n-body.mjs`：
+每个词条 md 里的英文写在 `> ` 引用块中，构建时拆出来生成双节点。
+（`data/` 目录当前 0 个文件，早期文档里说的 `*.en.json` 并不存在。）
 
 ### 五阶段（按做游戏的实际顺序，不是按工具）
 
@@ -38,11 +44,14 @@
 
 ```bash
 node scripts/build.mjs        # → site/
-bash _audit/push-site.sh_data/game/site speculcom/vibe-gaming "说明"
+bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "说明"
 ```
 
-⚠ 产物 9 个文件：`index.html` + `brand.*` + `site.css` + `CNAME` +
+⚠ 产物 = 25 个 HTML 页面 + `brand.*` + `site.css` + `CNAME` +
 `.nojekyll` + `robots.txt` + `sitemap.xml` + `README.md`。
+
+`sitemap.xml` 由构建末尾按 `site/` 实际文件枚举（中文文件名 percent-encode），
+配 `_audit/vg-sitemap.mjs` 校验「每条 loc ↔ 一个真实文件」。
 
 ⚠ **`.nojekyll` 必须有** —— 缺了 Pages 构建失败。
 
@@ -59,3 +68,14 @@ bash _audit/push-site.sh_data/game/site speculcom/vibe-gaming "说明"
 
 - 作品库（规划中）：<https://demos.specul.com> —— 源仓 [`speculcom/ai-demos`](https://github.com/speculcom/ai-demos)
 - 站群计划：`_plan/vibe-gaming.md`（在本地仓库 `speculcom/www` 的工作区）
+
+## 实测规模（A8）
+
+<!-- STATS:BEGIN 由 _audit/gen-repo-docs.mjs 生成，勿手改 -->
+| 项 | 实测值 |
+|---|---|
+| 词条 | 17 条（阶段 12 · 关键词 5） |
+| 引擎档案 | 5 个（Bevy · Godot · libGDX · Pixi · Three.js） |
+| 贯穿页 | 2 个（demos · method） |
+| 站点产物 | 27 个 HTML 页面 |
+<!-- STATS:END -->
