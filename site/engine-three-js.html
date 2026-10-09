@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Three.js · 引擎档案 · AI 做游戏</title>
+  <meta name="description" content="对 AI 最友好的 3D 方案 —— 但它不是引擎，缺的东西要自己补。 你要的不是「引擎」而是「3D 库」时选它。别指望它帮你管场景。 网页 3D 展示、可以自己搭架构的项目" />
+  <link rel="canonical" href="https://vg.specul.com/engine-three-js.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Three.js · 引擎档案 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/engine-three-js.html" />
+  <meta property="og:title" content="Three.js · 引擎档案 · AI 做游戏" />
+  <meta property="og:description" content="对 AI 最友好的 3D 方案 —— 但它不是引擎，缺的东西要自己补。 你要的不是「引擎」而是「3D 库」时选它。别指望它帮你管场景。 网页 3D 展示、可以自己搭架构的项目" />
+  <meta name="theme-color" content="#05080f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="brand.css" />
+  <link rel="stylesheet" href="site.css" />
+  <style>:root { --accent: #f5c542; }</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Three.js · 引擎档案","url":"https://vg.specul.com/engine-three-js.html","description":"对 AI 最友好的 3D 方案 —— 但它不是引擎，缺的东西要自己补。 你要的不是「引擎」而是「3D 库」时选它。别指望它帮你管场景。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"three","applicationCategory":"GameEngine"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+        <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+        <span class="nav-tools">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+          <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+        </span>
+      </nav>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://agent.specul.com/"><span><span data-zh>Agent</span><span data-en>Agent</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>本地模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>导航</span><span data-en>Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>引擎档案</span><span data-en>Engine profiles</span></a></p>
+        <h1 class="t-hero">Three.js</h1>
+        <p class="lede"><span data-zh>JavaScript</span><span data-en>JavaScript</span> · Web 3D</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>对 AI 的友好度</strong></span><span data-en><strong>How AI-friendly it is</strong></span><span data-zh>：★★★★（友好）</span><span data-en>: ★★★★ (friendly)</span></p>
+          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：对 AI 最友好的 3D 方案 —— 但它不是引擎，缺的东西要自己补。</span><span data-en>: The most AI-friendly 3D option — but it is not an engine, and the gaps are yours to fill.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：你要的不是「引擎」而是「3D 库」时选它。别指望它帮你管场景。</span><span data-en>: Pick it when what you want is a 3D library rather than an engine. Do not expect it to manage your scenes.</span></p>
+          <p class="t-sm"><span data-zh><strong>适合</strong></span><span data-en><strong>Best for</strong></span><span data-zh>：网页 3D 展示、可以自己搭架构的项目</span><span data-en>: Web 3D showcases, and projects where you are willing to build the architecture</span></p>
+          <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span> · <span data-zh>事实核验：2026-10-05 · GitHub API 快照</span><span data-en>Facts verified: 2026-10-05 · GitHub API 快照</span></p>
+        </div>
+
+        <div class="panel">
+          <h2><span data-zh>安装与上手难度</span><span data-en>Install and onboarding</span></h2>
+          <p class="t-sm"><span data-zh><strong>安装步骤</strong></span><span data-en><strong>Install</strong></span><span data-zh>：两条路。① npm + 构建工具：装 Node.js，然后 <code>npm install --save three</code> 与 <code>npm install --save-dev vite</code>，跑 <code>npx vite</code>。② 不用构建工具：在 index.html 里写 import map 指向 CDN，再用 <code>npx serve .</code> 起本地服务器。<strong>官方没有脚手架</strong>，工程结构（index.html + main.js + public/）要自己建；addons 不需另装、但要单独 import。</span><span data-en>: Two routes. (1) npm plus a build tool: install Node.js, then <code>npm install --save three</code> and <code>npm install --save-dev vite</code>, and run <code>npx vite</code>. (2) Without a build tool: add an import map in index.html pointing at a CDN, then start a local server with <code>npx serve .</code>. <strong>There is no official scaffolding</strong> — you create the project layout (index.html + main.js + public/) yourself; addons need no separate install but must be imported separately.</span></p>
+          <p class="t-xs"><span data-zh>安装事实来源</span><span data-en>Install source</span>：<a href="https://threejs.org/docs/#manual/en/introduction/Installation" target="_blank" rel="noopener">https://threejs.org/docs/#manual/en/introduction/Installation</a> · <span data-zh>核验日</span><span data-en>verified</span> 2026-10-09</p>
+          <p class="t-sm mt-2"><span data-zh><strong>上手难度</strong></span><span data-en><strong>Onboarding</strong></span><span data-zh>：中</span><span data-en>: medium</span> <span class="t-xs muted"><span data-zh>（本站判断，未经实测）</span><span data-en>(the site’s judgement, not measured)</span></span></p>
+          <p class="t-sm"><span data-zh>装包是一行，但「一个能跑的画面」要自己拼：没有脚手架，场景 / 相机 / 渲染器都得手写（官方入门示例约 20 行）。</span><span data-en>The package is one line; a running scene is not. There is no scaffolding, so scene, camera and renderer are hand-written (the official example is about 20 lines).</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>：做网页 3D 时 AI 最可能一次写对的库 —— <strong>但它不是引擎。</strong></p></span><span data-en><p><strong>In one line</strong>: the library AI is most likely to get right first time for web 3D — <strong>but it is not an engine</strong>.</p></span></div>
+<div class="bi-block"><span data-zh><h2>⚠ 先说最重要的一件事</h2>
+<p><strong>Three.js 不是完整引擎。</strong> 它没有：</p>
+<ul>
+<li>场景图管理</li>
+<li>物理系统</li>
+<li>资源管理（模型/贴图的加载与生命周期）</li>
+<li>游戏循环之外的状态管理</li>
+</ul>
+<p><strong>这些都要你自己搭。</strong> 这不是缺点 —— 但你得知道自己在搭什么。</p></span><span data-en><h2>⚠ The most important thing first</h2>
+<p><strong>Three.js is not a complete engine.</strong> It has none of:</p>
+<ul>
+<li>scene graph management</li>
+<li>a physics system</li>
+<li>asset management (loading models/textures and their lifetimes)</li>
+<li>state management beyond the render loop</li>
+</ul>
+<p><strong>You build all of that yourself.</strong> That is not a flaw — but you should know what you are building.</p></span></div>
+<div class="bi-block"><span data-zh><h2>为什么对 AI 友好</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>原因</th><th>说明</th></tr></thead><tbody>
+<tr><td><strong>JavaScript/TypeScript 训练数据最多</strong></td><td>⚠ 这是最大的优势 —— 模型的训练集里 JS 代码的量级远大于其他游戏语言</td></tr>
+<tr><td><strong>API 极其稳定</strong></td><td>Three.js 的 API 十多年没大改，AI 学到的是当前的知识</td></tr>
+<tr><td><strong>概念少</strong></td><td>场景、相机、渲染器、光源、材质 —— 五件事说完，没有引擎的复杂度</td></tr>
+<tr><td><strong>错误容易看出来</strong></td><td>画不出来通常是相机位置或灯光问题，AI 能猜对</td></tr>
+</tbody></table></div></span><span data-en><h2>Why it is AI-friendly</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>Reason</th><th>Explanation</th></tr></thead><tbody>
+<tr><td><strong>JavaScript/TypeScript has by far the most training data</strong></td><td>⚠ This is the big one — the volume of JS in the training set dwarfs that of any other game language</td></tr>
+<tr><td><strong>The API is extremely stable</strong></td><td>Three.js has not changed much in over a decade, so what AI learned is still current</td></tr>
+<tr><td><strong>Few concepts</strong></td><td>Scene, camera, renderer, lights, materials — five things, with none of an engine's complexity</td></tr>
+<tr><td><strong>Failures are visible</strong></td><td>If it renders wrong it is usually camera position or lighting, and AI can guess that</td></tr>
+</tbody></table></div></span></div>
+<div class="bi-block"><span data-zh><h2>它的代价</h2>
+<p>⚠ <strong>代价就是「你得自己搭引擎」：</strong></p>
+<div class="table-wrap"><table class="src"><thead><tr><th>你要自己解决的</th><th>意味着</th></tr></thead><tbody>
+<tr><td>场景管理</td><td>每次切换关卡要自己处理资源释放</td></tr>
+<tr><td>物理</td><td>得自己接一个物理库（ cannon-es / rapier）</td></tr>
+<tr><td>资产加载</td><td>得自己写加载器与进度条</td></tr>
+<tr><td>后期</td><td>得自己做对象池、垃圾回收控制</td></tr>
+</tbody></table></div></span><span data-en><h2>What it costs</h2>
+<p>⚠ <strong>The cost is &quot;you have to build the engine yourself&quot;:</strong></p>
+<div class="table-wrap"><table class="src"><thead><tr><th>What you must solve</th><th>What that means</th></tr></thead><tbody>
+<tr><td>Scene management</td><td>Every level switch means handling asset disposal yourself</td></tr>
+<tr><td>Physics</td><td>You must attach a physics library (cannon-es / rapier)</td></tr>
+<tr><td>Asset loading</td><td>You write the loader and the progress bar</td></tr>
+<tr><td>Frame budget</td><td>You build object pooling and garbage-collection control</td></tr>
+</tbody></table></div></span></div>
+<div class="bi-block"><span data-zh><h2>什么时候选它 / 不选</h2>
+<p><strong>选</strong>：网页 3D 展示、你愿意自己搭架构、⚠ 或者你<strong>已经有一个引擎</strong>只缺渲染层</p>
+<p><strong>不选</strong>：想要完整游戏功能（碰撞检测、场景管理开箱即用）</p></span><span data-en><h2>When to pick it, and when not to</h2>
+<p><strong>Pick it if</strong>: web 3D showcases; you are willing to build the architecture; ⚠ or you <strong>already have an engine</strong> and only need a rendering layer</p>
+<p><strong>Do not pick it if</strong>: you want complete game features out of the box (collision detection, scene management)</p></span></div>
+<div class="bi-block"><span data-zh><h2>可核验事实</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>项</th><th>值</th><th>核验源</th></tr></thead><tbody>
+<tr><td>仓库</td><td><code>mrdoob/three.js</code></td><td>GitHub API</td></tr>
+<tr><td>许可</td><td><strong>MIT</strong></td><td>同上</td></tr>
+<tr><td>主语言</td><td>JavaScript</td><td>同上</td></tr>
+<tr><td>★</td><td>116,227</td><td>同上</td></tr>
+<tr><td>最后提交</td><td>2026-10-04</td><td>同上（<strong>活跃</strong>）</td></tr>
+</tbody></table></div></span><span data-en><h2>Verifiable facts</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>Item</th><th>Value</th><th>Source</th></tr></thead><tbody>
+<tr><td>Repository</td><td><code>mrdoob/three.js</code></td><td>GitHub API</td></tr>
+<tr><td>Licence</td><td><strong>MIT</strong></td><td>same</td></tr>
+<tr><td>Main language</td><td>JavaScript</td><td>same</td></tr>
+<tr><td>Stars</td><td>116,227</td><td>same</td></tr>
+<tr><td>Last push</td><td>2026-10-04</td><td>same (<strong>active</strong>)</td></tr>
+</tbody></table></div></span></div>
+<div class="bi-block"><span data-zh><h2>术语</h2>
+<p>⚠ 「场景图」「物理」这些词在 <a href="../vibe-gaming.html">Vibe Gaming 词条</a> 里有解释。</p></span><span data-en><h2>Vocabulary</h2>
+<p>⚠ &quot;Scene graph&quot; and &quot;physics&quot; are explained in the <a href="../vibe-gaming.html">Vibe Gaming entry</a>.</p></span></div>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+          <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+  </footer>
+  <script src="brand.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
+      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
+      sync();
+    })();
+  </script>
+</body>
+</html>
