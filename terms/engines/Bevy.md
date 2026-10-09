@@ -14,6 +14,13 @@ decision: "⚠ 如果用 AI 写 Bevy，改用 Web 引擎。除非你本人就是
 decisionEn: "⚠ If AI is writing your Bevy code, use a web engine instead — unless you are a Rust developer yourself."
 bestFor: "⚠ 熟悉 Rust 且愿意被 AI 拖累的人"
 bestForEn: "⚠ People who know Rust and accept being slowed down by AI"
+install: "先装 Rust 工具链（rustup）；**Windows 还要装 Visual Studio C++ Build Tools**，勾选 Desktop development with C++。然后 `cargo new my_bevy_game` → `cargo add bevy` → `cargo run`。首次会**从源码编译整个引擎**，耗时明显；官方建议在 Cargo.toml 里给 dev profile 加 opt-level。"
+installEn: "Install the Rust toolchain (rustup); **on Windows you also need the Visual Studio C++ Build Tools** with the Desktop development with C++ workload. Then `cargo new my_bevy_game` → `cargo add bevy` → `cargo run`. The first build **compiles the whole engine from source** and takes a while; the docs recommend dev-profile opt-level settings in Cargo.toml."
+installSrc: "https://bevy.org/learn/quick-start/getting-started/setup/"
+installVerified: "2026-10-09"
+difficulty: high
+difficultyWhy: "三件前置（Rust 工具链 + C++ Build Tools + 首次长编译），外加 ECS 这套与「对象 / 继承」完全不同的心智模型。"
+difficultyWhyEn: "Three prerequisites (Rust toolchain, C++ Build Tools, a long first compile), plus ECS — a mental model with nothing in common with objects and inheritance."
 confidence: our-judgement
 verified: "2026-10-05 · GitHub API 快照"
 ---
