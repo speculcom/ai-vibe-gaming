@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>最小可玩原型代码清单 · AI 做游戏</title>
+  <meta name="description" content="五个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。 抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。" />
+  <link rel="canonical" href="https://vg.specul.com/demos.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="最小可玩原型代码清单 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/demos.html" />
+  <meta property="og:title" content="最小可玩原型代码清单 · AI 做游戏" />
+  <meta property="og:description" content="五个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。 抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。" />
+  <meta name="theme-color" content="#05080f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="brand.css" />
+  <link rel="stylesheet" href="site.css" />
+  <style>:root { --accent: #f5c542; }</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"最小可玩原型代码清单","url":"https://vg.specul.com/demos.html","description":"五个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。 抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+        <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+        <span class="nav-tools">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+          <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+        </span>
+      </nav>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://agent.specul.com/"><span><span data-zh>Agent</span><span data-en>Agent</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>本地模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>导航</span><span data-en>Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>学习路径</span><span data-en>Learning path</span></a> · <span data-zh>贯穿流程</span><span data-en>Across the stages</span></p>
+        <h1 class="t-hero">最小可玩原型代码清单</h1>
+        <p class="lede">Minimal prototype code list</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>这一页解决什么</strong></span><span data-en><strong>What this page solves</strong></span><span data-zh>：五个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。</span><span data-en>: One minimal skeleton per engine covering operable / goal-directed / responsive — a starting point to copy, not a finished thing.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。</span><span data-en>: Copy a skeleton, change three numbers (speed, target position, feedback), and get it running — polishing art during prototyping is the most expensive detour.</span></p>
+          <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p>每个阶段页都在说「先做最小可玩原型」，但<strong>没人给过能直接抄的骨架</strong>。</p>
+<p>这一页补上：五个引擎各一段最小骨架，外加一张共用清单。</p>
+<p>⚠ <strong>本站铁律：不做实测。</strong> 下面的骨架是<strong>起点模板，未经本站运行验证</strong>；</p>
+<p>每一段都附了官方入门文档的出处 —— 跑不通时，先看官方那一份。</p></span><span data-en><p>Every stage page says &quot;build the minimal playable prototype first&quot;, but <strong>nobody hands you a skeleton to copy</strong>.</p>
+<p>This page does: one minimal skeleton per engine, plus a shared checklist.</p>
+<p>⚠ <strong>The site's rule: no measurements.</strong> The skeletons below are <strong>starting templates, not run or verified by this site</strong>.</p>
+<p>Each one links to the official tutorial — if it does not run, go there first.</p></span></div>
+<div class="bi-block"><span data-zh><h2>共用清单</h2>
+<p>三条判据（来自 <a href="./最小可玩原型.html">最小可玩原型</a>），骨架里逐条标注：</p>
+<ul class="checklist">
+<li> <strong>能操作</strong> —— 玩家能让角色动起来</li>
+<li> <strong>有目标</strong> —— 玩家知道要做什么</li>
+<li> <strong>有反馈</strong> —— 操作有可见响应</li>
+<li> <strong>粗糙的美术</strong> —— 纯色方块就够，别在原型阶段美化</li>
+<li> <strong>一次只改一个参数</strong> —— 改完记下来</li>
+</ul></span><span data-en><h2>Shared checklist</h2>
+<p>The three criteria (from <a href="./最小可玩原型.html">Minimal playable prototype</a>), marked line by line in each skeleton:</p>
+<ul class="checklist">
+<li> <strong>Operable</strong> — the player can move the character</li>
+<li> <strong>Goal-directed</strong> — the player knows what to do</li>
+<li> <strong>Responsive</strong> — input has a visible result</li>
+<li> <strong>Crude art</strong> — flat coloured boxes are enough; do not polish during prototyping</li>
+<li> <strong>One parameter at a time</strong> — and write the change down</li>
+</ul></span></div>
+<div class="bi-block"><span data-zh><h2>Godot · GDScript</h2>
+<p>场景树：<code>Player(CharacterBody2D)</code> + <code>Ground(StaticBody2D)</code> + <code>Target(Area2D)</code> + <code>Camera2D</code>。</p>
+<p>下面这段挂在 <code>Player</code> 上。</p>
+<pre class="code"><code class="lang-gdscript">extends CharacterBody2D
+
+const SPEED := 220.0
+const JUMP_VELOCITY := -420.0
+var score := 0
+
+func _physics_process(delta: float) -&gt; void:
+	velocity.y += 980.0 * delta                                   # 反馈：重力一直在作用
+	velocity.x = Input.get_axis(&quot;ui_left&quot;, &quot;ui_right&quot;) * SPEED    # 能操作
+	if is_on_floor() and Input.is_action_just_pressed(&quot;ui_accept&quot;):
+		velocity.y = JUMP_VELOCITY
+	move_and_slide()
+
+func _on_target_body_entered(_body: Node2D) -&gt; void:
+	score += 1                                                    # 有目标：碰到就得分
+	$HUD.text = &quot;得分 %d&quot; % score                                  # 反馈：数字变了</code></pre>
+<p>出处：Godot 官方 <em>Your first 2D game</em>（<code>docs.godotengine.org</code>）。</p></span><span data-en><h2>Godot · GDScript</h2>
+<p>Scene tree: <code>Player(CharacterBody2D)</code> + <code>Ground(StaticBody2D)</code> + <code>Target(Area2D)</code> + <code>Camera2D</code>.</p>
+<p>The script below goes on <code>Player</code>.</p>
+<pre class="code"><code class="lang-gdscript">extends CharacterBody2D
+
+const SPEED := 220.0
+const JUMP_VELOCITY := -420.0
+var score := 0
+
+func _physics_process(delta: float) -&gt; void:
+	velocity.y += 980.0 * delta                                   # responsive: gravity always acts
+	velocity.x = Input.get_axis(&quot;ui_left&quot;, &quot;ui_right&quot;) * SPEED    # operable
+	if is_on_floor() and Input.is_action_just_pressed(&quot;ui_accept&quot;):
+		velocity.y = JUMP_VELOCITY
+	move_and_slide()
+
+func _on_target_body_entered(_body: Node2D) -&gt; void:
+	score += 1                                                    # goal: touching the target scores
+	$HUD.text = &quot;score %d&quot; % score                                 # responsive: the number changes</code></pre>
+<p>Source: Godot's official <em>Your first 2D game</em> (<code>docs.godotengine.org</code>).</p></span></div>
+<div class="bi-block"><span data-zh><h2>three.js · JavaScript</h2>
+<p>three.js 是库不是引擎（见 <a href="./engines.html">引擎档案</a>），所以循环与状态要自己写。</p>
+<pre class="code"><code class="lang-js">import * as THREE from 'three';
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.1, 100);
+camera.position.z = 6;
+
+const player = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.8, 0.8),
+  new THREE.MeshNormalMaterial());
+scene.add(player);
+
+const target = new THREE.Mesh(new THREE.SphereGeometry(0.35),
+  new THREE.MeshBasicMaterial({ color: 0xfacc15 }));
+target.position.set(2.5, 1, 0);
+scene.add(target);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(innerWidth, innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const keys = new Set();
+addEventListener('keydown', (e) =&gt; keys.add(e.code));
+addEventListener('keyup', (e) =&gt; keys.delete(e.code));
+
+renderer.setAnimationLoop(() =&gt; {
+  const dir = (keys.has('ArrowRight') ? 1 : 0) - (keys.has('ArrowLeft') ? 1 : 0);
+  player.position.x += dir * 0.05;                       // 能操作
+  if (player.position.distanceTo(target.position) &lt; 0.8) {
+    target.visible = false;                              // 有目标
+    player.material = new THREE.MeshBasicMaterial({ color: 0x4ade80 });  // 反馈
+  }
+  renderer.render(scene, camera);
+});</code></pre>
+<p>出处：three.js 官方 <em>Installation</em> 与 <em>Creating a scene</em>（<code>threejs.org</code>）。</p></span><span data-en><h2>three.js · JavaScript</h2>
+<p>three.js is a library, not an engine (see <a href="./engines.html">engine profiles</a>), so the loop and the state are yours to write.</p>
+<pre class="code"><code class="lang-js">import * as THREE from 'three';
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.1, 100);
+camera.position.z = 6;
+
+const player = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.8, 0.8),
+  new THREE.MeshNormalMaterial());
+scene.add(player);
+
+const target = new THREE.Mesh(new THREE.SphereGeometry(0.35),
+  new THREE.MeshBasicMaterial({ color: 0xfacc15 }));
+target.position.set(2.5, 1, 0);
+scene.add(target);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(innerWidth, innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const keys = new Set();
+addEventListener('keydown', (e) =&gt; keys.add(e.code));
+addEventListener('keyup', (e) =&gt; keys.delete(e.code));
+
+renderer.setAnimationLoop(() =&gt; {
+  const dir = (keys.has('ArrowRight') ? 1 : 0) - (keys.has('ArrowLeft') ? 1 : 0);
+  player.position.x += dir * 0.05;                       // operable
+  if (player.position.distanceTo(target.position) &lt; 0.8) {
+    target.visible = false;                              // goal
+    player.material = new THREE.MeshBasicMaterial({ color: 0x4ade80 });  // responsive
+  }
+  renderer.render(scene, camera);
+});</code></pre>
+<p>Source: three.js official <em>Installation</em> and <em>Creating a scene</em> (<code>threejs.org</code>).</p></span></div>
+<div class="bi-block"><span data-zh><h2>Pixi · TypeScript</h2>
+<pre class="code"><code class="lang-ts">import { Application, Graphics } from 'pixi.js';
+
+const app = new Application();
+await app.init({ background: '#12161f', resizeTo: window });
+document.body.appendChild(app.canvas);
+
+const player = new Graphics().rect(0, 0, 40, 40).fill(0x4ade80);
+player.position.set(80, 120);
+const target = new Graphics().circle(0, 0, 16).fill(0xfacc15);
+target.position.set(420, 120);
+app.stage.addChild(player, target);
+
+const keys = new Set&lt;string&gt;();
+addEventListener('keydown', (e) =&gt; keys.add(e.key));
+addEventListener('keyup', (e) =&gt; keys.delete(e.key));
+
+app.ticker.add(({ deltaTime }) =&gt; {
+  const dir = (keys.has('ArrowRight') ? 1 : 0) - (keys.has('ArrowLeft') ? 1 : 0);
+  player.x += dir * 4 * deltaTime;                       // 能操作
+  if (Math.abs(player.x - target.x) &lt; 24) {
+    target.visible = false;                              // 有目标
+    player.tint = 0xfacc15;                              // 反馈
+  }
+});</code></pre>
+<p>出处：PixiJS 官方 <em>Quick Start</em>（<code>pixijs.com</code>）。</p></span><span data-en><h2>Pixi · TypeScript</h2>
+<pre class="code"><code class="lang-ts">import { Application, Graphics } from 'pixi.js';
+
+const app = new Application();
+await app.init({ background: '#12161f', resizeTo: window });
+document.body.appendChild(app.canvas);
+
+const player = new Graphics().rect(0, 0, 40, 40).fill(0x4ade80);
+player.position.set(80, 120);
+const target = new Graphics().circle(0, 0, 16).fill(0xfacc15);
+target.position.set(420, 120);
+app.stage.addChild(player, target);
+
+const keys = new Set&lt;string&gt;();
+addEventListener('keydown', (e) =&gt; keys.add(e.key));
+addEventListener('keyup', (e) =&gt; keys.delete(e.key));
+
+app.ticker.add(({ deltaTime }) =&gt; {
+  const dir = (keys.has('ArrowRight') ? 1 : 0) - (keys.has('ArrowLeft') ? 1 : 0);
+  player.x += dir * 4 * deltaTime;                       // operable
+  if (Math.abs(player.x - target.x) &lt; 24) {
+    target.visible = false;                              // goal
+    player.tint = 0xfacc15;                              // responsive
+  }
+});</code></pre>
+<p>Source: PixiJS official <em>Quick Start</em> (<code>pixijs.com</code>).</p></span></div>
+<div class="bi-block"><span data-zh><h2>libGDX · Java</h2>
+<p>用 gdx-liftoff 生成工程后，把 <code>core</code> 里那个 <code>ApplicationAdapter</code> 换成这段。</p>
+<pre class="code"><code class="lang-java">import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.ScreenUtils;
+
+public class Prototype extends ApplicationAdapter {
+    SpriteBatch batch;
+    Texture player, target;
+    float px = 100f;
+    boolean hit;
+
+    public void create() {
+        batch = new SpriteBatch();
+        player = new Texture(&quot;player.png&quot;);   // 先用 1x1 纯色图
+        target = new Texture(&quot;target.png&quot;);
+    }
+
+    public void render() {
+        float dx = 0f;
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT))  dx -= 1f;   // 能操作
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) dx += 1f;
+        px += dx * 240f * Gdx.graphics.getDeltaTime();
+
+        if (Math.abs(px - 400f) &lt; 24f) hit = true;                // 有目标
+
+        ScreenUtils.clear(hit ? Color.GREEN : Color.DARK_GRAY);   // 反馈：整屏变色
+        batch.begin();
+        batch.draw(player, px, 100f);
+        if (!hit) batch.draw(target, 400f, 100f);
+        batch.end();
+    }
+}</code></pre>
+<p>出处：libGDX 官方 wiki <em>A simple game</em>（<code>libgdx.com</code>）+ gdx-liftoff 工程结构。</p></span><span data-en><h2>libGDX · Java</h2>
+<p>After generating a project with gdx-liftoff, replace the <code>ApplicationAdapter</code> in <code>core</code> with this.</p>
+<pre class="code"><code class="lang-java">import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.ScreenUtils;
+
+public class Prototype extends ApplicationAdapter {
+    SpriteBatch batch;
+    Texture player, target;
+    float px = 100f;
+    boolean hit;
+
+    public void create() {
+        batch = new SpriteBatch();
+        player = new Texture(&quot;player.png&quot;);   // use a 1x1 flat-colour image first
+        target = new Texture(&quot;target.png&quot;);
+    }
+
+    public void render() {
+        float dx = 0f;
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT))  dx -= 1f;   // operable
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) dx += 1f;
+        px += dx * 240f * Gdx.graphics.getDeltaTime();
+
+        if (Math.abs(px - 400f) &lt; 24f) hit = true;                // goal
+
+        ScreenUtils.clear(hit ? Color.GREEN : Color.DARK_GRAY);   // responsive: the screen changes colour
+        batch.begin();
+        batch.draw(player, px, 100f);
+        if (!hit) batch.draw(target, 400f, 100f);
+        batch.end();
+    }
+}</code></pre>
+<p>Source: the official libGDX wiki <em>A simple game</em> (<code>libgdx.com</code>) plus the gdx-liftoff project layout.</p></span></div>
+<div class="bi-block"><span data-zh><h2>Bevy · Rust</h2>
+<p>⚠ Bevy 的 API 随版本变化较快（本站核验时官方入门写的是 <code>0.19</code> 的写法）。</p>
+<p>跑不通时<strong>先看官方那份</strong>，不要照着改到能跑为止再回头怀疑本站。</p>
+<pre class="code"><code class="lang-rust">use bevy::prelude::*;
+
+#[derive(Component)] struct Player;
+#[derive(Component)] struct Target;
+
+fn main() {
+    App::new()
+        .add_plugins(DefaultPlugins)
+        .add_systems(Startup, setup)
+        .add_systems(Update, (move_player, collect))
+        .run();
+}
+
+fn setup(mut commands: Commands) {
+    commands.spawn(Camera2d);
+    commands.spawn((Player, Sprite {
+        color: Color::srgb(0.3, 0.8, 0.4),
+        custom_size: Some(Vec2::splat(40.0)),
+        ..default()
+    }, Transform::default()));
+    commands.spawn((Target, Sprite {
+        color: Color::srgb(0.95, 0.8, 0.2),
+        custom_size: Some(Vec2::splat(24.0)),
+        ..default()
+    }, Transform::from_xyz(240.0, 120.0, 0.0)));
+}
+
+fn move_player(keys: Res&lt;ButtonInput&lt;KeyCode&gt;&gt;, time: Res&lt;Time&gt;,
+               mut q: Query&lt;&amp;mut Transform, With&lt;Player&gt;&gt;) {
+    let dir = (keys.pressed(KeyCode::ArrowRight) as i32
+             - keys.pressed(KeyCode::ArrowLeft) as i32) as f32;
+    for mut t in &amp;mut q {
+        t.translation.x += dir * 300.0 * time.delta_secs();   // 能操作
+    }
+}
+
+fn collect(mut commands: Commands,
+           players: Query&lt;&amp;Transform, With&lt;Player&gt;&gt;,
+           targets: Query&lt;(Entity, &amp;Transform), With&lt;Target&gt;&gt;) {
+    for (e, tt) in &amp;targets {
+        for pt in &amp;players {
+            if pt.translation.distance(tt.translation) &lt; 32.0 {
+                commands.entity(e).despawn();   // 有目标 + 反馈：方块消失
+            }
+        }
+    }
+}</code></pre>
+<p>出处：Bevy 官方 <em>Quick Start · Setup</em> 与 <em>Apps</em>（<code>bevy.org</code>）。</p></span><span data-en><h2>Bevy · Rust</h2>
+<p>⚠ Bevy's API moves fast (the official quick start we checked documents the <code>0.19</code> style).</p>
+<p>When it does not compile, <strong>go to the official guide first</strong> — do not keep patching until it runs and then doubt this page.</p>
+<pre class="code"><code class="lang-rust">use bevy::prelude::*;
+
+#[derive(Component)] struct Player;
+#[derive(Component)] struct Target;
+
+fn main() {
+    App::new()
+        .add_plugins(DefaultPlugins)
+        .add_systems(Startup, setup)
+        .add_systems(Update, (move_player, collect))
+        .run();
+}
+
+fn setup(mut commands: Commands) {
+    commands.spawn(Camera2d);
+    commands.spawn((Player, Sprite {
+        color: Color::srgb(0.3, 0.8, 0.4),
+        custom_size: Some(Vec2::splat(40.0)),
+        ..default()
+    }, Transform::default()));
+    commands.spawn((Target, Sprite {
+        color: Color::srgb(0.95, 0.8, 0.2),
+        custom_size: Some(Vec2::splat(24.0)),
+        ..default()
+    }, Transform::from_xyz(240.0, 120.0, 0.0)));
+}
+
+fn move_player(keys: Res&lt;ButtonInput&lt;KeyCode&gt;&gt;, time: Res&lt;Time&gt;,
+               mut q: Query&lt;&amp;mut Transform, With&lt;Player&gt;&gt;) {
+    let dir = (keys.pressed(KeyCode::ArrowRight) as i32
+             - keys.pressed(KeyCode::ArrowLeft) as i32) as f32;
+    for mut t in &amp;mut q {
+        t.translation.x += dir * 300.0 * time.delta_secs();   // operable
+    }
+}
+
+fn collect(mut commands: Commands,
+           players: Query&lt;&amp;Transform, With&lt;Player&gt;&gt;,
+           targets: Query&lt;(Entity, &amp;Transform), With&lt;Target&gt;&gt;) {
+    for (e, tt) in &amp;targets {
+        for pt in &amp;players {
+            if pt.translation.distance(tt.translation) &lt; 32.0 {
+                commands.entity(e).despawn();   // goal + responsive: the box disappears
+            }
+        }
+    }
+}</code></pre>
+<p>Source: Bevy official <em>Quick Start · Setup</em> and <em>Apps</em> (<code>bevy.org</code>).</p></span></div>
+<div class="bi-block"><span data-zh><h2>怎么用这些骨架</h2>
+<p>1. <strong>挑一个引擎</strong>（依据见 <a href="./s1-选引擎.html">选引擎</a> 与 <a href="./engines.html">引擎档案</a>）</p>
+<p>2. <strong>把骨架跑起来</strong>，然后<strong>只改三个地方</strong>：移动速度、目标位置、反馈方式</p>
+<p>3. 三条判据都满足 → 原型完成，进 <a href="./s3-手感调参.html">手感调参</a></p>
+<p>4. ⚠ <strong>别在原型阶段加美术</strong>（理由见 <a href="./最小可玩原型.html">最小可玩原型</a>）</p></span><span data-en><h2>How to use these skeletons</h2>
+<p>1. <strong>Pick one engine</strong> (see <a href="./s1-选引擎.html">Picking an engine</a> and the <a href="./engines.html">engine profiles</a>)</p>
+<p>2. <strong>Get the skeleton running</strong>, then <strong>change only three things</strong>: movement speed, target position, feedback style</p>
+<p>3. All three criteria met → the prototype is done; move on to <a href="./s3-手感调参.html">game feel</a></p>
+<p>4. ⚠ <strong>Do not add art during prototyping</strong> (see <a href="./最小可玩原型.html">Minimal playable prototype</a>)</p></span></div>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+          <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+  </footer>
+  <script src="brand.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
+      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
+      sync();
+    })();
+  </script>
+</body>
+</html>
