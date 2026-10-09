@@ -1,5 +1,7 @@
 # ai-vibe-gaming
 
+> English version: [README.en.md](./README.en.md)
+
 「AI 做游戏」（Vibe Gaming）的**源仓** —— 唯一真相源。
 
 > 站点：<https://vg.specul.com>
