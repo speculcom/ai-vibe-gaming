@@ -520,27 +520,27 @@ dl.axes { margin: 0; }
    引擎表里的引擎名用的是 var(--accent)，不是 var(--brand)（第一次只改了 --brand，白改）。 */
 html[data-theme="light"] {
   --accent: #906807;
-  --brand: #906807;
-  --brand-on: #ffffff;
-  --brand-soft: rgba(144, 104, 7, .10);
-  --brand-line: rgba(144, 104, 7, .30);
+  --brand: #6d4fd6;
+  --brand-on:#fff;
+  --brand-soft:rgba(109, 79, 214, .08);
+  --brand-line:rgba(109, 79, 214, .28);
 }
 /* ── B4（2026-10-09）· 引擎决策树 ──
    字号用整数 px（设计系统的硬规则，_design-audit 守着）。 */
 .etree{margin:1.2rem 0 0}
 .etree-row{display:flex;flex-wrap:wrap;gap:.8rem;align-items:flex-end}
 .etree-f{display:flex;flex-direction:column;gap:.25rem;min-width:12rem;flex:1 1 12rem}
-.etree-h{font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.6}
-.etree select{font:inherit;font-size:14px;padding:.35rem .5rem;border:1px solid var(--border);border-radius:var(--r-sm,8px);background:transparent;color:inherit}
+.etree-h{font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;opacity:.6}
+.etree select{font:inherit;font-size:var(--fs-xs);padding:.35rem .5rem;border:1px solid var(--border);border-radius:var(--r-sm,8px);background:transparent;color:inherit}
 .etree-out{margin-top:1rem}
 .etree-card{border:1px solid var(--border);border-radius:var(--r-sm,8px);padding:.8rem 1rem;margin:.5rem 0}
 .etree-card.is-alt{opacity:.85}
-.etree-tag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.55}
+.etree-tag{font-size:var(--fs-xs);letter-spacing:.08em;text-transform:uppercase;opacity:.55}
 .etree-name{font-size:18px;margin:.15rem 0 .3rem}
-.etree-why{font-size:13px;opacity:.8;line-height:1.6}
-.etree-caveat{font-size:13px;opacity:.7;line-height:1.6;margin-top:.35rem}
-.etree-note{font-size:13px;opacity:.6;line-height:1.6;margin-top:.6rem}
-.etree-none{font-size:14px;opacity:.8}
+.etree-why{font-size:var(--fs-xs);opacity:.8;line-height:1.6}
+.etree-caveat{font-size:var(--fs-xs);opacity:.7;line-height:1.6;margin-top:.35rem}
+.etree-note{font-size:var(--fs-xs);opacity:.6;line-height:1.6;margin-top:.6rem}
+.etree-none{font-size:var(--fs-xs);opacity:.8}
 @media(max-width:560px){.etree-f{min-width:100%}}
 /* ── AI 做游戏站专属 ── */
 .stage-list{list-style:none;padding:0;margin:0}
@@ -548,7 +548,7 @@ html[data-theme="light"] {
 .stage-list li:first-child{border-top:0}
 .stage-list b{flex:0 0auto;font-weight:500}
 .stage-list .t-sm{color:var(--text-dim)}
-.t-lead{font-size:15px;line-height:1.7}
+.t-lead{font-size:var(--fs-sm);line-height:1.7}
 
 /* ── 立论层（P1）── */
 .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
@@ -559,13 +559,13 @@ table.src td b{font-weight:500}
 .cost.down-part{color:var(--vio);opacity:.8}
 .cost.down-little{color:var(--text-dim)}
 .cost.down-barely{color:var(--text-dim);opacity:.7}
-.t-xs{font-size:12px;line-height:1.6;color:var(--text-dim)}
+.t-xs{font-size:var(--fs-xs);line-height:1.6;color:var(--text-dim)}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2em}
 @media (max-width:640px){.two-col{grid-template-columns:1fr;gap:1em}}
-.fit-yes{color:var(--cyan);font-size:14px;margin:0 0 .4em}
-.fit-no{color:var(--text-dim);font-size:14px;margin:0 0 .4em}
+.fit-yes{color:var(--cyan);font-size:var(--fs-xs);margin:0 0 .4em}
+.fit-no{color:var(--text-dim);font-size:var(--fs-xs);margin:0 0 .4em}
 .fit-list{list-style:none;padding:0;margin:0}
-.fit-list li{padding:.4em 0;border-top:1px solid var(--border);font-size:13px;line-height:1.6}
+.fit-list li{padding:.4em 0;border-top:1px solid var(--border);font-size:var(--fs-xs);line-height:1.6}
 .fit-list li:first-child{border-top:0}
 .fit-list b{display:block;font-weight:500}
 .fit-list .t-sm{color:var(--text-dim)}
@@ -578,17 +578,17 @@ table.src td b{font-weight:500}
   text-decoration:none;transition:border-color .15s}
 .stage-card:hover{border-color:var(--vio)}
 .stage-card .stage-n{grid-row:span 2;min-width:1.5em;height:1.5em;display:grid;place-items:center;
-  font-size:12px;background:var(--vio);color:#fff;border-radius:var(--r-sm)}
+  font-size:var(--fs-xs);background:var(--vio);color:#fff;border-radius:var(--r-sm)}
 .stage-card b{font-weight:500;color:var(--text)}
-.stage-card .t-sm{grid-column:2;color:var(--text-dim);font-size:12px;line-height:1.55}
+.stage-card .t-sm{grid-column:2;color:var(--text-dim);font-size:var(--fs-xs);line-height:1.55}
 .kw-list{list-style:none;padding:0;margin:0}
 .kw-list li{padding:.5em 0;border-top:1px solid var(--border);display:grid;grid-template-columns:auto 1fr;gap:.2em .8em;align-items:baseline}
 .kw-list li:first-child{border-top:0}
 .kw-list b{font-weight:500}
-.kw-list .t-sm{grid-column:2;font-size:12px;color:var(--text-dim);line-height:1.55}
+.kw-list .t-sm{grid-column:2;font-size:var(--fs-xs);color:var(--text-dim);line-height:1.55}
 .term-meta{border-left:2px solid var(--vio)}
-.term-body h2{margin:1.4em 0 .5em;font-size:15px;font-weight:500}
-.term-body h3{margin:1.1em 0 .4em;font-size:14px;font-weight:500}
+.term-body h2{margin:1.4em 0 .5em;font-size:var(--fs-sm);font-weight:500}
+.term-body h3{margin:1.1em 0 .4em;font-size:var(--fs-xs);font-weight:500}
 .term-body p{margin:.6em 0;line-height:1.75}
 .term-body blockquote{margin:.8em 0;padding:.6em .9em;border-left:2px solid var(--gold);
   background:var(--bg-soft);border-radius:0 var(--r-sm) var(--r-sm) 0}
@@ -608,27 +608,32 @@ ul.checklist li::before{content:"□ ";color:var(--text-dim)}
 .eng-card:hover{border-color:var(--vio)}
 .eng-head{display:flex;align-items:baseline;gap:.5em;flex-wrap:wrap}
 .eng-head b{font-weight:500;color:var(--text)}
-.ai-badge{font-size:11px;padding:.1em .45em;border-radius:3px;white-space:nowrap}
+.ai-badge{font-size:var(--fs-xs);padding:.1em .45em;border-radius:3px;white-space:nowrap}
 /* B5（2026-10-09）：徽标字色改为**分主题两套**。
  * 原先#0F6E56/#854F0B/#A32D2D 是浅色主题用的深色字，直接用在深色卡片上只有 1.9–2.4:1
  * （实测 _audit/a11y-contrast.mjs 报 15 处，全部集中在这几个徽标）。
  * 深色主题的新值是**算出来的最小提亮量**（保证 ≥4.5:1），
- * 浅色主题保留原来的深色值，用 [data-theme="light"] 覆盖。 */
-.ai-badge.high{background:rgba(29,158,117,.16);color:#599b8a}
-.ai-badge.medium{background:rgba(245,197,66,.16);color:#b5946a}
-.ai-badge.low{background:rgba(226,75,74,.14);color:#cf8a8a}
+ * 浅色主题保留原来的深色值，用 [data-theme="light"] 覆盖。
+ *
+ * ⚠ v6（2026-10-09）二次调值：共享层把表面改成首页的暖紫（#16121f / #221c34）后，
+ *   卡片底变亮，这三个徽标字色**又不够了**（实测 4.12 / 4.01 / 3.74:1）。
+ *   这是「改表面必须连带重算所有当文字用的强调色」的典型依赖。
+ *   新值按新底重算：#64a292 / #bc9e78 / #c98484（各 4.50–4.51:1）。 */
+.ai-badge.high{background:rgba(29,158,117,.16);color:#64a292}
+.ai-badge.medium{background:rgba(245,197,66,.16);color:#bc9e78}
+.ai-badge.low{background:rgba(226,75,74,.14);color:#c98484}
 [data-theme="light"] .ai-badge.high{color:#0F6E56}
 [data-theme="light"] .ai-badge.medium{color:#854F0B}
 [data-theme="light"] .ai-badge.low{color:#A32D2D}
-.eng-card .t-sm{font-size:12px;line-height:1.55;color:var(--text-dim)}
-.eng-meta{font-size:11px;color:var(--text-dim);opacity:.8}
-.eng-meta code{font-size:11px}
+.eng-card .t-sm{font-size:var(--fs-xs);line-height:1.55;color:var(--text-dim)}
+.eng-meta{font-size:var(--fs-xs);color:var(--text-dim);opacity:.8}
+.eng-meta code{font-size:var(--fs-xs)}
 /* 上手难度徽标（A6.4.3）——与 ai-badge 同形但不同轴：
  * ai-badge 问「AI 写代码有多容易出错」，diff-badge 问「人装起来跑起来有多费事」。 */
-.diff-badge{font-size:11px;padding:.1em .45em;border-radius:3px;white-space:nowrap;background:var(--bg-soft);color:var(--text-dim)}
-.diff-badge.low{background:rgba(29,158,117,.16);color:#599b8a}
-.diff-badge.medium{background:rgba(245,197,66,.16);color:#b5946a}
-.diff-badge.high{background:rgba(226,75,74,.14);color:#cf8a8a}
+.diff-badge{font-size:var(--fs-xs);padding:.1em .45em;border-radius:3px;white-space:nowrap;background:var(--bg-soft);color:var(--text-dim)}
+.diff-badge.low{background:rgba(29,158,117,.16);color:#64a292}
+.diff-badge.medium{background:rgba(245,197,66,.16);color:#bc9e78}
+.diff-badge.high{background:rgba(226,75,74,.14);color:#c98484}
 [data-theme="light"] .diff-badge.low{color:#0F6E56}
 [data-theme="light"] .diff-badge.medium{color:#854F0B}
 [data-theme="light"] .diff-badge.high{color:#A32D2D}
@@ -654,8 +659,8 @@ pre.code code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation
 .term-nav a{display:grid;gap:.15em;min-width:0;padding:.6em .8em;border:1px solid var(--border);
   border-radius:var(--r-sm);text-decoration:none;transition:border-color .15s}
 .term-nav a:hover{border-color:var(--vio)}
-.term-nav .tn-dir{font-size:11px;color:var(--text-dim)}
-.term-nav b{font-weight:500;font-size:13px;line-height:1.5;color:var(--text);overflow-wrap:anywhere}
+.term-nav .tn-dir{font-size:var(--fs-xs);color:var(--text-dim)}
+.term-nav b{font-weight:500;font-size:var(--fs-xs);line-height:1.5;color:var(--text);overflow-wrap:anywhere}
 .term-nav .tn-next{text-align:right;justify-items:end}
 .term-nav .is-empty{border:0;padding:0}
 @media (max-width:640px){.term-nav{grid-template-columns:1fr}}
