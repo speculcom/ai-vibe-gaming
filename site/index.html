@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 做游戏 · Vibe Gaming</title>
+  <meta name="description" content="跟 AI 聊天把游戏做出来 —— 哪些环节变了，哪些没变按做游戏的实际顺序分五阶段，讲清 AI 改变了哪些环节、哪些没变；判断依据与失败点都写在档案里。" />
+  <link rel="canonical" href="https://vg.specul.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="AI 做游戏 · Vibe Gaming" />
+  <meta property="og:url" content="https://vg.specul.com/" />
+  <meta property="og:title" content="AI 做游戏 · Vibe Gaming" />
+  <meta property="og:description" content="跟 AI 聊天把游戏做出来 —— 哪些环节变了，哪些没变按做游戏的实际顺序分五阶段，讲清 AI 改变了哪些环节、哪些没变；判断依据与失败点都写在档案里。" />
+  <meta name="theme-color" content="#05080f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="brand.css" />
+  <link rel="stylesheet" href="site.css" />
+  <style>:root { --accent: #f5c542; }</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"AI 做游戏 · Vibe Gaming","url":"https://vg.specul.com/","description":"跟 AI 聊天把游戏做出来 —— 哪些环节变了，哪些没变","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"Specul · 投机取巧","url":"https://specul.com/"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+        <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+        <span class="nav-tools">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+          <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+        </span>
+      </nav>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://agent.specul.com/"><span><span data-zh>Agent</span><span data-en>Agent</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>本地模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>导航</span><span data-en>Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></p>
+        <h1 class="t-hero"><span data-zh>跟 AI 聊天把游戏做出来</span><span data-en>Make a game by talking to AI</span></h1>
+        <p class="lede"><span data-zh>这个站只回答一件事：AI 已经改变了做游戏的哪部分，还没改变哪部分。</span><span data-en>This site answers one question: which parts of making a game has AI actually changed, and which have it not.</span></p>
+
+        <div class="panel">
+          <h2><span data-zh>核心判断</span><span data-en>The core claim</span></h2>
+          <p class="t-lead"><span data-zh>AI 让做游戏的成本下降是<strong>不均匀</strong>的：写代码降了 70~80%，做美术 / 配乐 / 关卡几乎没降。</span><span data-en>The cost of making a game with AI falls <strong>unevenly</strong>: code drops 70–80%, while art, music and level design barely move.</span></p>
+          <p><span data-zh>于是「一个人做游戏」的瓶颈从「写不出来」变成了「凑不齐」。</span><span data-en>So the bottleneck for a solo developer shifts from "cannot write it" to "cannot assemble it".</span></p>
+        </div>
+
+        <div class="panel">
+          <h2><span data-zh>本站怎么组织</span><span data-en>How this site is organised</span></h2>
+          <p class="t-sm mb-3"><span data-zh>按做游戏的实际顺序分五阶段，每阶段固定四块：做什么 · 怎么做 · 常见失败 · 我们的口径。</span><span data-en>Five stages in the order you actually build a game. Each stage has four fixed parts: what, how, common failures, and our reading.</span></p>
+          <ol class="stage-list">
+            <li><b><a href="s1-选引擎.html"><span data-zh>选引擎</span><span data-en>Pick an engine</span></a></b><span class="t-sm"><span data-zh>哪个引擎对 AI 最友好</span><span data-en>Which engine AI handles best</span></span></li>
+            <li><b><a href="s2-核心循环.html"><span data-zh>核心循环</span><span data-en>The core loop</span></a></b><span class="t-sm"><span data-zh>怎么把玩法变成代码</span><span data-en>Turning mechanics into code</span></span></li>
+            <li><b><a href="s3-手感调参.html"><span data-zh>手感调参</span><span data-en>Game feel</span></a></b><span class="t-sm"><span data-zh>为什么 AI 给的参数不对</span><span data-en>Why AI’s parameters feel wrong</span></span></li>
+            <li><b><a href="s4-资产合规.html"><span data-zh>资产合规</span><span data-en>Asset licensing</span></a></b><span class="t-sm"><span data-zh>美术 / 音频从哪来，哪些能商用</span><span data-en>Where assets come from and what is usable</span></span></li>
+            <li><b><a href="s5-导出发布.html"><span data-zh>导出发布</span><span data-en>Ship it</span></a></b><span class="t-sm"><span data-zh>怎么让人玩到</span><span data-en>Getting it in front of players</span></span></li>
+          </ol>
+          <p class="t-sm mt-2"><a href="learn.html"><span data-zh>→ 进入学习路径（含完整教学与常见失败）</span><span data-en>→ Enter the learning path (full walkthrough and common failures)</span></a></p>
+          <p class="t-sm mt-2"><a href="method.html"><span data-zh>→ 实战流程（五步串成一条线，专讲交接处的失败）</span><span data-en>→ The build order (five steps as one line, focused on handoff failures)</span></a></p>
+          <p class="t-sm"><a href="demos.html"><span data-zh>→ 最小可玩原型代码清单（五个引擎各一份可抄的骨架）</span><span data-en>→ Minimal prototype code list (one copyable skeleton per engine)</span></a></p>
+        </div>
+
+        
+        <div class="panel" id="claims">
+          <h2><span data-zh>表 1 · AI 改变了做游戏的哪部分</span><span data-en>Table 1 · What AI changed about making games</span></h2>
+          <p class="t-sm mb-3"><span data-zh>⚠ 「成本变化」一列是<strong>我们的判断</strong>，不是实测数据 —— 这个领域没有权威统计。判断依据写在第三列。</span><span data-en>⚠ The &quot;cost movement&quot; column is <strong>our judgement, not measured data</strong> — no authoritative statistics exist for this. The reasoning is in the third column.</span></p>
+          <div class="table-wrap">
+            <table class="src">
+              <thead><tr>
+                <th><span data-zh>环节</span><span data-en>Stage</span></th>
+                <th><span data-zh>成本变化</span><span data-en>Cost</span></th>
+                <th><span data-zh>成熟度</span><span data-en>Maturity</span></th>
+                <th><span data-zh>判断依据</span><span data-en>Reasoning</span></th>
+                <th><span data-zh>性质</span><span data-en>Nature</span></th>
+              </tr></thead>
+              <tbody>
+            <tr>
+              <td><b><span data-zh>引擎搭建与架构</span><span data-en>Engine setup &amp; architecture</span></b></td>
+              <td><span class="cost down-heavy"><span data-zh>↓ 大幅</span><span data-en>down a lot</span></span></td>
+              <td><span data-zh>成熟</span><span data-en>mature</span></td>
+              <td><span data-zh>场景图、状态机、ECS 都有官方文档与大量可参考实现；AI 生成的是结构清晰的样板代码，不依赖引擎私有约定。</span><span data-en>Scene trees, state machines and ECS all have official docs and many reference implementations; what AI writes is boilerplate with clear structure, not code depending on engine-private conventions.</span></td>
+              <td class="t-xs"><span data-zh>可回溯官方源</span><span data-en>traceable to official sources</span></td>
+            </tr>
+            <tr>
+              <td><b><span data-zh>玩法原型（成熟品类）</span><span data-en>Gameplay prototype (established genres)</span></b></td>
+              <td><span class="cost down-heavy"><span data-zh>↓ 大幅</span><span data-en>down a lot</span></span></td>
+              <td><span data-zh>成熟</span><span data-en>mature</span></td>
+              <td><span data-zh>平台跳跃、卡牌、塔防、贪吃蛇这类玩法的核心循环是确定性代码，AI 能可靠产出。</span><span data-en>The core loop of platformers, card games, tower defense and the like is deterministic code, which AI produces reliably.</span></td>
+              <td class="t-xs"><span data-zh>部分可核验</span><span data-en>partly verifiable</span></td>
+            </tr>
+            <tr>
+              <td><b><span data-zh>手感与调参</span><span data-en>Game feel &amp; tuning</span></b></td>
+              <td><span class="cost down-part"><span data-zh>↓ 部分</span><span data-en>down partly</span></span></td>
+              <td><span data-zh>半成熟</span><span data-en>half-mature</span></td>
+              <td><span data-zh>AI 能给参数（重力、摩擦、跳跃高度），但<strong>「好不好玩」无法自动判定</strong> —— 没有测试能告诉你手感对不对。</span><span data-en>AI can supply parameters (gravity, friction, jump height), but whether it feels good cannot be judged automatically — no test tells you that.</span></td>
+              <td class="t-xs"><span data-zh>我们的判断</span><span data-en>our judgement</span></td>
+            </tr>
+            <tr>
+              <td><b><span data-zh>2D 美术资产</span><span data-en>2D art assets</span></b></td>
+              <td><span class="cost down-little"><span data-zh>↓ 少</span><span data-en>down little</span></span></td>
+              <td><span data-zh>半成熟</span><span data-en>half-mature</span></td>
+              <td><span data-zh>单张/单组素材可用；<strong>成套资产的风格一致性仍是生成模型的缺陷</strong>。多轮对话不会让它更一致。</span><span data-en>Individual assets or small sets are usable; a coherent art style across a full set is still a weakness of image models. More dialogue does not make it more consistent.</span></td>
+              <td class="t-xs"><span data-zh>我们的判断</span><span data-en>our judgement</span></td>
+            </tr>
+            <tr>
+              <td><b><span data-zh>3D 美术资产</span><span data-en>3D art assets</span></b></td>
+              <td><span class="cost down-barely"><span data-zh>↓ 很少</span><span data-en>down barely</span></span></td>
+              <td><span data-zh>不成熟</span><span data-en>immature</span></td>
+              <td><span data-zh>角色/场景的一致性、拓扑可用性、贴图一致性都难以保证；且商用授权存在法律灰区。</span><span data-en>Character and scene consistency, topology usability and texture coherence all remain hard; commercial licensing is also a legal grey area.</span></td>
+              <td class="t-xs"><span data-zh>我们的判断</span><span data-en>our judgement</span></td>
+            </tr>
+            <tr>
+              <td><b><span data-zh>音频（BGM / 音效）</span><span data-en>Audio (BGM / SFX)</span></b></td>
+              <td><span class="cost down-part"><span data-zh>↓ 部分</span><span data-en>down partly</span></span></td>
+              <td><span data-zh>半成熟</span><span data-en>half-mature</span></td>
+              <td><span data-zh>单点音效与短BGM 可用；<strong>长段配乐的风格稳定性不足</strong>。</span><span data-en>Single sound effects and short BGM work; style stability across longer pieces does not hold up.</span></td>
+              <td class="t-xs"><span data-zh>我们的判断</span><span data-en>our judgement</span></td>
+            </tr>
+            <tr>
+              <td><b><span data-zh>关卡与数值设计</span><span data-en>Level &amp; numeric design</span></b></td>
+              <td><span class="cost down-little"><span data-zh>↓ 少</span><span data-en>down little</span></span></td>
+              <td><span data-zh>半成熟</span><span data-en>half-mature</span></td>
+              <td><span data-zh>AI 能提出数值方案，但<strong>平衡需反复试玩迭代</strong>，而试玩成本无法压缩。</span><span data-en>AI can propose numbers, but balance needs repeated playtesting — and playtesting time cannot be compressed.</span></td>
+              <td class="t-xs"><span data-zh>我们的判断</span><span data-en>our judgement</span></td>
+            </tr>
+            <tr>
+              <td><b><span data-zh>剧情与对白</span><span data-en>Story &amp; dialogue</span></b></td>
+              <td><span class="cost down-heavy"><span data-zh>↓ 大幅</span><span data-en>down a lot</span></span></td>
+              <td><span data-zh>可用（需校对）</span><span data-en>usable with editing</span></td>
+              <td><span data-zh>这是 LLM 的本职。⚠ 但<strong>仍需人工校对</strong>（事实错误、语气一致性、分支收敛）。</span><span data-en>This is what LLMs are for. Still needs human editing: factual errors, tone consistency, branch convergence.</span></td>
+              <td class="t-xs"><span data-zh>我们的判断</span><span data-en>our judgement</span></td>
+            </tr>
+            <tr>
+              <td><b><span data-zh>导出与发布</span><span data-en>Export &amp; release</span></b></td>
+              <td><span class="cost down-little"><span data-zh>↓ 少</span><span data-en>down little</span></span></td>
+              <td><span data-zh>成熟</span><span data-en>mature</span></td>
+              <td><span data-zh>引擎自带导出流水线，AI 帮助有限 —— 这块是<strong>确定性工程</strong>，不是生成任务。</span><span data-en>Engines ship an export pipeline; AI helps little here — this is deterministic engineering, not a generation task.</span></td>
+              <td class="t-xs"><span data-zh>可回溯官方源</span><span data-en>traceable to official sources</span></td>
+            </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2><span data-zh>表 2 · vibe coding 的哪些前提在游戏里不成立</span><span data-en>Table 2 · Which premises of vibe coding do not hold for games</span></h2>
+          <p class="t-sm mb-3"><span data-zh>vibe coding 的方法论不是万能的。这张表列出它依赖的四个前提，以及游戏开发中哪些不成立。</span><span data-en>vibe coding's method is not universal. This table lists the premises it relies on, and which of them fail for game development.</span></p>
+          <div class="table-wrap">
+            <table class="src">
+              <thead><tr>
+                <th><span data-zh>vibe coding 依赖</span><span data-en>vibe coding assumes</span></th>
+                <th><span data-zh>在游戏开发中</span><span data-en>In game development</span></th>
+                <th><span data-zh>后果</span><span data-en>Consequence</span></th>
+              </tr></thead>
+              <tbody>
+            <tr>
+              <td><span data-zh>反馈周期以秒计</span><span data-en>Feedback in seconds</span></td>
+              <td><span data-zh>以分钟到小时计 —— 你得玩二十分钟才知道这个跳跃手感对不对</span><span data-en>Counts in minutes to hours — you have to play twenty minutes to know whether the jump feels right</span></td>
+              <td><span data-zh>迭代节奏慢一个数量级，「快速试错」的优势被削弱</span><span data-en>Iteration is an order of magnitude slower, which eats most of the fast-try-error advantage</span></td>
+            </tr>
+            <tr>
+              <td><span data-zh>结果可自动验证（类型检查、测试、编译）</span><span data-en>Results are automatically verifiable (type checks, tests, compile)</span></td>
+              <td><span data-zh><strong>「好不好玩」无法自动判定</strong> —— 没有一个测试能告诉你这个游戏有趣</span><span data-en><strong>Whether it is fun cannot be judged automatically</strong> — no test can tell you this game is enjoyable</span></td>
+              <td><span data-zh>⚠ 最关键的一条：AI 能写出通过所有测试但不好玩的代码</span><span data-en>⚠ The key one: AI can produce code that passes every test and is not fun</span></td>
+            </tr>
+            <tr>
+              <td><span data-zh>失败会报错</span><span data-en>Failures raise errors</span></td>
+              <td><span data-zh><strong>失败常常是沉默的</strong> —— 游戏能跑、能通关、只是不好玩</span><span data-en><strong>Failure is often silent</strong> — the game runs, it is completable, it is just not fun</span></td>
+              <td><span data-zh>你可能以为做完了，实际上只是没发现问题</span><span data-en>You may think it is done when you have only failed to notice a problem</span></td>
+            </tr>
+            <tr>
+              <td><span data-zh>代码是唯一的产物</span><span data-en>Code is the only output</span></td>
+              <td><span data-zh>代码只占产物的一部分 —— 美术、音频、关卡、平衡都是产物</span><span data-en>Code is only part of the output — art, audio, levels and balance are outputs too</span></td>
+              <td><span data-zh>⚠ 瓶颈从「写不出来」变成「凑不齐」</span><span data-en>⚠ The bottleneck shifts from &quot;cannot write it&quot; to &quot;cannot assemble it&quot;</span></td>
+            </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2><span data-zh>表 3 · 什么适合、什么不适合</span><span data-en>Table 3 · Where it fits and where it does not</span></h2>
+          <p class="t-sm mb-3"><span data-zh>⚠ 这张表是<strong>本站的判断</strong>，不是数据。它的用途是给读者一个起点，不是标准答案。</span><span data-en>⚠ This table is <strong>the site's judgement</strong>, not data. It is meant as a starting point, not an answer key.</span></p>
+          <div class="two-col">
+            <div>
+              <h3 class="fit-yes"><span data-zh>适合</span><span data-en>Fits</span></h3>
+              <ul class="fit-list">
+            <li><b><span data-zh>Game Jam（48 小时等短周期）</span><span data-en>Game Jams and other short time-boxes</span></b><span class="t-sm"><span data-zh>时间盒强制你放弃资产 perfectionism，AI 的代码提速正好补在刀刃上</span><span data-en>A time box forces you to drop asset perfectionism, and AI's speedup lands exactly where it helps</span></span></li>
+            <li><b><span data-zh>成熟品类的原型验证</span><span data-en>Prototyping an established genre</span></b><span class="t-sm"><span data-zh>核心循环是确定性代码，AI 可靠</span><span data-en>The core loop is deterministic code, which AI handles reliably</span></span></li>
+            <li><b><span data-zh>玩法驱动的独立游戏</span><span data-en>Gameplay-driven indie games</span></b><span class="t-sm"><span data-zh>资产需求低，玩法是卖点</span><span data-en>Low asset demands — the mechanics are the product</span></span></li>
+            <li><b><span data-zh>教学、可视化、内部工具</span><span data-en>Teaching, visualisation, internal tools</span></b><span class="t-sm"><span data-zh>不需要美术品味，产出是功能不是体验</span><span data-en>No artistic taste required; the output is a function, not an experience</span></span></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="fit-no"><span data-zh>不适合</span><span data-en>Does not fit</span></h3>
+              <ul class="fit-list">
+            <li><b><span data-zh>3A 级项目</span><span data-en>AAA-scale projects</span></b><span class="t-sm"><span data-zh>资产量与打磨需求远超 AI 能覆盖的范围</span><span data-en>Asset volume and polish demand far exceed what AI can cover</span></span></li>
+            <li><b><span data-zh>依赖独特美术风格的作品</span><span data-en>Work that depends on a distinctive art style</span></b><span class="t-sm"><span data-zh>风格一致性正是生成模型的弱项</span><span data-en>Style consistency is precisely where image models are weakest</span></span></li>
+            <li><b><span data-zh>需要大量手工调优手感的产品</span><span data-en>Products needing heavy manual game-feel tuning</span></b><span class="t-sm"><span data-zh>「好玩」无法自动验证，AI 帮不上判断这一环</span><span data-en>&quot;Fun&quot; cannot be verified automatically, so AI cannot help with that judgement</span></span></li>
+            <li><b><span data-zh>强竞技的多人在线游戏</span><span data-en>Competitive multiplayer online games</span></b><span class="t-sm"><span data-zh>网络同步与反作弊是确定性工程 + 安全问题，不是生成任务</span><span data-en>Netcode and anti-cheat are deterministic engineering and security problems, not generation tasks</span></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="panel" id="engines">
+          <h2><span data-zh>附·引擎的可核验事实</span><span data-en>Appendix · Verifiable engine facts</span></h2>
+          <p class="t-sm mt-2"><a href="./engines.html"><span data-zh>→ 按「对 AI 的友好度」看这五个引擎的判断与依据</span><span data-en>→ See the five engines by how AI-friendly they are, with the reasoning</span></a></p>
+          <p class="t-sm mb-3"><span data-zh>下面每一条都取自 GitHub 官方 API，快照时间 2026-10-05。上面三张表是判断，这张表是事实 —— 两者不要混读。</span><span data-en>Every row below comes from the official GitHub API, snapshotted 2026-10-05. The three tables above are judgements; this one is fact — do not read them as the same kind of claim.</span></p>
+          <div class="table-wrap">
+            <table class="src">
+              <thead><tr>
+                <th><span data-zh>仓库</span><span data-en>Repository</span></th>
+                <th><span data-zh>类型</span><span data-en>Tier</span></th>
+                <th><span data-zh>脚本语言</span><span data-en>Scripting</span></th>
+                <th>★</th>
+                <th><span data-zh>许可</span><span data-en>Licence</span></th>
+                <th><span data-zh>最后提交</span><span data-en>Last push</span></th>
+              </tr></thead>
+              <tbody>
+            <tr>
+              <td><a href="https://github.com/godotengine/godot" target="_blank" rel="noopener"><code>godotengine/godot</code></a></td>
+              <td><span data-zh>通用 2D/3D</span><span data-en>general 2D/3D</span></td>
+              <td><code>GDScript / C#</code></td>
+              <td>118,127</td>
+              <td><code>MIT</code></td>
+              <td class="t-xs">2026-10-04</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/bevyengine/bevy" target="_blank" rel="noopener"><code>bevyengine/bevy</code></a></td>
+              <td><span data-zh>原生 3D</span><span data-en>native 3D</span></td>
+              <td><code>Rust</code></td>
+              <td>48,611</td>
+              <td><code>Apache-2.0</code></td>
+              <td class="t-xs">2026-10-04</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/libgdx/libgdx" target="_blank" rel="noopener"><code>libgdx/libgdx</code></a></td>
+              <td><span data-zh>Java 跨平台</span><span data-en>Java cross-platform</span></td>
+              <td><code>Java / Kotlin</code></td>
+              <td>25,422</td>
+              <td><code>Apache-2.0</code></td>
+              <td class="t-xs">2026-09-24</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/pixijs/pixijs" target="_blank" rel="noopener"><code>pixijs/pixijs</code></a></td>
+              <td><span data-zh>Web 2D</span><span data-en>web 2D</span></td>
+              <td><code>TypeScript</code></td>
+              <td>48,284</td>
+              <td><code>MIT</code></td>
+              <td class="t-xs">2026-10-03</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/mrdoob/three.js" target="_blank" rel="noopener"><code>mrdoob/three.js</code></a></td>
+              <td><span data-zh>Web 3D</span><span data-en>web 3D</span></td>
+              <td><code>JavaScript</code></td>
+              <td>116,227</td>
+              <td><code>MIT</code></td>
+              <td class="t-xs">2026-10-04</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/cocos/cocos-engine" target="_blank" rel="noopener"><code>cocos/cocos-engine</code></a></td>
+              <td><span data-zh>2D/3D 跨平台</span><span data-en>2D/3D cross-platform</span></td>
+              <td><code>TypeScript + C++</code></td>
+              <td>9,845</td>
+              <td><span data-zh><code>NOASSERTION</code></span><span data-en><code>NOASSERTION</code></span></td>
+              <td class="t-xs">2026-09-21</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/love2d/love" target="_blank" rel="noopener"><code>love2d/love</code></a></td>
+              <td><span data-zh>2D 轻量</span><span data-en>lightweight 2D</span></td>
+              <td><code>Lua / C++ / Fennel</code></td>
+              <td>8,796</td>
+              <td><span data-zh><code>NOASSERTION</code></span><span data-en><code>NOASSERTION</code></span></td>
+              <td class="t-xs">2026-09-20</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/raysan5/raylib" target="_blank" rel="noopener"><code>raysan5/raylib</code></a></td>
+              <td><span data-zh>2D/3D 轻量</span><span data-en>lightweight 2D/3D</span></td>
+              <td><code>C</code></td>
+              <td>34,971</td>
+              <td><code>Zlib</code></td>
+              <td class="t-xs">2026-10-04</td>
+            </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="t-sm warn-inline"><span data-zh>⚠ cocos/cocos-engine 与 love2d/love 的许可在 GitHub 上是 <code>NOASSERTION</code> —— 机器无法判定，须读官方 LICENSE 与官网条款。本站不替它们判断。</span><span data-en>⚠ The GitHub licence field for cocos/cocos-engine and love2d/love reads <code>NOASSERTION</code> — machine-undeterminable. Read the official LICENSE and the site's terms. This site does not judge for them.</span></p>
+        </div>
+
+        <div class="panel">
+          <h2><span data-zh>相关站点</span><span data-en>Related</span></h2>
+          <p class="t-sm"><span data-zh>想看别人已经做出的东西 →</span><span data-en>Want to see what others have already built →</span> <a href="https://specul.com/"><span data-zh>Specul 站群首页</span><span data-en>the Specul hub</span></a></p>
+          <p class="t-xs muted"><span data-zh>⚠ 作品库（demos.specul.com）在 2026-10-09 定案<strong>暂不做</strong> —— 先把「怎么做」写透，再谈「别人做了什么」。原先这里的链接指向一个不存在的站点，已撤掉。</span><span data-en>⚠ The works gallery (demos.specul.com) was decided <strong>not to be built</strong> on 2026-10-09 — get &quot;how to do it&quot; right first, then cover &quot;what others built&quot;. The link that used to sit here pointed at a site that does not exist.</span></p>
+        </div>
+
+        <div class="panel is-slim">
+          <h2><span data-zh>我们不说的</span><span data-en>What we do not claim</span></h2>
+          <ul class="t-sm">
+            <li><span data-zh>本站不跑benchmark，不给质量与速度结论</span><span data-en>We do not run benchmarks and draw no quality or speed conclusions</span></li>
+            <li><span data-zh>不做引擎排名，不做作品排名</span><span data-en>No engine rankings, no work rankings</span></li>
+            <li><span data-zh>成本变化幅度是我们的判断，不是数据</span><span data-en>Cost movement figures are our judgement, not measured data</span></li>
+          </ul>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+          <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+  </footer>
+  <script src="brand.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
+      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
+      sync();
+    })();
+  </script>
+</body>
+</html>
