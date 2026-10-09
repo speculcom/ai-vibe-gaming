@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Godot · 引擎档案 · AI 做游戏</title>
+  <meta name="description" content="对 AI 最不容易出错的通用引擎 —— 原因不在引擎本身，在 GDScript 这门语言。 拿不准就用 Godot。这不是推荐，是「出错的代价最小」。" />
+  <link rel="canonical" href="https://vg.specul.com/engine-godot.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Godot · 引擎档案 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/engine-godot.html" />
+  <meta property="og:title" content="Godot · 引擎档案 · AI 做游戏" />
+  <meta property="og:description" content="对 AI 最不容易出错的通用引擎 —— 原因不在引擎本身，在 GDScript 这门语言。 拿不准就用 Godot。这不是推荐，是「出错的代价最小」。" />
+  <meta name="theme-color" content="#05080f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="brand.css" />
+  <link rel="stylesheet" href="site.css" />
+  <style>:root { --accent: #f5c542; }</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Godot · 引擎档案","url":"https://vg.specul.com/engine-godot.html","description":"对 AI 最不容易出错的通用引擎 —— 原因不在引擎本身，在 GDScript 这门语言。 拿不准就用 Godot。这不是推荐，是「出错的代价最小」。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"godot","applicationCategory":"GameEngine"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+        <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+        <span class="nav-tools">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+          <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+        </span>
+      </nav>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://agent.specul.com/"><span><span data-zh>Agent</span><span data-en>Agent</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>本地模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>导航</span><span data-en>Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>引擎档案</span><span data-en>Engine profiles</span></a></p>
+        <h1 class="t-hero">Godot</h1>
+        <p class="lede"><span data-zh>GDScript / C#</span><span data-en>GDScript / C#</span> · 通用 2D/3D</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>对 AI 的友好度</strong></span><span data-en><strong>How AI-friendly it is</strong></span><span data-zh>：★★★★（友好）</span><span data-en>: ★★★★ (friendly)</span></p>
+          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：对 AI 最不容易出错的通用引擎 —— 原因不在引擎本身，在 GDScript 这门语言。</span><span data-en>: The general engine least likely to trip AI up — and the reason is not the engine, it is the GDScript language.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：拿不准就用 Godot。这不是推荐，是「出错的代价最小」。</span><span data-en>: If you are undecided, use Godot. This is not a recommendation — it is the smallest cost of being wrong.</span></p>
+          <p class="t-sm"><span data-zh><strong>适合</strong></span><span data-en><strong>Best for</strong></span><span data-zh>：第一次用 AI 做游戏、玩法驱动的 2D 或 3D 原型</span><span data-en>: A first AI-assisted game, or a gameplay-driven 2D/3D prototype</span></p>
+          <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span> · <span data-zh>事实核验：2026-10-05 · GitHub API 快照</span><span data-en>Facts verified: 2026-10-05 · GitHub API 快照</span></p>
+        </div>
+
+        <div class="panel">
+          <h2><span data-zh>安装与上手难度</span><span data-en>Install and onboarding</span></h2>
+          <p class="t-sm"><span data-zh><strong>安装步骤</strong></span><span data-en><strong>Install</strong></span><span data-zh>：官网下 Windows 包 → <strong>解压即用，无需安装</strong>（官方原文：Godot is self-contained and does not require installation）。当前稳定版 4.7.2（2026-08-18）。只有要 C# 才另装 .NET SDK；导出时需另下 Export templates。商店版（Steam / itch / EGS）不含 .NET 支持。</span><span data-en>: Download the Windows build from the official site and <strong>extract it — there is no installation step</strong> (official wording: Godot is self-contained and does not require installation). Current stable is 4.7.2 (18 Aug 2026). Only C# needs the .NET SDK on top; export templates are a separate download. Store builds (Steam / itch / EGS) do not include .NET support.</span></p>
+          <p class="t-xs"><span data-zh>安装事实来源</span><span data-en>Install source</span>：<a href="https://godotengine.org/download/windows/" target="_blank" rel="noopener">https://godotengine.org/download/windows/</a> · <span data-zh>核验日</span><span data-en>verified</span> 2026-10-09</p>
+          <p class="t-sm mt-2"><span data-zh><strong>上手难度</strong></span><span data-en><strong>Onboarding</strong></span><span data-zh>：低</span><span data-en>: low</span> <span class="t-xs muted"><span data-zh>（本站判断，未经实测）</span><span data-en>(the site’s judgement, not measured)</span></span></p>
+          <p class="t-sm"><span data-zh>零安装、零构建工具：解压、双击、新建项目，就能写第一行 GDScript。上面五个里只有它不需要额外运行时。</span><span data-en>No installer and no build toolchain: extract, double-click, create a project, write your first GDScript. It is the only one of the five that needs no extra runtime.</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>：如果 AI 帮你写游戏时你只能选一个引擎，选 Godot。</p></span><span data-en><p><strong>In one line</strong>: if you can only pick one engine when AI is writing your game, pick Godot.</p></span></div>
+<div class="bi-block"><span data-zh><h2>为什么对 AI 友好</h2>
+<p>⚠ 下面是我们对「AI 写起来出错的概率」的判断，<strong>不是实测</strong>。</p>
+<div class="table-wrap"><table class="src"><thead><tr><th>原因</th><th>说明</th></tr></thead><tbody>
+<tr><td><strong>GDScript 接近 Python</strong></td><td>缩进语法、动态类型、<code>var</code>/<code>if</code>/<code>for</code> 都与 Python 同源。AI 生成 Python 风格的代码，改成 GDScript 的错率最低</td></tr>
+<tr><td><strong>错误信息友好</strong></td><td>脚本报错会指出行号与变量名，AI 能据此定位</td></tr>
+<tr><td><strong>官方文档完整</strong></td><td>类参考有明确的参数与返回值，AI 引用的 API 大多真实存在</td></tr>
+<tr><td><strong>静态类型可选</strong></td><td>GDScript 支持类型标注，AI 可以写出更安全的代码</td></tr>
+<tr><td><strong>⚠ 不用 C#</strong></td><td>选 C# 就要 .NET 环境，AI 常写出版本不匹配的 API</td></tr>
+</tbody></table></div></span><span data-en><h2>Why it is AI-friendly</h2>
+<p>⚠ What follows is our judgement of <strong>how likely AI is to get it wrong</strong>, not a measurement.</p>
+<div class="table-wrap"><table class="src"><thead><tr><th>Reason</th><th>Explanation</th></tr></thead><tbody>
+<tr><td><strong>GDScript is close to Python</strong></td><td>Indentation-based, dynamically typed, with <code>var</code>/<code>if</code>/<code>for</code> all coming from Python. AI-generated Python translates into GDScript with the fewest mistakes</td></tr>
+<tr><td><strong>Friendly error messages</strong></td><td>Script errors point at a line and a variable name, which is enough for AI to locate the problem</td></tr>
+<tr><td><strong>Complete official docs</strong></td><td>The class reference documents parameters and return types; most APIs AI cites actually exist</td></tr>
+<tr><td><strong>Optional static typing</strong></td><td>GDScript supports type annotations, so AI can produce safer code</td></tr>
+<tr><td><strong>⚠ Do not use C#</strong></td><td>Choosing C# pulls in a .NET environment, and AI frequently writes APIs from the wrong version</td></tr>
+</tbody></table></div></span></div>
+<div class="bi-block"><span data-zh><h2>它的代价</h2>
+<ul>
+<li><strong>Web 导出不算完整</strong> —— 存档、性能、加载在大项目上会出问题</li>
+<li><strong>C# 支持仍在推进</strong> —— ⚠ 官方文档自己列了一长串「已知问题」，别当稳定特性用</li>
+<li><strong>生态比 Unity 小</strong> —— 找现成插件的余地少</li>
+</ul></span><span data-en><h2>What it costs</h2>
+<ul>
+<li><strong>The web export is not complete</strong> — saves, performance and loading fall apart on larger projects</li>
+<li><strong>C# support is still being worked on</strong> — ⚠ the official docs list a long set of known issues; do not treat it as stable</li>
+<li><strong>A smaller ecosystem than Unity</strong> — fewer ready-made plugins</li>
+</ul></span></div>
+<div class="bi-block"><span data-zh><h2>⚠ 但对 AI 友好的另一面</h2>
+<p><strong>Godot 的场景树（scene）系统对 AI 是不友好的</strong>：</p>
+<ul>
+<li>场景是 <code>.tscn</code> 文本格式，<strong>但它是编辑器生成的，不该手写</strong></li>
+<li>AI 写 <code>.tscn</code> 文件经常格式错误</li>
+</ul>
+<p>⚠ <strong>正确做法</strong>：让 AI 写 GDScript 代码，场景在编辑器里搭。</p>
+<p>这与 S2「给明确的边界」是同一条原则。</p></span><span data-en><h2>⚠ The other side of being AI-friendly</h2>
+<p><strong>Godot's scene tree is <em>not</em> AI-friendly</strong>:</p>
+<ul>
+<li>Scenes are <code>.tscn</code> text files — but they are <strong>generated by the editor and should not be hand-written</strong></li>
+<li>AI-written <code>.tscn</code> files are frequently malformed</li>
+</ul>
+<p>⚠ <strong>The right split</strong>: let AI write GDScript, and build the scene in the editor.</p>
+<p>That is the same rule as S2's &quot;give explicit boundaries&quot;.</p></span></div>
+<div class="bi-block"><span data-zh><h2>什么时候不该选</h2>
+<ul>
+<li>你要做<strong>大型商业项目</strong>（生态与人才储备都不够）</li>
+<li>你要<strong>完全体的 Web 游戏</strong>（导出受限）</li>
+<li>你<strong>不写代码</strong>（那该用更简单的方案）</li>
+</ul></span><span data-en><h2>When not to pick it</h2>
+<ul>
+<li>You are building a <strong>large commercial project</strong> (the ecosystem and talent pool are both thin)</li>
+<li>You need a <strong>full-fat web game</strong> (the export is limited)</li>
+<li>You <strong>do not write code</strong> (there are simpler options)</li>
+</ul></span></div>
+<div class="bi-block"><span data-zh><h2>可核验事实</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>项</th><th>值</th><th>核验源</th></tr></thead><tbody>
+<tr><td>仓库</td><td><code>godotengine/godot</code></td><td>GitHub API</td></tr>
+<tr><td>许可</td><td><strong>MIT</strong></td><td>同上</td></tr>
+<tr><td>主语言</td><td>C++</td><td>同上</td></tr>
+<tr><td>★</td><td>118,127</td><td>同上</td></tr>
+<tr><td>最后提交</td><td>2026-10-04</td><td>同上（<strong>活跃</strong>）</td></tr>
+<tr><td>脚本语言</td><td>GDScript / C#</td><td>官方文档</td></tr>
+<tr><td>核验日</td><td>2026-10-05</td><td>—</td></tr>
+</tbody></table></div></span><span data-en><h2>Verifiable facts</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>Item</th><th>Value</th><th>Source</th></tr></thead><tbody>
+<tr><td>Repository</td><td><code>godotengine/godot</code></td><td>GitHub API</td></tr>
+<tr><td>Licence</td><td><strong>MIT</strong></td><td>same</td></tr>
+<tr><td>Main language</td><td>C++</td><td>same</td></tr>
+<tr><td>Stars</td><td>118,127</td><td>same</td></tr>
+<tr><td>Last push</td><td>2026-10-04</td><td>same (<strong>active</strong>)</td></tr>
+<tr><td>Scripting</td><td>GDScript / C#</td><td>official docs</td></tr>
+<tr><td>Verified on</td><td>2026-10-05</td><td>—</td></tr>
+</tbody></table></div></span></div>
+<div class="bi-block"><span data-zh><h2>术语</h2>
+<p>⚠ 「GDScript」「.tscn」「导出」这些词在 <a href="../vibe-gaming.html">Vibe Gaming 词条</a> 里有解释。</p></span><span data-en><h2>Vocabulary</h2>
+<p>⚠ &quot;GDScript&quot;, &quot;.tscn&quot; and &quot;export&quot; are explained in the <a href="../vibe-gaming.html">Vibe Gaming entry</a>.</p></span></div>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+          <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+  </footer>
+  <script src="brand.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
+      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
+      sync();
+    })();
+  </script>
+</body>
+</html>
