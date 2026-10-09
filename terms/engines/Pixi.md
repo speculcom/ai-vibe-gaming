@@ -14,6 +14,13 @@ decision: "做 2D 网页游戏，选它。前提是你能接受没有内置物�
 decisionEn: "For a 2D web game, pick it — provided you can live without built-in physics."
 bestFor: "2D 网页游戏、小游戏原型"
 bestForEn: "2D web games and small prototypes"
+install: "装 Node.js v20 或更高 → `npm create pixi.js@latest` 生成脚手架（官方推荐 Vite + PixiJS 模板）→ `npm install` → `npm run dev`。也可以只往已有工程里加：`npm install pixi.js`。"
+installEn: "Install Node.js v20 or newer → `npm create pixi.js@latest` to scaffold (the docs recommend the Vite + PixiJS template) → `npm install` → `npm run dev`. Or add it to an existing project with `npm install pixi.js`."
+installSrc: "https://pixijs.com/8.x/guides/getting-started/quick-start"
+installVerified: "2026-10-09"
+difficulty: low
+difficultyWhy: "一条命令出可跑工程 —— 官方给了脚手架模板，比自己拼一份构建配置省事。前置只有一个 Node.js。"
+difficultyWhyEn: "One command yields a runnable project — the docs ship scaffolding templates, so you do not assemble a build setup yourself. The only prerequisite is Node.js."
 confidence: our-judgement
 verified: "2026-10-05 · GitHub API 快照"
 ---
