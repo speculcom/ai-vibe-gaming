@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>先发极简版 · AI 做游戏</title>
+  <meta name="description" content="游戏行业的最大风险不是「做得不好玩」，而是「你不知道它好不好玩」。 在 itch.io 上传一个能玩的、素材很粗糙的版本 —— AI 让这变得可行。" />
+  <link rel="canonical" href="https://vg.specul.com/先发极简版.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="先发极简版 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/先发极简版.html" />
+  <meta property="og:title" content="先发极简版 · AI 做游戏" />
+  <meta property="og:description" content="游戏行业的最大风险不是「做得不好玩」，而是「你不知道它好不好玩」。 在 itch.io 上传一个能玩的、素材很粗糙的版本 —— AI 让这变得可行。" />
+  <meta name="theme-color" content="#05080f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="brand.css" />
+  <link rel="stylesheet" href="site.css" />
+  <style>:root { --accent: #f5c542; }</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"先发极简版","url":"https://vg.specul.com/先发极简版.html","description":"游戏行业的最大风险不是「做得不好玩」，而是「你不知道它好不好玩」。 在 itch.io 上传一个能玩的、素材很粗糙的版本 —— AI 让这变得可行。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+        <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+        <span class="nav-tools">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+          <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+        </span>
+      </nav>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://agent.specul.com/"><span><span data-zh>Agent</span><span data-en>Agent</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>本地模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>导航</span><span data-en>Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>学习路径</span><span data-en>Learning path</span></a> · <span data-zh>第 5 阶段</span><span data-en>Stage 5</span></p>
+        <h1 class="t-hero">先发极简版</h1>
+        <p class="lede">Ship a rough version first</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>这一步决定什么</strong></span><span data-en><strong>What this stage decides</strong></span><span data-zh>：游戏行业的最大风险不是「做得不好玩」，而是「你不知道它好不好玩」。</span><span data-en>: The biggest risk in this industry is not \"the game is bad\" — it is \"you do not know whether it is bad\".</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：在 itch.io 上传一个能玩的、素材很粗糙的版本 —— AI 让这变得可行。</span><span data-en>: Upload something playable on itch.io with deliberately crude assets — AI is what makes this affordable.</span></p>
+          <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>：绝大多数独立游戏的失败原因不是不好玩，而是<strong>做完 80% 才发现方向错了</strong>。</p></span><span data-en><p><strong>In one line</strong>: most indie games do not fail because they were bad — they fail because <strong>the wrong direction was discovered after 80% was done</strong>.</p></span></div>
+<div class="bi-block"><span data-zh><h2>⚠ 行业最大的风险</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>你以为的风险</th><th>真实风险</th></tr></thead><tbody>
+<tr><td>做得不够好</td><td>⚠ <strong>方向错了</strong> —— 做得多好都没用</td></tr>
+<tr><td>竞争太激烈</td><td>⚠ 没人玩（但没人知道，因为没人试过）</td></tr>
+</tbody></table></div>
+<p>⚠ <strong>你无法通过「更努力地做」来发现方向错误</strong> ——</p>
+<p>因为你是在做完之后才知道，而那时已经投入了几百小时。</p></span><span data-en><h2>⚠ The biggest risk in the industry</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>The risk you think it is</th><th>The real risk</th></tr></thead><tbody>
+<tr><td>Not polished enough</td><td>⚠ <strong>The direction is wrong</strong> — no amount of polish saves it</td></tr>
+<tr><td>Too much competition</td><td>⚠ Nobody plays it (and nobody knows, because nobody tried)</td></tr>
+</tbody></table></div>
+<p>⚠ <strong>You cannot discover a wrong direction by working harder on it</strong> —</p>
+<p>because you find out after finishing, by which point you have invested hundreds of hours.</p></span></div>
+<div class="bi-block"><span data-zh><h2>为什么 AI 让这件事可行了</h2>
+<p><strong>过去</strong>：发一个能玩的版本 = 3~6 个月（美术、音频、关卡都要做完）</p>
+<p><strong>现在</strong>：⚠ <strong>原型成本降到了可以「多发几个试」的程度</strong></p>
+<p>⚠ 这才是 AI 做游戏<strong>真正带来的方法论变化</strong> ——</p>
+<p>不是「做得更快」，而是<strong>「试错的次数变多了」</strong>。</p></span><span data-en><h2>Why AI makes this affordable</h2>
+<p><strong>Before</strong>: shipping something playable took 3–6 months (art, audio and levels all had to be finished)</p>
+<p><strong>Now</strong>: ⚠ <strong>prototypes are cheap enough to &quot;ship a few and try&quot;</strong></p>
+<p>⚠ This is the <strong>real methodological change</strong> AI brings to game-making —</p>
+<p>not &quot;it gets done faster&quot;, but <strong>&quot;you get more attempts in&quot;</strong>.</p></span></div>
+<div class="bi-block"><span data-zh><h2>怎么做</h2>
+<p><strong>1. 砍到只剩核心</strong></p>
+<p>发出去的版本必须有：能操作、有目标、有反馈。</p>
+<p>⚠ <strong>不能有</strong>：好看的美术、完整关卡、设置菜单、音效。</p>
+<p><strong>2. ⚠ 明确说清这是「试玩版」</strong></p>
+<p>⚠ 不要让人以为这是最终版 —— 否则负面反馈会盖过真实反馈。</p>
+<p><strong>3. 看数据，不看留言</strong></p>
+<div class="table-wrap"><table class="src"><thead><tr><th>信号</th><th>说明什么</th></tr></thead><tbody>
+<tr><td>多少人玩完了</td><td>⚠ 核心循环是否成立</td></tr>
+<tr><td>⚠ <strong>有多少人玩第二次</strong></td><td>⚠ <strong>这是最关键的指标</strong> —— 没人玩第二次说明不够有趣</td></tr>
+<tr><td>留言里问的是什么</td><td>「怎么玩」= 引导问题；「还有吗」= 需求真实</td></tr>
+</tbody></table></div></span><span data-en><h2>How to do it</h2>
+<p><strong>1. Cut it down to the core</strong></p>
+<p>What ships must have: it is operable, goal-directed and responsive.</p>
+<p>⚠ <strong>What must not ship</strong>: nice art, complete levels, a settings menu, sound effects.</p>
+<p><strong>2. ⚠ Say clearly that it is a playtest</strong></p>
+<p>⚠ Do not let people think it is the final version — otherwise negative feedback drowns out the real signal.</p>
+<p><strong>3. Read the numbers, not the comments</strong></p>
+<div class="table-wrap"><table class="src"><thead><tr><th>Signal</th><th>What it tells you</th></tr></thead><tbody>
+<tr><td>How many finished it</td><td>⚠ Whether the core loop holds</td></tr>
+<tr><td>⚠ <strong>How many played a second time</strong></td><td>⚠ <strong>The most important metric</strong> — nobody replaying means it is not interesting enough</td></tr>
+<tr><td>What the comments ask</td><td>&quot;How do I play this?&quot; = onboarding problem; &quot;Is there more?&quot; = real demand</td></tr>
+</tbody></table></div></span></div>
+<div class="bi-block"><span data-zh><h2>常见失败</h2>
+<ul>
+<li>⚠ <strong>追求「做完再发」</strong> —— 最常见的失败模式，也最难自己察觉</li>
+<li><strong>发给朋友</strong> —— ⚠ 朋友会给你礼貌性反馈，陌生人才给你真实反馈</li>
+<li><strong>看点赞数</strong> —— ⚠ 点赞是礼貌，不是参与</li>
+</ul></span><span data-en><h2>Common failures</h2>
+<ul>
+<li>⚠ <strong>Aiming to finish before shipping</strong> — the most common failure mode, and the hardest to notice yourself</li>
+<li><strong>Sending it to friends</strong> — ⚠ friends give you polite feedback; strangers give you real feedback</li>
+<li><strong>Watching the like count</strong> — ⚠ a like is politeness, not participation</li>
+</ul></span></div>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p class="t-xs"><span data-zh>有序路径 · 第 11 / 17 篇</span><span data-en>Ordered path · item 11 of 17</span></p>
+          <nav class="term-nav" aria-label="上一篇 / 下一篇">
+            <a class="tn-prev" href="s5-导出发布.html"><span class="tn-dir"><span data-zh>← 上一篇</span><span data-en>← Previous</span></span><b>S5 · 导出与发布</b></a>
+            <a class="tn-next" href="存档与离线行为.html"><span class="tn-dir"><span data-zh>下一篇 →</span><span data-en>Next →</span></span><b>存档与离线行为</b></a>
+          </nav>
+          <p class="mt-2"><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+          <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+  </footer>
+  <script src="brand.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
+      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
+      sync();
+    })();
+  </script>
+</body>
+</html>
