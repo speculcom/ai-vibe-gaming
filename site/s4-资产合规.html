@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S4 · 资产合规 · AI 做游戏</title>
+  <meta name="description" content="这一步不是技术问题，是法律问题 —— 但它能让你的整个项目作废。 每份资产都要能说出「从哪来、能不能商用」。答不出来就换掉。" />
+  <link rel="canonical" href="https://vg.specul.com/s4-资产合规.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="S4 · 资产合规 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/s4-资产合规.html" />
+  <meta property="og:title" content="S4 · 资产合规 · AI 做游戏" />
+  <meta property="og:description" content="这一步不是技术问题，是法律问题 —— 但它能让你的整个项目作废。 每份资产都要能说出「从哪来、能不能商用」。答不出来就换掉。" />
+  <meta name="theme-color" content="#05080f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="brand.css" />
+  <link rel="stylesheet" href="site.css" />
+  <style>:root { --accent: #f5c542; }</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"S4 · 资产合规","url":"https://vg.specul.com/s4-资产合规.html","description":"这一步不是技术问题，是法律问题 —— 但它能让你的整个项目作废。 每份资产都要能说出「从哪来、能不能商用」。答不出来就换掉。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+        <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+        <span class="nav-tools">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+          <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+        </span>
+      </nav>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://agent.specul.com/"><span><span data-zh>Agent</span><span data-en>Agent</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>本地模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>导航</span><span data-en>Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>学习路径</span><span data-en>Learning path</span></a> · <span data-zh>第 4 阶段</span><span data-en>Stage 4</span></p>
+        <h1 class="t-hero">S4 · 资产合规</h1>
+        <p class="lede">S4 · Asset licensing</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>这一步决定什么</strong></span><span data-en><strong>What this stage decides</strong></span><span data-zh>：这一步不是技术问题，是法律问题 —— 但它能让你的整个项目作废。</span><span data-en>: This step is not technical, it is legal — and it can void your entire project.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：每份资产都要能说出「从哪来、能不能商用」。答不出来就换掉。</span><span data-en>: Every asset must have an answer to \"where did it come from, and can it be used commercially\". If you cannot answer, replace it.</span></p>
+          <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p><strong>这一步决定什么</strong>：能不能合法发布。<strong>这是唯一一步做错了会让整个项目作废的。</strong></p></span><span data-en><p><strong>What this stage decides</strong>: whether you can legally ship. <strong>This is the only step whose failure voids the entire project.</strong></p></span></div>
+<div class="bi-block"><span data-zh><h2>为什么单独拿出来讲</h2>
+<p>前面的步骤做错了，改代码就行。<strong>这一步做错了，你可能要下架。</strong></p>
+<p>⚠ 更麻烦的是：AI 生成的资产<strong>商用授权通常不明确</strong>。</p>
+<p>模型训练用了什么数据、输出能不能商用，取决于服务条款 —— 而条款随时会变。</p></span><span data-en><h2>Why it gets its own stage</h2>
+<p>Earlier stages can be fixed by editing code. <strong>Getting this one wrong can get you taken down.</strong></p>
+<p>⚠ Worse: <strong>AI-generated assets usually have unclear commercial rights.</strong> What data a model was trained on, and whether you may sell its output, comes down to the service terms — and terms change.</p></span></div>
+<div class="bi-block"><span data-zh><h2>三类风险</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>资产类型</th><th>风险等级</th><th>关键问题</th></tr></thead><tbody>
+<tr><td><strong>AI 生成的图像/音频</strong></td><td>⚠ <strong>中-高</strong></td><td>服务条款是否授予商用权？条款改过吗？</td></tr>
+<tr><td><strong>CC0 / 公共领域素材</strong></td><td>低</td><td>确认是 CC0（不是 CC-BY，后者要署名）</td></tr>
+<tr><td><strong>付费素材包</strong></td><td>低</td><td>买的是「商用」还是「个人」？看授权范围</td></tr>
+<tr><td><strong>从别处「借」来的</strong></td><td>⚠ <strong>高</strong></td><td>没授权就是侵权，AI 改一下不算</td></tr>
+</tbody></table></div></span><span data-en><h2>Three kinds of risk</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>Asset type</th><th>Risk</th><th>The question that matters</th></tr></thead><tbody>
+<tr><td><strong>AI-generated image or audio</strong></td><td>⚠ <strong>Medium to high</strong></td><td>Do the terms grant commercial rights? Have the terms changed since?</td></tr>
+<tr><td><strong>CC0 / public domain</strong></td><td>Low</td><td>Confirm it is really CC0 (not CC-BY, which requires attribution)</td></tr>
+<tr><td><strong>Paid asset packs</strong></td><td>Low</td><td>Did you buy commercial or personal? Read the licence scope</td></tr>
+<tr><td><strong>&quot;Borrowed&quot; from elsewhere</strong></td><td>⚠ <strong>High</strong></td><td>No licence is infringement, and running it through AI does not change that</td></tr>
+</tbody></table></div></span></div>
+<div class="bi-block"><span data-zh><h2>实操做法</h2>
+<p><strong>1. 建一个资产台账</strong></p>
+<p>哪怕是一个表格，记三列：</p>
+<div class="table-wrap"><table class="src"><thead><tr><th>文件</th><th>来源</th><th>授权</th></tr></thead><tbody>
+<tr><td><code>hero.png</code></td><td>自己画的</td><td>本人原创</td></tr>
+<tr><td><code>bgm.mp3</code></td><td>生成式音乐工具 X</td><td>⚠ 待确认商用条款</td></tr>
+<tr><td><code>coin.wav</code></td><td>freesound.org</td><td>CC0</td></tr>
+</tbody></table></div>
+<p>⚠ <strong>台账里出现「待确认」的条目，在发布前必须清零。</strong></p>
+<p><strong>2. 优先选低风险来源</strong></p>
+<ul>
+<li>图像：<strong>程序化生成</strong>（代码画的图形）风险最低 —— 版权归你</li>
+<li>音频：<strong>自己做的音效</strong>比生成的音乐安全</li>
+<li>字体：<strong>注意授权</strong> —— 很多字体不能商用</li>
+</ul>
+<p><strong>3. 混用时注意署名要求</strong></p>
+<p>⚠ <strong>CC-BY 需要署名</strong>。用了 CC-BY 素材而没署名，可能违反协议。</p></span><span data-en><h2>How to do it in practice</h2>
+<p><strong>1. Keep an asset ledger</strong></p>
+<p>Even a plain table with three columns:</p>
+<div class="table-wrap"><table class="src"><thead><tr><th>File</th><th>Source</th><th>Licence</th></tr></thead><tbody>
+<tr><td><code>hero.png</code></td><td>drawn by me</td><td>my own work</td></tr>
+<tr><td><code>bgm.mp3</code></td><td>generative music tool X</td><td>⚠ commercial terms unconfirmed</td></tr>
+<tr><td><code>coin.wav</code></td><td>freesound.org</td><td>CC0</td></tr>
+</tbody></table></div>
+<p>⚠ <strong>Every &quot;unconfirmed&quot; row must be cleared before you ship.</strong></p>
+<p><strong>2. Prefer low-risk sources</strong></p>
+<ul>
+<li>Images: <strong>procedural generation</strong> (code-drawn shapes) is safest — the copyright is yours</li>
+<li>Audio: <strong>sound effects you record yourself</strong> are safer than generated music</li>
+<li>Fonts: <strong>check the licence</strong> — many fonts are not commercial-use</li>
+</ul>
+<p><strong>3. Mind attribution when mixing</strong></p>
+<p>⚠ <strong>CC-BY requires attribution.</strong> Using CC-BY material without crediting it may breach the licence.</p></span></div>
+<div class="bi-block"><span data-zh><h2>⚠ AI 生成资产的真实状况</h2>
+<p>本站的判断（<strong>没有实测，只有推理</strong>）：</p>
+<ul>
+<li><strong>单张/单组</strong>素材可用</li>
+<li><strong>成套资产的风格一致性</strong>是当前生成模型的弱项 —— 这不是提示词问题</li>
+<li><strong>商用授权</strong>在多数服务里<strong>存在但条款模糊</strong>，且可能随时变更</li>
+</ul>
+<p>所以本站的建议是：<strong>AI 资产用来做原型，正式发布前替换或逐条确认授权。</strong></p></span><span data-en><h2>⚠ The real state of AI-generated assets</h2>
+<p>This site's judgement (<strong>no measurement, only reasoning</strong>):</p>
+<ul>
+<li>Individual assets or small sets are usable</li>
+<li><strong>Style consistency across a full set</strong> is a current weakness of image models — and that is not a prompting problem</li>
+<li><strong>Commercial rights</strong> exist in most services' terms but are <strong>vaguely worded</strong>, and may change</li>
+</ul>
+<p>So this site's advice: <strong>use AI assets for the prototype, and replace them or verify each licence before shipping.</strong></p></span></div>
+<div class="bi-block"><span data-zh><h2>常见失败</h2>
+<ul>
+<li><strong>觉得「AI 生成的就都是我的」</strong> —— 模型的训练数据来源往往不明确</li>
+<li><strong>抄了素材包的图</strong> —— 付费素材包的授权是「一个人一个项目」，不是「随便用」</li>
+<li><strong>忘了字体授权</strong> —— ⚠ 这是最常被忽略的一项</li>
+<li><strong>没留台账</strong> —— 到要发布时才发现说不清哪张图哪来的</li>
+</ul></span><span data-en><h2>Common failures</h2>
+<ul>
+<li><strong>Assuming &quot;AI made it, so it's mine&quot;</strong> — the training data's provenance is usually unclear</li>
+<li><strong>Taking images from an asset pack</strong> — a paid pack usually licenses one person, one project, not &quot;use anywhere&quot;</li>
+<li><strong>Forgetting font licences</strong> — ⚠ the most frequently missed one</li>
+<li><strong>Keeping no ledger</strong> — at release time you realise you cannot say where any given image came from</li>
+</ul></span></div>
+<div class="bi-block"><span data-zh><h2>判断你这一步做完了吗</h2>
+<ul class="checklist">
+<li> 每份资产都能说出来源</li>
+<li> 台账里没有「待确认」</li>
+<li> ⚠ 字体授权已确认</li>
+</ul></span><span data-en><h2>Are you done with this stage?</h2>
+<ul class="checklist">
+<li> Every asset can name its source</li>
+<li> The ledger has no &quot;unconfirmed&quot; rows left</li>
+<li> ⚠ Font licences are confirmed</li>
+</ul></span></div>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p class="t-xs"><span data-zh>有序路径 · 第 8 / 17 篇</span><span data-en>Ordered path · item 8 of 17</span></p>
+          <nav class="term-nav" aria-label="上一篇 / 下一篇">
+            <a class="tn-prev" href="手感问题清单.html"><span class="tn-dir"><span data-zh>← 上一篇</span><span data-en>← Previous</span></span><b>手感问题清单</b></a>
+            <a class="tn-next" href="字体的授权陷阱.html"><span class="tn-dir"><span data-zh>下一篇 →</span><span data-en>Next →</span></span><b>字体的授权陷阱</b></a>
+          </nav>
+          <p class="mt-2"><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+          <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+  </footer>
+  <script src="brand.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
+      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
+      sync();
+    })();
+  </script>
+</body>
+</html>
