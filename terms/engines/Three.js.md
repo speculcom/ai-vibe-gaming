@@ -14,6 +14,13 @@ decision: "你要的不是「引擎」而是「3D 库」时选它。别指望它
 decisionEn: "Pick it when what you want is a 3D library rather than an engine. Do not expect it to manage your scenes."
 bestFor: "网页 3D 展示、可以自己搭架构的项目"
 bestForEn: "Web 3D showcases, and projects where you are willing to build the architecture"
+install: "两条路。① npm + 构建工具：装 Node.js，然后 `npm install --save three` 与 `npm install --save-dev vite`，跑 `npx vite`。② 不用构建工具：在 index.html 里写 import map 指向 CDN，再用 `npx serve .` 起本地服务器。**官方没有脚手架**，工程结构（index.html + main.js + public/）要自己建；addons 不需另装、但要单独 import。"
+installEn: "Two routes. (1) npm plus a build tool: install Node.js, then `npm install --save three` and `npm install --save-dev vite`, and run `npx vite`. (2) Without a build tool: add an import map in index.html pointing at a CDN, then start a local server with `npx serve .`. **There is no official scaffolding** — you create the project layout (index.html + main.js + public/) yourself; addons need no separate install but must be imported separately."
+installSrc: "https://threejs.org/docs/#manual/en/introduction/Installation"
+installVerified: "2026-10-09"
+difficulty: medium
+difficultyWhy: "装包是一行，但「一个能跑的画面」要自己拼：没有脚手架，场景 / 相机 / 渲染器都得手写（官方入门示例约 20 行）。"
+difficultyWhyEn: "The package is one line; a running scene is not. There is no scaffolding, so scene, camera and renderer are hand-written (the official example is about 20 lines)."
 confidence: our-judgement
 verified: "2026-10-05 · GitHub API 快照"
 ---
