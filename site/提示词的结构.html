@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>提示词的结构 · AI 做游戏</title>
+  <meta name="description" content="同样是「做一个跳跃游戏」，给不给边界决定了 AI 写出的是脚手架还是能跑的东西。 每次给三样：输入映射、具体数值、明确的「不要做什么」。" />
+  <link rel="canonical" href="https://vg.specul.com/提示词的结构.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="提示词的结构 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/提示词的结构.html" />
+  <meta property="og:title" content="提示词的结构 · AI 做游戏" />
+  <meta property="og:description" content="同样是「做一个跳跃游戏」，给不给边界决定了 AI 写出的是脚手架还是能跑的东西。 每次给三样：输入映射、具体数值、明确的「不要做什么」。" />
+  <meta name="theme-color" content="#05080f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="brand.css" />
+  <link rel="stylesheet" href="site.css" />
+  <style>:root { --accent: #f5c542; }</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"提示词的结构","url":"https://vg.specul.com/提示词的结构.html","description":"同样是「做一个跳跃游戏」，给不给边界决定了 AI 写出的是脚手架还是能跑的东西。 每次给三样：输入映射、具体数值、明确的「不要做什么」。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+        <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+        <span class="nav-tools">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+          <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+        </span>
+      </nav>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://agent.specul.com/"><span><span data-zh>Agent</span><span data-en>Agent</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>本地模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>导航</span><span data-en>Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>学习路径</span><span data-en>Learning path</span></a> · <span data-zh>第 2 阶段</span><span data-en>Stage 2</span></p>
+        <h1 class="t-hero">提示词的结构</h1>
+        <p class="lede">Structuring the prompt</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>这一步决定什么</strong></span><span data-en><strong>What this stage decides</strong></span><span data-zh>：同样是「做一个跳跃游戏」，给不给边界决定了 AI 写出的是脚手架还是能跑的东西。</span><span data-en>: For the same request — \"make a platformer\" — whether you give boundaries decides whether AI writes scaffolding or something that runs.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：每次给三样：输入映射、具体数值、明确的「不要做什么」。</span><span data-en>: Give three things each time: the input mapping, actual numbers, and an explicit \"do not do X\".</span></p>
+          <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>：AI 写不出能跑的游戏，多半不是因为它不会，而是因为你没说清要什么。</p></span><span data-en><p><strong>In one line</strong>: AI usually fails to produce a runnable game not because it cannot code, but because you did not say what you wanted.</p></span></div>
+<div class="bi-block"><span data-zh><h2>三样必须给的</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>要给</th><th>为什么</th><th>例子</th></tr></thead><tbody>
+<tr><td><strong>输入 → 行为映射</strong></td><td>不给会得到「按 WASD 移动」这种废话</td><td>「左键跳跃，Shift 冲刺，R 重开」</td></tr>
+<tr><td><strong>具体数值</strong></td><td>不给会得到一堆 <code>TODO</code></td><td>「跳跃初速 -420，重力 980」</td></tr>
+<tr><td>⚠ <strong>明确的「不要做什么」</strong></td><td><strong>不给会得到一个塞满所有系统的巨文件</strong></td><td>「这一版不要敌人、不要 UI、不要动画」</td></tr>
+</tbody></table></div>
+<p>⚠ 第三条最容易漏，而且<strong>影响最大</strong>。</p></span><span data-en><h2>Three things you must give</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>Give</th><th>Why</th><th>Example</th></tr></thead><tbody>
+<tr><td><strong>An input → behaviour mapping</strong></td><td>Without it you get filler like &quot;move with WASD&quot;</td><td>&quot;Left click jumps, Shift dashes, R restarts&quot;</td></tr>
+<tr><td><strong>Actual numbers</strong></td><td>Without them you get a pile of <code>TODO</code>s</td><td>&quot;Jump velocity -420, gravity 980&quot;</td></tr>
+<tr><td>⚠ <strong>An explicit &quot;do not do X&quot;</strong></td><td><strong>Without it you get one giant file containing every system imaginable</strong></td><td>&quot;This version: no enemies, no UI, no animation&quot;</td></tr>
+</tbody></table></div>
+<p>⚠ The third is the easiest to forget, and it has the <strong>largest effect</strong>.</p></span></div>
+<div class="bi-block"><span data-zh><h2>⚠ 一个真实的失败模式</h2>
+<p>你说：「做一个平台跳跃游戏」</p>
+<p>AI 会给你：玩家、敌人、关卡、UI、动画、存档、音效、暂停菜单 —— <strong>全部都有，全部没做深</strong>。</p>
+<p>然后你在调试器里花三天找「为什么角色会掉出屏幕」。</p>
+<p><strong>你得到的不是少功能，而是一堆半成品。</strong></p></span><span data-en><h2>⚠ A real failure mode</h2>
+<p>You say: &quot;make a platformer&quot;.</p>
+<p>AI gives you: player, enemies, levels, UI, animation, saves, sound effects, pause menu — <strong>all present, none finished</strong>.</p>
+<p>Then you spend three days in a debugger looking for why the character falls off the screen.</p>
+<p><strong>What you get is not fewer features — it is a pile of half-finished ones.</strong></p></span></div>
+<div class="bi-block"><span data-zh><h2>更好的写法</h2>
+<pre class="code"><code>写 Godot GDScript，一个最小可玩的原型：
+- 玩家：CharacterBody2D，左右移动 + 跳跃
+- 数值：重力 980，跳跃初速 -420，coyote time 100ms
+- 地面用 StaticBody2D，碰撞层设 layer 1 / mask 1
+- ⚠ 不要：敌人、UI、动画、存档、音效 —— 这次只做移动与跳跃</code></pre>
+<p>⚠ 注意最后一行。<strong>它省下的时间比它占用的字数多得多。</strong></p></span><span data-en><h2>A better prompt</h2>
+<pre class="code"><code>Write Godot GDScript for a minimal playable prototype:
+- Player: CharacterBody2D with left/right movement and jumping
+- Numbers: gravity 980, jump velocity -420, coyote time 100 ms
+- Ground uses StaticBody2D, collision layer 1 / mask 1
+- ⚠ Do not: enemies, UI, animation, saves, sound effects — this round is movement and jumping only</code></pre>
+<p>⚠ Note the last line. <strong>It saves far more time than the words it costs.</strong></p></span></div>
+<div class="bi-block"><span data-zh><h2>迭代的节奏</h2>
+<p>⚠ <strong>不要一次要全部</strong>。正确的顺序：</p>
+<p>1. 第一次：只做移动 → 跑起来</p>
+<p>2. 第二次：加跳跃 → 跑起来</p>
+<p>3. 第三次：加相机跟随 → 跑起来</p>
+<p>4. 第四次：才加视觉</p>
+<p>⚠ 每一轮都应该是<strong>「能跑的东西」</strong>，不是「一部分代码」。</p></span><span data-en><h2>The rhythm of iteration</h2>
+<p>⚠ <strong>Do not ask for everything at once.</strong> The right order:</p>
+<p>1. First round: movement only → it runs</p>
+<p>2. Second: add jumping → it runs</p>
+<p>3. Third: add camera follow → it runs</p>
+<p>4. Fourth: only then add visuals</p>
+<p>⚠ Each round should produce <strong>&quot;something that runs&quot;</strong>, not &quot;part of the code&quot;.</p></span></div>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p class="t-xs"><span data-zh>有序路径 · 第 4 / 17 篇</span><span data-en>Ordered path · item 4 of 17</span></p>
+          <nav class="term-nav" aria-label="上一篇 / 下一篇">
+            <a class="tn-prev" href="s2-核心循环.html"><span class="tn-dir"><span data-zh>← 上一篇</span><span data-en>← Previous</span></span><b>S2 · 核心循环</b></a>
+            <a class="tn-next" href="最小可玩原型.html"><span class="tn-dir"><span data-zh>下一篇 →</span><span data-en>Next →</span></span><b>最小可玩原型</b></a>
+          </nav>
+          <p class="mt-2"><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+          <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+  </footer>
+  <script src="brand.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
+      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
+      sync();
+    })();
+  </script>
+</body>
+</html>
