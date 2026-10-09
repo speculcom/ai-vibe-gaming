@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Godot 的场景树 · AI 做游戏</title>
+  <meta name="description" content="Godot 用 .tscn 文本文件存场景 —— 但它不该由人手写，也不该由 AI 写。 让 AI 写 GDScript，场景在编辑器里搭。这条不清楚，你会浪费几个小时。" />
+  <link rel="canonical" href="https://vg.specul.com/godot-场景树.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Godot 的场景树 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/godot-场景树.html" />
+  <meta property="og:title" content="Godot 的场景树 · AI 做游戏" />
+  <meta property="og:description" content="Godot 用 .tscn 文本文件存场景 —— 但它不该由人手写，也不该由 AI 写。 让 AI 写 GDScript，场景在编辑器里搭。这条不清楚，你会浪费几个小时。" />
+  <meta name="theme-color" content="#05080f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="brand.css" />
+  <link rel="stylesheet" href="site.css" />
+  <style>:root { --accent: #f5c542; }</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Godot 的场景树","url":"https://vg.specul.com/godot-场景树.html","description":"Godot 用 .tscn 文本文件存场景 —— 但它不该由人手写，也不该由 AI 写。 让 AI 写 GDScript，场景在编辑器里搭。这条不清楚，你会浪费几个小时。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+        <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+        <span class="nav-tools">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+          <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+        </span>
+      </nav>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://agent.specul.com/"><span><span data-zh>Agent</span><span data-en>Agent</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>本地模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>导航</span><span data-en>Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>学习路径</span><span data-en>Learning path</span></a> · <span data-zh>关键词</span><span data-en>Keyword</span></p>
+        <h1 class="t-hero">Godot 的场景树</h1>
+        <p class="lede">Godot's scene tree</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>这一步决定什么</strong></span><span data-en><strong>What this stage decides</strong></span><span data-zh>：Godot 用 .tscn 文本文件存场景 —— 但它不该由人手写，也不该由 AI 写。</span><span data-en>: Godot stores scenes in .tscn text files — but they should be written by neither humans nor AI.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：让 AI 写 GDScript，场景在编辑器里搭。这条不清楚，你会浪费几个小时。</span><span data-en>: Let AI write the GDScript and build the scene in the editor. Without this rule you will waste hours.</span></p>
+          <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>：<code>.tscn</code> 是 Godot 的场景文件。<strong>它长得很像文本，所以 AI 很想写它 —— 但它不该被写。</strong></p></span><span data-en><p><strong>In one line</strong>: <code>.tscn</code> is Godot's scene file. <strong>It looks like text, so AI is keen to write it — but it should not be written.</strong></p></span></div>
+<div class="bi-block"><span data-zh><h2>为什么 AI 不该写 .tscn</h2>
+<p><code>.tscn</code> 是<strong>编辑器生成的格式</strong>，它的字段顺序、<code>uid</code>、<code>ext_resource</code> id</p>
+<p>都是编辑器在维护过程中逐渐形成的。AI 写出来的东西往往：</p>
+<ul>
+<li>能打开，但<strong>资源引用断了</strong>（贴图变红、脚本丢失）</li>
+<li>⚠ <strong>更糟：能跑，但结构混乱</strong>，你之后完全无法维护</li>
+</ul>
+<p>⚠ <strong>根本原因</strong>：这个格式是<strong>工具的输出</strong>，不是<strong>人写的代码</strong>。</p>
+<p>让 AI 模仿工具的输出，就像让它模仿编译器的中间表示 —— 偶尔能对，但不该这么干。</p></span><span data-en><h2>Why AI should not write .tscn</h2>
+<p><code>.tscn</code> is a <strong>generated format</strong>. Its field order, <code>uid</code>s and <code>ext_resource</code> ids emerge from the editor's maintenance over time. What AI produces is usually:</p>
+<ul>
+<li>Openable, but <strong>with broken resource references</strong> (red textures, missing scripts)</li>
+<li>⚠ <strong>Worse: it runs, but the structure is a mess</strong> and you will not be able to maintain it afterwards</li>
+</ul>
+<p>⚠ <strong>The root reason</strong>: this format is <strong>an output of a tool</strong>, not code a person writes. Asking AI to imitate a tool's output is like asking it to imitate a compiler's intermediate representation — occasionally right, but never the right approach.</p></span></div>
+<div class="bi-block"><span data-zh><h2>正确的分工</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>谁</th><th>做什么</th></tr></thead><tbody>
+<tr><td><strong>AI</strong></td><td>写 GDScript 逻辑代码</td></tr>
+<tr><td><strong>你</strong></td><td>在编辑器里搭场景树、拖节点、连信号</td></tr>
+<tr><td><strong>编辑器</strong></td><td>生成与维护 <code>.tscn</code></td></tr>
+</tbody></table></div>
+<p>⚠ 这与 S2「给明确的边界」是同一条原则：</p>
+<p><strong>明确说出「不要做什么」，比说「要做什么」更重要。</strong></p></span><span data-en><h2>The right division of labour</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>Who</th><th>Does what</th></tr></thead><tbody>
+<tr><td><strong>AI</strong></td><td>Writes the GDScript logic</td></tr>
+<tr><td><strong>You</strong></td><td>Build the scene tree, drag nodes, wire signals in the editor</td></tr>
+<tr><td><strong>The editor</strong></td><td>Generates and maintains <code>.tscn</code></td></tr>
+</tbody></table></div>
+<p>⚠ This is the same rule as S2's &quot;give explicit boundaries&quot;:</p>
+<p><strong>saying what NOT to do matters more than saying what to do.</strong></p></span></div>
+<div class="bi-block"><span data-zh><h2>提示词该怎么写</h2>
+<p>✅ 好的写法：</p>
+<pre class="code"><code>写 Godot 的 GDScript：
+- 一个 CharacterBody2D 脚本，处理左右移动与跳跃
+- 不要创建场景文件（.tscn），我会自己在编辑器里挂
+- 导出 jump_velocity 和 gravity 两个 @export 变量</code></pre>
+<p>❌ 常见的错误写法：</p>
+<pre class="code"><code>帮我做一个 Godot 平台跳跃游戏，包含场景文件和脚本</code></pre>
+<p>→ 你会得到一个能打开但资源全断的场景。</p></span><span data-en><h2>How to word the prompt</h2>
+<p>✅ A good prompt:</p>
+<pre class="code"><code>Write Godot GDScript:
+- A CharacterBody2D script handling left/right movement and jumping
+- Do not create a scene file (.tscn) — I will wire it up in the editor myself
+- Export two @export variables: jump_velocity and gravity</code></pre>
+<p>❌ The common wrong prompt:</p>
+<pre class="code"><code>Make me a Godot platformer, including the scene file and scripts</code></pre>
+<p>→ You get a scene that opens with every resource reference broken.</p></span></div>
+<div class="bi-block"><span data-zh><h2>⚠ 一个例外</h2>
+<p>⚠ 如果你要<strong>生成大量重复场景</strong>（比如 50 个不同配置的敌人），</p>
+<p>写脚本生成 <code>.tscn</code> 反而是对的 —— 那属于工具用途，不是手写场景。</p>
+<p>⚠ 判断标准：<strong>你要造的是「一个场景」还是「一批场景」？</strong></p></span><span data-en><h2>⚠ One exception</h2>
+<p>⚠ If you are <strong>generating many repeated scenes</strong> (say 50 enemies with different configurations), scripting the generation of <code>.tscn</code> is correct — that is tool usage, not hand-authoring scenes.</p>
+<p>⚠ The test: <strong>are you building &quot;one scene&quot; or &quot;a batch of scenes&quot;?</strong></p></span></div>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p class="t-xs"><span data-zh>有序路径 · 第 15 / 17 篇</span><span data-en>Ordered path · item 15 of 17</span></p>
+          <nav class="term-nav" aria-label="上一篇 / 下一篇">
+            <a class="tn-prev" href="ai-资产台账.html"><span class="tn-dir"><span data-zh>← 上一篇</span><span data-en>← Previous</span></span><b>AI 资产台账</b></a>
+            <a class="tn-next" href="ai-生成内容的版权.html"><span class="tn-dir"><span data-zh>下一篇 →</span><span data-en>Next →</span></span><b>AI 生成内容的版权归属</b></a>
+          </nav>
+          <p class="mt-2"><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+          <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+  </footer>
+  <script src="brand.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
+      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
+      sync();
+    })();
+  </script>
+</body>
+</html>
