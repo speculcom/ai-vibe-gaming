@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>实战流程 · AI 做游戏</title>
+  <meta name="description" content="五个阶段连成一条线：每一步的产出物是下一步的输入，线断在哪，返工就发生在哪。 单步做错只贵一次；顺序错了，每一步都在为前一步的错误付账。" />
+  <link rel="canonical" href="https://vg.specul.com/method.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="实战流程 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/method.html" />
+  <meta property="og:title" content="实战流程 · AI 做游戏" />
+  <meta property="og:description" content="五个阶段连成一条线：每一步的产出物是下一步的输入，线断在哪，返工就发生在哪。 单步做错只贵一次；顺序错了，每一步都在为前一步的错误付账。" />
+  <meta name="theme-color" content="#05080f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="brand.css" />
+  <link rel="stylesheet" href="site.css" />
+  <style>:root { --accent: #f5c542; }</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"实战流程","url":"https://vg.specul.com/method.html","description":"五个阶段连成一条线：每一步的产出物是下一步的输入，线断在哪，返工就发生在哪。 单步做错只贵一次；顺序错了，每一步都在为前一步的错误付账。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+        <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+        <span class="nav-tools">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+          <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+        </span>
+      </nav>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://agent.specul.com/"><span><span data-zh>Agent</span><span data-en>Agent</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>本地模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>导航</span><span data-en>Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>学习路径</span><span data-en>Learning path</span></a> · <span data-zh>贯穿流程</span><span data-en>Across the stages</span></p>
+        <h1 class="t-hero">实战流程</h1>
+        <p class="lede">The build order</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>这一页解决什么</strong></span><span data-en><strong>What this page solves</strong></span><span data-zh>：五个阶段连成一条线：每一步的产出物是下一步的输入，线断在哪，返工就发生在哪。</span><span data-en>: The five stages as one line: each step's output feeds the next, and wherever the line breaks is where you redo work.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：单步做错只贵一次；顺序错了，每一步都在为前一步的错误付账。</span><span data-en>: One wrong step costs you once; a wrong order makes every later step pay for the earlier mistake.</span></p>
+          <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p><strong>五个阶段不是五篇文章，是一条线。</strong> 每个阶段页各自讲清了「做什么」，</p>
+<p>但<strong>阶段之间的交接</strong>没人讲 —— 而返工几乎都发生在交接处。</p>
+<p>⚠ 本页是<strong>本站的口径</strong>（方法论），不是实测数据。</p></span><span data-en><p><strong>The five stages are not five articles — they are one line.</strong> Each stage page explains what to do,</p>
+<p>but <strong>the handoff between stages</strong> is what nobody covers — and that is where rework happens.</p>
+<p>⚠ This page is <strong>the site's own method</strong>, not measured data.</p></span></div>
+<div class="bi-block"><span data-zh><h2>流程总览</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>#</th><th>步骤</th><th>产出物</th><th>交接检查（过了才准往下走）</th><th>最常见的崩法</th></tr></thead><tbody>
+<tr><td>1</td><td>选引擎</td><td>一个选型决定</td><td>你能说出「为什么不是另一个」</td><td>先定美术风格再挑引擎 —— 顺序倒置</td></tr>
+<tr><td>2</td><td>核心循环</td><td>一个能跑的原型</td><td>「能操作 / 有目标 / 有反馈」三条都是「是」</td><td>跳过原型直接堆内容</td></tr>
+<tr><td>3</td><td>手感调参</td><td>可玩的手感</td><td>一次只改一个参数，且改动有记录</td><td>把 AI 第一次给的数值当最终值</td></tr>
+<tr><td>4</td><td>资产合规</td><td>一份资产台账</td><td>每条资产的来源与授权都能当场指出</td><td>先用起来，发布前才查授权</td></tr>
+<tr><td>5</td><td>导出发布</td><td>一个可分享的包</td><td>在<strong>别人的机器</strong>上能打开</td><td>最后一刻才发现目标平台导出受限</td></tr>
+</tbody></table></div></span><span data-en><h2>The line at a glance</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>#</th><th>Step</th><th>Output</th><th>Handoff check (pass it before moving on)</th><th>The usual way it breaks</th></tr></thead><tbody>
+<tr><td>1</td><td>Pick an engine</td><td>One selection decision</td><td>You can say why it is not the other one</td><td>Settling the art style first, then looking for an engine — the order is inverted</td></tr>
+<tr><td>2</td><td>The core loop</td><td>A prototype that runs</td><td>All three of &quot;operable / goal-directed / responsive&quot; are yes</td><td>Skipping the prototype and piling on content</td></tr>
+<tr><td>3</td><td>Game feel</td><td>Feel that is playable</td><td>One parameter changed at a time, and the change is written down</td><td>Treating the AI's first numbers as final</td></tr>
+<tr><td>4</td><td>Asset licensing</td><td>An asset ledger</td><td>Every asset's origin and licence can be stated on the spot</td><td>Using assets first, checking licences before release</td></tr>
+<tr><td>5</td><td>Export and ship</td><td>A package you can share</td><td>It opens on <strong>someone else's machine</strong></td><td>Discovering at the last minute that the target platform's export is limited</td></tr>
+</tbody></table></div></span></div>
+<div class="bi-block"><span data-zh><h2>每一步的失败点</h2>
+<p>⚠ 下面这些<strong>不是单个阶段的失败</strong>，而是<strong>交接处的失败</strong> —— 所以它们在阶段页里看不到。</p></span><span data-en><h2>Where each step breaks</h2>
+<p>⚠ These are not failures inside a single stage — they are failures <strong>at the handoff</strong>, which is why the stage pages cannot show them.</p></span></div>
+<div class="bi-block"><span data-zh><h3>1 · 选引擎</h3>
+<ul>
+<li>⚠ <strong>顺序倒置</strong>：先定了美术风格或玩法体量，再回头找引擎 —— 于是引擎的导出与性能限制变成硬伤。</li>
+</ul>
+<p>→ 先按 <a href="./s1-选引擎.html">选引擎</a> 的判据定工具，再谈风格。</p>
+<ul>
+<li>⚠ <strong>把「AI 友好」当成「引擎好不好」</strong>：本站的友好度只回答「AI 写错代码的概率」，不回答引擎强弱。</li>
+<li>⚠ <strong>没看导出</strong>：网页与移动端导出各有硬限制，见 <a href="./web-导出可行性.html">Web 导出可行性</a>。</li>
+</ul></span><span data-en><h3>1 · Picking an engine</h3>
+<ul>
+<li>⚠ <strong>Inverted order</strong>: settling the art style or the scope first, then hunting for an engine — and its export and performance limits become hard blockers.</li>
+</ul>
+<p>→ Pick the tool by the criteria in <a href="./s1-选引擎.html">Picking an engine</a> first, then talk about style.</p>
+<ul>
+<li>⚠ <strong>Reading &quot;AI-friendly&quot; as &quot;a better engine&quot;</strong>: our friendliness rating only answers &quot;how often AI gets the code wrong&quot;, not how strong the engine is.</li>
+<li>⚠ <strong>Ignoring export</strong>: web and mobile exports each have hard limits — see <a href="./web-导出可行性.html">Web export feasibility</a>.</li>
+</ul></span></div>
+<div class="bi-block"><span data-zh><h3>2 · 核心循环</h3>
+<ul>
+<li>⚠ <strong>没有目标感</strong>：角色能动，但玩家不知道该干嘛 —— 这不算原型。</li>
+<li>⚠ <strong>一次让 AI 写太多</strong>：提示词里塞进敌人、UI、存档，结果拿到一堆半成品。</li>
+</ul>
+<p>→ 见 <a href="./提示词的结构.html">提示词的结构</a>。</p>
+<ul>
+<li>⚠ <strong>把长会话当版本控制</strong>：关键决定散在对话里，改到后面自己也不知道哪一版是对的。</li>
+</ul></span><span data-en><h3>2 · The core loop</h3>
+<ul>
+<li>⚠ <strong>No sense of goal</strong>: the character moves, but the player does not know what to do — that is not a prototype.</li>
+<li>⚠ <strong>Asking AI for too much at once</strong>: stuffing enemies, UI and saves into one prompt returns a pile of half-finished features.</li>
+</ul>
+<p>→ See <a href="./提示词的结构.html">Structuring the prompt</a>.</p>
+<ul>
+<li>⚠ <strong>Using a long chat as version control</strong>: key decisions scatter across the conversation, and later you cannot tell which version was right.</li>
+</ul></span></div>
+<div class="bi-block"><span data-zh><h3>3 · 手感调参</h3>
+<ul>
+<li>⚠ <strong>一次改三个参数</strong>：改完不知道是哪个起的作用，下次遇到同类问题还是不会调。</li>
+<li>⚠ <strong>把 AI 给的数值当结论</strong>：AI 能给一个起点，但「好不好玩」没有测试能自动判定。</li>
+<li>⚠ <strong>在错误的地方调</strong>：先确认是手感问题还是代码问题，见 <a href="./手感问题清单.html">手感问题清单</a>。</li>
+</ul></span><span data-en><h3>3 · Game feel</h3>
+<ul>
+<li>⚠ <strong>Changing three parameters at once</strong>: afterwards you cannot tell which one mattered, and the next similar problem is just as hard.</li>
+<li>⚠ <strong>Treating the AI's numbers as a conclusion</strong>: AI can give you a starting point, but no test can decide whether it feels good.</li>
+<li>⚠ <strong>Tuning in the wrong place</strong>: establish whether it is a feel problem or a code problem first — see <a href="./手感问题清单.html">The game-feel checklist</a>.</li>
+</ul></span></div>
+<div class="bi-block"><span data-zh><h3>4 · 资产合规</h3>
+<ul>
+<li>⚠ <strong>先用后查</strong>：到发布前才发现字体或音乐不能商用 —— 这是返工成本最高的一种。</li>
+<li>⚠ <strong>没有台账</strong>：素材来源散在下载目录里，谁也说不清哪一条能用。</li>
+</ul>
+<p>→ 见 <a href="./ai-资产台账.html">AI 资产台账</a> 与 <a href="./字体的授权陷阱.html">字体的授权陷阱</a>。</p></span><span data-en><h3>4 · Asset licensing</h3>
+<ul>
+<li>⚠ <strong>Use first, check later</strong>: discovering before release that a font or a track cannot be used commercially — the most expensive kind of rework.</li>
+<li>⚠ <strong>No ledger</strong>: sources are scattered across download folders, and nobody can say which asset is usable.</li>
+</ul>
+<p>→ See <a href="./ai-资产台账.html">The AI asset ledger</a> and <a href="./字体的授权陷阱.html">The font licensing trap</a>.</p></span></div>
+<div class="bi-block"><span data-zh><h3>5 · 导出发布</h3>
+<ul>
+<li>⚠ <strong>在开发机上能跑就以为能发布</strong>：目标平台可能不支持你用到的特性。</li>
+<li>⚠ <strong>首版做太大</strong>：见 <a href="./先发极简版.html">先发极简版</a>。</li>
+</ul></span><span data-en><h3>5 · Export and ship</h3>
+<ul>
+<li>⚠ <strong>&quot;It runs on my machine&quot; taken as &quot;it can ship&quot;</strong>: the target platform may not support what you used.</li>
+<li>⚠ <strong>A first release that is too big</strong>: see <a href="./先发极简版.html">Ship the smallest version first</a>.</li>
+</ul></span></div>
+<div class="bi-block"><span data-zh><h2>三条贯穿全流程的原则</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>原则</th><th>为什么</th></tr></thead><tbody>
+<tr><td><strong>一次只改一个变量</strong></td><td>同时改多个就无法归因 —— 调参、修 bug、换引擎都适用</td></tr>
+<tr><td><strong>先能跑，再好看</strong></td><td>粗糙原型逼你先验证玩法，而不是被「看起来还行」误导</td></tr>
+<tr><td><strong>台账从第一天开始记</strong></td><td>合规成本随资产数量增长，事后补台账等于把资产重查一遍</td></tr>
+</tbody></table></div></span><span data-en><h2>Three rules that run through everything</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>Rule</th><th>Why</th></tr></thead><tbody>
+<tr><td><strong>Change one variable at a time</strong></td><td>Change several and you cannot attribute the result — true for tuning, bug fixing and swapping engines alike</td></tr>
+<tr><td><strong>Runnable first, pretty later</strong></td><td>Crude prototypes force you to validate the gameplay instead of being seduced by &quot;it already looks decent&quot;</td></tr>
+<tr><td><strong>Keep the ledger from day one</strong></td><td>Licensing cost grows with the number of assets; rebuilding the ledger later means re-checking every asset</td></tr>
+</tbody></table></div></span></div>
+<div class="bi-block"><span data-zh><h2>想直接抄代码</h2>
+<p>五个引擎的<strong>最小骨架</strong>（能操作 / 有目标 / 有反馈）见 <a href="./demos.html">最小可玩原型代码清单</a>。</p>
+<p>⚠ 那些骨架<strong>未经本站实测</strong>，是起点模板，每个都附了官方入门出处。</p></span><span data-en><h2>If you just want code to copy</h2>
+<p>Minimal skeletons for the five engines (operable / goal-directed / responsive) are in <a href="./demos.html">The minimal prototype code list</a>.</p>
+<p>⚠ Those skeletons are <strong>not tested by this site</strong> — they are starting templates, each with a link to the official tutorial.</p></span></div>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+          <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+  </footer>
+  <script src="brand.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
+      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
+      sync();
+    })();
+  </script>
+</body>
+</html>
