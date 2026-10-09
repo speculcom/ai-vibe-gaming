@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>手感问题清单 · AI 做游戏</title>
+  <meta name="description" content="「手感不对」是六种不同的病，每种对应不同的参数。先诊断再改。 先分清是代码问题还是数值问题 —— 90% 的「飘」改两三个参数就能解决。" />
+  <link rel="canonical" href="https://vg.specul.com/手感问题清单.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="手感问题清单 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/手感问题清单.html" />
+  <meta property="og:title" content="手感问题清单 · AI 做游戏" />
+  <meta property="og:description" content="「手感不对」是六种不同的病，每种对应不同的参数。先诊断再改。 先分清是代码问题还是数值问题 —— 90% 的「飘」改两三个参数就能解决。" />
+  <meta name="theme-color" content="#05080f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="brand.css" />
+  <link rel="stylesheet" href="site.css" />
+  <style>:root { --accent: #f5c542; }</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"手感问题清单","url":"https://vg.specul.com/手感问题清单.html","description":"「手感不对」是六种不同的病，每种对应不同的参数。先诊断再改。 先分清是代码问题还是数值问题 —— 90% 的「飘」改两三个参数就能解决。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+        <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+        <span class="nav-tools">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+          <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+        </span>
+      </nav>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://agent.specul.com/"><span><span data-zh>Agent</span><span data-en>Agent</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>本地模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>导航</span><span data-en>Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>学习路径</span><span data-en>Learning path</span></a> · <span data-zh>第 3 阶段</span><span data-en>Stage 3</span></p>
+        <h1 class="t-hero">手感问题清单</h1>
+        <p class="lede">Game feel checklist</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>这一步决定什么</strong></span><span data-en><strong>What this stage decides</strong></span><span data-zh>：「手感不对」是六种不同的病，每种对应不同的参数。先诊断再改。</span><span data-en>: \"It does not feel right\" is six different problems, each with its own parameter. Diagnose first, then tune.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：先分清是代码问题还是数值问题 —— 90% 的「飘」改两三个参数就能解决。</span><span data-en>: First work out whether it is a code problem or a numbers problem — 90% of \"floaty\" needs two or three values changed.</span></p>
+          <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>：「手感不对」不是一种病，是六种。<strong>改错参数等于白改。</strong></p></span><span data-en><p><strong>In one line</strong>: &quot;it does not feel right&quot; is not one problem, it is six. <strong>Changing the wrong parameter achieves nothing.</strong></p></span></div>
+<div class="bi-block"><span data-zh><h2>先诊断</h2>
+<p>⚠ <strong>顺序很重要</strong>：先确认它是手感问题还是代码问题。</p>
+<div class="table-wrap"><table class="src"><thead><tr><th>症状</th><th>先查这个</th><th>再调这个</th></tr></thead><tbody>
+<tr><td>⚠ <strong>按键后有延迟感</strong></td><td><strong>输入缓冲有没有？</strong></td><td>⚠ 很可能不是手感问题</td></tr>
+<tr><td><strong>飘</strong></td><td>重力值</td><td>增大重力；落地加一点下压</td></tr>
+<tr><td><strong>粘</strong></td><td>空中控制是否过强</td><td>减小跳跃初速；加 coyote time</td></tr>
+<tr><td><strong>滑</strong>（停不下来）</td><td>摩擦 vs 空中阻力的比例</td><td>增大地面摩擦；<strong>注意两者是独立参数</strong></td></tr>
+<tr><td>⚠ <strong>边缘判定模糊</strong></td><td><strong>碰撞盒是不是比视觉大</strong></td><td>玩家碰撞盒通常该小一点</td></tr>
+<tr><td><strong>操作延迟响应</strong></td><td>动画是否阻塞了输入</td><td>动画期间不应锁输入</td></tr>
+</tbody></table></div></span><span data-en><h2>Diagnose first</h2>
+<p>⚠ <strong>Order matters</strong>: establish whether it is a feel problem or a code problem.</p>
+<div class="table-wrap"><table class="src"><thead><tr><th>Symptom</th><th>Check this first</th><th>Then tune</th></tr></thead><tbody>
+<tr><td>⚠ <strong>Lag after a keypress</strong></td><td><strong>Is there an input buffer?</strong></td><td>⚠ It is probably not a feel problem at all</td></tr>
+<tr><td><strong>Floaty</strong></td><td>The gravity value</td><td>Raise gravity; add a little downward force on landing</td></tr>
+<tr><td><strong>Sticky</strong></td><td>Is air control too strong</td><td>Lower jump velocity; add coyote time</td></tr>
+<tr><td><strong>Slippery</strong> (won't stop)</td><td>The ratio of friction to air drag</td><td>Raise ground friction; <strong>note they are separate parameters</strong></td></tr>
+<tr><td>⚠ <strong>Uncertain edges</strong></td><td><strong>Is the collider larger than the sprite?</strong></td><td>A player's hitbox is usually smaller</td></tr>
+<tr><td><strong>Delayed response</strong></td><td>Is animation blocking input</td><td>Input should not be locked during animation</td></tr>
+</tbody></table></div></span></div>
+<div class="bi-block"><span data-zh><h2>三个最常被忽略的参数</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>参数</th><th>作用</th><th>忽略它的后果</th></tr></thead><tbody>
+<tr><td><strong>coyote time</strong></td><td>离开平台后仍可跳的宽限（帧）</td><td>玩家会感觉「我明明按了」</td></tr>
+<tr><td><strong>jump buffer</strong></td><td>落地前按跳会缓存（帧）</td><td>同上</td></tr>
+<tr><td><strong>可变跳跃高度</strong></td><td>松开跳跃键时截断上升</td><td>每次跳跃都一样高 → 失去控制感</td></tr>
+</tbody></table></div>
+<p>⚠ 这三个是「操作手感」的地基。<strong>它们不解决就会一直觉得不对劲，但你可能说不出为什么。</strong></p></span><span data-en><h2>The three most forgotten parameters</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>Parameter</th><th>What it does</th><th>What happens without it</th></tr></thead><tbody>
+<tr><td><strong>coyote time</strong></td><td>Grace window after leaving a platform during which you can still jump (in frames)</td><td>Players feel &quot;but I definitely pressed it&quot;</td></tr>
+<tr><td><strong>jump buffer</strong></td><td>A jump pressed before landing is remembered (in frames)</td><td>Same</td></tr>
+<tr><td><strong>Variable jump height</strong></td><td>Releasing the button cuts the rise short</td><td>Every jump is the same height → loss of control</td></tr>
+</tbody></table></div>
+<p>⚠ These three are the foundation of control feel. <strong>Without them something always feels off, and you may not be able to say why.</strong></p></span></div>
+<div class="bi-block"><span data-zh><h2>⚠ 最反直觉的一点</h2>
+<blockquote>
+<p><strong>大部分「手感不对」是数值问题，不是代码问题。</strong></p>
+</blockquote>
+<p>把代码重写三遍不如把重力从 980 调到 1150 试一次。</p>
+<p>⚠ 而且改完要<strong>每次只改一个</strong> —— 一次改三个，你就不知道是哪个起的作用，</p>
+<p>下次遇到相似问题还是不知道怎么调。</p></span><span data-en><h2>⚠ The most counter-intuitive point</h2>
+<blockquote>
+<p><strong>Most &quot;it does not feel right&quot; cases are a numbers problem, not a code problem.</strong></p>
+</blockquote>
+<p>Rewriting the code three times is worse than trying gravity 1150 instead of 980 once.</p>
+<p>⚠ And change <strong>one thing at a time</strong> — change three and you will not know which one mattered, so the next time you meet a similar problem you still cannot tune it.</p></span></div>
+<div class="bi-block"><span data-zh><h2>判断你可以进入下一阶段了吗</h2>
+<ul class="checklist">
+<li> 别人玩过，<strong>没有问「这游戏怎么玩」</strong></li>
+<li> 你自己玩 30 分钟不觉得无聊</li>
+<li> 关键参数是<strong>可调</strong>的（不是硬编码）</li>
+</ul></span><span data-en><h2>Can you move to the next stage?</h2>
+<ul class="checklist">
+<li> Someone else played it and <strong>did not ask &quot;how do I play this?&quot;</strong></li>
+<li> You have played it for 30 minutes and still find it interesting</li>
+<li> The key parameters are <strong>adjustable</strong> rather than hard-coded</li>
+</ul></span></div>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p class="t-xs"><span data-zh>有序路径 · 第 7 / 17 篇</span><span data-en>Ordered path · item 7 of 17</span></p>
+          <nav class="term-nav" aria-label="上一篇 / 下一篇">
+            <a class="tn-prev" href="s3-手感调参.html"><span class="tn-dir"><span data-zh>← 上一篇</span><span data-en>← Previous</span></span><b>S3 · 手感调参</b></a>
+            <a class="tn-next" href="s4-资产合规.html"><span class="tn-dir"><span data-zh>下一篇 →</span><span data-en>Next →</span></span><b>S4 · 资产合规</b></a>
+          </nav>
+          <p class="mt-2"><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+          <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+  </footer>
+  <script src="brand.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
+      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
+      sync();
+    })();
+  </script>
+</body>
+</html>
