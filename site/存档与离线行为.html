@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>存档与离线行为 · AI 做游戏</title>
+  <meta name="description" content="这两个是最容易在上线后才发现的问题，而且都会直接让玩家流失。 发布前必须测：刷新页面后进度还在吗？断网了会崩还是优雅降级？" />
+  <link rel="canonical" href="https://vg.specul.com/存档与离线行为.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="存档与离线行为 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/存档与离线行为.html" />
+  <meta property="og:title" content="存档与离线行为 · AI 做游戏" />
+  <meta property="og:description" content="这两个是最容易在上线后才发现的问题，而且都会直接让玩家流失。 发布前必须测：刷新页面后进度还在吗？断网了会崩还是优雅降级？" />
+  <meta name="theme-color" content="#05080f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="brand.css" />
+  <link rel="stylesheet" href="site.css" />
+  <style>:root { --accent: #f5c542; }</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"存档与离线行为","url":"https://vg.specul.com/存档与离线行为.html","description":"这两个是最容易在上线后才发现的问题，而且都会直接让玩家流失。 发布前必须测：刷新页面后进度还在吗？断网了会崩还是优雅降级？","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+        <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+        <span class="nav-tools">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+          <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+        </span>
+      </nav>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://agent.specul.com/"><span><span data-zh>Agent</span><span data-en>Agent</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>本地模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>导航</span><span data-en>Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>学习路径</span><span data-en>Learning path</span></a> · <span data-zh>第 5 阶段</span><span data-en>Stage 5</span></p>
+        <h1 class="t-hero">存档与离线行为</h1>
+        <p class="lede">Save and offline behaviour</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>这一步决定什么</strong></span><span data-en><strong>What this stage decides</strong></span><span data-zh>：这两个是最容易在上线后才发现的问题，而且都会直接让玩家流失。</span><span data-en>: These are the two things you discover after launch, and both of them lose players directly.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：发布前必须测：刷新页面后进度还在吗？断网了会崩还是优雅降级？</span><span data-en>: Before shipping, test: does progress survive a refresh, and does going offline crash or degrade gracefully?</span></p>
+          <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>：这两个是「开发机上永远正常、上线后立刻出问题」的东西。</p></span><span data-en><p><strong>In one line</strong>: these are the two things that are &quot;always fine on the dev machine and broken the moment you ship&quot;.</p></span></div>
+<div class="bi-block"><span data-zh><h2>存档的四个坑</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>坑</th><th>症状</th><th>原因</th></tr></thead><tbody>
+<tr><td>⚠ <strong>平台存储 API 不可用</strong></td><td>刷新后进度没了</td><td>原生 API 在 Web 上常常不可用</td></tr>
+<tr><td>⚠ <strong>存储配额超限</strong></td><td>到某个关卡就崩</td><td>localStorage 通常只有 5MB</td></tr>
+<tr><td>⚠ <strong>隐私模式</strong></td><td>玩家说「我存不了」</td><td>隐私模式下存储受限</td></tr>
+<tr><td>⚠ <strong>版本不兼容</strong></td><td>更新后读不了旧档</td><td>存档格式变了没做迁移</td></tr>
+</tbody></table></div></span><span data-en><h2>Four ways saves break</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>Trap</th><th>Symptom</th><th>Cause</th></tr></thead><tbody>
+</tbody></table></div></span></div>
+<div class="bi-block"><span data-zh><div class="table-wrap"><table class="src"><thead><tr><th>⚠ <strong>The platform's storage API is unavailable</strong></th><th>Progress gone after a refresh</th><th>Native APIs are often unavailable on the web</th></tr></thead><tbody>
+</tbody></table></div>
+<blockquote>
+<p>| ⚠ <strong>Storage quota exceeded</strong> | Crashes at a certain level | localStorage is typically only 5 MB |</p>
+<p>| ⚠ <strong>Private browsing</strong> | Players report &quot;I can't save&quot; | Storage is restricted in private mode |</p>
+<p>| ⚠ <strong>Version incompatibility</strong> | Old saves unreadable after an update | The format changed with no migration |</p>
+</blockquote>
+<h2>⚠ 离线的三种处理</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>做法</th><th>适用</th></tr></thead><tbody>
+<tr><td><strong>优雅降级</strong></td><td>⚠ 断网时提示「需要网络」并暂停</td></tr>
+<tr><td><strong>本地优先</strong></td><td>离线可玩，联网后同步</td></tr>
+<tr><td><strong>拒绝启动</strong></td><td>强联网游戏（但 ⚠ 要给清晰提示）</td></tr>
+</tbody></table></div>
+<p>⚠ <strong>最差的做法是崩溃</strong> —— 玩家不会给你第二次机会。</p></span><span data-en><h2>⚠ Three ways to handle being offline</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>Approach</th><th>When it fits</th></tr></thead><tbody>
+<tr><td><strong>Graceful degradation</strong></td><td>⚠ Show &quot;needs network&quot; and pause</td></tr>
+<tr><td><strong>Local-first</strong></td><td>Playable offline, syncs when connected</td></tr>
+<tr><td><strong>Refuse to start</strong></td><td>Strictly online games (but ⚠ give a clear message)</td></tr>
+</tbody></table></div>
+<p>⚠ <strong>The worst option is crashing</strong> — a player will not give you a second chance.</p></span></div>
+<div class="bi-block"><span data-zh><h2>发布前必测清单</h2>
+<ul class="checklist">
+<li> ⚠ <strong>刷新页面后进度还在</strong></li>
+<li> ⚠ <strong>存档满了会怎样</strong>（填满一个存档，看会不会崩）</li>
+<li> ⚠ <strong>断网后会怎样</strong>（飞行模式打开游戏）</li>
+<li> ⚠ <strong>更新版本后旧档能读吗</strong></li>
+<li> ⚠ <strong>隐私模式下能玩吗</strong></li>
+</ul>
+<p>⚠ 这五条<strong>在开发机上全部正常</strong> —— 因为开发机有正常的存储、有网络、</p>
+<p>不涉及隐私模式。⚠ <strong>必须用手机测，且开飞行模式。</strong></p></span><span data-en><h2>The pre-ship checklist</h2>
+<ul class="checklist">
+<li> ⚠ <strong>Progress survives a page refresh</strong></li>
+</ul>
+<p>[ ] ⚠ <strong>What happens when a save fills up</strong> (fill one and see if it crashes)</p>
+<ul class="checklist">
+<li> ⚠ <strong>What happens offline</strong> (open the game in aeroplane mode)</li>
+<li> ⚠ <strong>Can old saves be read after an update</strong></li>
+<li> ⚠ <strong>Does it work in private browsing</strong></li>
+</ul>
+<p>⚠ All five pass <strong>on the dev machine</strong> — it has normal storage, a network, and no private mode. ⚠ <strong>Test on a phone, in aeroplane mode.</strong></p></span></div>
+<div class="bi-block"><span data-zh><h2>常见失败</h2>
+<ul>
+<li>⚠ <strong>只在开发机测</strong> —— 开发机什么都是正常的</li>
+<li><strong>忘了隐私模式</strong> —— 相当一部分玩家会开</li>
+<li>⚠ <strong>更新时不做存档迁移</strong> —— 玩家会丢掉全部进度，然后不会再玩</li>
+</ul></span><span data-en><h2>Common failures</h2>
+<ul>
+<li>⚠ <strong>Testing only on the dev machine</strong> — everything is normal there</li>
+<li><strong>Forgetting private browsing</strong> — a fair number of players use it</li>
+<li>⚠ <strong>No save migration on update</strong> — players lose all progress and do not come back</li>
+</ul></span></div>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p class="t-xs"><span data-zh>有序路径 · 第 12 / 17 篇</span><span data-en>Ordered path · item 12 of 17</span></p>
+          <nav class="term-nav" aria-label="上一篇 / 下一篇">
+            <a class="tn-prev" href="先发极简版.html"><span class="tn-dir"><span data-zh>← 上一篇</span><span data-en>← Previous</span></span><b>先发极简版</b></a>
+            <a class="tn-next" href="vibe-gaming.html"><span class="tn-dir"><span data-zh>下一篇 →</span><span data-en>Next →</span></span><b>Vibe Gaming</b></a>
+          </nav>
+          <p class="mt-2"><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+          <a href="https://models.specul.com/"><span data-zh>本地模型</span><span data-en>Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+  </footer>
+  <script src="brand.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
+      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
+      sync();
+    })();
+  </script>
+</body>
+</html>
