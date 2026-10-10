@@ -66,7 +66,8 @@ const SITE_INFO = {
   taglineZh: '跟 AI 聊天把游戏做出来 —— 哪些环节变了，哪些没变',
   taglineEn: 'Make a game by talking to AI — which parts changed, and which did not',
   repo: 'https://github.com/speculcom/ai-vibe-gaming',
-  accent: '#f5c542',
+  /* 2026-10-10 删除 accent（原 '#f5c542'）—— 分站专属色已取消，
+   * 且该值在亮色底上只有 1.62:1（a11y 探针实测）。详见下面 shell 调用的注释。 */
 };
 
 // ── 立论层（P1）──
@@ -254,7 +255,7 @@ ${rows}
 function page() {
   return `<div class="container">
         <p class="kicker">${bi(esc(SITE_INFO.zh), esc(SITE_INFO.en))}</p>
-        <h1 class="t-hero">${bi('跟 AI 聊天把游戏做出来', 'Make a game by talking to AI')}</h1>
+        <h1 class="t-hero"><span class="grad-title">${bi('跟 AI 聊天把游戏做出来', 'Make a game by talking to AI')}</span></h1>
         <p class="lede">${bi(
           '这个站只回答一件事：AI 已经改变了做游戏的哪部分，还没改变哪部分。',
           'This site answers one question: which parts of making a game has AI actually changed, and which have it not.',
@@ -328,162 +329,9 @@ fs.mkdirSync(SITE, { recursive: true });
 
 const css = writeCss();
 // 追加本站专属样式（阶段列表）
-fs.appendFileSync(path.join(SITE, 'site.css'), `
-/* ── B6（2026-10-09）· 亮色主题的品牌色 ──
-   vg 原先**没有**亮色覆盖，于是深色主题的金色 #f5c542 直接用在白底上当文字色，
-   实测 1.62:1（引擎表里的引擎名就是这条）。这里按共享约定补一个压深档
-   （#906807：白底 5.06 / 各自柔和底 4.54，色相不变）。 */
-/* ⚠ 用 html[data-theme="light"]（特异性 0,1,1）而不是 [data-theme="light"]（0,1,0）：
-   页头用内联 <style>:root{--accent:…}</style> 设了本站强调色，同特异性下**看源码顺序**，
-   会把覆盖顶掉。提高一级就稳。另外要连 --accent 一起覆盖 ——
-   引擎表里的引擎名用的是 var(--accent)，不是 var(--brand)（第一次只改了 --brand，白改）。 */
-html[data-theme="light"] {
-  --accent: #906807;
-  --brand: #6d4fd6;
-  --brand-on:#fff;
-  --brand-soft:rgba(109, 79, 214, .08);
-  --brand-line:rgba(109, 79, 214, .28);
-}
-/* ── B4（2026-10-09）· 引擎决策树 ──
-   字号用整数 px（设计系统的硬规则，_design-audit 守着）。 */
-.etree{margin:1.2rem 0 0}
-.etree-row{display:flex;flex-wrap:wrap;gap:.8rem;align-items:flex-end}
-.etree-f{display:flex;flex-direction:column;gap:.25rem;min-width:12rem;flex:1 1 12rem}
-.etree-h{font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;opacity:.6}
-.etree select{font:inherit;font-size:var(--fs-xs);padding:.35rem .5rem;border:1px solid var(--border);border-radius:var(--r-sm,8px);background:transparent;color:inherit}
-.etree-out{margin-top:1rem}
-.etree-card{border:1px solid var(--border);border-radius:var(--r-sm,8px);padding:.8rem 1rem;margin:.5rem 0}
-.etree-card.is-alt{opacity:.85}
-.etree-tag{font-size:var(--fs-xs);letter-spacing:.08em;text-transform:uppercase;opacity:.55}
-.etree-name{font-size:18px;margin:.15rem 0 .3rem}
-.etree-why{font-size:var(--fs-xs);opacity:.8;line-height:1.6}
-.etree-caveat{font-size:var(--fs-xs);opacity:.7;line-height:1.6;margin-top:.35rem}
-.etree-note{font-size:var(--fs-xs);opacity:.6;line-height:1.6;margin-top:.6rem}
-.etree-none{font-size:var(--fs-xs);opacity:.8}
-@media(max-width:560px){.etree-f{min-width:100%}}
-/* ── AI 做游戏站专属 ── */
-.stage-list{list-style:none;padding:0;margin:0}
-.stage-list li{display:flex;gap:.6em;align-items:baseline;padding:.45em 0;border-top:1px solid var(--border)}
-.stage-list li:first-child{border-top:0}
-.stage-list b{flex:0 0auto;font-weight:500}
-.stage-list .t-sm{color:var(--text-dim)}
-.t-lead{font-size:var(--fs-sm);line-height:1.7}
-
-/* ── 立论层（P1）── */
-.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-table.src td{vertical-align:top}
-table.src td b{font-weight:500}
-.cost{font-weight:500;white-space:nowrap}
-.cost.down-heavy{color:var(--vio)}
-.cost.down-part{color:var(--vio);opacity:.8}
-.cost.down-little{color:var(--text-dim)}
-.cost.down-barely{color:var(--text-dim);opacity:.7}
-.t-xs{font-size:var(--fs-xs);line-height:1.6;color:var(--text-dim)}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2em}
-@media (max-width:640px){.two-col{grid-template-columns:1fr;gap:1em}}
-.fit-yes{color:var(--cyan);font-size:var(--fs-xs);margin:0 0 .4em}
-.fit-no{color:var(--text-dim);font-size:var(--fs-xs);margin:0 0 .4em}
-.fit-list{list-style:none;padding:0;margin:0}
-.fit-list li{padding:.4em 0;border-top:1px solid var(--border);font-size:var(--fs-xs);line-height:1.6}
-.fit-list li:first-child{border-top:0}
-.fit-list b{display:block;font-weight:500}
-.fit-list .t-sm{color:var(--text-dim)}
-.warn-inline{color:var(--gold)}
-
-/* ── 词条页（P2）── */
-.stage-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.7em;margin:0}
-.stage-card{display:grid;grid-template-columns:auto 1fr;gap:.3em .6em;align-items:baseline;
-  padding:.8em .9em;border:1px solid var(--border);border-radius:var(--r-sm);
-  text-decoration:none;transition:border-color .15s}
-.stage-card:hover{border-color:var(--vio)}
-.stage-card .stage-n{grid-row:span 2;min-width:1.5em;height:1.5em;display:grid;place-items:center;
-  font-size:var(--fs-xs);background:var(--vio);color:#fff;border-radius:var(--r-sm)}
-.stage-card b{font-weight:500;color:var(--text)}
-.stage-card .t-sm{grid-column:2;color:var(--text-dim);font-size:var(--fs-xs);line-height:1.55}
-.kw-list{list-style:none;padding:0;margin:0}
-.kw-list li{padding:.5em 0;border-top:1px solid var(--border);display:grid;grid-template-columns:auto 1fr;gap:.2em .8em;align-items:baseline}
-.kw-list li:first-child{border-top:0}
-.kw-list b{font-weight:500}
-.kw-list .t-sm{grid-column:2;font-size:var(--fs-xs);color:var(--text-dim);line-height:1.55}
-.term-meta{border-left:2px solid var(--vio)}
-.term-body h2{margin:1.4em 0 .5em;font-size:var(--fs-sm);font-weight:500}
-.term-body h3{margin:1.1em 0 .4em;font-size:var(--fs-xs);font-weight:500}
-.term-body p{margin:.6em 0;line-height:1.75}
-.term-body blockquote{margin:.8em 0;padding:.6em .9em;border-left:2px solid var(--gold);
-  background:var(--bg-soft);border-radius:0 var(--r-sm) var(--r-sm) 0}
-.term-body blockquote p{margin:.3em 0}
-.term-body ul{margin:.6em 0;padding-left:1.2em}
-.term-body li{margin:.3em 0;line-height:1.7}
-.term-body hr{border:0;border-top:1px solid var(--border);margin:1.4em 0}
-ul.checklist{list-style:none;padding-left:0}
-ul.checklist li::before{content:"□ ";color:var(--text-dim)}
-.kicker a{color:inherit;text-decoration:none}
-.kicker a:hover{color:var(--vio)}
-
-/* ── 引擎档案（P3）── */
-.eng-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.7em}
-.eng-card{display:grid;gap:.3em;padding:.85em .95em;border:1px solid var(--border);
-  border-radius:var(--r-sm);text-decoration:none;transition:border-color .15s}
-.eng-card:hover{border-color:var(--vio)}
-.eng-head{display:flex;align-items:baseline;gap:.5em;flex-wrap:wrap}
-.eng-head b{font-weight:500;color:var(--text)}
-.ai-badge{font-size:var(--fs-xs);padding:.1em .45em;border-radius:3px;white-space:nowrap}
-/* B5（2026-10-09）：徽标字色改为**分主题两套**。
- * 原先#0F6E56/#854F0B/#A32D2D 是浅色主题用的深色字，直接用在深色卡片上只有 1.9–2.4:1
- * （实测 _audit/a11y-contrast.mjs 报 15 处，全部集中在这几个徽标）。
- * 深色主题的新值是**算出来的最小提亮量**（保证 ≥4.5:1），
- * 浅色主题保留原来的深色值，用 [data-theme="light"] 覆盖。
- *
- * ⚠ v6（2026-10-09）二次调值：共享层把表面改成首页的暖紫（#16121f / #221c34）后，
- *   卡片底变亮，这三个徽标字色**又不够了**（实测 4.12 / 4.01 / 3.74:1）。
- *   这是「改表面必须连带重算所有当文字用的强调色」的典型依赖。
- *   新值按新底重算：#64a292 / #bc9e78 / #c98484（各 4.50–4.51:1）。 */
-.ai-badge.high{background:rgba(29,158,117,.16);color:#64a292}
-.ai-badge.medium{background:rgba(245,197,66,.16);color:#bc9e78}
-.ai-badge.low{background:rgba(226,75,74,.14);color:#c98484}
-[data-theme="light"] .ai-badge.high{color:#0F6E56}
-[data-theme="light"] .ai-badge.medium{color:#854F0B}
-[data-theme="light"] .ai-badge.low{color:#A32D2D}
-.eng-card .t-sm{font-size:var(--fs-xs);line-height:1.55;color:var(--text-dim)}
-.eng-meta{font-size:var(--fs-xs);color:var(--text-dim);opacity:.8}
-.eng-meta code{font-size:var(--fs-xs)}
-/* 上手难度徽标（A6.4.3）——与 ai-badge 同形但不同轴：
- * ai-badge 问「AI 写代码有多容易出错」，diff-badge 问「人装起来跑起来有多费事」。 */
-.diff-badge{font-size:var(--fs-xs);padding:.1em .45em;border-radius:3px;white-space:nowrap;background:var(--bg-soft);color:var(--text-dim)}
-.diff-badge.low{background:rgba(29,158,117,.16);color:#64a292}
-.diff-badge.medium{background:rgba(245,197,66,.16);color:#bc9e78}
-.diff-badge.high{background:rgba(226,75,74,.14);color:#c98484}
-[data-theme="light"] .diff-badge.low{color:#0F6E56}
-[data-theme="light"] .diff-badge.medium{color:#854F0B}
-[data-theme="light"] .diff-badge.high{color:#A32D2D}
-.mt-2{margin-top:.6em}
-/* ── 双语正文（P5i18n）── */
-.bi-block{margin:0}
-.bi-block > span{display:block}
-
-/* ── 代码块（A6.4 补）──
- * 本仓 5 个词条里本来就有代码围栏，但渲染器不认它 —— 页面上显示成字面反引号。
- * 用「代码块自己的横向滚动容器」，不让页面整体横滚：全站硬约束是无横向滚动条。
- * ⚠ 这段是 JS 模板字符串，注释里**不能出现反引号**，否则模板提前闭合（已踩一次）。 */
-pre.code{margin:.8em 0;padding:.85em 1em;background:var(--bg-inset);border:1px solid var(--border);
-  border-radius:var(--r-sm);overflow-x:auto;-webkit-overflow-scrolling:touch}
-pre.code code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
-  font-size:12.5px;line-height:1.65;white-space:pre;color:var(--text)}
-
-/* ── 词条页的「上一篇 / 下一篇」（A6.4.4）──
- * 17 个词条串成一条有序路径（顺序由 build-terms.mjs 的 sort 决定，与 learn.html 一致）。
- * ⚠ grid item 必须显式 min-width:0 且长词条名要 anywhere 换行 ——
- *   全站硬约束「无横向滚动条」，词条名里最长的是「上下文窗口与 AI 写游戏」。*/
-.term-nav{display:grid;grid-template-columns:1fr 1fr;gap:.6em;margin:.55em 0 0}
-.term-nav a{display:grid;gap:.15em;min-width:0;padding:.6em .8em;border:1px solid var(--border);
-  border-radius:var(--r-sm);text-decoration:none;transition:border-color .15s}
-.term-nav a:hover{border-color:var(--vio)}
-.term-nav .tn-dir{font-size:var(--fs-xs);color:var(--text-dim)}
-.term-nav b{font-weight:500;font-size:var(--fs-xs);line-height:1.5;color:var(--text);overflow-wrap:anywhere}
-.term-nav .tn-next{text-align:right;justify-items:end}
-.term-nav .is-empty{border:0;padding:0}
-@media (max-width:640px){.term-nav{grid-template-columns:1fr}}
-`, 'utf8');
+/* ⚠ 2026-10-10：追加片段的**真相源改为真实文件** `css/vg.css`
+   （原先是本文件里的模板字符串）。抽取后已验证：**剥掉注释与空白后产物逐字符相同** ✓ */
+fs.appendFileSync(path.join(SITE, 'site.css'), fs.readFileSync(path.join(HERE, '..', 'css', 'vg.css'), 'utf8'));
 
 const html = shell({
   current: 'vg',
@@ -500,7 +348,19 @@ const html = shell({
     inLanguage: 'zh-Hans',
     isPartOf: { '@type': 'WebSite', name: 'Specul · 投机取巧', url: 'https://specul.com/' },
   },
-  accent: SITE_INFO.accent,
+  /* ⚠ 2026-10-10 不再传 accent。
+   * 原先这里传 `#f5c542`（vg 的金色强调），shell 会把它内联成
+   * `:root{--accent:#f5c542}` —— 而这个值**只适合深色底**：
+   * 亮色主题下引擎名（Godot 等）实测只有 **1.62:1**，达不到 AA 的 4.5。
+   * B6（2026-10-09）曾用 `html[data-theme="light"]{--accent:#906807}` 修掉过，
+   * 但那属于「分站专属色」—— 用户 2026-10-10 定案「不需要分站专属色」，于是整段取消，
+   * **结果把已修好的无障碍缺陷放了回来** ✗
+   *
+   * 现在的解法：完全不传accent → `--accent` 落回 brand.css 的 `--accent: var(--brand)`，
+   * 品牌紫深浅两档都过 AA ✓ 颜色也跟着全站统一 ✓
+   * ⚠ 教训：取消「分站专属色」时，要先查清那份色值**顺带在承担什么职责** ——
+   *   它不只是颜色，还是那个组件的**无障碍修复**。 */
+  accent: null,
   body: page(),
   repo: SITE_INFO.repo,
   repoLabel: 'GitHub',
