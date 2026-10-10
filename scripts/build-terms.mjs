@@ -376,7 +376,7 @@ ${renderBiBody(e.body)}
           <p><a href="./learn.html">${bi('← 返回学习路径', '← Back to the learning path')}</a> · <a href="./">${bi('首页', 'Home')}</a></p>
         </div>
       </div>`,
-    repo: SITE_INFO.repo, repoLabel: 'GitHub',
+    repo: SITE_INFO.repo
   });
   fs.writeFileSync(path.join(SITE, e.slug + '.html'), html, 'utf8');
 }
@@ -556,7 +556,7 @@ ${engineTreePanel()}
           <p><a href="./learn.html">${bi('← 返回学习路径', '← Back to the learning path')}</a> · <a href="./">${bi('首页', 'Home')}</a></p>
         </div>
       </div>`,
-    repo: SITE_INFO.repo, repoLabel: 'GitHub',
+    repo: SITE_INFO.repo
   });
   fs.writeFileSync(path.join(SITE, 'engines.html'), cmpHtml, 'utf8');
 }
@@ -630,7 +630,7 @@ ${engineCards(true)}
           <p><a href="./">${bi('← 回到首页（先看三张判定表）', '← Back to the home page (start with the three tables)')}</a></p>
         </div>
       </div>`,
-  repo: SITE_INFO.repo, repoLabel: 'GitHub',
+  repo: SITE_INFO.repo
 });
 
 // ── 每个词条一个详情页 ──
@@ -688,7 +688,7 @@ ${renderBiBody(t.body)}
 
 ${pathNav(t)}
       </div>`,
-    repo: SITE_INFO.repo, repoLabel: 'GitHub',
+    repo: SITE_INFO.repo
   });
   fs.writeFileSync(path.join(SITE, t.slug + '.html'), html, 'utf8');
 }
@@ -742,7 +742,7 @@ ${renderBiBody(body)}
           <p><a href="./learn.html">${bi('← 返回学习路径', '← Back to the learning path')}</a> · <a href="./">${bi('首页', 'Home')}</a></p>
         </div>
       </div>`,
-      repo: SITE_INFO.repo, repoLabel: 'GitHub',
+      repo: SITE_INFO.repo
     });
     fs.writeFileSync(path.join(SITE, slug + '.html'), html, 'utf8');
     pageCount++;
