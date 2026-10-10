@@ -262,7 +262,17 @@ function renderBiBody(body) {
 
 const SITE_INFO = {
   zh: 'AI 做游戏', en: 'Vibe Gaming', domain: 'vg.specul.com',
-  repo: 'https://github.com/speculcom/ai-vibe-gaming', accent: '#f5c542',
+  repo: 'https://github.com/speculcom/ai-vibe-gaming',
+  /* ⚠ 2026-10-10 删除 accent（原 '#f5c542'）。原因有二，缺一不可：
+   *   1. 用户定案「不需要分站专属色，整体与首页一致」；
+   *   2. 更要紧的是 —— 这个金色在**亮色底上只有 1.62:1**（引擎表里的引擎名
+   *      Godot / Pixi / Three.js 等 5 处），达不到 WCAG AA 的 4.5。
+   *   不传 accent 时 --accent 落回 brand.css 的 var(--brand)，深浅两主题都达标。
+   *
+   * ⚠ 本文件是 build.mjs 第 387 行**动态 import** 进来的词条/引擎页生成器 ——
+   *   只改 build.mjs 是改不掉的（我先前就漏了它，产物里金色原封不动，
+   *   a11y 探针又报了一遍同一个 1.62:1 才暴露出来）。
+   *   教训：找「真相源」不能只看入口文件，动态 import 的模块同样是源。 */
 };
 
 /* ── learn.html：五阶段 + 关键词的索引页 ── */
@@ -342,7 +352,7 @@ for (const e of engines) {
       isPartOf: { '@type': 'WebSite', name: 'AI 做游戏', url: `https://${SITE_INFO.domain}/` },
       about: { '@type': 'SoftwareApplication', name: e.fm.engine || e.fm.zh, applicationCategory: 'GameEngine' },
     },
-    accent: SITE_INFO.accent,
+    accent: null,   /* 2026-10-10：取消分站专属色，见上方 SITE_INFO.accent 的删除说明 */
     body: `<div class="container">
         <p class="kicker"><a href="./learn.html">${bi('引擎档案', 'Engine profiles')}</a></p>
         <h1 class="t-hero">${esc(e.fm.zh)}</h1>
@@ -503,7 +513,7 @@ if (engines.length) {
       inLanguage: 'zh-Hans',
       isPartOf: { '@type': 'WebSite', name: 'AI 做游戏', url: `https://${SITE_INFO.domain}/` },
     },
-    accent: SITE_INFO.accent,
+    accent: null,   /* 2026-10-10：取消分站专属色，见上方 SITE_INFO.accent 的删除说明 */
     body: `<div class="container">
         <p class="kicker">${bi('选工具', 'Picking a tool')}</p>
         <h1 class="t-hero">${bi('引擎对 AI 有多友好', 'How AI-friendly each engine is')}</h1>
@@ -566,7 +576,7 @@ const learnHtml = shell({
     inLanguage: 'zh-Hans',
     isPartOf: { '@type': 'WebSite', name: 'AI 做游戏', url: `https://${SITE_INFO.domain}/` },
   },
-  accent: SITE_INFO.accent,
+  accent: null,   /* 2026-10-10：取消分站专属色，见上方 SITE_INFO.accent 的删除说明 */
   body: `<div class="container">
         <p class="kicker">${esc(SITE_INFO.zh)}</p>
         <h1 class="t-hero">${bi('学习路径', 'Learning path')}</h1>
@@ -660,7 +670,7 @@ for (const t of terms) {
       inLanguage: 'zh-Hans',
       isPartOf: { '@type': 'WebSite', name: 'AI 做游戏', url: `https://${SITE_INFO.domain}/` },
     },
-    accent: SITE_INFO.accent,
+    accent: null,   /* 2026-10-10：取消分站专属色，见上方 SITE_INFO.accent 的删除说明 */
     body: `<div class="container">
         <p class="kicker"><a href="./learn.html">${bi('学习路径', 'Learning path')}</a>${isStage ? ` · ${bi('第 ' + t.fm.stage + ' 阶段', 'Stage ' + t.fm.stage)}` : ` · ${bi('关键词', 'Keyword')}`}</p>
         <h1 class="t-hero">${esc(t.fm.zh)}</h1>
@@ -712,7 +722,7 @@ if (fs.existsSync(PAGES_DIR)) {
         inLanguage: 'zh-Hans',
         isPartOf: { '@type': 'WebSite', name: 'AI 做游戏', url: `https://${SITE_INFO.domain}/` },
       },
-      accent: SITE_INFO.accent,
+      accent: null,   /* 2026-10-10：取消分站专属色，见上方 SITE_INFO.accent 的删除说明 */
       body: `<div class="container">
         <p class="kicker"><a href="./learn.html">${bi('学习路径', 'Learning path')}</a> · ${bi('贯穿流程', 'Across the stages')}</p>
         <h1 class="t-hero">${esc(fm.zh)}</h1>
