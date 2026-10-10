@@ -363,7 +363,6 @@ const html = shell({
   accent: null,
   body: page(),
   repo: SITE_INFO.repo,
-  repoLabel: 'GitHub',
   // ⚠ assetPrefix 留空：产物直接输出到 site/ 根（index.html 与 brand.css 同级）。
   //   之前传 '../' 导致 href="../brand.css" → 404 → **语言切换 CSS 没加载**
   //   → 英文态下data-zh 节点没被隐藏 → 探针报「英文态有中文」。
