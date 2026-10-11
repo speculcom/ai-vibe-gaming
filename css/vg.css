@@ -60,7 +60,9 @@ table.src td b{font-weight:500}
 .cost.down-part{color:var(--vio);opacity:.8}
 .cost.down-little{color:var(--text-dim)}
 .cost.down-barely{color:var(--text-dim);opacity:.7}
-.t-xs{font-size:var(--fs-xs);line-height:1.6;color:var(--text-dim)}
+/* ⚠ 2026-10-10：删掉了 `.t-xs{font-size:var(--fs-xs);line-height:1.6;color:var(--text-dim)}`
+   —— 共享层 brand.css:896 已有同名类，值也相同（--text-dim = var(--ink-dim)），
+   ui-core 报为「冗余副本」。留着自己的副本只会让下一个人改错地方。 */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2em}
 @media (max-width:640px){.two-col{grid-template-columns:1fr;gap:1em}}
 .fit-yes{color:var(--cyan);font-size:var(--fs-xs);margin:0 0 .4em}
