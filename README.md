@@ -85,7 +85,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "说明"
 - 作品库（规划中）：<https://demos.specul.com> —— 源仓 [`speculcom/ai-demos`](https://github.com/speculcom/ai-demos)
 - 站群计划：`_plan/vibe-gaming.md`（在本地仓库 `speculcom/www` 的工作区）
 
-<!-- INDEX:BEGIN 由 _audit/gen-repo-docs.mjs 生成，勿手改 -->
+<!-- INDEX:BEGIN generated, do not edit -->
 
 ## 内容索引
 
@@ -126,7 +126,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "说明"
 
 ## 实测规模（A8）
 
-<!-- STATS:BEGIN 由 _audit/gen-repo-docs.mjs 生成，勿手改 -->
+<!-- STATS:BEGIN generated, do not edit -->
 | 项 | 实测值 |
 |---|---|
 | 词条 | 17 条（阶段 12 · 关键词 5） |
