@@ -1,0 +1,33 @@
+# AI Game Dev (ai-vibe-gaming)
+
+> Which parts of making games has AI already changed, and which has it not.
+
+A single path through five stages (pick an engine → core loop → feel tuning → asset compliance → export and publish), **focused on the failure points at the handoffs**.
+
+## Size (computed from data — see the build scripts under `scripts/` and `_audit/gen-repo-docs.mjs`)
+
+17 entries (stage 12 · keyword 5) + 5 engine profiles + 2 cross-cutting pages, building 27 pages.
+
+## Content map
+
+- `terms/S<N>-*.md` — Stage entries
+- `terms/engines/*.md` — Engine profiles (install steps + learning curve + AI error rate)
+- `pages/` — Cross-cutting pages (belong to no single stage; cover the whole flow)
+- `claims/*.json` — Claim layer (consumed by the builder)
+- `SCHEMA.md` — Field schema
+
+## What this repo does not do
+
+- No hands-on testing (no benchmarks, no performance tests)
+- No overall engine ranking — `aiFriendly` (how error-prone AI-written code is) and `difficulty` (human ramp-up cost) are two independent axes
+- Unknown means unknown (every judgment carries a `confidence` marker)
+
+## Schema and validation
+
+- Field schema: `SCHEMA.md`
+- Validator: `scripts/validate.mjs` (non-compliant entries fail the build)
+
+
+## Site
+
+https://vg.specul.com/
