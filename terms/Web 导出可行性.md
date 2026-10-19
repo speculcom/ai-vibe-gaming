@@ -40,7 +40,7 @@ confidence: our-judgement
 
 ## ⚠ 一个结构性差异
 
-原生引擎导出到 Web，本质上是**把 C++/Rust 编译成 WebAssembly**。
+原生引擎导出到 Web。本质上是**把 C++/Rust 编译成 WebAssembly**。
 
 这带来两个后果：
 

@@ -74,7 +74,7 @@ verified: "2026-10-05 · GitHub API 快照"
 
 ## 什么时候选它 / 不选
 
-**选**：⚠ 需要 Android 发布、团队用 Java/Kotlin、跨平台是硬需求
+**选**：⚠ 需要 Android 发布。团队用 Java/Kotlin。跨平台是硬需求。
 
 **不选**：只做桌面或网页（Godot 或 Pixi 都更省事）
 

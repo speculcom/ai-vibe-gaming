@@ -334,7 +334,7 @@ public class Prototype extends ApplicationAdapter {
 
 ## Bevy · Rust
 
-⚠ Bevy 的 API 随版本变化较快（本站核验时官方入门写的是 `0.19` 的写法）。
+⚠ Bevy 的 API 随版本变化较快。本站核验时，官方入门写的是 `0.19` 的写法。
 跑不通时**先看官方那份**，不要照着改到能跑为止再回头怀疑本站。
 
 ```rust
