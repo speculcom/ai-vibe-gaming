@@ -35,7 +35,7 @@ const TEMPLATE = fs.existsSync(path.join(VENDORED, 'shell.mjs'))
   ? VENDORED
   : path.join(ROOT, '_sites', '_template');
 
-const { shell } = await import(pathToFileURL(path.join(TEMPLATE, 'shell.mjs')).href);
+const { shell, nativeOption } = await import(pathToFileURL(path.join(TEMPLATE, 'shell.mjs')).href);
 const { splitBilingual, renderBilingual } = await import(
   pathToFileURL(path.join(HERE, 'i18n-body.mjs')).href);
 
@@ -355,8 +355,8 @@ for (const e of engines) {
     accent: null,   /* 2026-10-10：取消分站专属色，见上方 SITE_INFO.accent 的删除说明 */
     body: `<div class="container">
         <p class="kicker"><a href="./learn.html">${bi('引擎档案', 'Engine profiles')}</a></p>
-        <h1 class="t-hero">${esc(e.fm.zh)}</h1>
-        <p class="lede">${bi(e.fm.script || '', e.fm.scriptEn || e.fm.script || '')} · ${esc(e.fm.tier || '')}</p>
+        <h1 class="t-hero">${bi(esc(e.fm.zh), esc(e.fm.en || e.fm.zh))}</h1>
+        <p class="lede">${bi(e.fm.script || '', e.fm.scriptEn || e.fm.script || '')} · ${bi(esc(e.fm.tier || ''), esc(e.fm.tierEn || ({ '原生 3D':'Native 3D', '通用 2D/3D':'General 2D/3D', 'Java 跨平台':'Cross-platform Java' })[e.fm.tier] || e.fm.tier || ''))}</p>
 
         <div class="panel term-meta">
           <p class="t-lead">${bi(inline('**对 AI 的友好度**'), inline('**How AI-friendly it is**'))}${bi('：' + stars + '（' + lab[0] + '）', ': ' + stars + ' (' + AI_EN[e.fm.aiFriendly] + ')')}</p>
@@ -461,22 +461,22 @@ if (engines.length) {
             <div class="etree-row">
               <label class="etree-f"><span class="etree-h">${bi('目标平台', 'Target platform')}</span>
                 <select class="etree-p">
-                  <option value="">${bi('选择…', 'Choose…')}</option>
-                  <option value="web">${bi('网页（浏览器里直接玩）', 'Web (in the browser)')}</option>
-                  <option value="desktop">${bi('桌面 / 主机', 'Desktop / console')}</option>
-                  <option value="mobile">${bi('手机原生', 'Native mobile')}</option>
+                  ${nativeOption("","选择…","Choose…")}
+                  ${nativeOption("web","网页（浏览器里直接玩）","Web (in the browser)")}
+                  ${nativeOption("desktop","桌面 / 主机","Desktop / console")}
+                  ${nativeOption("mobile","手机原生","Native mobile")}
                 </select></label>
               <label class="etree-f"><span class="etree-h">${bi('需要 3D 吗', 'Need 3D?')}</span>
                 <select class="etree-d">
-                  <option value="">${bi('选择…', 'Choose…')}</option>
-                  <option value="yes">${bi('需要', 'Yes')}</option>
-                  <option value="no">${bi('不需要，2D 够用', 'No, 2D is enough')}</option>
+                  ${nativeOption("","选择…","Choose…")}
+                  ${nativeOption("yes","需要","Yes")}
+                  ${nativeOption("no","不需要，2D 够用","No, 2D is enough")}
                 </select></label>
               <label class="etree-f"><span class="etree-h">${bi('团队有人写过 Rust / Java / Kotlin 吗', 'Does anyone write Rust / Java / Kotlin?')}</span>
                 <select class="etree-s">
-                  <option value="">${bi('选择…', 'Choose…')}</option>
-                  <option value="yes">${bi('有', 'Yes')}</option>
-                  <option value="no">${bi('没有，都是脚本语言', 'No, script languages only')}</option>
+                  ${nativeOption("","选择…","Choose…")}
+                  ${nativeOption("yes","有","Yes")}
+                  ${nativeOption("no","没有，都是脚本语言","No, script languages only")}
                 </select></label>
             </div>
             <div class="etree-out" aria-live="polite"></div>
@@ -578,7 +578,7 @@ const learnHtml = shell({
   },
   accent: null,   /* 2026-10-10：取消分站专属色，见上方 SITE_INFO.accent 的删除说明 */
   body: `<div class="container">
-        <p class="kicker">${esc(SITE_INFO.zh)}</p>
+        <p class="kicker">${bi(esc(SITE_INFO.zh), esc(SITE_INFO.en))}</p>
         <h1 class="t-hero">${bi('学习路径', 'Learning path')}</h1>
         <p class="lede">${bi(
           '按做游戏的实际顺序分五阶段，不按工具组织。每阶段四件事：做什么 · 怎么做 · 常见失败 · 我们的判断。',
@@ -641,7 +641,7 @@ function pathNav(t) {
   const prev = i > 0 ? terms[i - 1] : null;
   const next = i < terms.length - 1 ? terms[i + 1] : null;
   const cell = (x, cls, label) => (x
-    ? `<a class="${cls}" href="${esc(x.slug)}.html"><span class="tn-dir">${label}</span><b>${esc(x.fm.zh)}</b></a>`
+    ? `<a class="${cls}" href="${esc(x.slug)}.html"><span class="tn-dir">${label}</span><b>${bi(esc(x.fm.zh), esc(x.fm.en || x.fm.zh))}</b></a>`
     : `<span class="${cls} is-empty" aria-hidden="true"></span>`);
   return `        <div class="panel is-slim">
           <p class="t-xs">${bi(`有序路径 · 第 ${i + 1} / ${terms.length} 篇`, `Ordered path · item ${i + 1} of ${terms.length}`)}</p>
@@ -673,7 +673,7 @@ for (const t of terms) {
     accent: null,   /* 2026-10-10：取消分站专属色，见上方 SITE_INFO.accent 的删除说明 */
     body: `<div class="container">
         <p class="kicker"><a href="./learn.html">${bi('学习路径', 'Learning path')}</a>${isStage ? ` · ${bi('第 ' + t.fm.stage + ' 阶段', 'Stage ' + t.fm.stage)}` : ` · ${bi('关键词', 'Keyword')}`}</p>
-        <h1 class="t-hero">${esc(t.fm.zh)}</h1>
+        <h1 class="t-hero">${bi(esc(t.fm.zh), esc(t.fm.en || t.fm.zh))}</h1>
         ${t.fm.en ? `<p class="lede">${esc(t.fm.en)}</p>` : ''}
 
         <div class="panel term-meta">
@@ -725,7 +725,7 @@ if (fs.existsSync(PAGES_DIR)) {
       accent: null,   /* 2026-10-10：取消分站专属色，见上方 SITE_INFO.accent 的删除说明 */
       body: `<div class="container">
         <p class="kicker"><a href="./learn.html">${bi('学习路径', 'Learning path')}</a> · ${bi('贯穿流程', 'Across the stages')}</p>
-        <h1 class="t-hero">${esc(fm.zh)}</h1>
+        <h1 class="t-hero">${bi(esc(fm.zh), esc(fm.en || fm.zh))}</h1>
         ${fm.en ? `<p class="lede">${esc(fm.en)}</p>` : ''}
 
         <div class="panel term-meta">

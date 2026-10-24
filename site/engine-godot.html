@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Godot · 引擎档案 · AI 做游戏</title>
   <meta name="description" content="对 AI 最不容易出错的通用引擎 —— 原因不在引擎本身，在 GDScript 这门语言。 拿不准就用 Godot。这不是推荐，是「出错的代价最小」。" />
   <link rel="canonical" href="https://vg.specul.com/engine-godot.html" />
@@ -13,7 +13,8 @@
   <meta property="og:description" content="对 AI 最不容易出错的通用引擎 —— 原因不在引擎本身，在 GDScript 这门语言。 拿不准就用 Godot。这不是推荐，是「出错的代价最小」。" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="brand.css" />
+  <script src="brand.js?v=6a580ac0420e"></script>
+  <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Godot · 引擎档案","url":"https://vg.specul.com/engine-godot.html","description":"对 AI 最不容易出错的通用引擎 —— 原因不在引擎本身，在 GDScript 这门语言。 拿不准就用 Godot。这不是推荐，是「出错的代价最小」。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"godot","applicationCategory":"GameEngine"}}</script>
 </head>
@@ -83,8 +84,8 @@
   <main id="main">
 <div class="container">
         <p class="kicker"><a href="./learn.html"><span data-zh>引擎档案</span><span data-en>Engine profiles</span></a></p>
-        <h1 class="t-hero">Godot</h1>
-        <p class="lede"><span data-zh>GDScript / C#</span><span data-en>GDScript / C#</span> · 通用 2D/3D</p>
+        <h1 class="t-hero"><span data-zh>Godot</span><span data-en>Godot</span></h1>
+        <p class="lede"><span data-zh>GDScript / C#</span><span data-en>GDScript / C#</span> · <span data-zh>通用 2D/3D</span><span data-en>general 2D/3D</span></p>
 
         <div class="panel term-meta">
           <p class="t-lead"><span data-zh><strong>对 AI 的友好度</strong></span><span data-en><strong>How AI-friendly it is</strong></span><span data-zh>：★★★★（友好）</span><span data-en>: ★★★★ (friendly)</span></p>
@@ -192,7 +193,7 @@
     <div class="container foot-row">
       <div class="foot-brand">
         <span class="brand-dot" aria-hidden="true"></span>
-        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+        <span class="foot-copy">© 2026 <span data-zh>投机取巧</span><span data-en>Specul</span></span>
       </div>
       <nav class="foot-links" aria-label="页脚导航">
           <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
@@ -220,14 +221,5 @@
   <a href="https://models.specul.com/"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
   <button type="button" id="tabMore" aria-controls="navDrawer" aria-expanded="false"><span class="ti" aria-hidden="true">⋯</span><span data-zh>更多</span><span data-en>More</span></button>
 </nav>
-  <script src="brand.js"></script>
-  <script>
-    (function () {
-      var root = document.documentElement;
-      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
-      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
-      sync();
-    })();
-  </script>
 </body>
 </html>

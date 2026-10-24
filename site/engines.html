@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>引擎档案 · AI 做游戏</title>
   <meta name="description" content="五个引擎对 AI 的友好度对比 本站判断，不是官方排名；上手难度是另一条独立的轴，每个判断的依据都写在对应档案里。" />
   <link rel="canonical" href="https://vg.specul.com/engines.html" />
@@ -13,7 +13,8 @@
   <meta property="og:description" content="五个引擎对 AI 的友好度对比 本站判断，不是官方排名；上手难度是另一条独立的轴，每个判断的依据都写在对应档案里。" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="brand.css" />
+  <script src="brand.js?v=6a580ac0420e"></script>
+  <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"引擎档案 · AI 做游戏","url":"https://vg.specul.com/engines.html","description":"五个引擎对 AI 的友好度对比 本站判断，不是官方排名。 —— AI 做游戏：判断依据、失败点与我们的口径都在档案里。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
 </head>
@@ -176,22 +177,22 @@
             <div class="etree-row">
               <label class="etree-f"><span class="etree-h"><span data-zh>目标平台</span><span data-en>Target platform</span></span>
                 <select class="etree-p">
-                  <option value=""><span data-zh>选择…</span><span data-en>Choose…</span></option>
-                  <option value="web"><span data-zh>网页（浏览器里直接玩）</span><span data-en>Web (in the browser)</span></option>
-                  <option value="desktop"><span data-zh>桌面 / 主机</span><span data-en>Desktop / console</span></option>
-                  <option value="mobile"><span data-zh>手机原生</span><span data-en>Native mobile</span></option>
+                  <option value="" data-ui-text-zh="选择…" data-ui-text-en="Choose…">选择…</option>
+                  <option value="web" data-ui-text-zh="网页（浏览器里直接玩）" data-ui-text-en="Web (in the browser)">网页（浏览器里直接玩）</option>
+                  <option value="desktop" data-ui-text-zh="桌面 / 主机" data-ui-text-en="Desktop / console">桌面 / 主机</option>
+                  <option value="mobile" data-ui-text-zh="手机原生" data-ui-text-en="Native mobile">手机原生</option>
                 </select></label>
               <label class="etree-f"><span class="etree-h"><span data-zh>需要 3D 吗</span><span data-en>Need 3D?</span></span>
                 <select class="etree-d">
-                  <option value=""><span data-zh>选择…</span><span data-en>Choose…</span></option>
-                  <option value="yes"><span data-zh>需要</span><span data-en>Yes</span></option>
-                  <option value="no"><span data-zh>不需要，2D 够用</span><span data-en>No, 2D is enough</span></option>
+                  <option value="" data-ui-text-zh="选择…" data-ui-text-en="Choose…">选择…</option>
+                  <option value="yes" data-ui-text-zh="需要" data-ui-text-en="Yes">需要</option>
+                  <option value="no" data-ui-text-zh="不需要，2D 够用" data-ui-text-en="No, 2D is enough">不需要，2D 够用</option>
                 </select></label>
               <label class="etree-f"><span class="etree-h"><span data-zh>团队有人写过 Rust / Java / Kotlin 吗</span><span data-en>Does anyone write Rust / Java / Kotlin?</span></span>
                 <select class="etree-s">
-                  <option value=""><span data-zh>选择…</span><span data-en>Choose…</span></option>
-                  <option value="yes"><span data-zh>有</span><span data-en>Yes</span></option>
-                  <option value="no"><span data-zh>没有，都是脚本语言</span><span data-en>No, script languages only</span></option>
+                  <option value="" data-ui-text-zh="选择…" data-ui-text-en="Choose…">选择…</option>
+                  <option value="yes" data-ui-text-zh="有" data-ui-text-en="Yes">有</option>
+                  <option value="no" data-ui-text-zh="没有，都是脚本语言" data-ui-text-en="No, script languages only">没有，都是脚本语言</option>
                 </select></label>
             </div>
             <div class="etree-out" aria-live="polite"></div>
@@ -301,7 +302,7 @@
     <div class="container foot-row">
       <div class="foot-brand">
         <span class="brand-dot" aria-hidden="true"></span>
-        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+        <span class="foot-copy">© 2026 <span data-zh>投机取巧</span><span data-en>Specul</span></span>
       </div>
       <nav class="foot-links" aria-label="页脚导航">
           <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
@@ -329,14 +330,5 @@
   <a href="https://models.specul.com/"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
   <button type="button" id="tabMore" aria-controls="navDrawer" aria-expanded="false"><span class="ti" aria-hidden="true">⋯</span><span data-zh>更多</span><span data-en>More</span></button>
 </nav>
-  <script src="brand.js"></script>
-  <script>
-    (function () {
-      var root = document.documentElement;
-      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
-      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
-      sync();
-    })();
-  </script>
 </body>
 </html>
