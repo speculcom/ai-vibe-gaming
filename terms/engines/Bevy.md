@@ -23,6 +23,7 @@ difficultyWhy: "三件前置（Rust 工具链 + C++ Build Tools + 首次长编�
 difficultyWhyEn: "Three prerequisites (Rust toolchain, C++ Build Tools, a long first compile), plus ECS — a mental model with nothing in common with objects and inheritance."
 confidence: our-judgement
 verified: "2026-10-05 · GitHub API 快照"
+verifiedEn: "2026-10-05 · GitHub API snapshot"
 ---
 
 # Bevy

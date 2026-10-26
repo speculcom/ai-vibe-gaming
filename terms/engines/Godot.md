@@ -23,6 +23,7 @@ difficultyWhy: "零安装、零构建工具：解压、双击、新建项目，�
 difficultyWhyEn: "No installer and no build toolchain: extract, double-click, create a project, write your first GDScript. It is the only one of the five that needs no extra runtime."
 confidence: our-judgement
 verified: "2026-10-05 · GitHub API 快照"
+verifiedEn: "2026-10-05 · GitHub API snapshot"
 ---
 
 # Godot

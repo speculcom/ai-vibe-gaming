@@ -23,6 +23,7 @@ difficultyWhy: "装包是一行，但「一个能跑的画面」要自己拼：�
 difficultyWhyEn: "The package is one line; a running scene is not. There is no scaffolding, so scene, camera and renderer are hand-written (the official example is about 20 lines)."
 confidence: our-judgement
 verified: "2026-10-05 · GitHub API 快照"
+verifiedEn: "2026-10-05 · GitHub API snapshot"
 ---
 
 # Three.js

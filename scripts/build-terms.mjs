@@ -66,7 +66,7 @@ function parseFm(raw) {
     const kv = line.match(/^([a-zA-Z_]+):\s*(.*)$/);
     if (!kv) continue;
     let v = kv[2].trim();
-    if (/^".*"$/.test(v)) v = v.slice(1, -1);
+    if (/^".*"$/.test(v)) v = v.slice(1, -1).replace(/\\"/g, '"');
     else if (/^-?\d+$/.test(v)) v = Number(v);
     fm[kv[1]] = v;
   }
@@ -281,12 +281,12 @@ const keywords = terms.filter(t => !t.fm.stage);
 
 const stageCard = (t) => `      <a class="stage-card" href="${esc(t.slug)}.html">
         <span class="stage-n">${t.fm.stage}</span>
-        <b>${esc(t.fm.zh)}</b>
-        <span class="t-sm">${esc(t.fm.what)}</span>
+        <b>${bi(esc(t.fm.zh), esc(t.fm.en || t.fm.zh))}</b>
+        <span class="t-sm">${bi(esc(t.fm.what), esc(t.fm.whatEn || t.fm.what))}</span>
       </a>`;
 
-const kwItem = (t) => `        <li><a href="${esc(t.slug)}.html"><b>${esc(t.fm.zh)}</b></a>
-          <span class="t-sm">${esc(t.fm.what)}</span></li>`;
+const kwItem = (t) => `        <li><a href="${esc(t.slug)}.html"><b>${bi(esc(t.fm.zh), esc(t.fm.en || t.fm.zh))}</b></a>
+          <span class="t-sm">${bi(esc(t.fm.what), esc(t.fm.whatEn || t.fm.what))}</span></li>`;
 
 /* ── 引擎档案页（P3）── */
 const engFiles = fs.existsSync(ENG_DIR) ? fs.readdirSync(ENG_DIR).filter(f => f.endsWith('.md')) : [];
@@ -325,8 +325,8 @@ function engineCards(compact) {
     const lab = AI_LABEL[e.fm.aiFriendly] || ['—', '—'];
     const stars = '★'.repeat(e.fm.aiScore || 0) + '☆'.repeat(4 - (e.fm.aiScore || 0));
     return `      <a class="eng-card" href="${e.slug}.html">
-        <div class="eng-head"><b>${esc(e.fm.zh)}</b><span class="ai-badge ${e.fm.aiFriendly}">${bi(lab[0], lab[1])}</span></div>
-        <span class="t-sm">${esc(e.fm.what)}</span>
+        <div class="eng-head"><b>${bi(esc(e.fm.zh), esc(e.fm.en || e.fm.zh))}</b><span class="ai-badge ${e.fm.aiFriendly}">${bi(lab[0], lab[1])}</span></div>
+        <span class="t-sm">${bi(esc(e.fm.what), esc(e.fm.whatEn || e.fm.what))}</span>
         ${compact ? '' : `<span class="eng-meta"><code>${esc(e.fm.script || '')}</code> · ${stars}</span>`}
       </a>`;
   }).join('\n');

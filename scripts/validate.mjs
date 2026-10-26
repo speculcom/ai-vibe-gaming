@@ -39,7 +39,7 @@ function parseFm(text) {
     const kv = line.match(/^([a-zA-Z_]+):\s*(.*)$/);
     if (!kv) continue;
     let v = kv[2].trim();
-    if (/^".*"$/.test(v)) v = v.slice(1, -1);
+    if (/^".*"$/.test(v)) v = v.slice(1, -1).replace(/\\"/g, '"');
     else if (/^-?\d+$/.test(v)) v = Number(v);
     fm[kv[1]] = v;
   }

@@ -23,6 +23,7 @@ difficultyWhy: "JDK + jar + Gradle 多模块 + IDE 配置，四步都走完才�
 difficultyWhyEn: "JDK, the jar, a multi-module Gradle project and IDE setup — four steps before an empty window appears; the project ships a dedicated Troubleshooting guide for exactly this."
 confidence: our-judgement
 verified: "2026-10-05 · GitHub API 快照"
+verifiedEn: "2026-10-05 · GitHub API snapshot"
 ---
 
 # libGDX

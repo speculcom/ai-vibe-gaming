@@ -23,6 +23,7 @@ difficultyWhy: "一条命令出可跑工程 —— 官方给了脚手架模板�
 difficultyWhyEn: "One command yields a runnable project — the docs ship scaffolding templates, so you do not assemble a build setup yourself. The only prerequisite is Node.js."
 confidence: our-judgement
 verified: "2026-10-05 · GitHub API 快照"
+verifiedEn: "2026-10-05 · GitHub API snapshot"
 ---
 
 # Pixi
