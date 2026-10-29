@@ -9,7 +9,7 @@ The **source repo** for "Vibe Gaming" — single source of truth.
 
 ## How to read this
 
-17 terms and 5 engine profiles. Go by the stage you're actually at:
+18 terms and 6 engine profiles. Go by the stage you're actually at:
 
 | Where you are | What to read |
 |---|---|
@@ -114,6 +114,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "message"
 - [Minimal playable prototype](terms/%E6%9C%80%E5%B0%8F%E5%8F%AF%E7%8E%A9%E5%8E%9F%E5%9E%8B.md) —— How far is far enough? Far enough that th…
 - [Game feel checklist](terms/%E6%89%8B%E6%84%9F%E9%97%AE%E9%A2%98%E6%B8%85%E5%8D%95.md) —— First work out whether it is a code probl…
 - [Font licensing traps](terms/%E5%AD%97%E4%BD%93%E7%9A%84%E6%8E%88%E6%9D%83%E9%99%B7%E9%98%B1.md) —— Before using a font, screenshot its licen…
+- [Audio sources and their licences](terms/%E9%9F%B3%E9%A2%91%E7%B4%A0%E6%9D%90%E7%9A%84%E6%9D%A5%E6%BA%90%E4%B8%8E%E6%8E%88%E6%9D%83.md) —— Prefer packs explicitly marked CC0; if yo…
 - [Ship a rough version first](terms/%E5%85%88%E5%8F%91%E6%9E%81%E7%AE%80%E7%89%88.md) —— Upload something playable on itch.io with…
 - [Save and offline behaviour](terms/%E5%AD%98%E6%A1%A3%E4%B8%8E%E7%A6%BB%E7%BA%BF%E8%A1%8C%E4%B8%BA.md) —— Before shipping, test: does progress surv…
 - [AI asset ledger](terms/AI%20%E8%B5%84%E4%BA%A7%E5%8F%B0%E8%B4%A6.md) —— Building it costs ten minutes. Not buildi…
@@ -137,8 +138,8 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "message"
 <!-- STATS:BEGIN generated, do not edit -->
 | Item | Measured value |
 |---|---|
-| Term entries | 17 (stage 12 · keyword 5) |
+| Term entries | 18 (stage 13 · keyword 5) |
 | Engine profiles | 6 (Bevy · Godot · libGDX · Phaser · Pixi · Three.js) |
 | Cross-cutting pages | 2 (demos · method) |
-| Site output | 28 HTML pages |
+| Site output | 29 HTML pages |
 <!-- STATS:END -->

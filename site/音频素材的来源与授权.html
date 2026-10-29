@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>音频素材的来源与授权 · AI 做游戏</title>
+  <meta name="description" content="图片你会挑、字体你会查，音频却常常随手抓一个就用 —— 而它是发布后最容易被下架的一类。 优先用明确标 CC0 的素材包；用 CC-BY 就把署名写进游戏；生成音乐先读服务条款再进台账。" />
+  <link rel="canonical" href="https://vg.specul.com/音频素材的来源与授权.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="音频素材的来源与授权 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/音频素材的来源与授权.html" />
+  <meta property="og:title" content="音频素材的来源与授权 · AI 做游戏" />
+  <meta property="og:description" content="图片你会挑、字体你会查，音频却常常随手抓一个就用 —— 而它是发布后最容易被下架的一类。 优先用明确标 CC0 的素材包；用 CC-BY 就把署名写进游戏；生成音乐先读服务条款再进台账。" />
+  <meta name="theme-color" content="#16121f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <script src="brand.js?v=6a580ac0420e"></script>
+  <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
+  <link rel="stylesheet" href="site.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"音频素材的来源与授权","url":"https://vg.specul.com/音频素材的来源与授权.html","description":"图片你会挑、字体你会查，音频却常常随手抓一个就用 —— 而它是发布后最容易被下架的一类。 优先用明确标 CC0 的素材包；用 CC-BY 就把署名写进游戏；生成音乐先读服务条款再进台账。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+          <span class="brand-sub" id="markSub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://tools.specul.com/"><span data-zh>AI 工具</span><span data-en>AI Tools</span></a>
+        <a href="https://models.specul.com/"><span data-zh>AI 模型</span><span data-en>AI Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
+      </nav>
+      <!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+      <span class="nav-tools">
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+        <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+      </span>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <span class="brand-sub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://tools.specul.com/"><span><span data-zh>AI 工具</span><span data-en>AI Tools</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>AI 模型</span><span data-en>AI Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>AI 导航</span><span data-en>AI Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>学习路径</span><span data-en>Learning path</span></a> · <span data-zh>第 4 阶段</span><span data-en>Stage 4</span></p>
+        <h1 class="t-hero"><span data-zh>音频素材的来源与授权</span><span data-en>Audio sources and their licences</span></h1>
+        <p class="lede">Audio sources and their licences</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>这一步决定什么</strong></span><span data-en><strong>What this stage decides</strong></span><span data-zh>：图片你会挑、字体你会查，音频却常常随手抓一个就用 —— 而它是发布后最容易被下架的一类。</span><span data-en>: You pick images carefully and check fonts, but audio usually gets grabbed at random — and it is the category most likely to get your game taken down after release.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：优先用明确标 CC0 的素材包；用 CC-BY 就把署名写进游戏；生成音乐先读服务条款再进台账。</span><span data-en>: Prefer packs explicitly marked CC0; if you use CC-BY, put the attribution in the game; for generated music, read the service terms before it enters the ledger.</span></p>
+          <p class="t-xs muted"><span data-zh>性质：部分可核验</span><span data-en>Nature: partly verifiable</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>：音频的风险不在「有没有钱」，在<strong>授权类型</strong> —— CC0、CC-BY、NC（禁商用）长得都很像，后果完全不同。</p></span><span data-en><p><strong>In one line</strong>: the risk in audio is not money, it is the <strong>licence type</strong> — CC0, CC-BY and NC (no commercial use) look alike and mean very different things.</p></span></div>
+<div class="bi-block"><span data-zh><h2>三种授权，先学会认</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>标记</th><th>能商用吗</th><th>要署名吗</th><th>典型来源</th></tr></thead><tbody>
+<tr><td><strong>CC0</strong>（公有领域）</td><td>✅</td><td>不需要</td><td>Kenney 全部素材、Freesound 部分条目</td></tr>
+<tr><td><strong>CC-BY 4.0</strong></td><td>✅</td><td>⚠ <strong>必须署名</strong></td><td>OpenGameArt 大量条目</td></tr>
+<tr><td>⚠ <strong>含 NC 条款</strong>（NonCommercial）</td><td>❌ 不能商用</td><td>——</td><td>Freesound 大量条目</td></tr>
+</tbody></table></div>
+<p>⚠ 最容易犯的错：在素材站看到「免费」就用，<strong>没看到旁边小小的 NC 标记</strong>。</p>
+<p>Freesound 的官方 FAQ 明确写着：条目各有不同许可，含 NonCommercial 条款的不能商用（出处见下表）。</p></span><span data-en><h2>Three licences — learn to tell them apart</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>Mark</th><th>Commercial OK</th><th>Attribution</th><th>Typical source</th></tr></thead><tbody>
+<tr><td><strong>CC0</strong> (public domain)</td><td>Yes</td><td>Not required</td><td>All of Kenney's assets, some Freesound entries</td></tr>
+<tr><td><strong>CC-BY 4.0</strong></td><td>Yes</td><td>⚠ <strong>Attribution required</strong></td><td>Many OpenGameArt entries</td></tr>
+<tr><td>⚠ <strong>NC clause</strong> (NonCommercial)</td><td>❌ Not commercial</td><td>—</td><td>Many Freesound entries</td></tr>
+</tbody></table></div>
+<p>⚠ The classic mistake: seeing &quot;free&quot; on an asset site and using it, <strong>missing the small NC mark next to it</strong>.</p>
+<p>Freesound's own FAQ states plainly that entries carry different licences and those with a NonCommercial clause cannot be used commercially (source in the table below).</p></span></div>
+<div class="bi-block"><span data-zh><h2>可核验的来源清单</h2>
+<p>下表每一行都在 2026-10-29 经本站当日访问核对（快照口径，条款可能变更）：</p>
+<div class="table-wrap"><table class="src"><thead><tr><th>来源</th><th>授权状况（当日核对）</th><th>出处</th></tr></thead><tbody>
+<tr><td>Kenney（kenney.nl）</td><td>素材页明确标 <strong>CC0</strong></td><td>素材页许可标注，2026-10-29</td></tr>
+<tr><td>Freesound（freesound.org）</td><td>条目许可不一：Attribution / <strong>NonCommercial</strong> / CC0 并存</td><td>官方 FAQ，2026-10-29</td></tr>
+<tr><td>OpenGameArt（opengameart.org）</td><td>站内接受 <strong>CC0 / OGA-BY / CC-BY</strong> 等许可</td><td>首页许可声明，2026-10-29</td></tr>
+<tr><td>CC0 本身</td><td>放弃全部权利，无需署名</td><td>creativecommons.org/publicdomain/zero/1.0</td></tr>
+<tr><td>CC-BY 4.0 本身</td><td>可商用，<strong>必须按规范署名</strong></td><td>creativecommons.org/licenses/by/4.0</td></tr>
+</tbody></table></div>
+<p>⚠ 本站不做实测：这张表核对的是「来源自己怎么说」，不是「用了绝对安全」。</p></span><span data-en><h2>A verifiable source list</h2>
+<p>Every row below was checked by this site on 2026-10-29 (snapshot — terms can change):</p>
+<div class="table-wrap"><table class="src"><thead><tr><th>Source</th><th>Licence state (checked that day)</th><th>Source</th></tr></thead><tbody>
+<tr><td>Kenney (kenney.nl)</td><td>Asset pages explicitly marked <strong>CC0</strong></td><td>licence label on asset pages, 2026-10-29</td></tr>
+<tr><td>Freesound (freesound.org)</td><td>Mixed per entry: Attribution / <strong>NonCommercial</strong> / CC0</td><td>official FAQ, 2026-10-29</td></tr>
+<tr><td>OpenGameArt (opengameart.org)</td><td>Site accepts <strong>CC0 / OGA-BY / CC-BY</strong> and similar</td><td>licence statement on the homepage, 2026-10-29</td></tr>
+<tr><td>CC0 itself</td><td>All rights waived, no attribution</td><td>creativecommons.org/publicdomain/zero/1.0</td></tr>
+<tr><td>CC-BY 4.0 itself</td><td>Commercial OK, <strong>attribution required as specified</strong></td><td>creativecommons.org/licenses/by/4.0</td></tr>
+</tbody></table></div>
+<p>⚠ This site runs no measurements: the table checks what each source says about itself, not &quot;using it is definitely safe&quot;.</p></span></div>
+<div class="bi-block"><span data-zh><h2>署名不是可选项</h2>
+<p>用了 CC-BY 素材，署名要<strong>真的进游戏</strong>：</p>
+<ul>
+<li>网页游戏：credits 页或 itch.io 页面描述里写明素材名、作者、许可链接</li>
+<li>商店发布：设置页或片尾滚动里放同样内容</li>
+</ul>
+<p>⚠ 只写在开发文档里不算 —— 玩家看不到就等于没署（这是 CC-BY 的常见违约方式）。</p></span><span data-en><h2>Attribution is not optional</h2>
+<p>If you use CC-BY material, the credit has to <strong>actually ship in the game</strong>:</p>
+<ul>
+<li>Web games: name the asset, author and licence link on a credits page or the itch.io page description</li>
+<li>Store releases: the same content in a settings screen or end credits</li>
+</ul>
+<p>⚠ Writing it only in dev docs does not count — if players cannot see it, it is a breach (the most common CC-BY violation).</p></span></div>
+<div class="bi-block"><span data-zh><h2>生成音乐：先读条款再进台账</h2>
+<p>生成式音乐工具（Suno、Udio 一类）的商用权<strong>取决于你当时的订阅档位与服务条款</strong>，</p>
+<p>而且条款会变 —— 见 <a href="./ai-生成内容的版权.html">AI 生成内容的版权归属</a>。</p>
+<p>⚠ 台账里生成音乐一律先写「⚠ 待确认商用条款」，发布前必须清零（见 <a href="./ai-资产台账.html">AI 资产台账</a>）。</p></span><span data-en><h2>Generated music: read the terms before the ledger</h2>
+<p>Commercial rights for generative music tools (Suno, Udio and the like) <strong>depend on your subscription tier and terms at the time</strong>, and terms change — see <a href="./ai-生成内容的版权.html">Copyright of AI-generated work</a>.</p>
+<p>⚠ In the ledger, generated music always starts as &quot;⚠ commercial terms unconfirmed&quot;, and that row must be cleared before shipping (see the <a href="./ai-资产台账.html">AI asset ledger</a>).</p></span></div>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p class="t-xs"><span data-zh>有序路径 · 第 10 / 18 篇</span><span data-en>Ordered path · item 10 of 18</span></p>
+          <nav class="term-nav" aria-label="上一篇 / 下一篇">
+            <a class="tn-prev" href="字体的授权陷阱.html"><span class="tn-dir"><span data-zh>← 上一篇</span><span data-en>← Previous</span></span><b><span data-zh>字体的授权陷阱</span><span data-en>Font licensing traps</span></b></a>
+            <a class="tn-next" href="s5-导出发布.html"><span class="tn-dir"><span data-zh>下一篇 →</span><span data-en>Next →</span></span><b><span data-zh>S5 · 导出与发布</span><span data-en>S5 · Ship it</span></b></a>
+          </nav>
+          <p class="mt-2"><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 <span data-zh>投机取巧</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://tools.specul.com/"><span data-zh>AI 工具</span><span data-en>AI Tools</span></a>
+          <a href="https://models.specul.com/"><span data-zh>AI 模型</span><span data-en>AI Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener"><span data-zh>开源</span><span data-en>Open source</span></a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+    <div class="container">
+      <p class="foot-trademark"><span data-zh>产品名与商标归各权利方所有，本站仅作识别与评论之用。</span><span data-en>Product names and trademarks belong to their respective owners and are used here for identification and commentary only.</span></p>
+    </div>
+  </footer>
+<nav class="nav-tabbar" aria-label="快捷导航">
+  <a href="https://specul.com/"><span class="ti" aria-hidden="true">◎</span><span data-zh>首页</span><span data-en>Home</span></a>
+  <a href="https://learn.specul.com/"><span class="ti" aria-hidden="true">▤</span><span data-zh>学 AI</span><span data-en>Learn</span></a>
+  <a href="https://tools.specul.com/"><span class="ti" aria-hidden="true">◈</span><span data-zh>工具</span><span data-en>Tools</span></a>
+  <a href="https://models.specul.com/"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
+  <button type="button" id="tabMore" aria-controls="navDrawer" aria-expanded="false"><span class="ti" aria-hidden="true">⋯</span><span data-zh>更多</span><span data-en>More</span></button>
+</nav>
+</body>
+</html>
