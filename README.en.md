@@ -9,7 +9,7 @@ The **source repo** for "Vibe Gaming" — single source of truth.
 
 ## How to read this
 
-19 terms and 6 engine profiles. Go by the stage you're actually at:
+19 terms and 7 engine profiles. Go by the stage you're actually at:
 
 | Where you are | What to read |
 |---|---|
@@ -37,7 +37,7 @@ The core claim (see `claims/`):
 |---|---|---|
 | `claims/` | **Claim layer** (three judgement tables) | ✅ done |
 | `terms/` | Five-stage teaching entries (Markdown + frontmatter) | ✅ done |
-| `terms/engines/` | Engine profiles (Godot · three.js · Pixi · Phaser · libGDX · Bevy) | ✅ done |
+| `terms/engines/` | Engine profiles (Godot · three.js · Pixi · Phaser · libGDX · Bevy · Cocos Creator) | ✅ done |
 | `basement/` | Placeholder for a custom in-house base | ⏸ deferred (user decision) |
 | `site/` | **Build output** (pushed to the `vibe-gaming` repo) | generated |
 
@@ -126,6 +126,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "message"
 ### Engine profiles
 
 - [Bevy](terms/engines/Bevy.md)
+- [Cocos](terms/engines/Cocos.md)
 - [Godot](terms/engines/Godot.md)
 - [libGDX](terms/engines/libGDX.md)
 - [Phaser](terms/engines/Phaser.md)
@@ -140,7 +141,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "message"
 | Item | Measured value |
 |---|---|
 | Term entries | 19 (stage 14 · keyword 5) |
-| Engine profiles | 6 (Bevy · Godot · libGDX · Phaser · Pixi · Three.js) |
+| Engine profiles | 7 (Bevy · Cocos · Godot · libGDX · Phaser · Pixi · Three.js) |
 | Cross-cutting pages | 2 (demos · method) |
-| Site output | 30 HTML pages |
+| Site output | 31 HTML pages |
 <!-- STATS:END -->

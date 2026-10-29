@@ -9,7 +9,7 @@
 
 ## 我该怎么读
 
-19 个词条 + 6 份引擎档案。按你现在的进度走：
+19 个词条 + 7 份引擎档案。按你现在的进度走：
 
 | 你在哪个阶段 | 读什么 |
 |---|---|
@@ -37,7 +37,7 @@
 |---|---|---|
 | `claims/` | **立论层**（三张判定表）| ✅ 已完成 |
 | `terms/` | 五阶段教学词条（Markdown + frontmatter）| ✅ 已完成 |
-| `terms/engines/` | 引擎档案（Godot · three.js · Pixi · Phaser · libGDX · Bevy）| ✅ 已完成 |
+| `terms/engines/` | 引擎档案（Godot · three.js · Pixi · Phaser · libGDX · Bevy · Cocos Creator）| ✅ 已完成 |
 | `basement/` | 自研基座占位 | ⏸ 暂缓（用户定案）|
 | `site/` | **产物**（推 `vibe-gaming` 仓）| 自动生成 |
 
@@ -119,6 +119,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "说明"
 ### 引擎档案
 
 - [Bevy](terms/engines/Bevy.md)
+- [Cocos](terms/engines/Cocos.md)
 - [Godot](terms/engines/Godot.md)
 - [libGDX](terms/engines/libGDX.md)
 - [Phaser](terms/engines/Phaser.md)
@@ -133,7 +134,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "说明"
 | 项 | 实测值 |
 |---|---|
 | 词条 | 19 条（阶段 14 · 关键词 5） |
-| 引擎档案 | 6 个（Bevy · Godot · libGDX · Phaser · Pixi · Three.js） |
+| 引擎档案 | 7 个（Bevy · Cocos · Godot · libGDX · Phaser · Pixi · Three.js） |
 | 贯穿页 | 2 个（demos · method） |
-| 站点产物 | 30 个 HTML 页面 |
+| 站点产物 | 31 个 HTML 页面 |
 <!-- STATS:END -->

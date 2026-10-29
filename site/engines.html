@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>引擎档案 · AI 做游戏</title>
-  <meta name="description" content="6 个引擎对 AI 的友好度对比 本站判断，不是官方排名；上手难度是另一条独立的轴，每个判断的依据都写在对应档案里。" />
+  <meta name="description" content="7 个引擎对 AI 的友好度对比 本站判断，不是官方排名；上手难度是另一条独立的轴，每个判断的依据都写在对应档案里。" />
   <link rel="canonical" href="https://vg.specul.com/engines.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="引擎档案 · AI 做游戏" />
   <meta property="og:url" content="https://vg.specul.com/engines.html" />
   <meta property="og:title" content="引擎档案 · AI 做游戏" />
-  <meta property="og:description" content="6 个引擎对 AI 的友好度对比 本站判断，不是官方排名；上手难度是另一条独立的轴，每个判断的依据都写在对应档案里。" />
+  <meta property="og:description" content="7 个引擎对 AI 的友好度对比 本站判断，不是官方排名；上手难度是另一条独立的轴，每个判断的依据都写在对应档案里。" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
   <script src="brand.js?v=6a580ac0420e"></script>
   <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"引擎档案 · AI 做游戏","url":"https://vg.specul.com/engines.html","description":"6 个引擎对 AI 的友好度对比 本站判断，不是官方排名。 —— AI 做游戏：判断依据、失败点与我们的口径都在档案里。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"引擎档案 · AI 做游戏","url":"https://vg.specul.com/engines.html","description":"7 个引擎对 AI 的友好度对比 本站判断，不是官方排名。 —— AI 做游戏：判断依据、失败点与我们的口径都在档案里。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
 </head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
@@ -127,6 +127,13 @@
               <td><span data-zh>Web 3D</span><span data-en>web 3D</span></td>
             </tr>
             <tr>
+              <td><a href="engine-cocos.html"><b>Cocos Creator</b></a></td>
+              <td><span class="ai-badge medium"><span data-zh>一般</span><span data-en>mixed</span></span></td>
+              <td><span class="diff-badge medium"><span data-zh>中</span><span data-en>medium</span></span></td>
+              <td><code>TypeScript</code></td>
+              <td><span data-zh>2D/3D 跨平台</span><span data-en>2D/3D cross-platform</span></td>
+            </tr>
+            <tr>
               <td><a href="engine-libgdx.html"><b>libGDX</b></a></td>
               <td><span class="ai-badge medium"><span data-zh>一般</span><span data-en>mixed</span></span></td>
               <td><span class="diff-badge high"><span data-zh>高</span><span data-en>high</span></span></td>
@@ -168,6 +175,11 @@
       <a class="eng-card" href="engine-three-js.html">
         <div class="eng-head"><b><span data-zh>Three.js</span><span data-en>Three.js</span></b><span class="ai-badge high"><span data-zh>友好</span><span data-en>friendly</span></span></div>
         <span class="t-sm"><span data-zh>对 AI 最友好的 3D 方案 —— 但它不是引擎，缺的东西要自己补。</span><span data-en>The most AI-friendly 3D option — but it is not an engine, and the gaps are yours to fill.</span></span>
+        
+      </a>
+      <a class="eng-card" href="engine-cocos.html">
+        <div class="eng-head"><b><span data-zh>Cocos Creator</span><span data-en>Cocos Creator</span></b><span class="ai-badge medium"><span data-zh>一般</span><span data-en>mixed</span></span></div>
+        <span class="t-sm"><span data-zh>微信小游戏生态的默认选择 —— 官方手册专设「发布到微信小游戏」章节；代价是关卡与场景在编辑器里做，AI 只能接管脚本层。</span><span data-en>The default pick in the WeChat Mini Game ecosystem — the official manual has a dedicated &quot;Publish to WeChat Mini Game&quot; chapter; the price is that scenes live in the editor, so AI can only take over the scripting layer.</span></span>
         
       </a>
       <a class="eng-card" href="engine-libgdx.html">

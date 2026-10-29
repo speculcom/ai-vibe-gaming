@@ -298,6 +298,11 @@ const engines = engFiles.map(f => {
 // 按 AI 友好度降序（分数高的排前面）——⚠ 这是本站的判断，不是官方排名
 engines.sort((a, b) => (b.fm.aiScore || 0) - (a.fm.aiScore || 0) || a.fm.zh.localeCompare(b.fm.zh));
 
+/* demos 页的**骨架节**数（`## <引擎> · <语言>` 标题）——「N 个引擎各一份骨架」用它。
+ * ⚠ 别和 engines.length（档案数）混：档案可以没有骨架（Cocos 建档但无骨架节，2026-10-29 C4-4）。 */
+const DEMO_SKELETON_COUNT = fs.readFileSync(path.join(HERE, '..', 'pages', 'demos.md'), 'utf8')
+  .split('\n').filter((l) => /^## .+ · .+/.test(l)).length;
+
 const AI_LABEL = { high: ['友好', 'friendly'], medium: ['一般', 'mixed'], low: ['不友好', 'unfriendly'] };
 const AI_EN = { high: 'friendly', medium: 'mixed', low: 'unfriendly' };
 /* 上手难度 = **人从零到一个能跑的画面有多费事**（只算环境与起步，不算做完一个游戏）。
@@ -627,7 +632,7 @@ ${engineCards(true)}
             <li><a href="./method.html"><b>${bi('实战流程', 'The build order')}</b></a>
               <span class="t-sm">${bi('五步串成一条线，专讲阶段之间的失败点', 'The five steps as one line, focused on failures between stages')}</span></li>
             <li><a href="./demos.html"><b>${bi('最小可玩原型代码清单', 'Minimal prototype code list')}</b></a>
-              <span class="t-sm">${bi(`${engines.length} 个引擎各一份「能操作 / 有目标 / 有反馈」的骨架`, `One operable / goal-directed / responsive skeleton per engine (${engines.length})`)}</span></li>
+              <span class="t-sm">${bi(`${DEMO_SKELETON_COUNT} 个引擎各一份「能操作 / 有目标 / 有反馈」的骨架`, `One operable / goal-directed / responsive skeleton per engine (${DEMO_SKELETON_COUNT})`)}</span></li>
           </ul>
         </div>
 

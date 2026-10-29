@@ -2,14 +2,14 @@
 
 > 本文是**内容仓的必填矩阵**。机器执行方是 [`scripts/validate.mjs`](./scripts/validate.mjs)（**本文与它必须一致**）。
 >
-> 实测规模：**词条 19（阶段 14 · 关键词 5）· 引擎 6 · 贯穿页 2**。
+> 实测规模：**词条 19（阶段 14 · 关键词 5）· 引擎 7 · 贯穿页 2**。
 
 ## 一、文件位置与命名
 
 | 内容 | 路径 |
 |---|---|
 | 阶段词条 + 关键词 | `terms/<名称>.md` —— 阶段页命名 `S<N>-<名称>.md`（如 `S3-手感调参.md`） |
-| 引擎档案 | `terms/engines/<引擎名>.md`（Godot / Bevy / libGDX / Pixi / Phaser / Three.js） |
+| 引擎档案 | `terms/engines/<引擎名>.md`（Godot / Bevy / libGDX / Pixi / Phaser / Three.js / Cocos） |
 | 贯穿页 | `pages/<名称>.md`（`method` / `demos`）—— 不属于任何阶段，讲整条流程 |
 | 立论层 | `claims/*.json`（`boundary.json` · `engines-verified.json`）—— **不是词条**，构建器消费它 |
 | 产物 | `site/` · `data/`（构建生成，不要手改） |

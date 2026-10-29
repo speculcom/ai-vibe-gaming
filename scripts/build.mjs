@@ -84,8 +84,12 @@ for (const [key, file] of [['CLAIMS', 'boundary.json'], ['ENGINES', 'engines-ver
 }
 
 /* 引擎**档案页**数量（terms/engines/*.md）——首页文案里的「N 个引擎」用它。
- * ⚠ 别和 claims 事实表的行数混：事实表含未建档仓库（cocos/love/raylib）。 */
+ * ⚠ 别和 claims 事实表的行数混：事实表含未建档仓库（love/raylib）。 */
 const ENG_PROFILE_COUNT = fs.readdirSync(path.join(HERE, '..', 'terms', 'engines')).filter((f) => f.endsWith('.md')).length;
+/* demos 页的**骨架节**数（`## <引擎> · <语言>` 标题）——「N 个引擎各一份骨架」用它。
+ * ⚠ 别和档案数混：档案可以没有骨架（Cocos 建档但 demos 无骨架节，2026-10-29 C4-4）。 */
+const DEMO_SKELETON_COUNT = fs.readFileSync(path.join(HERE, '..', 'pages', 'demos.md'), 'utf8')
+  .split('\n').filter((l) => /^## .+ · .+/.test(l)).length;
 const ZH_NUM = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
 const EN_NUM = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
 
@@ -298,7 +302,7 @@ function page() {
           </ol>
           <p class="t-sm mt-2"><a href="learn.html">${bi('→ 进入学习路径（含完整教学与常见失败）', '→ Enter the learning path (full walkthrough and common failures)')}</a></p>
           <p class="t-sm mt-2"><a href="method.html">${bi('→ 实战流程（五步串成一条线，专讲交接处的失败）', '→ The build order (five steps as one line, focused on handoff failures)')}</a></p>
-          <p class="t-sm"><a href="demos.html">${bi(`→ 最小可玩原型代码清单（${ZH_NUM[ENG_PROFILE_COUNT]}个引擎各一份可抄的骨架）`, `→ Minimal prototype code list (one copyable skeleton per engine)`)}</a></p>
+          <p class="t-sm"><a href="demos.html">${bi(`→ 最小可玩原型代码清单（${ZH_NUM[DEMO_SKELETON_COUNT]}个引擎各一份可抄的骨架）`, `→ Minimal prototype code list (${EN_NUM[DEMO_SKELETON_COUNT] || DEMO_SKELETON_COUNT} copyable skeletons, one per engine)`)}</a></p>
         </div>
 
         ${claimsBlock()}
