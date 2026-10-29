@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>关卡数据的组织方式 · AI 做游戏</title>
+  <meta name="description" content="关卡写死在代码里，每次改关卡都要 AI 重写一大段代码 —— 这是 AI 迭代最容易失控的地方。 把关卡放进数据（网格 tilemap 或简单数组），代码只负责读数据；碰撞用引擎的碰撞层，别让 AI 手写坐标判断。" />
+  <link rel="canonical" href="https://vg.specul.com/关卡数据的组织方式.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="关卡数据的组织方式 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/关卡数据的组织方式.html" />
+  <meta property="og:title" content="关卡数据的组织方式 · AI 做游戏" />
+  <meta property="og:description" content="关卡写死在代码里，每次改关卡都要 AI 重写一大段代码 —— 这是 AI 迭代最容易失控的地方。 把关卡放进数据（网格 tilemap 或简单数组），代码只负责读数据；碰撞用引擎的碰撞层，别让 AI 手写坐标判断。" />
+  <meta name="theme-color" content="#16121f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <script src="brand.js?v=6a580ac0420e"></script>
+  <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
+  <link rel="stylesheet" href="site.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"关卡数据的组织方式","url":"https://vg.specul.com/关卡数据的组织方式.html","description":"关卡写死在代码里，每次改关卡都要 AI 重写一大段代码 —— 这是 AI 迭代最容易失控的地方。 把关卡放进数据（网格 tilemap 或简单数组），代码只负责读数据；碰撞用引擎的碰撞层，别让 AI 手写坐标判断。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+          <span class="brand-sub" id="markSub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://tools.specul.com/"><span data-zh>AI 工具</span><span data-en>AI Tools</span></a>
+        <a href="https://models.specul.com/"><span data-zh>AI 模型</span><span data-en>AI Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
+      </nav>
+      <!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+      <span class="nav-tools">
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+        <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+      </span>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <span class="brand-sub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://tools.specul.com/"><span><span data-zh>AI 工具</span><span data-en>AI Tools</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>AI 模型</span><span data-en>AI Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>AI 导航</span><span data-en>AI Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>学习路径</span><span data-en>Learning path</span></a> · <span data-zh>第 2 阶段</span><span data-en>Stage 2</span></p>
+        <h1 class="t-hero"><span data-zh>关卡数据的组织方式</span><span data-en>How to organise level data</span></h1>
+        <p class="lede">How to organise level data</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>这一步决定什么</strong></span><span data-en><strong>What this stage decides</strong></span><span data-zh>：关卡写死在代码里，每次改关卡都要 AI 重写一大段代码 —— 这是 AI 迭代最容易失控的地方。</span><span data-en>: Levels hardcoded in the code mean every level change asks AI to rewrite a big chunk of it — the easiest place for AI iteration to spiral out of control.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：把关卡放进数据（网格 tilemap 或简单数组），代码只负责读数据；碰撞用引擎的碰撞层，别让 AI 手写坐标判断。</span><span data-en>: Put levels in data (a tile grid or a plain array) and let the code only read it; use the engine's collision layer instead of asking AI to hand-write coordinate checks.</span></p>
+          <p class="t-xs muted"><span data-zh>性质：部分可核验</span><span data-en>Nature: partly verifiable</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>：AI 改代码会引入错误，改数据不会 —— 所以<strong>关卡应该是数据，不是代码</strong>。</p>
+<p>（这是本站基于「数据与代码分离」工程常识的判断，下面给出主流引擎的官方做法作依据。）</p></span><span data-en><p><strong>In one line</strong>: AI editing code introduces bugs; AI editing data usually does not — so <strong>levels should be data, not code</strong>.</p>
+<p>(This is this site's engineering judgement about separating data from code; the mainstream engines' official practice below is the evidence.)</p></span></div>
+<div class="bi-block"><span data-zh><h2>主流做法：网格（tilemap）+ 图层</h2>
+<p>三大引擎的官方文档都把关卡描述成「网格上的数据」：</p>
+<div class="table-wrap"><table class="src"><thead><tr><th>引擎</th><th>官方说法（当日核对）</th><th>出处</th></tr></thead><tbody>
+<tr><td>Godot</td><td>「tilemap 是用瓦片组成的网格，用来搭建游戏布局」；用 TileMapLayer 节点设计关卡</td><td>官方教程 Using TileMaps，2026-10-29</td></tr>
+<tr><td>Phaser</td><td>官方入门教程「Making your first Phaser 3 game」用 tilemap 搭关卡</td><td>phaser.io 官方教程 Part 5，2026-10-29</td></tr>
+<tr><td>Tiled（编辑器）</td><td>TMX 格式分 <strong>tile layer</strong>（地形）与 <strong>object layer</strong>（出生点、机关等对象）</td><td>TMX map format 参考，2026-10-29</td></tr>
+</tbody></table></div>
+<p>⚠ 这张表核对的是「官方文档怎么说」，不是「你必须用这一种」——但三家一致说明这是被验证的默认路径。</p></span><span data-en><h2>The mainstream approach: a tile grid plus layers</h2>
+<p>All three engines' official docs describe levels as data on a grid:</p>
+<div class="table-wrap"><table class="src"><thead><tr><th>Engine</th><th>Official wording (checked that day)</th><th>Source</th></tr></thead><tbody>
+<tr><td>Godot</td><td>&quot;a tilemap is a grid of tiles used to create a game's layout&quot;; design levels with TileMapLayer nodes</td><td>official tutorial <em>Using TileMaps</em>, 2026-10-29</td></tr>
+<tr><td>Phaser</td><td>the official <em>Making your first Phaser 3 game</em> tutorial builds its level from a tilemap</td><td>phaser.io tutorial Part 5, 2026-10-29</td></tr>
+<tr><td>Tiled (editor)</td><td>the TMX format splits <strong>tile layers</strong> (terrain) from <strong>object layers</strong> (spawns, triggers, etc.)</td><td>TMX map format reference, 2026-10-29</td></tr>
+</tbody></table></div>
+<p>⚠ The table checks what the official docs say, not &quot;you must use this one&quot; — but three engines agreeing is a sign this is the validated default path.</p></span></div>
+<div class="bi-block"><span data-zh><h2>为什么这对 AI 工作流特别重要</h2>
+<p>关卡在代码里时，「把第三段平台往左移」这种小改动意味着让 AI 重写一段渲染+碰撞代码 —— 每次重写都是一次出错机会。关卡在数据里时，同样的改动只是改几个数字或一格瓦片，AI 出错一眼能看出来。</p>
+<ul>
+<li>地形 → 网格数据（tilemap 文件，或代码里的二维数组）</li>
+<li>出生点、机关、可互动物 → 对象层或单独的配置数组</li>
+<li>碰撞 → 用引擎自带的碰撞层/碰撞组，不要让 AI 手写坐标区间</li>
+</ul>
+<p>（这一节是本站对 AI 迭代方式的分析，不是引擎文档原话。）</p></span><span data-en><h2>Why this matters extra for AI workflows</h2>
+<p>When the level lives in code, &quot;move the third platform left&quot; means asking AI to rewrite a chunk of rendering plus collision code — every rewrite is a fresh chance to break something. When the level lives in data, the same change is a few numbers or one tile cell, and a mistake is obvious at a glance.</p>
+<ul>
+<li>Terrain → grid data (a tilemap file, or a 2D array in code)</li>
+<li>Spawns, traps, interactables → an object layer or a separate config array</li>
+<li>Collision → the engine's built-in collision layer/groups; never let AI hand-write coordinate ranges</li>
+</ul>
+<p>(This section is this site's analysis of AI iteration, not engine-doc wording.)</p></span></div>
+<div class="bi-block"><span data-zh><h2>什么时候不用 Tiled 也够</h2>
+<p>极简原型（见 <a href="./最小可玩原型.html">最小可玩原型</a>）里，代码内一个二维数组就是关卡数据 —— 不需要编辑器、不需要 TMX 文件。等你需要可视化编辑、多关卡管理时再迁到 Tiled 这类工具，迁移成本很低（数据本来就在数据里）。</p>
+<p>⚠ 反模式是把关卡「画」在代码里：每个平台一行 <code>add.rectangle(x, y, w, h)</code>。原型阶段偶尔可以，改三版之后它会变成最难维护的部分。</p></span><span data-en><h2>When you don't need Tiled</h2>
+<p>For a bare prototype (see <a href="./最小可玩原型.html">minimal playable prototype</a>), a 2D array in the code <em>is</em> level data — no editor, no TMX file. Move to a tool like Tiled when you want visual editing or multiple levels; the migration is cheap because the data was already data.</p>
+<p>⚠ The anti-pattern is &quot;drawing&quot; the level in code: one <code>add.rectangle(x, y, w, h)</code> line per platform. Fine occasionally in a prototype; after three revisions it becomes the hardest part to maintain.</p></span></div>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p class="t-xs"><span data-zh>有序路径 · 第 6 / 19 篇</span><span data-en>Ordered path · item 6 of 19</span></p>
+          <nav class="term-nav" aria-label="上一篇 / 下一篇">
+            <a class="tn-prev" href="最小可玩原型.html"><span class="tn-dir"><span data-zh>← 上一篇</span><span data-en>← Previous</span></span><b><span data-zh>最小可玩原型</span><span data-en>Minimal playable prototype</span></b></a>
+            <a class="tn-next" href="s3-手感调参.html"><span class="tn-dir"><span data-zh>下一篇 →</span><span data-en>Next →</span></span><b><span data-zh>S3 · 手感调参</span><span data-en>S3 · Game feel &amp; tuning</span></b></a>
+          </nav>
+          <p class="mt-2"><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 <span data-zh>投机取巧</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://tools.specul.com/"><span data-zh>AI 工具</span><span data-en>AI Tools</span></a>
+          <a href="https://models.specul.com/"><span data-zh>AI 模型</span><span data-en>AI Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener"><span data-zh>开源</span><span data-en>Open source</span></a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+    <div class="container">
+      <p class="foot-trademark"><span data-zh>产品名与商标归各权利方所有，本站仅作识别与评论之用。</span><span data-en>Product names and trademarks belong to their respective owners and are used here for identification and commentary only.</span></p>
+    </div>
+  </footer>
+<nav class="nav-tabbar" aria-label="快捷导航">
+  <a href="https://specul.com/"><span class="ti" aria-hidden="true">◎</span><span data-zh>首页</span><span data-en>Home</span></a>
+  <a href="https://learn.specul.com/"><span class="ti" aria-hidden="true">▤</span><span data-zh>学 AI</span><span data-en>Learn</span></a>
+  <a href="https://tools.specul.com/"><span class="ti" aria-hidden="true">◈</span><span data-zh>工具</span><span data-en>Tools</span></a>
+  <a href="https://models.specul.com/"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
+  <button type="button" id="tabMore" aria-controls="navDrawer" aria-expanded="false"><span class="ti" aria-hidden="true">⋯</span><span data-zh>更多</span><span data-en>More</span></button>
+</nav>
+</body>
+</html>

@@ -9,7 +9,7 @@ The **source repo** for "Vibe Gaming" — single source of truth.
 
 ## How to read this
 
-18 terms and 6 engine profiles. Go by the stage you're actually at:
+19 terms and 6 engine profiles. Go by the stage you're actually at:
 
 | Where you are | What to read |
 |---|---|
@@ -112,6 +112,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "message"
 - [Web export feasibility](terms/Web%20%E5%AF%BC%E5%87%BA%E5%8F%AF%E8%A1%8C%E6%80%A7.md) —— If you need long-term saves, multiplayer,…
 - [Structuring the prompt](terms/%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%9A%84%E7%BB%93%E6%9E%84.md) —— Give three things each time: the input ma…
 - [Minimal playable prototype](terms/%E6%9C%80%E5%B0%8F%E5%8F%AF%E7%8E%A9%E5%8E%9F%E5%9E%8B.md) —— How far is far enough? Far enough that th…
+- [How to organise level data](terms/%E5%85%B3%E5%8D%A1%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F.md) —— Put levels in data (a tile grid or a plai…
 - [Game feel checklist](terms/%E6%89%8B%E6%84%9F%E9%97%AE%E9%A2%98%E6%B8%85%E5%8D%95.md) —— First work out whether it is a code probl…
 - [Font licensing traps](terms/%E5%AD%97%E4%BD%93%E7%9A%84%E6%8E%88%E6%9D%83%E9%99%B7%E9%98%B1.md) —— Before using a font, screenshot its licen…
 - [Audio sources and their licences](terms/%E9%9F%B3%E9%A2%91%E7%B4%A0%E6%9D%90%E7%9A%84%E6%9D%A5%E6%BA%90%E4%B8%8E%E6%8E%88%E6%9D%83.md) —— Prefer packs explicitly marked CC0; if yo…
@@ -138,8 +139,8 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "message"
 <!-- STATS:BEGIN generated, do not edit -->
 | Item | Measured value |
 |---|---|
-| Term entries | 18 (stage 13 · keyword 5) |
+| Term entries | 19 (stage 14 · keyword 5) |
 | Engine profiles | 6 (Bevy · Godot · libGDX · Phaser · Pixi · Three.js) |
 | Cross-cutting pages | 2 (demos · method) |
-| Site output | 29 HTML pages |
+| Site output | 30 HTML pages |
 <!-- STATS:END -->
