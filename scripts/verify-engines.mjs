@@ -32,6 +32,7 @@ const ENGINES = [
   { key: 'bevy',   repo: 'bevyengine/bevy',     tier: '原生 3D',     script: 'Rust' },
   { key: 'libgdx', repo: 'libgdx/libgdx',       tier: 'Java 跨平台', script: 'Java / Kotlin' },
   { key: 'pixi',   repo: 'pixijs/pixijs',       tier: 'Web 2D',      script: 'TypeScript' },
+  { key: 'phaser', repo: 'phaserjs/phaser',     tier: 'Web 2D',      script: 'TypeScript / JavaScript' },
   { key: 'three',  repo: 'mrdoob/three.js',     tier: 'Web 3D',      script: 'JavaScript', note: '底层库，不是完整引擎' },
   { key: 'cocos',  repo: 'cocos/cocos-engine',  tier: '2D/3D 跨平台', script: 'TypeScript + C++' },
   { key: 'love',   repo: 'love2d/love',         tier: '2D 轻量',     script: 'Lua / C++ / Fennel' },

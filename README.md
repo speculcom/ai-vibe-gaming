@@ -13,7 +13,7 @@
 
 | 你在哪个阶段 | 读什么 |
 |---|---|
-| 还没定用什么做 | `terms/engines/` 五份引擎档案 —— 先看哪个对 AI 最友好 |
+| 还没定用什么做 | `terms/engines/` 六份引擎档案 —— 先看哪个对 AI 最友好 |
 | 刚跑通第一个能玩的 demo | `S1 选引擎` → `S2 核心循环` |
 | 能玩但不好玩 | `S3 手感调参` —— AI 给的参数为什么总差一点，这篇讲这个 |
 | 准备给人玩 | `S4 资产合规`（美术音频哪能商用）→ `S5 导出发布` |
@@ -37,7 +37,7 @@
 |---|---|---|
 | `claims/` | **立论层**（三张判定表）| ✅ 已完成 |
 | `terms/` | 五阶段教学词条（Markdown + frontmatter）| ✅ 已完成 |
-| `terms/engines/` | 引擎档案（Godot · three.js · Pixi · libGDX · Bevy）| ✅ 已完成 |
+| `terms/engines/` | 引擎档案（Godot · three.js · Pixi · Phaser · libGDX · Bevy）| ✅ 已完成 |
 | `basement/` | 自研基座占位 | ⏸ 暂缓（用户定案）|
 | `site/` | **产物**（推 `vibe-gaming` 仓）| 自动生成 |
 
@@ -119,6 +119,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "说明"
 - [Bevy](terms/engines/Bevy.md)
 - [Godot](terms/engines/Godot.md)
 - [libGDX](terms/engines/libGDX.md)
+- [Phaser](terms/engines/Phaser.md)
 - [Pixi](terms/engines/Pixi.md)
 - [Three.js](terms/engines/Three.js.md)
 
@@ -130,7 +131,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "说明"
 | 项 | 实测值 |
 |---|---|
 | 词条 | 17 条（阶段 12 · 关键词 5） |
-| 引擎档案 | 5 个（Bevy · Godot · libGDX · Pixi · Three.js） |
+| 引擎档案 | 6 个（Bevy · Godot · libGDX · Phaser · Pixi · Three.js） |
 | 贯穿页 | 2 个（demos · method） |
-| 站点产物 | 27 个 HTML 页面 |
+| 站点产物 | 28 个 HTML 页面 |
 <!-- STATS:END -->

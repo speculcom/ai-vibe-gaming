@@ -409,11 +409,11 @@ if (engines.length) {
     { when: { p: 'web', d: 'yes', s: 'no' }, pick: 'engine-three-js', alt: null,
       caveatZh: 'three.js 是库不是引擎：循环与状态要自己写（见引擎档案与 demos 页）', caveatEn: 'three.js is a library, not an engine: you write the loop and state yourself' },
     { when: { p: 'web', d: 'yes', s: 'yes' }, pick: 'engine-three-js', alt: null,
-      caveatZh: '会系统语言不改变 web 3D 的选择：另外四个里没有浏览器 3D 档', caveatEn: 'Systems-language experience does not change web 3D: none of the others offer a browser 3D tier' },
-    { when: { p: 'web', d: 'no', s: 'no' }, pick: 'engine-pixi', alt: null,
-      caveatZh: '只做 2D；要 3D 得换 three.js', caveatEn: '2D only; for 3D switch to three.js' },
-    { when: { p: 'web', d: 'no', s: 'yes' }, pick: 'engine-pixi', alt: null,
-      caveatZh: '同上：web 2D 只有这一个档', caveatEn: 'Same: web 2D has exactly one entry here' },
+      caveatZh: '会系统语言不改变 web 3D 的选择：档案里没有别的浏览器 3D 档', caveatEn: 'Systems-language experience does not change web 3D: no other browser-3D tier in the profiles' },
+    { when: { p: 'web', d: 'no', s: 'no' }, pick: 'engine-pixi', alt: 'engine-phaser',
+      caveatZh: '只做 2D；要 3D 换 three.js。要内置物理/场景/资源加载选 Phaser（见两份档案的对比）', caveatEn: '2D only; for 3D switch to three.js. If you want built-in physics/scenes/asset loading, pick Phaser (see the two profiles side by side)' },
+    { when: { p: 'web', d: 'no', s: 'yes' }, pick: 'engine-pixi', alt: 'engine-phaser',
+      caveatZh: '同上：web 2D 两档 —— Pixi 最薄，Phaser 引擎件最全，按要不需要内置物理选', caveatEn: 'Same: web 2D has two entries — Pixi is the thinnest layer, Phaser ships every engine part; choose by whether you need built-in physics' },
     { when: { p: 'desktop', d: 'yes', s: 'no' }, pick: 'engine-godot', alt: 'engine-bevy',
       caveatZh: 'Bevy 是 Rust 生态，官方文档与社区示例相对少；Godot 的 GDScript 更容易让 AI 一次写对', caveatEn: 'Bevy is Rust-first with fewer official examples; Godot GDScript is easier for an AI to get right first try' },
     { when: { p: 'desktop', d: 'yes', s: 'yes' }, pick: 'engine-godot', alt: 'engine-bevy',
@@ -441,16 +441,21 @@ if (engines.length) {
   });
   /* 数据里带 pick/alt 的原始对象（含 slug/name/why），文案字段是 why（中文）与 whyEn。
    * 前端按语言取 why / whyEn —— 所以在内嵌 JSON 里两个都要留。 */
+  /* ⚠ 前端（engine-tree.js）英文态读 hit.pickEn / hit.altEn —— 内嵌 JSON 必须带这两个键，
+   * 否则英文态 card(undefined) 直接抛 TypeError（2026-10-29 C4-1 截图暴露的既有 bug）。 */
   const treeJson = treeData.map((t) => ({
     when: t.when,
     pick: { ...t.pick }, alt: t.alt ? { ...t.alt } : null,
+    pickEn: { ...t.pick }, altEn: t.alt ? { ...t.alt } : null,
     caveat: t.caveat, caveatEn: t.caveatEn,
   }));
   // 把 whyEn 并进 pick/alt（前端读 e.why / e.whyEn）
   for (const t of treeJson) {
     const src = treeData.find((x) => x.when === t.when);
     t.pick.whyEn = src.pick.whyEn;
+    t.pickEn.whyEn = src.pick.whyEn;
     if (t.alt) t.alt.whyEn = src.alt.whyEn;
+    if (t.altEn) t.altEn.whyEn = src.alt.whyEn;
   }
   const ENGINE_TREE_JS = fs.readFileSync(path.join(HERE, 'engine-tree.js'), 'utf8');
 
@@ -501,7 +506,7 @@ if (engines.length) {
 
   const cmpHtml = shell({    current: 'vg',
     title: `引擎档案 · AI 做游戏`,
-    desc: metaDesc('五个引擎对 AI 的友好度对比', '本站判断，不是官方排名；上手难度是另一条独立的轴，每个判断的依据都写在对应档案里。'),
+    desc: metaDesc(`${engines.length} 个引擎对 AI 的友好度对比`, '本站判断，不是官方排名；上手难度是另一条独立的轴，每个判断的依据都写在对应档案里。'),
     canonical: `https://${SITE_INFO.domain}/engines.html`,
     /* B5：引擎对比页的结构性数据。 */
     jsonLd: {
@@ -509,7 +514,7 @@ if (engines.length) {
       '@type': 'CollectionPage',
       name: '引擎档案 · AI 做游戏',
       url: `https://${SITE_INFO.domain}/engines.html`,
-      description: metaDesc('五个引擎对 AI 的友好度对比', '本站判断，不是官方排名。'),
+      description: metaDesc(`${engines.length} 个引擎对 AI 的友好度对比`, '本站判断，不是官方排名。'),
       inLanguage: 'zh-Hans',
       isPartOf: { '@type': 'WebSite', name: 'AI 做游戏', url: `https://${SITE_INFO.domain}/` },
     },
@@ -603,8 +608,8 @@ ${keywords.map(kwItem).join('\n')}
         ${engines.length ? `<div class="panel">
           <h2>${bi('引擎档案', 'Engine profiles')}</h2>
           <p class="t-sm mb-3">${bi(
-            inline('五个引擎对 AI 的友好度。⚠ **这是本站的判断**，不是官方评级 —— 依据写在每个档案里。'),
-            inline('Five engines by how AI-friendly they are. ⚠ **This is the site\'s judgement**, not an official rating — the reasoning is in each profile.'),
+            inline(`${engines.length} 个引擎对 AI 的友好度。⚠ **这是本站的判断**，不是官方评级 —— 依据写在每个档案里。`),
+            inline(`${engines.length} engines by how AI-friendly they are. ⚠ **This is the site's judgement**, not an official rating — the reasoning is in each profile.`),
           )}</p>
           <div class="eng-grid">
 ${engineCards(true)}
@@ -622,7 +627,7 @@ ${engineCards(true)}
             <li><a href="./method.html"><b>${bi('实战流程', 'The build order')}</b></a>
               <span class="t-sm">${bi('五步串成一条线，专讲阶段之间的失败点', 'The five steps as one line, focused on failures between stages')}</span></li>
             <li><a href="./demos.html"><b>${bi('最小可玩原型代码清单', 'Minimal prototype code list')}</b></a>
-              <span class="t-sm">${bi('五个引擎各一份「能操作 / 有目标 / 有反馈」的骨架', 'One operable / goal-directed / responsive skeleton per engine')}</span></li>
+              <span class="t-sm">${bi(`${engines.length} 个引擎各一份「能操作 / 有目标 / 有反馈」的骨架`, `One operable / goal-directed / responsive skeleton per engine (${engines.length})`)}</span></li>
           </ul>
         </div>
 

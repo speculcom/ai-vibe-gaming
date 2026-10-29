@@ -1,8 +1,8 @@
 ---
 zh: "最小可玩原型代码清单"
 en: "Minimal prototype code list"
-what: "五个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。"
-whatEn: "One minimal skeleton per engine covering operable / goal-directed / responsive — a starting point to copy, not a finished thing."
+what: "六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。"
+whatEn: "One minimal skeleton per engine (six) covering operable / goal-directed / responsive — a starting point to copy, not a finished thing."
 decision: "抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。"
 decisionEn: "Copy a skeleton, change three numbers (speed, target position, feedback), and get it running — polishing art during prototyping is the most expensive detour."
 confidence: our-judgement
@@ -11,7 +11,7 @@ confidence: our-judgement
 # 最小可玩原型代码清单
 
 每个阶段页都在说「先做最小可玩原型」，但**没人给过能直接抄的骨架**。
-这一页补上：五个引擎各一段最小骨架，外加一张共用清单。
+这一页补上：六个引擎各一段最小骨架，外加一张共用清单。
 
 ⚠ **本站铁律：不做实测。** 下面的骨架是**起点模板，未经本站运行验证**；
 每一段都附了官方入门文档的出处 —— 跑不通时，先看官方那一份。
@@ -242,6 +242,59 @@ app.ticker.add(({ deltaTime }) => {
 > ```
 >
 > Source: PixiJS official *Quick Start* (`pixijs.com`).
+
+## Phaser · TypeScript
+
+```ts
+import Phaser from 'phaser';
+
+class Play extends Phaser.Scene {
+  create() {
+    this.player = this.add.rectangle(80, 120, 40, 40, 0x4ade80);
+    this.target = this.add.circle(420, 120, 16, 0xfacc15);
+    this.keys = this.input.keyboard!.addKeys('left,right');   // 能操作
+  }
+  update() {
+    if (this.keys.left.isDown) this.player.x -= 4;            // 能操作
+    if (this.keys.right.isDown) this.player.x += 4;
+    if (Math.abs(this.player.x - this.target.x) < 24) {
+      this.target.setVisible(false);                          // 有目标
+      this.player.setFillStyle(0xfacc15);                     // 反馈
+    }
+  }
+}
+
+new Phaser.Game({ type: Phaser.AUTO, width: 800, height: 300, scene: Play });
+```
+
+出处：Phaser 官方 *Making your first Phaser Game* 与 examples 站（`phaser.io`）。
+
+<!-- EN -->
+> ## Phaser · TypeScript
+>
+> ```ts
+> import Phaser from 'phaser';
+>
+> class Play extends Phaser.Scene {
+>   create() {
+>     this.player = this.add.rectangle(80, 120, 40, 40, 0x4ade80);
+>     this.target = this.add.circle(420, 120, 16, 0xfacc15);
+>     this.keys = this.input.keyboard!.addKeys('left,right');   // operable
+>   }
+>   update() {
+>     if (this.keys.left.isDown) this.player.x -= 4;            // operable
+>     if (this.keys.right.isDown) this.player.x += 4;
+>     if (Math.abs(this.player.x - this.target.x) < 24) {
+>       this.target.setVisible(false);                          // goal
+>       this.player.setFillStyle(0xfacc15);                     // responsive
+>     }
+>   }
+> }
+>
+> new Phaser.Game({ type: Phaser.AUTO, width: 800, height: 300, scene: Play });
+> ```
+>
+> Source: Phaser's official *Making your first Phaser Game* and the examples site (`phaser.io`).
 
 ## libGDX · Java
 

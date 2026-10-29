@@ -83,6 +83,12 @@ for (const [key, file] of [['CLAIMS', 'boundary.json'], ['ENGINES', 'engines-ver
   if (key === 'CLAIMS') CLAIMS = j; else ENGINES = j;
 }
 
+/* 引擎**档案页**数量（terms/engines/*.md）——首页文案里的「N 个引擎」用它。
+ * ⚠ 别和 claims 事实表的行数混：事实表含未建档仓库（cocos/love/raylib）。 */
+const ENG_PROFILE_COUNT = fs.readdirSync(path.join(HERE, '..', 'terms', 'engines')).filter((f) => f.endsWith('.md')).length;
+const ZH_NUM = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
+const EN_NUM = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+
 /** 成本变化 → 视觉标记（↓ 越多越深），并标注这是判断不是数据 */
 /* 成本标记的英文侧不用箭头 —— 英文里 down a lot 比 ↓↓ 更自然。*/
 const COST_MARKS = {
@@ -206,6 +212,10 @@ const EN_MATURITY = {
 function enginesBlock() {
   if (!ENGINES) return '';
   const list = Object.values(ENGINES);
+  /* 计数文案从数据算（R4：数字不写死）——加/减引擎档案不用改这里。
+   * ⚠ 两个口径别混：这张**事实表**的行数 = claims 快照里的仓库数（含没建档的，
+   * 如 cocos/love/raylib）；「这 N 个引擎的判断与依据」指的是**档案页**数量，
+   * 用文件顶部的 ENG_PROFILE_COUNT（2026-10-29 C4-1：曾误用 claims 条数=9）。 */
   const rows = list.map(e => {
     const lic = e.licenseReadable
       ? `<code>${esc(e.license)}</code>`
@@ -225,10 +235,10 @@ function enginesBlock() {
   return `
         <div class="panel" id="engines">
           <h2>${bi('附·引擎的可核验事实', 'Appendix · Verifiable engine facts')}</h2>
-          <p class="t-sm mt-2"><a href="./engines.html">${bi('→ 按「对 AI 的友好度」看这五个引擎的判断与依据', '→ See the five engines by how AI-friendly they are, with the reasoning')}</a></p>
+          <p class="t-sm mt-2"><a href="./engines.html">${bi(`→ 按「对 AI 的友好度」看这${ZH_NUM[ENG_PROFILE_COUNT]}个引擎的判断与依据`, `→ See the ${EN_NUM[ENG_PROFILE_COUNT] || ENG_PROFILE_COUNT} engines by how AI-friendly they are, with the reasoning`)}</a></p>
           <p class="t-sm mb-3">${bi(
-            `下面每一条都取自 GitHub 官方 API，快照时间 2026-10-05。上面三张表是判断，这张表是事实 —— 两者不要混读。`,
-            `Every row below comes from the official GitHub API, snapshotted 2026-10-05. The three tables above are judgements; this one is fact — do not read them as the same kind of claim.`,
+            `下面每一条都取自 GitHub 官方 API，快照时间 ${[...new Set(list.map(e => e.verifiedAt))].join(' · ')}。上面三张表是判断，这张表是事实 —— 两者不要混读。`,
+            `Every row below comes from the official GitHub API, snapshotted ${[...new Set(list.map(e => e.verifiedAt))].join(' · ')}. The three tables above are judgements; this one is fact — do not read them as the same kind of claim.`,
           )}</p>
           <div class="table-wrap">
             <table class="src">
@@ -288,7 +298,7 @@ function page() {
           </ol>
           <p class="t-sm mt-2"><a href="learn.html">${bi('→ 进入学习路径（含完整教学与常见失败）', '→ Enter the learning path (full walkthrough and common failures)')}</a></p>
           <p class="t-sm mt-2"><a href="method.html">${bi('→ 实战流程（五步串成一条线，专讲交接处的失败）', '→ The build order (five steps as one line, focused on handoff failures)')}</a></p>
-          <p class="t-sm"><a href="demos.html">${bi('→ 最小可玩原型代码清单（五个引擎各一份可抄的骨架）', '→ Minimal prototype code list (one copyable skeleton per engine)')}</a></p>
+          <p class="t-sm"><a href="demos.html">${bi(`→ 最小可玩原型代码清单（${ZH_NUM[ENG_PROFILE_COUNT]}个引擎各一份可抄的骨架）`, `→ Minimal prototype code list (one copyable skeleton per engine)`)}</a></p>
         </div>
 
         ${claimsBlock()}

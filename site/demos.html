@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>最小可玩原型代码清单 · AI 做游戏</title>
-  <meta name="description" content="五个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。 抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。" />
+  <meta name="description" content="六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。 抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。" />
   <link rel="canonical" href="https://vg.specul.com/demos.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="最小可玩原型代码清单 · AI 做游戏" />
   <meta property="og:url" content="https://vg.specul.com/demos.html" />
   <meta property="og:title" content="最小可玩原型代码清单 · AI 做游戏" />
-  <meta property="og:description" content="五个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。 抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。" />
+  <meta property="og:description" content="六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。 抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
   <script src="brand.js?v=6a580ac0420e"></script>
   <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"最小可玩原型代码清单","url":"https://vg.specul.com/demos.html","description":"五个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。 抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"最小可玩原型代码清单","url":"https://vg.specul.com/demos.html","description":"六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。 抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
 </head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
@@ -88,14 +88,14 @@
         <p class="lede">Minimal prototype code list</p>
 
         <div class="panel term-meta">
-          <p class="t-lead"><span data-zh><strong>这一页解决什么</strong></span><span data-en><strong>What this page solves</strong></span><span data-zh>：五个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。</span><span data-en>: One minimal skeleton per engine covering operable / goal-directed / responsive — a starting point to copy, not a finished thing.</span></p>
+          <p class="t-lead"><span data-zh><strong>这一页解决什么</strong></span><span data-en><strong>What this page solves</strong></span><span data-zh>：六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。</span><span data-en>: One minimal skeleton per engine (six) covering operable / goal-directed / responsive — a starting point to copy, not a finished thing.</span></p>
           <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。</span><span data-en>: Copy a skeleton, change three numbers (speed, target position, feedback), and get it running — polishing art during prototyping is the most expensive detour.</span></p>
           <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span></p>
         </div>
 
         <div class="term-body">
 <div class="bi-block"><span data-zh><p>每个阶段页都在说「先做最小可玩原型」，但<strong>没人给过能直接抄的骨架</strong>。</p>
-<p>这一页补上：五个引擎各一段最小骨架，外加一张共用清单。</p>
+<p>这一页补上：六个引擎各一段最小骨架，外加一张共用清单。</p>
 <p>⚠ <strong>本站铁律：不做实测。</strong> 下面的骨架是<strong>起点模板，未经本站运行验证</strong>；</p>
 <p>每一段都附了官方入门文档的出处 —— 跑不通时，先看官方那一份。</p></span><span data-en><p>Every stage page says &quot;build the minimal playable prototype first&quot;, but <strong>nobody hands you a skeleton to copy</strong>.</p>
 <p>This page does: one minimal skeleton per engine, plus a shared checklist.</p>
@@ -277,6 +277,47 @@ app.ticker.add(({ deltaTime }) =&gt; {
   }
 });</code></pre>
 <p>Source: PixiJS official <em>Quick Start</em> (<code>pixijs.com</code>).</p></span></div>
+<div class="bi-block"><span data-zh><h2>Phaser · TypeScript</h2>
+<pre class="code"><code class="lang-ts">import Phaser from 'phaser';
+
+class Play extends Phaser.Scene {
+  create() {
+    this.player = this.add.rectangle(80, 120, 40, 40, 0x4ade80);
+    this.target = this.add.circle(420, 120, 16, 0xfacc15);
+    this.keys = this.input.keyboard!.addKeys('left,right');   // 能操作
+  }
+  update() {
+    if (this.keys.left.isDown) this.player.x -= 4;            // 能操作
+    if (this.keys.right.isDown) this.player.x += 4;
+    if (Math.abs(this.player.x - this.target.x) &lt; 24) {
+      this.target.setVisible(false);                          // 有目标
+      this.player.setFillStyle(0xfacc15);                     // 反馈
+    }
+  }
+}
+
+new Phaser.Game({ type: Phaser.AUTO, width: 800, height: 300, scene: Play });</code></pre>
+<p>出处：Phaser 官方 <em>Making your first Phaser Game</em> 与 examples 站（<code>phaser.io</code>）。</p></span><span data-en><h2>Phaser · TypeScript</h2>
+<pre class="code"><code class="lang-ts">import Phaser from 'phaser';
+
+class Play extends Phaser.Scene {
+  create() {
+    this.player = this.add.rectangle(80, 120, 40, 40, 0x4ade80);
+    this.target = this.add.circle(420, 120, 16, 0xfacc15);
+    this.keys = this.input.keyboard!.addKeys('left,right');   // operable
+  }
+  update() {
+    if (this.keys.left.isDown) this.player.x -= 4;            // operable
+    if (this.keys.right.isDown) this.player.x += 4;
+    if (Math.abs(this.player.x - this.target.x) &lt; 24) {
+      this.target.setVisible(false);                          // goal
+      this.player.setFillStyle(0xfacc15);                     // responsive
+    }
+  }
+}
+
+new Phaser.Game({ type: Phaser.AUTO, width: 800, height: 300, scene: Play });</code></pre>
+<p>Source: Phaser's official <em>Making your first Phaser Game</em> and the examples site (<code>phaser.io</code>).</p></span></div>
 <div class="bi-block"><span data-zh><h2>libGDX · Java</h2>
 <p>用 gdx-liftoff 生成工程后，把 <code>core</code> 里那个 <code>ApplicationAdapter</code> 换成这段。</p>
 <pre class="code"><code class="lang-java">import com.badlogic.gdx.ApplicationAdapter;

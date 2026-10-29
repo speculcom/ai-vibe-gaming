@@ -137,13 +137,13 @@ confidence: our-judgement
 
 ## 想直接抄代码
 
-五个引擎的**最小骨架**（能操作 / 有目标 / 有反馈）见 [最小可玩原型代码清单](./demos.html)。
+六个引擎的**最小骨架**（能操作 / 有目标 / 有反馈）见 [最小可玩原型代码清单](./demos.html)。
 ⚠ 那些骨架**未经本站实测**，是起点模板，每个都附了官方入门出处。
 
 <!-- EN -->
 > ## If you just want code to copy
 >
-> Minimal skeletons for the five engines (operable / goal-directed / responsive) are in [The minimal prototype code list](./demos.html).
+> Minimal skeletons for the six engines (operable / goal-directed / responsive) are in [The minimal prototype code list](./demos.html).
 > ⚠ Those skeletons are **not tested by this site** — they are starting templates, each with a link to the official tutorial.
 
 ---

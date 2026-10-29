@@ -134,5 +134,22 @@
     "caveat": null,
     "verifiedAt": "2026-10-05",
     "source": "https://api.github.com/repos/raysan5/raylib"
+  },
+  "phaser": {
+    "key": "phaser",
+    "repo": "phaserjs/phaser",
+    "repoUrl": "https://github.com/phaserjs/phaser",
+    "stars": 40590,
+    "coreLanguage": "JavaScript",
+    "license": "MIT",
+    "licenseReadable": true,
+    "pushedAt": "2026-08-21",
+    "archived": false,
+    "description": "Phaser is a fun, free and fast 2D game framework for making HTML5 games for desktop and mobile web browsers, supporting Canvas and WebGL rendering.",
+    "tier": "Web 2D",
+    "scriptLanguage": "TypeScript / JavaScript",
+    "caveat": null,
+    "verifiedAt": "2026-10-29",
+    "source": "https://api.github.com/repos/phaserjs/phaser"
   }
 }
