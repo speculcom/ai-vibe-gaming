@@ -6,7 +6,7 @@ A single path through five stages (pick an engine → core loop → feel tuning 
 
 ## Size (computed from data — see the build scripts under `scripts/` and `_audit/gen-repo-docs.mjs`)
 
-19 entries (stage 14 · keyword 5) + 7 engine profiles + 2 cross-cutting pages, building 31 pages.
+20 entries (stage 15 · keyword 5) + 7 engine profiles + 2 cross-cutting pages, building 32 pages.
 
 ## Content map
 
