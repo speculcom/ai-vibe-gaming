@@ -17,13 +17,13 @@ bestForEn: "⚠ Shipping to Android with a Java/Kotlin team"
 install: "先装 JDK 17 或更高，官方推荐**正好 21**（否则 Construo 桌面打包要额外改配置）。从 gdx-liftoff 的 releases 下那个**名字里不带操作系统的 .jar**（跨平台）→ `java -jar gdx-liftoff-VERSION.jar` → 在 GUI 里填工程名 / 目标平台 / 语言 → Generate。产出是 Gradle 多模块工程，再用 IDE 打开。当前默认对应 libGDX 1.14.2。"
 installEn: "Install JDK 17 or newer; the docs recommend **exactly 21** (otherwise Construo desktop packaging needs extra configuration). Download the **.jar with no OS in its name** (cross-platform) from the gdx-liftoff releases → `java -jar gdx-liftoff-VERSION.jar` → set project name, target platforms and language in the GUI → Generate. It produces a multi-module Gradle project that you then open in an IDE. It currently targets libGDX 1.14.2."
 installSrc: "https://github.com/libgdx/gdx-liftoff"
-installVerified: "2026-10-09"
+installVerified: "2026-10-30"
 difficulty: high
 difficultyWhy: "JDK + jar + Gradle 多模块 + IDE 配置，四步都走完才能看到空窗口；官方为此单独写了一篇 Troubleshooting。"
 difficultyWhyEn: "JDK, the jar, a multi-module Gradle project and IDE setup — four steps before an empty window appears; the project ships a dedicated Troubleshooting guide for exactly this."
 confidence: our-judgement
-verified: "2026-10-05 · GitHub API 快照"
-verifiedEn: "2026-10-05 · GitHub API snapshot"
+verified: "2026-10-30 · GitHub API 快照"
+verifiedEn: "2026-10-30 · GitHub API snapshot"
 ---
 
 # libGDX
@@ -93,7 +93,7 @@ verifiedEn: "2026-10-05 · GitHub API snapshot"
 | 仓库 | `libgdx/libgdx` | GitHub API |
 | 许可 | **Apache-2.0** | 同上 |
 | 主语言 | Java | 同上 |
-| ★ | 25,422 | 同上 |
+| ★ | 25,491 | 同上 |
 | 最后提交 | 2026-09-24 | 同上（活跃）|
 | 官方定位 | “Desktop/Android/HTML5/iOS Java game development framework” | 官方 README |
 
@@ -105,7 +105,7 @@ verifiedEn: "2026-10-05 · GitHub API snapshot"
 > | Repository | `libgdx/libgdx` | GitHub API |
 > | Licence | **Apache-2.0** | same |
 > | Main language | Java | same |
-> | Stars | 25,422 | same |
+> | Stars | 25,491 | same |
 > | Last push | 2026-09-24 | same (active) |
 > | Official description | "Desktop/Android/HTML5/iOS Java game development framework" | official README |
 

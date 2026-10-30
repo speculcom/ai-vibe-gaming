@@ -17,13 +17,13 @@ bestForEn: "2D web games and small prototypes"
 install: "装 Node.js v20 或更高 → `npm create pixi.js@latest` 生成脚手架（官方推荐 Vite + PixiJS 模板）→ `npm install` → `npm run dev`。也可以只往已有工程里加：`npm install pixi.js`。"
 installEn: "Install Node.js v20 or newer → `npm create pixi.js@latest` to scaffold (the docs recommend the Vite + PixiJS template) → `npm install` → `npm run dev`. Or add it to an existing project with `npm install pixi.js`."
 installSrc: "https://pixijs.com/8.x/guides/getting-started/quick-start"
-installVerified: "2026-10-09"
+installVerified: "2026-10-30"
 difficulty: low
 difficultyWhy: "一条命令出可跑工程 —— 官方给了脚手架模板，比自己拼一份构建配置省事。前置只有一个 Node.js。"
 difficultyWhyEn: "One command yields a runnable project — the docs ship scaffolding templates, so you do not assemble a build setup yourself. The only prerequisite is Node.js."
 confidence: our-judgement
-verified: "2026-10-05 · GitHub API 快照"
-verifiedEn: "2026-10-05 · GitHub API snapshot"
+verified: "2026-10-30 · GitHub API 快照"
+verifiedEn: "2026-10-30 · GitHub API snapshot"
 ---
 
 # Pixi
@@ -85,7 +85,7 @@ verifiedEn: "2026-10-05 · GitHub API snapshot"
 | 仓库 | `pixijs/pixijs` | GitHub API |
 | 许可 | **MIT** | 同上 |
 | 主语言 | TypeScript | 同上 |
-| ★ | 48,284 | 同上 |
+| ★ | 48,594 | 同上 |
 | 最后提交 | 2026-10-03 | 同上（**活跃**）|
 | 官方定位 | “The HTML5 Creation Engine” | 官方 README |
 
@@ -97,7 +97,7 @@ verifiedEn: "2026-10-05 · GitHub API snapshot"
 > | Repository | `pixijs/pixijs` | GitHub API |
 > | Licence | **MIT** | same |
 > | Main language | TypeScript | same |
-> | Stars | 48,284 | same |
+> | Stars | 48,594 | same |
 > | Last push | 2026-10-03 | same (**active**) |
 > | Official description | "The HTML5 Creation Engine" | official README |
 

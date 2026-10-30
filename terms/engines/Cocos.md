@@ -17,13 +17,13 @@ bestForEn: "2D/3D cross-platform releases targeting WeChat Mini Games / instant 
 install: "官网下载 **Dashboard**，经 Dashboard 安装各版本 Cocos Creator；工程在 Creator 编辑器里创建、构建、发布（不是 npm 脚手架工作流）。"
 installEn: "Download the **Dashboard** from the official site and install Cocos Creator versions through it; projects are created, built and published inside the Creator editor (not an npm-scaffold workflow)."
 installSrc: "https://www.cocos.com/creator-download"
-installVerified: "2026-10-29"
+installVerified: "2026-10-30"
 difficulty: medium
 difficultyWhy: "脚本层是 TypeScript（AI 友好），但主入口是 GUI 编辑器：装 Dashboard、开编辑器、在场景视图里搭东西 —— 没有「一条命令出可跑工程」的路径，AI 也进不了场景编辑那一步。"
 difficultyWhyEn: "The scripting layer is TypeScript (AI-friendly), but the main entry is a GUI editor: install the Dashboard, open Creator, assemble things in the scene view — there is no one-command runnable-project path, and AI cannot enter the scene-editing step."
 confidence: our-judgement
-verified: "2026-10-29 · GitHub API 快照"
-verifiedEn: "2026-10-29 · GitHub API snapshot"
+verified: "2026-10-30 · GitHub API 快照"
+verifiedEn: "2026-10-30 · GitHub API snapshot"
 ---
 
 # Cocos Creator
@@ -82,7 +82,7 @@ verifiedEn: "2026-10-29 · GitHub API snapshot"
 | 项 | 值 | 核验源 |
 |---|---|---|
 | 仓库 | `cocos/cocos-engine` | GitHub API |
-| ★ | 9,893 | 同上 |
+| ★ | 9,894 | 同上 |
 | 最后提交 | 2026-10-28 | 同上（**活跃**）|
 | 仓库 LICENSE.md | **MIT** | 仓库 raw 文件当日核对 |
 | GitHub 许可字段 | ⚠ **NOASSERTION**（与 LICENSE.md 不一致）| GitHub API —— 合规审查时以仓库 LICENSE.md 文本为准，但别只看 GitHub 徽章 |
@@ -93,7 +93,7 @@ verifiedEn: "2026-10-29 · GitHub API snapshot"
 > | Item | Value | Source |
 > |---|---|---|
 > | Repository | `cocos/cocos-engine` | GitHub API |
-> | Stars | 9,893 | same |
+> | Stars | 9,894 | same |
 > | Last push | 2026-10-28 | same (**active**) |
 > | Repo LICENSE.md | **MIT** | raw file in the repo, checked that day |
 > | GitHub licence field | ⚠ **NOASSERTION** (inconsistent with LICENSE.md) | GitHub API — for compliance, trust the LICENSE.md text in the repo, not the GitHub badge |

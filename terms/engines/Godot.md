@@ -17,13 +17,13 @@ bestForEn: "A first AI-assisted game, or a gameplay-driven 2D/3D prototype"
 install: "官网下 Windows 包 → **解压即用，无需安装**（官方原文：Godot is self-contained and does not require installation）。当前稳定版 4.7.2（2026-08-18）。只有要 C# 才另装 .NET SDK；导出时需另下 Export templates。商店版（Steam / itch / EGS）不含 .NET 支持。"
 installEn: "Download the Windows build from the official site and **extract it — there is no installation step** (official wording: Godot is self-contained and does not require installation). Current stable is 4.7.2 (18 Aug 2026). Only C# needs the .NET SDK on top; export templates are a separate download. Store builds (Steam / itch / EGS) do not include .NET support."
 installSrc: "https://godotengine.org/download/windows/"
-installVerified: "2026-10-09"
+installVerified: "2026-10-30"
 difficulty: low
 difficultyWhy: "零安装、零构建工具：解压、双击、新建项目，就能写第一行 GDScript。上面五个里只有它不需要额外运行时。"
 difficultyWhyEn: "No installer and no build toolchain: extract, double-click, create a project, write your first GDScript. It is the only one of the five that needs no extra runtime."
 confidence: our-judgement
-verified: "2026-10-05 · GitHub API 快照"
-verifiedEn: "2026-10-05 · GitHub API snapshot"
+verified: "2026-10-30 · GitHub API 快照"
+verifiedEn: "2026-10-30 · GitHub API snapshot"
 ---
 
 # Godot
@@ -112,7 +112,7 @@ verifiedEn: "2026-10-05 · GitHub API snapshot"
 | 仓库 | `godotengine/godot` | GitHub API |
 | 许可 | **MIT** | 同上 |
 | 主语言 | C++ | 同上 |
-| ★ | 118,127 | 同上 |
+| ★ | 119,279 | 同上 |
 | 最后提交 | 2026-10-04 | 同上（**活跃**）|
 | 脚本语言 | GDScript / C# | 官方文档 |
 | 核验日 | 2026-10-05 | — |
@@ -125,7 +125,7 @@ verifiedEn: "2026-10-05 · GitHub API snapshot"
 > | Repository | `godotengine/godot` | GitHub API |
 > | Licence | **MIT** | same |
 > | Main language | C++ | same |
-> | Stars | 118,127 | same |
+> | Stars | 119,279 | same |
 > | Last push | 2026-10-04 | same (**active**) |
 > | Scripting | GDScript / C# | official docs |
 > | Verified on | 2026-10-05 | — |

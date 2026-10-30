@@ -5,7 +5,7 @@
     "stage": "P1",
     "principle": "每条判断必须能回溯到官方源，或显式标注「我们的口径」。v3 铁律第4 条。",
     "criticalNote": "⚠ **成本下降幅度没有权威来源。** 下面 table-1 的costChange 列是**我们的判断**，不是实测数据。它基于「AI 在该环节能替代什么」的定性推理，不是测量结果。引用时请连同这句一起引用。",
-    "verifiedData": "engines-verified.json（GitHub API，2026-10-05）"
+    "verifiedData": "engines-verified.json（GitHub API，2026-10-30 复测）"
   },
   "table1_whatChanged": {
     "title": "表 1 · AI 改变了做游戏的哪部分",
@@ -218,7 +218,7 @@
     "introEn": "⚠ This table is **the site's judgement**, not data. It is meant as a starting point, not an answer key."
   },
   "enginesReference": {
-    "_note": "引擎的可核验事实（GitHub API，2026-10-05），供表格 2 与词条引用。详见 engines-verified.json。",
+    "_note": "引擎的可核验事实（GitHub API，2026-10-30 复测），供表格 2 与词条引用。详见 engines-verified.json。",
     "caveatImportant": "⚠ **cocos 与 love 的许可在 GitHub 上是 NOASSERTION** —— 机器无法判定，须读官方 LICENSE 与官网条款。"
   }
 }

@@ -17,13 +17,13 @@ bestForEn: "⚠ People who know Rust and accept being slowed down by AI"
 install: "先装 Rust 工具链（rustup）；**Windows 还要装 Visual Studio C++ Build Tools**，勾选 Desktop development with C++。然后 `cargo new my_bevy_game` → `cargo add bevy` → `cargo run`。首次会**从源码编译整个引擎**，耗时明显；官方建议在 Cargo.toml 里给 dev profile 加 opt-level。"
 installEn: "Install the Rust toolchain (rustup); **on Windows you also need the Visual Studio C++ Build Tools** with the Desktop development with C++ workload. Then `cargo new my_bevy_game` → `cargo add bevy` → `cargo run`. The first build **compiles the whole engine from source** and takes a while; the docs recommend dev-profile opt-level settings in Cargo.toml."
 installSrc: "https://bevy.org/learn/quick-start/getting-started/setup/"
-installVerified: "2026-10-09"
+installVerified: "2026-10-30"
 difficulty: high
 difficultyWhy: "三件前置（Rust 工具链 + C++ Build Tools + 首次长编译），外加 ECS 这套与「对象 / 继承」完全不同的心智模型。"
 difficultyWhyEn: "Three prerequisites (Rust toolchain, C++ Build Tools, a long first compile), plus ECS — a mental model with nothing in common with objects and inheritance."
 confidence: our-judgement
-verified: "2026-10-05 · GitHub API 快照"
-verifiedEn: "2026-10-05 · GitHub API snapshot"
+verified: "2026-10-30 · GitHub API 快照"
+verifiedEn: "2026-10-30 · GitHub API snapshot"
 ---
 
 # Bevy
@@ -122,7 +122,7 @@ cannot borrow `x` as mutable because it is also borrowed as immutable
 | 仓库 | `bevyengine/bevy` | GitHub API |
 | 许可 | **Apache-2.0** | 同上 |
 | 主语言 | Rust | 同上 |
-| ★ | 48,611 | 同上 |
+| ★ | 49,380 | 同上 |
 | 最后提交 | 2026-10-04 | 同上（**活跃**）|
 | 官方定位 | “A refreshingly simple data-driven game engine built in Rust” | 官方 README |
 
@@ -134,7 +134,7 @@ cannot borrow `x` as mutable because it is also borrowed as immutable
 > | Repository | `bevyengine/bevy` | GitHub API |
 > | Licence | **Apache-2.0** | same |
 > | Main language | Rust | same |
-> | Stars | 48,611 | same |
+> | Stars | 49,380 | same |
 > | Last push | 2026-10-04 | same (**active**) |
 > | Official description | "A refreshingly simple data-driven game engine built in Rust" | official README |
 

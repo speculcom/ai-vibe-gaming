@@ -17,13 +17,13 @@ bestForEn: "2D web games that need physics and scene flow — platformers, shoot
 install: "官方推荐脚手架：`npm create @phaserjs/game@latest`（交互式选官方模板，支持 Vite/Rollup/Webpack 等，多数模板有 JS 与 TS 两版）；已有工程里直接 `npm install phaser`。"
 installEn: "The official scaffold: `npm create @phaserjs/game@latest` (interactive picker of official templates; Vite/Rollup/Webpack and more, most in both JS and TS); in an existing project just `npm install phaser`."
 installSrc: "https://github.com/phaserjs/phaser#create-phaser-game-app"
-installVerified: "2026-10-29"
+installVerified: "2026-10-30"
 difficulty: low
 difficultyWhy: "一条命令出可跑工程（官方模板），物理/输入/场景/资源加载都是内置的 —— 自己要写的代码比 Pixi 少；代价是 API 面比 Pixi 大，概念要多认一些。"
 difficultyWhyEn: "One command yields a runnable project (official templates), and physics/input/scenes/asset loading are built in — less code for you than Pixi; the price is a larger API surface and more concepts to learn."
 confidence: our-judgement
-verified: "2026-10-29 · GitHub API 快照"
-verifiedEn: "2026-10-29 · GitHub API snapshot"
+verified: "2026-10-30 · GitHub API 快照"
+verifiedEn: "2026-10-30 · GitHub API snapshot"
 ---
 
 # Phaser
@@ -91,7 +91,7 @@ verifiedEn: "2026-10-29 · GitHub API snapshot"
 | 仓库 | `phaserjs/phaser` | GitHub API |
 | 许可 | **MIT** | 同上 |
 | 主语言 | JavaScript | 同上 |
-| ★ | 40,590 | 同上 |
+| ★ | 40,603 | 同上 |
 | 最后提交 | 2026-08-21 | 同上（**活跃**）|
 | 官方定位 | "a fun, free and fast 2D game **framework**" | 官方 README |
 
@@ -103,7 +103,7 @@ verifiedEn: "2026-10-29 · GitHub API snapshot"
 > | Repository | `phaserjs/phaser` | GitHub API |
 > | Licence | **MIT** | same |
 > | Main language | JavaScript | same |
-> | Stars | 40,590 | same |
+> | Stars | 40,603 | same |
 > | Last push | 2026-08-21 | same (**active**) |
 > | Official description | "a fun, free and fast 2D game **framework**" | official README |
 
