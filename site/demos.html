@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>最小可玩原型代码清单 · AI 做游戏</title>
-  <meta name="description" content="六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。 抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。" />
+  <title>作品库与最小可玩原型 · AI 做游戏</title>
+  <meta name="description" content="15 个有可核验 AI 参与痕迹的作品（只放外链），外加六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架。 作品库只收有一手 AI 痕迹的样本；骨架只抄最小循环、只改三个数，先让它跑起来 —— 原型阶段加美术是最贵的弯路。" />
   <link rel="canonical" href="https://vg.specul.com/demos.html" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="最小可玩原型代码清单 · AI 做游戏" />
+  <meta property="og:site_name" content="作品库与最小可玩原型 · AI 做游戏" />
   <meta property="og:url" content="https://vg.specul.com/demos.html" />
-  <meta property="og:title" content="最小可玩原型代码清单 · AI 做游戏" />
-  <meta property="og:description" content="六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。 抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。" />
+  <meta property="og:title" content="作品库与最小可玩原型 · AI 做游戏" />
+  <meta property="og:description" content="15 个有可核验 AI 参与痕迹的作品（只放外链），外加六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架。 作品库只收有一手 AI 痕迹的样本；骨架只抄最小循环、只改三个数，先让它跑起来 —— 原型阶段加美术是最贵的弯路。" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
   <script src="brand.js?v=6a580ac0420e"></script>
   <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"最小可玩原型代码清单","url":"https://vg.specul.com/demos.html","description":"六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。 抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"作品库与最小可玩原型","url":"https://vg.specul.com/demos.html","description":"15 个有可核验 AI 参与痕迹的作品（只放外链），外加六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架。 作品库只收有一手 AI 痕迹的样本；骨架只抄最小循环、只改三个数，先让它跑起来 —— 原型阶段加美术是最贵的弯路。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
 </head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
@@ -84,23 +84,57 @@
   <main id="main">
 <div class="container">
         <p class="kicker"><a href="./learn.html"><span data-zh>学习路径</span><span data-en>Learning path</span></a> · <span data-zh>贯穿流程</span><span data-en>Across the stages</span></p>
-        <h1 class="t-hero"><span data-zh>最小可玩原型代码清单</span><span data-en>Minimal prototype code list</span></h1>
-        <p class="lede">Minimal prototype code list</p>
+        <h1 class="t-hero"><span data-zh>作品库与最小可玩原型</span><span data-en>Showcase and minimal prototypes</span></h1>
+        <p class="lede">Showcase and minimal prototypes</p>
 
         <div class="panel term-meta">
-          <p class="t-lead"><span data-zh><strong>这一页解决什么</strong></span><span data-en><strong>What this page solves</strong></span><span data-zh>：六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。</span><span data-en>: One minimal skeleton per engine (six) covering operable / goal-directed / responsive — a starting point to copy, not a finished thing.</span></p>
-          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。</span><span data-en>: Copy a skeleton, change three numbers (speed, target position, feedback), and get it running — polishing art during prototyping is the most expensive detour.</span></p>
+          <p class="t-lead"><span data-zh><strong>这一页解决什么</strong></span><span data-en><strong>What this page solves</strong></span><span data-zh>：15 个有可核验 AI 参与痕迹的作品（只放外链），外加六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架。</span><span data-en>: 15 works with verifiable AI involvement (links only), plus one minimal skeleton per engine covering operable / goal-directed / responsive.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：作品库只收有一手 AI 痕迹的样本；骨架只抄最小循环、只改三个数，先让它跑起来 —— 原型阶段加美术是最贵的弯路。</span><span data-en>: Only works with first-party AI evidence are included; copy the minimal loop and change three numbers, then get it running — polishing art during prototyping is the most expensive detour.</span></p>
           <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span></p>
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p>每个阶段页都在说「先做最小可玩原型」，但<strong>没人给过能直接抄的骨架</strong>。</p>
-<p>这一页补上：六个引擎各一段最小骨架，外加一张共用清单。</p>
-<p>⚠ <strong>本站铁律：不做实测。</strong> 下面的骨架是<strong>起点模板，未经本站运行验证</strong>；</p>
-<p>每一段都附了官方入门文档的出处 —— 跑不通时，先看官方那一份。</p></span><span data-en><p>Every stage page says &quot;build the minimal playable prototype first&quot;, but <strong>nobody hands you a skeleton to copy</strong>.</p>
-<p>This page does: one minimal skeleton per engine, plus a shared checklist.</p>
-<p>⚠ <strong>The site's rule: no measurements.</strong> The skeletons below are <strong>starting templates, not run or verified by this site</strong>.</p>
-<p>Each one links to the official tutorial — if it does not run, go there first.</p></span></div>
+<div class="bi-block"><span data-zh><p>这一页分两部分：<strong>15 个有可核验 AI 参与痕迹的作品</strong>（只放站外链接，不展示截图、不镜像代码），以及<strong>六个引擎的最小可玩骨架</strong>。</p>
+<p>⚠ <strong>本站铁律：不做实测。</strong> 作品库只记录「作者自己给出的一手 AI 痕迹」与链接；骨架是<strong>起点模板，未经本站运行验证</strong>。跑不通时，先看官方文档。</p>
+<h2>作品库（试点）</h2>
+<p>收录规则（D3=A）：原址可访问、无需登录/付费；必须有一手 AI 痕迹（项目页 / README / 作者公开帖点名工具或模型），目录转述不算；只放外链，不截图、不镜像；不做排名。核验日 <strong>2026-11-03</strong>。仓库型条目只核验 README / 在线 demo / 最近提交，<strong>未在本地 clone 构建</strong>；页面不声称已实测。</p>
+<div class="table-wrap"><table class="src"><thead><tr><th>作品（外链）</th><th>类目</th><th>AI 用在哪</th><th>授权</th><th>一手证据 / 备注</th></tr></thead><tbody>
+<tr><td><a href="https://fly.pieter.com/" target="_blank" rel="noopener">Fly</a></td><td>游戏</td><td>代码 / 资产 / 设计</td><td>link-only</td><td><a href="https://fly.pieter.com/" target="_blank" rel="noopener">首页原文</a>：&quot;by @levelsio + Cursor + ThreeJS&quot;；免费可玩，无需账号。</td></tr>
+<tr><td><a href="https://cowboy.raymelon.com/" target="_blank" rel="noopener">Cowboy Shooter</a></td><td>游戏</td><td>代码 / 资产 / 音频</td><td>link-only</td><td><a href="https://cowboy.raymelon.com/" target="_blank" rel="noopener">首页原文</a>：&quot;vibe coded by @pseudokid, Cursor AI, Anthropic's Claude 3.7 Sonnet&quot;；填昵称即可开始。</td></tr>
+<tr><td><a href="https://github.com/maciej-trebacz/tower-of-time-game" target="_blank" rel="noopener">Tower of Time</a></td><td>游戏</td><td>代码</td><td>MIT</td><td><a href="https://github.com/maciej-trebacz/tower-of-time-game" target="_blank" rel="noopener">README</a>：&quot;Claude Sonnet 4 - My LLM of choice for this project...&quot;；约 95% 代码由 AI；最近提交 2025-07（约 16 个月未更新，线上仍可玩）。</td></tr>
+<tr><td><a href="https://acatovic.github.io/gothicvania-codex-demo/" target="_blank" rel="noopener">Gothicvania Codex Demo</a></td><td>游戏</td><td>代码</td><td>MIT</td><td><a href="https://news.ycombinator.com/item?id=47034752" target="_blank" rel="noopener">Show HN</a>：&quot;zero-code approach... built the whole thing using OpenAI Codex CLI&quot;；素材非 AI（ansimuz / Pascal Belisle 署名）。</td></tr>
+<tr><td><a href="https://tikz.dev/editor/" target="_blank" rel="noopener">TikZ Editor</a></td><td>Web 应用</td><td>代码</td><td>MIT</td><td><a href="https://tikz.dev/editor/" target="_blank" rel="noopener">页面原文</a>：&quot;The initial code base was written by Codex using gpt-5-3-codex...&quot;；仓库 pushed 2026-10-28。</td></tr>
+<tr><td><a href="https://asciitree.reorx.com/" target="_blank" rel="noopener">ASCII Tree Editor</a></td><td>Web 应用</td><td>代码</td><td>link-only</td><td><a href="https://news.ycombinator.com/item?id=44936932" target="_blank" rel="noopener">Show HN</a>：&quot;I used Claude Code to \&quot;vibe-code\&quot; this project...&quot;；源仓无 LICENSE。</td></tr>
+<tr><td><a href="https://isometric.nyc/" target="_blank" rel="noopener">Isometric NYC</a></td><td>数据可视化</td><td>代码 / 资产</td><td>link-only</td><td><a href="https://cannoneyed.com/projects/isometric-nyc" target="_blank" rel="noopener">作者博客</a>：&quot;I switched back and forth a lot between Claude Code, Gemini CLI, and Cursor...&quot;；瓦片由 nano banana 生成。</td></tr>
+<tr><td><a href="https://spikelog.com/" target="_blank" rel="noopener">Spikelog</a></td><td>数据可视化</td><td>代码</td><td>link-only</td><td><a href="https://news.ycombinator.com/item?id=46068138" target="_blank" rel="noopener">Show HN</a>：&quot;I built it in about a day using Cursor.&quot;；免费 10 图。</td></tr>
+<tr><td><a href="https://contrariansignals.com/" target="_blank" rel="noopener">Contrarian Signals</a></td><td>数据可视化</td><td>代码 / 设计</td><td>link-only</td><td><a href="https://news.ycombinator.com/item?id=46035340" target="_blank" rel="noopener">Show HN</a>：&quot;this was ~70% vibe coded using Cursor / Claude Code&quot;；仪表盘免费。</td></tr>
+<tr><td><a href="https://www.techcities.app/" target="_blank" rel="noopener">Tech Cities Index</a></td><td>数据可视化</td><td>代码</td><td>link-only</td><td><a href="https://news.ycombinator.com/item?id=42604840" target="_blank" rel="noopener">Show HN</a>：&quot;Built with Cursor and Next.js&quot;；数据源 levels.fyi / Numbeo，未给数据许可（风险项）。</td></tr>
+<tr><td><a href="https://fersab.github.io/pixelforge/" target="_blank" rel="noopener">Pixelforge</a></td><td>内容与媒体</td><td>代码</td><td>link-only</td><td><a href="https://fersab.github.io/pixelforge/" target="_blank" rel="noopener">页面原文</a>：&quot;A 3D Rendering Engine Built with Claude Code in Pure ES6+, Just Math and a Canvas&quot;；无授权条款。</td></tr>
+<tr><td><a href="https://mynextbook.ai" target="_blank" rel="noopener">MyNextBook</a></td><td>内容与媒体</td><td>代码</td><td>link-only</td><td><a href="https://news.ycombinator.com/item?id=46706848" target="_blank" rel="noopener">Show HN</a>：&quot;Built with Cursor + Claude Code, &amp; AntiGravity&quot;；无需注册可浏览。</td></tr>
+<tr><td><a href="https://github.com/danielrosehill/Nano-Banana-Desktop" target="_blank" rel="noopener">Nano-Banana-Desktop</a></td><td>内容与媒体</td><td>代码</td><td>link-only（LICENSE: TBD）</td><td><a href="https://github.com/danielrosehill/Nano-Banana-Desktop" target="_blank" rel="noopener">README</a>：&quot;developed using AI-assisted coding (Claude Code)...&quot;；无 LICENSE，最近提交 2025-11（约 12 个月）。</td></tr>
+<tr><td><a href="https://github.com/micasa-dev/micasa" target="_blank" rel="noopener">micasa</a></td><td>自动化</td><td>代码</td><td>Apache-2.0</td><td><a href="https://github.com/micasa-dev/micasa" target="_blank" rel="noopener">README</a>：&quot;Developed with AI coding agents (Claude, Claude Code).&quot;；pushed 2026-11-02。</td></tr>
+<tr><td><a href="https://github.com/indragiek/Context" target="_blank" rel="noopener">Context</a></td><td>自动化</td><td>代码 / 设计</td><td>MIT</td><td><a href="https://www.indragie.com/blog/i-shipped-a-macos-app-built-entirely-by-claude-code" target="_blank" rel="noopener">作者博客</a>：&quot;Context was almost 100% built by Claude Code&quot;；2 万行中手写不足 1000 行。</td></tr>
+</tbody></table></div></span><span data-en><p>This page has two parts: <strong>15 works with verifiable AI involvement</strong> (external links only, no screenshots or mirrored code), plus <strong>minimal playable skeletons for six engines</strong>.</p>
+<p>⚠ <strong>The site's rule: no measurements.</strong> The showcase only records first-party AI evidence supplied by the authors, plus links; the skeletons are <strong>starting templates, not run or verified by this site</strong>. If one does not run, go to the official docs first.</p>
+<h2>Showcase (pilot)</h2>
+<p>Acceptance rules (D3=A): the original URL is reachable without login or paywall; there is first-party AI evidence (the project page, README or a public author post naming the tool or model) — directory descriptions do not count; links only, no screenshots or mirrors; no ranking. Verified <strong>2026-11-03</strong>. Repo-backed entries were checked via README / live demo / last commit, <strong>not built locally</strong>; the page does not claim they were measured.</p>
+<div class="table-wrap"><table class="src"><thead><tr><th>Work (external link)</th><th>Category</th><th>AI scope</th><th>License</th><th>First-party evidence / note</th></tr></thead><tbody>
+<tr><td><a href="https://fly.pieter.com/" target="_blank" rel="noopener">Fly</a></td><td>Game</td><td>code / assets / design</td><td>link-only</td><td><a href="https://fly.pieter.com/" target="_blank" rel="noopener">project page</a>: &quot;by @levelsio + Cursor + ThreeJS&quot;; free to play, no account.</td></tr>
+<tr><td><a href="https://cowboy.raymelon.com/" target="_blank" rel="noopener">Cowboy Shooter</a></td><td>Game</td><td>code / assets / audio</td><td>link-only</td><td><a href="https://cowboy.raymelon.com/" target="_blank" rel="noopener">project page</a>: &quot;vibe coded by @pseudokid, Cursor AI, Anthropic's Claude 3.7 Sonnet&quot;; enter a nickname to play.</td></tr>
+<tr><td><a href="https://github.com/maciej-trebacz/tower-of-time-game" target="_blank" rel="noopener">Tower of Time</a></td><td>Game</td><td>code</td><td>MIT</td><td><a href="https://github.com/maciej-trebacz/tower-of-time-game" target="_blank" rel="noopener">README</a>: &quot;Claude Sonnet 4 - My LLM of choice for this project...&quot;; ~95% of code by AI; last commit 2025-07 (~16 months, still playable).</td></tr>
+<tr><td><a href="https://acatovic.github.io/gothicvania-codex-demo/" target="_blank" rel="noopener">Gothicvania Codex Demo</a></td><td>Game</td><td>code</td><td>MIT</td><td><a href="https://news.ycombinator.com/item?id=47034752" target="_blank" rel="noopener">Show HN</a>: &quot;zero-code approach... built the whole thing using OpenAI Codex CLI&quot;; art is not AI (ansimuz / Pascal Belisle).</td></tr>
+<tr><td><a href="https://tikz.dev/editor/" target="_blank" rel="noopener">TikZ Editor</a></td><td>Web app</td><td>code</td><td>MIT</td><td><a href="https://tikz.dev/editor/" target="_blank" rel="noopener">project page</a>: &quot;The initial code base was written by Codex using gpt-5-3-codex...&quot;; repo pushed 2026-10-28.</td></tr>
+<tr><td><a href="https://asciitree.reorx.com/" target="_blank" rel="noopener">ASCII Tree Editor</a></td><td>Web app</td><td>code</td><td>link-only</td><td><a href="https://news.ycombinator.com/item?id=44936932" target="_blank" rel="noopener">Show HN</a>: &quot;I used Claude Code to \&quot;vibe-code\&quot; this project...&quot;; source repo has no LICENSE.</td></tr>
+<tr><td><a href="https://isometric.nyc/" target="_blank" rel="noopener">Isometric NYC</a></td><td>Data visualisation</td><td>code / assets</td><td>link-only</td><td><a href="https://cannoneyed.com/projects/isometric-nyc" target="_blank" rel="noopener">author blog</a>: &quot;I switched back and forth a lot between Claude Code, Gemini CLI, and Cursor...&quot;; tiles generated with nano banana.</td></tr>
+<tr><td><a href="https://spikelog.com/" target="_blank" rel="noopener">Spikelog</a></td><td>Data visualisation</td><td>code</td><td>link-only</td><td><a href="https://news.ycombinator.com/item?id=46068138" target="_blank" rel="noopener">Show HN</a>: &quot;I built it in about a day using Cursor.&quot;; free for 10 charts.</td></tr>
+<tr><td><a href="https://contrariansignals.com/" target="_blank" rel="noopener">Contrarian Signals</a></td><td>Data visualisation</td><td>code / design</td><td>link-only</td><td><a href="https://news.ycombinator.com/item?id=46035340" target="_blank" rel="noopener">Show HN</a>: &quot;this was ~70% vibe coded using Cursor / Claude Code&quot;; the dashboard is free.</td></tr>
+<tr><td><a href="https://www.techcities.app/" target="_blank" rel="noopener">Tech Cities Index</a></td><td>Data visualisation</td><td>code</td><td>link-only</td><td><a href="https://news.ycombinator.com/item?id=42604840" target="_blank" rel="noopener">Show HN</a>: &quot;Built with Cursor and Next.js&quot;; data sources levels.fyi / Numbeo, no data licence stated (risk note).</td></tr>
+<tr><td><a href="https://fersab.github.io/pixelforge/" target="_blank" rel="noopener">Pixelforge</a></td><td>Media</td><td>code</td><td>link-only</td><td><a href="https://fersab.github.io/pixelforge/" target="_blank" rel="noopener">project page</a>: &quot;A 3D Rendering Engine Built with Claude Code in Pure ES6+, Just Math and a Canvas&quot;; no licence page.</td></tr>
+<tr><td><a href="https://mynextbook.ai" target="_blank" rel="noopener">MyNextBook</a></td><td>Media</td><td>code</td><td>link-only</td><td><a href="https://news.ycombinator.com/item?id=46706848" target="_blank" rel="noopener">Show HN</a>: &quot;Built with Cursor + Claude Code, &amp; AntiGravity&quot;; browsable without an account.</td></tr>
+<tr><td><a href="https://github.com/danielrosehill/Nano-Banana-Desktop" target="_blank" rel="noopener">Nano-Banana-Desktop</a></td><td>Media</td><td>code</td><td>link-only (LICENSE: TBD)</td><td><a href="https://github.com/danielrosehill/Nano-Banana-Desktop" target="_blank" rel="noopener">README</a>: &quot;developed using AI-assisted coding (Claude Code)...&quot;; no LICENSE, last commit 2025-11 (~12 months).</td></tr>
+<tr><td><a href="https://github.com/micasa-dev/micasa" target="_blank" rel="noopener">micasa</a></td><td>Automation</td><td>code</td><td>Apache-2.0</td><td><a href="https://github.com/micasa-dev/micasa" target="_blank" rel="noopener">README</a>: &quot;Developed with AI coding agents (Claude, Claude Code).&quot;; pushed 2026-11-02.</td></tr>
+<tr><td><a href="https://github.com/indragiek/Context" target="_blank" rel="noopener">Context</a></td><td>Automation</td><td>code / design</td><td>MIT</td><td><a href="https://www.indragie.com/blog/i-shipped-a-macos-app-built-entirely-by-claude-code" target="_blank" rel="noopener">author blog</a>: &quot;Context was almost 100% built by Claude Code&quot;; fewer than 1,000 of 20,000 lines written by hand.</td></tr>
+</tbody></table></div></span></div>
 <div class="bi-block"><span data-zh><h2>共用清单</h2>
 <p>三条判据（来自 <a href="./最小可玩原型.html">最小可玩原型</a>），骨架里逐条标注：</p>
 <ul class="checklist">

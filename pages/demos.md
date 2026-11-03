@@ -1,27 +1,67 @@
 ---
-zh: "最小可玩原型代码清单"
-en: "Minimal prototype code list"
-what: "六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架 —— 可以抄的起点，不是成品。"
-whatEn: "One minimal skeleton per engine (six) covering operable / goal-directed / responsive — a starting point to copy, not a finished thing."
-decision: "抄骨架、只改三个数（速度、目标位置、反馈方式），先让它跑起来 —— 原型阶段加美术是最贵的弯路。"
-decisionEn: "Copy a skeleton, change three numbers (speed, target position, feedback), and get it running — polishing art during prototyping is the most expensive detour."
+zh: "作品库与最小可玩原型"
+en: "Showcase and minimal prototypes"
+what: "15 个有可核验 AI 参与痕迹的作品（只放外链），外加六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架。"
+whatEn: "15 works with verifiable AI involvement (links only), plus one minimal skeleton per engine covering operable / goal-directed / responsive."
+decision: "作品库只收有一手 AI 痕迹的样本；骨架只抄最小循环、只改三个数，先让它跑起来 —— 原型阶段加美术是最贵的弯路。"
+decisionEn: "Only works with first-party AI evidence are included; copy the minimal loop and change three numbers, then get it running — polishing art during prototyping is the most expensive detour."
 confidence: our-judgement
 ---
 
-# 最小可玩原型代码清单
+# 作品库与最小可玩原型
 
-每个阶段页都在说「先做最小可玩原型」，但**没人给过能直接抄的骨架**。
-这一页补上：六个引擎各一段最小骨架，外加一张共用清单。
+这一页分两部分：**15 个有可核验 AI 参与痕迹的作品**（只放站外链接，不展示截图、不镜像代码），以及**六个引擎的最小可玩骨架**。
 
-⚠ **本站铁律：不做实测。** 下面的骨架是**起点模板，未经本站运行验证**；
-每一段都附了官方入门文档的出处 —— 跑不通时，先看官方那一份。
+⚠ **本站铁律：不做实测。** 作品库只记录「作者自己给出的一手 AI 痕迹」与链接；骨架是**起点模板，未经本站运行验证**。跑不通时，先看官方文档。
+
+## 作品库（试点）
+
+收录规则（D3=A）：原址可访问、无需登录/付费；必须有一手 AI 痕迹（项目页 / README / 作者公开帖点名工具或模型），目录转述不算；只放外链，不截图、不镜像；不做排名。核验日 **2026-11-03**。仓库型条目只核验 README / 在线 demo / 最近提交，**未在本地 clone 构建**；页面不声称已实测。
+
+| 作品（外链） | 类目 | AI 用在哪 | 授权 | 一手证据 / 备注 |
+|---|---|---|---|---|
+| [Fly](https://fly.pieter.com/) | 游戏 | 代码 / 资产 / 设计 | link-only | [首页原文](https://fly.pieter.com/)："by @levelsio + Cursor + ThreeJS"；免费可玩，无需账号。 |
+| [Cowboy Shooter](https://cowboy.raymelon.com/) | 游戏 | 代码 / 资产 / 音频 | link-only | [首页原文](https://cowboy.raymelon.com/)："vibe coded by @pseudokid, Cursor AI, Anthropic's Claude 3.7 Sonnet"；填昵称即可开始。 |
+| [Tower of Time](https://github.com/maciej-trebacz/tower-of-time-game) | 游戏 | 代码 | MIT | [README](https://github.com/maciej-trebacz/tower-of-time-game)："Claude Sonnet 4 - My LLM of choice for this project..."；约 95% 代码由 AI；最近提交 2025-07（约 16 个月未更新，线上仍可玩）。 |
+| [Gothicvania Codex Demo](https://acatovic.github.io/gothicvania-codex-demo/) | 游戏 | 代码 | MIT | [Show HN](https://news.ycombinator.com/item?id=47034752)："zero-code approach... built the whole thing using OpenAI Codex CLI"；素材非 AI（ansimuz / Pascal Belisle 署名）。 |
+| [TikZ Editor](https://tikz.dev/editor/) | Web 应用 | 代码 | MIT | [页面原文](https://tikz.dev/editor/)："The initial code base was written by Codex using gpt-5-3-codex..."；仓库 pushed 2026-10-28。 |
+| [ASCII Tree Editor](https://asciitree.reorx.com/) | Web 应用 | 代码 | link-only | [Show HN](https://news.ycombinator.com/item?id=44936932)："I used Claude Code to \"vibe-code\" this project..."；源仓无 LICENSE。 |
+| [Isometric NYC](https://isometric.nyc/) | 数据可视化 | 代码 / 资产 | link-only | [作者博客](https://cannoneyed.com/projects/isometric-nyc)："I switched back and forth a lot between Claude Code, Gemini CLI, and Cursor..."；瓦片由 nano banana 生成。 |
+| [Spikelog](https://spikelog.com/) | 数据可视化 | 代码 | link-only | [Show HN](https://news.ycombinator.com/item?id=46068138)："I built it in about a day using Cursor."；免费 10 图。 |
+| [Contrarian Signals](https://contrariansignals.com/) | 数据可视化 | 代码 / 设计 | link-only | [Show HN](https://news.ycombinator.com/item?id=46035340)："this was ~70% vibe coded using Cursor / Claude Code"；仪表盘免费。 |
+| [Tech Cities Index](https://www.techcities.app/) | 数据可视化 | 代码 | link-only | [Show HN](https://news.ycombinator.com/item?id=42604840)："Built with Cursor and Next.js"；数据源 levels.fyi / Numbeo，未给数据许可（风险项）。 |
+| [Pixelforge](https://fersab.github.io/pixelforge/) | 内容与媒体 | 代码 | link-only | [页面原文](https://fersab.github.io/pixelforge/)："A 3D Rendering Engine Built with Claude Code in Pure ES6+, Just Math and a Canvas"；无授权条款。 |
+| [MyNextBook](https://mynextbook.ai) | 内容与媒体 | 代码 | link-only | [Show HN](https://news.ycombinator.com/item?id=46706848)："Built with Cursor + Claude Code, & AntiGravity"；无需注册可浏览。 |
+| [Nano-Banana-Desktop](https://github.com/danielrosehill/Nano-Banana-Desktop) | 内容与媒体 | 代码 | link-only（LICENSE: TBD） | [README](https://github.com/danielrosehill/Nano-Banana-Desktop)："developed using AI-assisted coding (Claude Code)..."；无 LICENSE，最近提交 2025-11（约 12 个月）。 |
+| [micasa](https://github.com/micasa-dev/micasa) | 自动化 | 代码 | Apache-2.0 | [README](https://github.com/micasa-dev/micasa)："Developed with AI coding agents (Claude, Claude Code)."；pushed 2026-11-02。 |
+| [Context](https://github.com/indragiek/Context) | 自动化 | 代码 / 设计 | MIT | [作者博客](https://www.indragie.com/blog/i-shipped-a-macos-app-built-entirely-by-claude-code)："Context was almost 100% built by Claude Code"；2 万行中手写不足 1000 行。 |
 
 <!-- EN -->
-> Every stage page says "build the minimal playable prototype first", but **nobody hands you a skeleton to copy**.
-> This page does: one minimal skeleton per engine, plus a shared checklist.
+> This page has two parts: **15 works with verifiable AI involvement** (external links only, no screenshots or mirrored code), plus **minimal playable skeletons for six engines**.
 >
-> ⚠ **The site's rule: no measurements.** The skeletons below are **starting templates, not run or verified by this site**.
-> Each one links to the official tutorial — if it does not run, go there first.
+> ⚠ **The site's rule: no measurements.** The showcase only records first-party AI evidence supplied by the authors, plus links; the skeletons are **starting templates, not run or verified by this site**. If one does not run, go to the official docs first.
+>
+> ## Showcase (pilot)
+>
+> Acceptance rules (D3=A): the original URL is reachable without login or paywall; there is first-party AI evidence (the project page, README or a public author post naming the tool or model) — directory descriptions do not count; links only, no screenshots or mirrors; no ranking. Verified **2026-11-03**. Repo-backed entries were checked via README / live demo / last commit, **not built locally**; the page does not claim they were measured.
+>
+> | Work (external link) | Category | AI scope | License | First-party evidence / note |
+> |---|---|---|---|---|
+> | [Fly](https://fly.pieter.com/) | Game | code / assets / design | link-only | [project page](https://fly.pieter.com/): "by @levelsio + Cursor + ThreeJS"; free to play, no account. |
+> | [Cowboy Shooter](https://cowboy.raymelon.com/) | Game | code / assets / audio | link-only | [project page](https://cowboy.raymelon.com/): "vibe coded by @pseudokid, Cursor AI, Anthropic's Claude 3.7 Sonnet"; enter a nickname to play. |
+> | [Tower of Time](https://github.com/maciej-trebacz/tower-of-time-game) | Game | code | MIT | [README](https://github.com/maciej-trebacz/tower-of-time-game): "Claude Sonnet 4 - My LLM of choice for this project..."; ~95% of code by AI; last commit 2025-07 (~16 months, still playable). |
+> | [Gothicvania Codex Demo](https://acatovic.github.io/gothicvania-codex-demo/) | Game | code | MIT | [Show HN](https://news.ycombinator.com/item?id=47034752): "zero-code approach... built the whole thing using OpenAI Codex CLI"; art is not AI (ansimuz / Pascal Belisle). |
+> | [TikZ Editor](https://tikz.dev/editor/) | Web app | code | MIT | [project page](https://tikz.dev/editor/): "The initial code base was written by Codex using gpt-5-3-codex..."; repo pushed 2026-10-28. |
+> | [ASCII Tree Editor](https://asciitree.reorx.com/) | Web app | code | link-only | [Show HN](https://news.ycombinator.com/item?id=44936932): "I used Claude Code to \"vibe-code\" this project..."; source repo has no LICENSE. |
+> | [Isometric NYC](https://isometric.nyc/) | Data visualisation | code / assets | link-only | [author blog](https://cannoneyed.com/projects/isometric-nyc): "I switched back and forth a lot between Claude Code, Gemini CLI, and Cursor..."; tiles generated with nano banana. |
+> | [Spikelog](https://spikelog.com/) | Data visualisation | code | link-only | [Show HN](https://news.ycombinator.com/item?id=46068138): "I built it in about a day using Cursor."; free for 10 charts. |
+> | [Contrarian Signals](https://contrariansignals.com/) | Data visualisation | code / design | link-only | [Show HN](https://news.ycombinator.com/item?id=46035340): "this was ~70% vibe coded using Cursor / Claude Code"; the dashboard is free. |
+> | [Tech Cities Index](https://www.techcities.app/) | Data visualisation | code | link-only | [Show HN](https://news.ycombinator.com/item?id=42604840): "Built with Cursor and Next.js"; data sources levels.fyi / Numbeo, no data licence stated (risk note). |
+> | [Pixelforge](https://fersab.github.io/pixelforge/) | Media | code | link-only | [project page](https://fersab.github.io/pixelforge/): "A 3D Rendering Engine Built with Claude Code in Pure ES6+, Just Math and a Canvas"; no licence page. |
+> | [MyNextBook](https://mynextbook.ai) | Media | code | link-only | [Show HN](https://news.ycombinator.com/item?id=46706848): "Built with Cursor + Claude Code, & AntiGravity"; browsable without an account. |
+> | [Nano-Banana-Desktop](https://github.com/danielrosehill/Nano-Banana-Desktop) | Media | code | link-only (LICENSE: TBD) | [README](https://github.com/danielrosehill/Nano-Banana-Desktop): "developed using AI-assisted coding (Claude Code)..."; no LICENSE, last commit 2025-11 (~12 months). |
+> | [micasa](https://github.com/micasa-dev/micasa) | Automation | code | Apache-2.0 | [README](https://github.com/micasa-dev/micasa): "Developed with AI coding agents (Claude, Claude Code)."; pushed 2026-11-02. |
+> | [Context](https://github.com/indragiek/Context) | Automation | code / design | MIT | [author blog](https://www.indragie.com/blog/i-shipped-a-macos-app-built-entirely-by-claude-code): "Context was almost 100% built by Claude Code"; fewer than 1,000 of 20,000 lines written by hand. |
 
 ## 共用清单
 

@@ -631,7 +631,7 @@ ${engineCards(true)}
           <ul class="kw-list">
             <li><a href="./method.html"><b>${bi('实战流程', 'The build order')}</b></a>
               <span class="t-sm">${bi('五步串成一条线，专讲阶段之间的失败点', 'The five steps as one line, focused on failures between stages')}</span></li>
-            <li><a href="./demos.html"><b>${bi('最小可玩原型代码清单', 'Minimal prototype code list')}</b></a>
+            <li><a href="./demos.html"><b>${bi('作品库与最小可玩原型', 'Showcase and minimal prototypes')}</b></a>
               <span class="t-sm">${bi(`${DEMO_SKELETON_COUNT} 个引擎各一份「能操作 / 有目标 / 有反馈」的骨架`, `One operable / goal-directed / responsive skeleton per engine (${DEMO_SKELETON_COUNT})`)}</span></li>
           </ul>
         </div>

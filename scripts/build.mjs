@@ -302,7 +302,7 @@ function page() {
           </ol>
           <p class="t-sm mt-2"><a href="learn.html">${bi('→ 进入学习路径（含完整教学与常见失败）', '→ Enter the learning path (full walkthrough and common failures)')}</a></p>
           <p class="t-sm mt-2"><a href="method.html">${bi('→ 实战流程（五步串成一条线，专讲交接处的失败）', '→ The build order (five steps as one line, focused on handoff failures)')}</a></p>
-          <p class="t-sm"><a href="demos.html">${bi(`→ 最小可玩原型代码清单（${ZH_NUM[DEMO_SKELETON_COUNT]}个引擎各一份可抄的骨架）`, `→ Minimal prototype code list (${EN_NUM[DEMO_SKELETON_COUNT] || DEMO_SKELETON_COUNT} copyable skeletons, one per engine)`)}</a></p>
+          <p class="t-sm"><a href="demos.html">${bi(`→ 作品库与最小可玩原型（可核验作品 + ${ZH_NUM[DEMO_SKELETON_COUNT]}个引擎骨架）`, `→ Showcase and minimal prototypes (verified works + ${EN_NUM[DEMO_SKELETON_COUNT] || DEMO_SKELETON_COUNT} engine skeletons)`)}</a></p>
         </div>
 
         ${claimsBlock()}
@@ -312,10 +312,10 @@ function page() {
           <p class="t-sm">${bi(
             '想看别人已经做出的东西 →',
             'Want to see what others have already built →',
-          )} <a href="https://specul.com/">${bi('Specul 站群首页', 'the Specul hub')}</a></p>
+          )} <a href="demos.html">${bi('作品库（15 个可核验作品）', 'the showcase (15 verified works)')}</a> · <a href="https://specul.com/">${bi('Specul 站群首页', 'the Specul hub')}</a></p>
           <p class="t-xs muted">${bi(
-            inline('⚠ 作品库（demos.specul.com）在 2026-10-09 定案**暂不做** —— 先把「怎么做」写透，再谈「别人做了什么」。原先这里的链接指向一个不存在的站点，已撤掉。'),
-            inline('⚠ The works gallery (demos.specul.com) was decided **not to be built** on 2026-10-09 — get "how to do it" right first, then cover "what others built". The link that used to sit here pointed at a site that does not exist.'),
+            inline('⚠ 作品库试点：只收有一手 AI 痕迹的作品，只放站外链接、不截图；收录规则写在作品库页面。'),
+            inline('⚠ The showcase pilot only includes works with first-party AI evidence; links only, no screenshots — the rules are on the showcase page.'),
           )}</p>
         </div>
 

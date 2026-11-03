@@ -89,7 +89,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "message"
 
 ## Related
 
-- Showcase site (planned): <https://demos.specul.com> — source repo [`speculcom/ai-demos`](https://github.com/speculcom/ai-demos)
+- Showcase (pilot): vg `/demos.html` lists 15 works with first-party AI evidence; links only, no screenshots. Acceptance rules and candidates: `_plan/D3-D4-作品库跨类试点-2026-11-03.md`. No standalone `demos.specul.com` site and no `ai-demos` source repo.
 - Site-group plan: `_plan/vibe-gaming.md` (in the working copy of the `speculcom/www` repo)
 
 <!-- INDEX:BEGIN generated, do not edit -->

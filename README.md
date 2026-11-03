@@ -82,7 +82,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "说明"
 
 ## 相关
 
-- 作品库（规划中）：<https://demos.specul.com> —— 源仓 [`speculcom/ai-demos`](https://github.com/speculcom/ai-demos)
+- 作品库（试点）：vg 站 `/demos.html` 收录 15 个有一手 AI 痕迹的作品，只放外链、不截图；收录规则与候选见 `_plan/D3-D4-作品库跨类试点-2026-11-03.md`。不建独立 `demos.specul.com`，也不建 `ai-demos` 源仓。
 - 站群计划：`_plan/vibe-gaming.md`（在本地仓库 `speculcom/www` 的工作区）
 
 <!-- INDEX:BEGIN generated, do not edit -->
