@@ -77,6 +77,43 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 >
 > ("Medium AI-friendliness" is this site's judgement: plus for the script layer, minus for the editor workflow — both sides stated with their basis.)
 
+## 最小 starter
+
+一个最小 Component，在 update 里按帧推进节点位置。
+
+```
+import { _decorator, Component, Vec3 } from 'cc';
+const { ccclass } = _decorator;
+
+@ccclass('Move')
+export class Move extends Component {
+    update(dt: number) {
+        this.node.translate(new Vec3(100 * dt, 0, 0));
+    }
+}
+```
+
+官方文档：https://docs.cocos.com/
+
+<!-- EN -->
+> ## Minimal starter
+>
+> A minimal Component that moves the node per frame in update.
+>
+> ```
+> import { _decorator, Component, Vec3 } from 'cc';
+> const { ccclass } = _decorator;
+> 
+> @ccclass('Move')
+> export class Move extends Component {
+>     update(dt: number) {
+>         this.node.translate(new Vec3(100 * dt, 0, 0));
+>     }
+> }
+> ```
+>
+> Official docs: https://docs.cocos.com/
+
 ## 可核验事实
 
 | 项 | 值 | 核验源 |

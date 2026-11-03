@@ -107,6 +107,47 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 >
 > **Do not pick it if**: you want complete game features out of the box (collision detection, level / asset management).
 
+## 最小 starter
+
+一个旋转立方体：scene / camera / renderer 三件套的最小闭环。
+
+```
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(innerWidth, innerHeight);
+document.body.appendChild(renderer.domElement);
+const cube = new THREE.Mesh(new THREE.BoxGeometry(), new THREE.MeshBasicMaterial({ color: 0x00ff00 }));
+scene.add(cube); camera.position.z = 5;
+renderer.setAnimationLoop(() => {
+  cube.rotation.x += 0.01; cube.rotation.y += 0.01;
+  renderer.render(scene, camera);
+});
+```
+
+官方文档：https://threejs.org/docs/
+
+<!-- EN -->
+> ## Minimal starter
+>
+> A spinning cube: the minimal scene / camera / renderer loop.
+>
+> ```
+> const scene = new THREE.Scene();
+> const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
+> const renderer = new THREE.WebGLRenderer();
+> renderer.setSize(innerWidth, innerHeight);
+> document.body.appendChild(renderer.domElement);
+> const cube = new THREE.Mesh(new THREE.BoxGeometry(), new THREE.MeshBasicMaterial({ color: 0x00ff00 }));
+> scene.add(cube); camera.position.z = 5;
+> renderer.setAnimationLoop(() => {
+>   cube.rotation.x += 0.01; cube.rotation.y += 0.01;
+>   renderer.render(scene, camera);
+> });
+> ```
+>
+> Official docs: https://threejs.org/docs/
+
 ## 可核验事实
 
 | 项 | 值 | 核验源 |

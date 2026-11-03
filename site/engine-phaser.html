@@ -140,6 +140,19 @@
 <p><strong>不选</strong>：只要一层渲染（选 Pixi 更薄）；要 3D；要发原生平台为主</p></span><span data-en><h2>When to pick it, and when not to</h2>
 <p><strong>Pick it for</strong>: 2D web games that need the engine parts — physics, scene flow, asset loading — and for letting AI invent fewer wheels</p>
 <p><strong>Do not pick it if</strong>: you only need a rendering layer (Pixi is thinner); you need 3D; native platforms are the primary target</p></span></div>
+<div class="bi-block"><span data-zh><h2>最小 starter</h2>
+<p>一个最小 Scene，只画一个矩形，用来确认渲染与场景启动正常。</p>
+<pre class="code"><code>const game = new Phaser.Game({
+  type: Phaser.AUTO, width: 800, height: 600,
+  scene: { create() { this.add.rectangle(400, 300, 64, 64, 0x44aaff); } }
+});</code></pre>
+<p>官方文档：https://phaser.io/</p></span><span data-en><h2>Minimal starter</h2>
+<p>A minimal Scene that draws one rectangle to confirm rendering and scene boot.</p>
+<pre class="code"><code>const game = new Phaser.Game({
+  type: Phaser.AUTO, width: 800, height: 600,
+  scene: { create() { this.add.rectangle(400, 300, 64, 64, 0x44aaff); } }
+});</code></pre>
+<p>Official docs: https://phaser.io/</p></span></div>
 <div class="bi-block"><span data-zh><h2>可核验事实</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>项</th><th>值</th><th>核验源</th></tr></thead><tbody>
 <tr><td>仓库</td><td><code>phaserjs/phaser</code></td><td>GitHub API</td></tr>

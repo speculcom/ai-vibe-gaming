@@ -152,6 +152,33 @@
 <p><strong>不选</strong>：想要完整游戏功能（碰撞检测、关卡 / 资源管理开箱即用）</p></span><span data-en><h2>When to pick it, and when not to</h2>
 <p><strong>Pick it if</strong>: web 3D showcases, projects where you build the architecture, or you already have an engine and only need a rendering layer.</p>
 <p><strong>Do not pick it if</strong>: you want complete game features out of the box (collision detection, level / asset management).</p></span></div>
+<div class="bi-block"><span data-zh><h2>最小 starter</h2>
+<p>一个旋转立方体：scene / camera / renderer 三件套的最小闭环。</p>
+<pre class="code"><code>const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(innerWidth, innerHeight);
+document.body.appendChild(renderer.domElement);
+const cube = new THREE.Mesh(new THREE.BoxGeometry(), new THREE.MeshBasicMaterial({ color: 0x00ff00 }));
+scene.add(cube); camera.position.z = 5;
+renderer.setAnimationLoop(() =&gt; {
+  cube.rotation.x += 0.01; cube.rotation.y += 0.01;
+  renderer.render(scene, camera);
+});</code></pre>
+<p>官方文档：https://threejs.org/docs/</p></span><span data-en><h2>Minimal starter</h2>
+<p>A spinning cube: the minimal scene / camera / renderer loop.</p>
+<pre class="code"><code>const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(innerWidth, innerHeight);
+document.body.appendChild(renderer.domElement);
+const cube = new THREE.Mesh(new THREE.BoxGeometry(), new THREE.MeshBasicMaterial({ color: 0x00ff00 }));
+scene.add(cube); camera.position.z = 5;
+renderer.setAnimationLoop(() =&gt; {
+  cube.rotation.x += 0.01; cube.rotation.y += 0.01;
+  renderer.render(scene, camera);
+});</code></pre>
+<p>Official docs: https://threejs.org/docs/</p></span></div>
 <div class="bi-block"><span data-zh><h2>可核验事实</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>项</th><th>值</th><th>核验源</th></tr></thead><tbody>
 <tr><td>仓库</td><td><code>mrdoob/three.js</code></td><td>GitHub API</td></tr>

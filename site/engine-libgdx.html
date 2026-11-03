@@ -137,6 +137,31 @@
 <p><strong>不选</strong>：只做桌面或网页（Godot 或 Pixi 都更省事）</p></span><span data-en><h2>When to pick it, and when not to</h2>
 <p><strong>Pick it for</strong>: ⚠ Android publishing, a Java/Kotlin team, and a genuine cross-platform requirement</p>
 <p><strong>Do not pick it if</strong>: you are only targeting desktop or web (Godot or Pixi are both less work)</p></span></div>
+<div class="bi-block"><span data-zh><h2>最小 starter</h2>
+<p>一个 ApplicationAdapter，create 里建 SpriteBatch 与 Texture，render 里画出来。</p>
+<pre class="code"><code>public class MyGame extends ApplicationAdapter {
+    SpriteBatch batch; Texture tex;
+    public void create() { batch = new SpriteBatch(); tex = new Texture(&quot;badlogic.jpg&quot;); }
+    public void render() {
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        batch.begin(); batch.draw(tex, 0, 0); batch.end();
+    }
+    public void dispose() { batch.dispose(); tex.dispose(); }
+}</code></pre>
+<p>官方文档：https://libgdx.com/wiki/</p></span><span data-en><h2>Minimal starter</h2>
+<p>An ApplicationAdapter that builds SpriteBatch and Texture in create and draws in render.</p>
+<pre class="code"><code>public class MyGame extends ApplicationAdapter {
+    SpriteBatch batch; Texture tex;
+    public void create() { batch = new SpriteBatch(); tex = new Texture(&quot;badlogic.jpg&quot;); }
+    public void render() {
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        batch.begin(); batch.draw(tex, 0, 0); batch.end();
+    }
+    public void dispose() { batch.dispose(); tex.dispose(); }
+}</code></pre>
+<p>Official docs: https://libgdx.com/wiki/</p></span></div>
 <div class="bi-block"><span data-zh><h2>可核验事实</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>项</th><th>值</th><th>核验源</th></tr></thead><tbody>
 <tr><td>仓库</td><td><code>libgdx/libgdx</code></td><td>GitHub API</td></tr>

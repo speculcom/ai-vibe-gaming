@@ -80,6 +80,41 @@ verifiedEn: "2026-11-03 · Epic UE 5.8 official docs"
 >
 > **Do not pick it if**: you are solo and using AI on a small project (this is the site's strongest recommendation); you make 2D or small web games; you do not want to maintain a C++ build chain.
 
+## 最小 starter
+
+一个 Actor Tick，按秒推进位移。片段只做最小验证，不替代教程。
+
+```
+// MyActor.h
+virtual void Tick(float DeltaSeconds) override;
+
+// MyActor.cpp
+void AMyActor::Tick(float DeltaSeconds) {
+    Super::Tick(DeltaSeconds);
+    AddActorLocalOffset(FVector(100.f * DeltaSeconds, 0.f, 0.f));
+}
+```
+
+官方文档：https://dev.epicgames.com/documentation/en-us/unreal-engine
+
+<!-- EN -->
+> ## Minimal starter
+>
+> An Actor Tick that advances position per second. A minimal check only.
+>
+> ```
+> // MyActor.h
+> virtual void Tick(float DeltaSeconds) override;
+> 
+> // MyActor.cpp
+> void AMyActor::Tick(float DeltaSeconds) {
+>     Super::Tick(DeltaSeconds);
+>     AddActorLocalOffset(FVector(100.f * DeltaSeconds, 0.f, 0.f));
+> }
+> ```
+>
+> Official docs: https://dev.epicgames.com/documentation/en-us/unreal-engine
+
 ## 可核验事实
 
 | 项 | 值 | 核验源 |

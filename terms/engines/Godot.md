@@ -105,6 +105,39 @@ Godot 的场景树（scene）系统对 AI 是不友好的：
 > - You need a  (the export is limited)
 > - You  (there are simpler options)
 
+## 最小 starter
+
+一个能移动的 CharacterBody2D，用 Input.get_vector 读方向。片段只做最小验证。
+
+```
+extends CharacterBody2D
+var speed := 300.0
+
+func _physics_process(delta):
+    var dir := Input.get_vector("left", "right", "up", "down")
+    velocity = dir * speed
+    move_and_slide()
+```
+
+官方文档：https://docs.godotengine.org/
+
+<!-- EN -->
+> ## Minimal starter
+>
+> A movable CharacterBody2D reading direction with Input.get_vector. A minimal check only.
+>
+> ```
+> extends CharacterBody2D
+> var speed := 300.0
+> 
+> func _physics_process(delta):
+>     var dir := Input.get_vector("left", "right", "up", "down")
+>     velocity = dir * speed
+>     move_and_slide()
+> ```
+>
+> Official docs: https://docs.godotengine.org/
+
 ## 可核验事实
 
 | 项 | 值 | 核验源 |

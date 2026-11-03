@@ -134,6 +134,21 @@
 <p><strong>不选</strong>：需要完整引擎功能（碰撞、关卡 / 资源管理都现成）</p></span><span data-en><h2>When to pick it, and when not to</h2>
 <p><strong>Pick it for</strong>: 2D web games, quick prototypes, game jams</p>
 <p><strong>Do not pick it if</strong>: you need complete engine features out of the box (collision, level management, asset management)</p></span></div>
+<div class="bi-block"><span data-zh><h2>最小 starter</h2>
+<p>一个最小 Sprite，用 v8 的异步 init 启动 Application。</p>
+<pre class="code"><code>const app = new PIXI.Application();
+await app.init({ background: '#1099bb', resizeTo: window });
+document.body.appendChild(app.canvas);
+const sprite = PIXI.Sprite.from('https://pixijs.com/assets/bunny.png');
+app.stage.addChild(sprite);</code></pre>
+<p>官方文档：https://pixijs.com/</p></span><span data-en><h2>Minimal starter</h2>
+<p>A minimal Sprite using the v8 async init for Application.</p>
+<pre class="code"><code>const app = new PIXI.Application();
+await app.init({ background: '#1099bb', resizeTo: window });
+document.body.appendChild(app.canvas);
+const sprite = PIXI.Sprite.from('https://pixijs.com/assets/bunny.png');
+app.stage.addChild(sprite);</code></pre>
+<p>Official docs: https://pixijs.com/</p></span></div>
 <div class="bi-block"><span data-zh><h2>可核验事实</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>项</th><th>值</th><th>核验源</th></tr></thead><tbody>
 <tr><td>仓库</td><td><code>pixijs/pixijs</code></td><td>GitHub API</td></tr>

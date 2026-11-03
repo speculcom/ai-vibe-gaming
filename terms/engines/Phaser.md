@@ -84,6 +84,33 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 >
 > **Do not pick it if**: you only need a rendering layer (Pixi is thinner); you need 3D; native platforms are the primary target
 
+## 最小 starter
+
+一个最小 Scene，只画一个矩形，用来确认渲染与场景启动正常。
+
+```
+const game = new Phaser.Game({
+  type: Phaser.AUTO, width: 800, height: 600,
+  scene: { create() { this.add.rectangle(400, 300, 64, 64, 0x44aaff); } }
+});
+```
+
+官方文档：https://phaser.io/
+
+<!-- EN -->
+> ## Minimal starter
+>
+> A minimal Scene that draws one rectangle to confirm rendering and scene boot.
+>
+> ```
+> const game = new Phaser.Game({
+>   type: Phaser.AUTO, width: 800, height: 600,
+>   scene: { create() { this.add.rectangle(400, 300, 64, 64, 0x44aaff); } }
+> });
+> ```
+>
+> Official docs: https://phaser.io/
+
 ## 可核验事实
 
 | 项 | 值 | 核验源 |

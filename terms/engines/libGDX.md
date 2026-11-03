@@ -86,6 +86,45 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 >
 > **Do not pick it if**: you are only targeting desktop or web (Godot or Pixi are both less work)
 
+## 最小 starter
+
+一个 ApplicationAdapter，create 里建 SpriteBatch 与 Texture，render 里画出来。
+
+```
+public class MyGame extends ApplicationAdapter {
+    SpriteBatch batch; Texture tex;
+    public void create() { batch = new SpriteBatch(); tex = new Texture("badlogic.jpg"); }
+    public void render() {
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        batch.begin(); batch.draw(tex, 0, 0); batch.end();
+    }
+    public void dispose() { batch.dispose(); tex.dispose(); }
+}
+```
+
+官方文档：https://libgdx.com/wiki/
+
+<!-- EN -->
+> ## Minimal starter
+>
+> An ApplicationAdapter that builds SpriteBatch and Texture in create and draws in render.
+>
+> ```
+> public class MyGame extends ApplicationAdapter {
+>     SpriteBatch batch; Texture tex;
+>     public void create() { batch = new SpriteBatch(); tex = new Texture("badlogic.jpg"); }
+>     public void render() {
+>         Gdx.gl.glClearColor(0, 0, 0, 1);
+>         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+>         batch.begin(); batch.draw(tex, 0, 0); batch.end();
+>     }
+>     public void dispose() { batch.dispose(); tex.dispose(); }
+> }
+> ```
+>
+> Official docs: https://libgdx.com/wiki/
+
 ## 可核验事实
 
 | 项 | 值 | 核验源 |

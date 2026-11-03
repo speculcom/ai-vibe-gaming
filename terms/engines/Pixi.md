@@ -78,6 +78,35 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 >
 > **Do not pick it if**: you need complete engine features out of the box (collision, level management, asset management)
 
+## 最小 starter
+
+一个最小 Sprite，用 v8 的异步 init 启动 Application。
+
+```
+const app = new PIXI.Application();
+await app.init({ background: '#1099bb', resizeTo: window });
+document.body.appendChild(app.canvas);
+const sprite = PIXI.Sprite.from('https://pixijs.com/assets/bunny.png');
+app.stage.addChild(sprite);
+```
+
+官方文档：https://pixijs.com/
+
+<!-- EN -->
+> ## Minimal starter
+>
+> A minimal Sprite using the v8 async init for Application.
+>
+> ```
+> const app = new PIXI.Application();
+> await app.init({ background: '#1099bb', resizeTo: window });
+> document.body.appendChild(app.canvas);
+> const sprite = PIXI.Sprite.from('https://pixijs.com/assets/bunny.png');
+> app.stage.addChild(sprite);
+> ```
+>
+> Official docs: https://pixijs.com/
+
 ## 可核验事实
 
 | 项 | 值 | 核验源 |

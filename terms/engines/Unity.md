@@ -80,6 +80,43 @@ verifiedEn: "2026-11-03 · Unity 6000.6 official docs"
 >
 > **Do not pick it if**: you are solo on a small web project (Godot or Pixi/Phaser are lighter); you want AI to change scenes end-to-end (the editor layer remains a hard boundary).
 
+## 最小 starter
+
+一个能移动物体的 MonoBehaviour。片段只做最小验证，不替代教程；安装与版本以官方文档为准。
+
+```
+using UnityEngine;
+
+public class Move : MonoBehaviour {
+    public float speed = 5f;
+    void Update() {
+        float x = Input.GetAxis("Horizontal");
+        transform.Translate(x * speed * Time.deltaTime, 0, 0);
+    }
+}
+```
+
+官方文档：https://docs.unity3d.com/
+
+<!-- EN -->
+> ## Minimal starter
+>
+> A MonoBehaviour that moves an object. A minimal check only, not a tutorial; install and version details follow the official docs.
+>
+> ```
+> using UnityEngine;
+> 
+> public class Move : MonoBehaviour {
+>     public float speed = 5f;
+>     void Update() {
+>         float x = Input.GetAxis("Horizontal");
+>         transform.Translate(x * speed * Time.deltaTime, 0, 0);
+>     }
+> }
+> ```
+>
+> Official docs: https://docs.unity3d.com/
+
 ## 可核验事实
 
 | 项 | 值 | 核验源 |

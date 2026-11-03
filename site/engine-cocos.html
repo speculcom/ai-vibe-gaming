@@ -133,6 +133,29 @@
 <tr><td>Licence has a detail</td><td>See the facts table: LICENSE.md is MIT, but GitHub's licence field shows NOASSERTION</td></tr>
 </tbody></table></div>
 <p>(&quot;Medium AI-friendliness&quot; is this site's judgement: plus for the script layer, minus for the editor workflow — both sides stated with their basis.)</p></span></div>
+<div class="bi-block"><span data-zh><h2>最小 starter</h2>
+<p>一个最小 Component，在 update 里按帧推进节点位置。</p>
+<pre class="code"><code>import { _decorator, Component, Vec3 } from 'cc';
+const { ccclass } = _decorator;
+
+@ccclass('Move')
+export class Move extends Component {
+    update(dt: number) {
+        this.node.translate(new Vec3(100 * dt, 0, 0));
+    }
+}</code></pre>
+<p>官方文档：https://docs.cocos.com/</p></span><span data-en><h2>Minimal starter</h2>
+<p>A minimal Component that moves the node per frame in update.</p>
+<pre class="code"><code>import { _decorator, Component, Vec3 } from 'cc';
+const { ccclass } = _decorator;
+
+@ccclass('Move')
+export class Move extends Component {
+    update(dt: number) {
+        this.node.translate(new Vec3(100 * dt, 0, 0));
+    }
+}</code></pre>
+<p>Official docs: https://docs.cocos.com/</p></span></div>
 <div class="bi-block"><span data-zh><h2>可核验事实</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>项</th><th>值</th><th>核验源</th></tr></thead><tbody>
 <tr><td>仓库</td><td><code>cocos/cocos-engine</code></td><td>GitHub API</td></tr>

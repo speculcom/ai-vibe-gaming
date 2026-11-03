@@ -136,6 +136,27 @@
 <p><strong>不选</strong>：单人 + 用 AI 做小项目（这是本站最强烈的建议）；纯 2D 或网页小游戏；不想维护 C++ 构建链。</p></span><span data-en><h2>When to pick it, and when not to</h2>
 <p><strong>Pick it if</strong>: you need high-fidelity 3D, already have an Unreal team, and are willing to expose editor capabilities to external agents through MCP.</p>
 <p><strong>Do not pick it if</strong>: you are solo and using AI on a small project (this is the site's strongest recommendation); you make 2D or small web games; you do not want to maintain a C++ build chain.</p></span></div>
+<div class="bi-block"><span data-zh><h2>最小 starter</h2>
+<p>一个 Actor Tick，按秒推进位移。片段只做最小验证，不替代教程。</p>
+<pre class="code"><code>// MyActor.h
+virtual void Tick(float DeltaSeconds) override;
+
+// MyActor.cpp
+void AMyActor::Tick(float DeltaSeconds) {
+    Super::Tick(DeltaSeconds);
+    AddActorLocalOffset(FVector(100.f * DeltaSeconds, 0.f, 0.f));
+}</code></pre>
+<p>官方文档：https://dev.epicgames.com/documentation/en-us/unreal-engine</p></span><span data-en><h2>Minimal starter</h2>
+<p>An Actor Tick that advances position per second. A minimal check only.</p>
+<pre class="code"><code>// MyActor.h
+virtual void Tick(float DeltaSeconds) override;
+
+// MyActor.cpp
+void AMyActor::Tick(float DeltaSeconds) {
+    Super::Tick(DeltaSeconds);
+    AddActorLocalOffset(FVector(100.f * DeltaSeconds, 0.f, 0.f));
+}</code></pre>
+<p>Official docs: https://dev.epicgames.com/documentation/en-us/unreal-engine</p></span></div>
 <div class="bi-block"><span data-zh><h2>可核验事实</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>项</th><th>值</th><th>核验源</th></tr></thead><tbody>
 <tr><td>当前文档版本</td><td>Unreal Engine 5.8</td><td>Epic 官方文档</td></tr>

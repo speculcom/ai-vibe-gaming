@@ -136,6 +136,29 @@
 <p><strong>不选</strong>：单人 + 纯网页小项目（Godot 或 Pixi/Phaser 更轻）；想让 AI 端到端改场景（编辑器层仍然是硬边界）。</p></span><span data-en><h2>When to pick it, and when not to</h2>
 <p><strong>Pick it if</strong>: you already have a Unity project; you target console or mobile; you need a mature asset store and team collaboration.</p>
 <p><strong>Do not pick it if</strong>: you are solo on a small web project (Godot or Pixi/Phaser are lighter); you want AI to change scenes end-to-end (the editor layer remains a hard boundary).</p></span></div>
+<div class="bi-block"><span data-zh><h2>最小 starter</h2>
+<p>一个能移动物体的 MonoBehaviour。片段只做最小验证，不替代教程；安装与版本以官方文档为准。</p>
+<pre class="code"><code>using UnityEngine;
+
+public class Move : MonoBehaviour {
+    public float speed = 5f;
+    void Update() {
+        float x = Input.GetAxis(&quot;Horizontal&quot;);
+        transform.Translate(x * speed * Time.deltaTime, 0, 0);
+    }
+}</code></pre>
+<p>官方文档：https://docs.unity3d.com/</p></span><span data-en><h2>Minimal starter</h2>
+<p>A MonoBehaviour that moves an object. A minimal check only, not a tutorial; install and version details follow the official docs.</p>
+<pre class="code"><code>using UnityEngine;
+
+public class Move : MonoBehaviour {
+    public float speed = 5f;
+    void Update() {
+        float x = Input.GetAxis(&quot;Horizontal&quot;);
+        transform.Translate(x * speed * Time.deltaTime, 0, 0);
+    }
+}</code></pre>
+<p>Official docs: https://docs.unity3d.com/</p></span></div>
 <div class="bi-block"><span data-zh><h2>可核验事实</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>项</th><th>值</th><th>核验源</th></tr></thead><tbody>
 <tr><td>当前文档版本</td><td>Unity 6000.6（Unity 6.2）</td><td>官方文档</td></tr>

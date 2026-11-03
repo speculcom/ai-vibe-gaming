@@ -159,6 +159,25 @@
 <li>You need a  (the export is limited)</li>
 <li>You  (there are simpler options)</li>
 </ul></span></div>
+<div class="bi-block"><span data-zh><h2>最小 starter</h2>
+<p>一个能移动的 CharacterBody2D，用 Input.get_vector 读方向。片段只做最小验证。</p>
+<pre class="code"><code>extends CharacterBody2D
+var speed := 300.0
+
+func _physics_process(delta):
+    var dir := Input.get_vector(&quot;left&quot;, &quot;right&quot;, &quot;up&quot;, &quot;down&quot;)
+    velocity = dir * speed
+    move_and_slide()</code></pre>
+<p>官方文档：https://docs.godotengine.org/</p></span><span data-en><h2>Minimal starter</h2>
+<p>A movable CharacterBody2D reading direction with Input.get_vector. A minimal check only.</p>
+<pre class="code"><code>extends CharacterBody2D
+var speed := 300.0
+
+func _physics_process(delta):
+    var dir := Input.get_vector(&quot;left&quot;, &quot;right&quot;, &quot;up&quot;, &quot;down&quot;)
+    velocity = dir * speed
+    move_and_slide()</code></pre>
+<p>Official docs: https://docs.godotengine.org/</p></span></div>
 <div class="bi-block"><span data-zh><h2>可核验事实</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>项</th><th>值</th><th>核验源</th></tr></thead><tbody>
 <tr><td>仓库</td><td><code>godotengine/godot</code></td><td>GitHub API</td></tr>
