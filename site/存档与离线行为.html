@@ -94,36 +94,36 @@
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>一句话</strong>：这两个是「开发机上永远正常、上线后立刻出问题」的东西。</p></span><span data-en><p><strong>In one line</strong>: these are the two things that are &quot;always fine on the dev machine and broken the moment you ship&quot;.</p></span></div>
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>，两个是「开发机上永远正常、上线后立刻出问题」的东西。</p></span><span data-en><p><strong>In one line</strong>: these are the two things that are &quot;always fine on the dev machine and broken the moment you ship&quot;.</p></span></div>
 <div class="bi-block"><span data-zh><h2>存档的四个坑</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>坑</th><th>症状</th><th>原因</th></tr></thead><tbody>
-<tr><td>⚠ <strong>平台存储 API 不可用</strong></td><td>刷新后进度没了</td><td>原生 API 在 Web 上常常不可用</td></tr>
+<tr><td>⚠</td><td>刷新后进度没了</td><td>原生 API 在 Web 上常常不可用</td></tr>
 <tr><td>⚠ <strong>存储配额超限</strong></td><td>到某个关卡就崩</td><td>localStorage 通常只有 5MB</td></tr>
 <tr><td>⚠ <strong>隐私模式</strong></td><td>玩家说「我存不了」</td><td>隐私模式下存储受限</td></tr>
 <tr><td>⚠ <strong>版本不兼容</strong></td><td>更新后读不了旧档</td><td>存档格式变了没做迁移</td></tr>
 </tbody></table></div></span><span data-en><h2>Four ways saves break</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Trap</th><th>Symptom</th><th>Cause</th></tr></thead><tbody>
 </tbody></table></div></span></div>
-<div class="bi-block"><span data-zh><div class="table-wrap"><table class="src"><thead><tr><th>⚠ <strong>The platform's storage API is unavailable</strong></th><th>Progress gone after a refresh</th><th>Native APIs are often unavailable on the web</th></tr></thead><tbody>
+<div class="bi-block"><span data-zh><div class="table-wrap"><table class="src"><thead><tr><th>⚠ The platform's storage API is unavailable</th><th>Progress gone after a refresh</th><th>Native APIs are often unavailable on the web</th></tr></thead><tbody>
 </tbody></table></div>
 <blockquote>
-<p>| ⚠ <strong>Storage quota exceeded</strong> | Crashes at a certain level | localStorage is typically only 5 MB |</p>
-<p>| ⚠ <strong>Private browsing</strong> | Players report &quot;I can't save&quot; | Storage is restricted in private mode |</p>
-<p>| ⚠ <strong>Version incompatibility</strong> | Old saves unreadable after an update | The format changed with no migration |</p>
+<p>| ⚠ Storage quota exceeded | Crashes at a certain level | localStorage is typically only 5 MB |</p>
+<p>| ⚠  | Players report &quot;I can't save&quot; | Storage is restricted in private mode |</p>
+<p>| ⚠ Version incompatibility | Old saves unreadable after an update | The format changed with no migration |</p>
 </blockquote>
-<h2>⚠ 离线的三种处理</h2>
+<h2>离线存档要分三种情况处理</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>做法</th><th>适用</th></tr></thead><tbody>
 <tr><td><strong>优雅降级</strong></td><td>⚠ 断网时提示「需要网络」并暂停</td></tr>
 <tr><td><strong>本地优先</strong></td><td>离线可玩，联网后同步</td></tr>
 <tr><td><strong>拒绝启动</strong></td><td>强联网游戏（但 ⚠ 要给清晰提示）</td></tr>
 </tbody></table></div>
-<p>⚠ <strong>最差的做法是崩溃</strong> —— 玩家不会给你第二次机会。</p></span><span data-en><h2>⚠ Three ways to handle being offline</h2>
+<p>⚠ <strong>最差的做法是崩溃</strong>：玩家不会给你第二次机会。</p></span><span data-en><h2>Offline saves need three separate cases</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Approach</th><th>When it fits</th></tr></thead><tbody>
-<tr><td><strong>Graceful degradation</strong></td><td>⚠ Show &quot;needs network&quot; and pause</td></tr>
+<tr><td>Graceful degradation</td><td>⚠ Show &quot;needs network&quot; and pause</td></tr>
 <tr><td><strong>Local-first</strong></td><td>Playable offline, syncs when connected</td></tr>
-<tr><td><strong>Refuse to start</strong></td><td>Strictly online games (but ⚠ give a clear message)</td></tr>
+<tr><td></td><td>Strictly online games (but ⚠ give a clear message)</td></tr>
 </tbody></table></div>
-<p>⚠ <strong>The worst option is crashing</strong> — a player will not give you a second chance.</p></span></div>
+<p>⚠ The worst option is crashing — a player will not give you a second chance.</p></span></div>
 <div class="bi-block"><span data-zh><h2>发布前必测清单</h2>
 <ul class="checklist">
 <li> ⚠ <strong>刷新页面后进度还在</strong></li>
@@ -132,28 +132,28 @@
 <li> ⚠ <strong>更新版本后旧档能读吗</strong></li>
 <li> ⚠ <strong>隐私模式下能玩吗</strong></li>
 </ul>
-<p>⚠ 这五条<strong>在开发机上全部正常</strong> —— 因为开发机有正常的存储、有网络、</p>
-<p>不涉及隐私模式。⚠ <strong>必须用手机测，且开飞行模式。</strong></p></span><span data-en><h2>The pre-ship checklist</h2>
+<p>⚠ 这五条<strong>在开发机上全部正常</strong>：因为开发机有正常的存储、有网络、</p>
+<p>不涉及隐私模式。⚠</p></span><span data-en><h2>The pre-ship checklist</h2>
 <ul class="checklist">
-<li> ⚠ <strong>Progress survives a page refresh</strong></li>
+<li> ⚠ Progress survives a page refresh</li>
 </ul>
-<p>[ ] ⚠ <strong>What happens when a save fills up</strong> (fill one and see if it crashes)</p>
+<p>[ ] ⚠ What happens when a save fills up (fill one and see if it crashes)</p>
 <ul class="checklist">
-<li> ⚠ <strong>What happens offline</strong> (open the game in aeroplane mode)</li>
-<li> ⚠ <strong>Can old saves be read after an update</strong></li>
-<li> ⚠ <strong>Does it work in private browsing</strong></li>
+<li> ⚠ What happens offline (open the game in aeroplane mode)</li>
+<li> ⚠ Can old saves be read after an update</li>
+<li> ⚠ Does it work in private browsing</li>
 </ul>
-<p>⚠ All five pass <strong>on the dev machine</strong> — it has normal storage, a network, and no private mode. ⚠ <strong>Test on a phone, in aeroplane mode.</strong></p></span></div>
+<p>⚠ All five pass on the dev machine — it has normal storage, a network, and no private mode. ⚠ Test on a phone, in aeroplane mode.</p></span></div>
 <div class="bi-block"><span data-zh><h2>常见失败</h2>
 <ul>
-<li>⚠ <strong>只在开发机测</strong> —— 开发机什么都是正常的</li>
-<li><strong>忘了隐私模式</strong> —— 相当一部分玩家会开</li>
-<li>⚠ <strong>更新时不做存档迁移</strong> —— 玩家会丢掉全部进度，然后不会再玩</li>
+<li>⚠ <strong>只在开发机测</strong>：开发机什么都是正常的</li>
+<li><strong>忘了隐私模式</strong>：相当一部分玩家会开</li>
+<li>⚠ <strong>更新时不做存档迁移</strong>：玩家会丢掉全部进度，然后不会再玩</li>
 </ul></span><span data-en><h2>Common failures</h2>
 <ul>
-<li>⚠ <strong>Testing only on the dev machine</strong> — everything is normal there</li>
-<li><strong>Forgetting private browsing</strong> — a fair number of players use it</li>
-<li>⚠ <strong>No save migration on update</strong> — players lose all progress and do not come back</li>
+<li>⚠ Testing only on the dev machine — everything is normal there</li>
+<li>Forgetting private browsing — a fair number of players use it</li>
+<li>⚠ No save migration on update — players lose all progress and do not come back</li>
 </ul></span></div>
 <hr>
         </div>

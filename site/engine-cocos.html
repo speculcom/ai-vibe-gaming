@@ -104,33 +104,33 @@
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>一句话</strong>：它的读者问题不是「哪个引擎最好」，是「<strong>要发微信小游戏</strong>」—— 这件事它有官方文档，档案里的其他引擎没有。</p></span><span data-en><p><strong>In one line</strong>: its reader question is not &quot;which engine is best&quot; but &quot;<strong>I need to ship to WeChat Mini Games</strong>&quot; — and it has official docs for that while the other profiles here do not.</p></span></div>
+<div class="bi-block"><span data-zh><p>」，件事它有官方文档，档案里的其他引擎没有。</p></span><span data-en><p>&quot; — and it has official docs for that while the other profiles here do not.</p></span></div>
 <div class="bi-block"><span data-zh><h2>为什么它进档案</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>依据</th><th>说明</th></tr></thead><tbody>
 <tr><td><strong>官方发布章节</strong></td><td>Cocos Creator 3.8 手册专设「发布到微信小游戏」，另有小游戏引擎插件、内存与性能优化指南（docs.cocos.com，2026-10-29 核对）</td></tr>
 <tr><td><strong>官方定位</strong></td><td>仓库描述自述 cross-platform + &quot;instant web entertainment&quot;（GitHub API，2026-10-29）</td></tr>
 <tr><td><strong>活跃</strong></td><td>最后提交 2026-10-28（GitHub API 当日快照）</td></tr>
 </tbody></table></div>
-<p>⚠ 本站不做实测：这里核对的是「官方文档有没有这条路」，不是「用它做小游戏一定顺利」。</p></span><span data-en><h2>Why it is in the profiles</h2>
+<p>⚠ 本站不做实测，里核对的是「官方文档有没有这条路」，不是「用它做小游戏一定顺利」。</p></span><span data-en><h2>Why it is in the profiles</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Basis</th><th>Note</th></tr></thead><tbody>
-<tr><td><strong>Official publish chapter</strong></td><td>The Cocos Creator 3.8 manual has a dedicated &quot;Publish to WeChat Mini Game&quot; chapter, plus a mini-game engine plugin and a memory/performance optimisation guide (docs.cocos.com, checked 2026-10-29)</td></tr>
-<tr><td><strong>Official positioning</strong></td><td>The repo description says cross-platform + &quot;instant web entertainment&quot; (GitHub API, 2026-10-29)</td></tr>
+<tr><td>Official publish chapter</td><td>The Cocos Creator 3.8 manual has a dedicated &quot;Publish to WeChat Mini Game&quot; chapter, plus a mini-game engine plugin and a memory/performance optimisation guide (docs.cocos.com, checked 2026-10-29)</td></tr>
+<tr><td>Official positioning</td><td>The repo description says cross-platform + &quot;instant web entertainment&quot; (GitHub API, 2026-10-29)</td></tr>
 <tr><td><strong>Active</strong></td><td>Last push 2026-10-28 (GitHub API snapshot that day)</td></tr>
 </tbody></table></div>
 <p>⚠ This site runs no measurements: what is checked here is &quot;does the official doc have this path&quot;, not &quot;shipping a mini game with it is guaranteed smooth&quot;.</p></span></div>
 <div class="bi-block"><span data-zh><h2>对 AI 的友好度：脚本层高、场景层进不去</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>面</th><th>情况</th></tr></thead><tbody>
-<tr><td><strong>TypeScript 脚本</strong></td><td>AI 写游戏逻辑代码没问题，语言本身训练素材多</td></tr>
-<tr><td>⚠ <strong>场景与关卡在编辑器里</strong></td><td><code>.scene</code> / <code>.prefab</code> 是 Creator 编辑器的格式 —— AI 生成不了也不该硬生成；<strong>脚本归 AI，场景归你</strong>，这是它和 Phaser/Godot 工作流最大的差别</td></tr>
-<tr><td><strong>文档中文为主</strong></td><td>官方手册中文最全，英文相对薄 —— AI 的英文训练素材少，问答时容易拿到过时 API</td></tr>
+<tr><td></td><td>AI 写游戏逻辑代码没问题，语言本身训练素材多</td></tr>
+<tr><td>⚠ ，这是它和 Phaser/Godot 工作流最大的差别</td></tr>
+<tr><td><strong>文档中文为主</strong></td><td>官方手册中文最全，英文相对薄：AI 的英文训练素材少，问答时容易拿到过时 API</td></tr>
 <tr><td><strong>许可有细节</strong></td><td>见下面事实表：LICENSE.md 是 MIT，但 GitHub 许可字段显示 NOASSERTION</td></tr>
 </tbody></table></div>
 <p>（「AI 友好度中等」是本站判断：脚本层加分、编辑器工作流减分，两条都写明依据。）</p></span><span data-en><h2>AI-friendliness: the script layer is in, the scene layer is not</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Aspect</th><th>Situation</th></tr></thead><tbody>
-<tr><td><strong>TypeScript scripts</strong></td><td>AI writing game-logic code is fine; the language has plenty of training material</td></tr>
-<tr><td>⚠ <strong>Scenes and levels live in the editor</strong></td><td><code>.scene</code> / <code>.prefab</code> are Creator editor formats — AI cannot generate them and should not try; <strong>scripts to AI, scenes to you</strong> — the biggest workflow difference versus Phaser/Godot</td></tr>
-<tr><td><strong>Docs mostly in Chinese</strong></td><td>The manual is fullest in Chinese, thinner in English — less English training material, so Q&amp;A easily returns outdated APIs</td></tr>
-<tr><td><strong>Licence has a detail</strong></td><td>See the facts table: LICENSE.md is MIT, but GitHub's licence field shows NOASSERTION</td></tr>
+<tr><td>TypeScript scripts</td><td>AI writing game-logic code is fine; the language has plenty of training material</td></tr>
+<tr><td>⚠ Scenes and levels live in the editor</td><td><code>.scene</code> / <code>.prefab</code> are Creator editor formats — AI cannot generate them and should not try; scripts to AI, scenes to you — the biggest workflow difference versus Phaser/Godot</td></tr>
+<tr><td>Docs mostly in Chinese</td><td>The manual is fullest in Chinese, thinner in English — less English training material, so Q&amp;A easily returns outdated APIs</td></tr>
+<tr><td>Licence has a detail</td><td>See the facts table: LICENSE.md is MIT, but GitHub's licence field shows NOASSERTION</td></tr>
 </tbody></table></div>
 <p>(&quot;Medium AI-friendliness&quot; is this site's judgement: plus for the script layer, minus for the editor workflow — both sides stated with their basis.)</p></span></div>
 <div class="bi-block"><span data-zh><h2>可核验事实</h2>
@@ -139,7 +139,7 @@
 <tr><td>★</td><td>9,894</td><td>同上</td></tr>
 <tr><td>最后提交</td><td>2026-10-28</td><td>同上（<strong>活跃</strong>）</td></tr>
 <tr><td>仓库 LICENSE.md</td><td><strong>MIT</strong></td><td>仓库 raw 文件当日核对</td></tr>
-<tr><td>GitHub 许可字段</td><td>⚠ <strong>NOASSERTION</strong>（与 LICENSE.md 不一致）</td><td>GitHub API —— 合规审查时以仓库 LICENSE.md 文本为准，但别只看 GitHub 徽章</td></tr>
+<tr><td>GitHub 许可字段</td><td>⚠ <strong>NOASSERTION</strong>（与 LICENSE.md 不一致）</td><td>GitHub API：合规审查时以仓库 LICENSE.md 文本为准，但别只看 GitHub 徽章</td></tr>
 </tbody></table></div></span><span data-en><h2>Verifiable facts</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Item</th><th>Value</th><th>Source</th></tr></thead><tbody>
 <tr><td>Repository</td><td><code>cocos/cocos-engine</code></td><td>GitHub API</td></tr>
@@ -151,7 +151,7 @@
 <div class="bi-block"><span data-zh><h2>什么时候选它 / 不选</h2>
 <p><strong>选</strong>：发布目标里有微信小游戏；要 2D/3D 一套跨平台出去。</p>
 <p><strong>不选</strong>：纯网页游戏（Phaser/Pixi 更轻、AI 接管面更大）；希望 AI 尽量端到端写代码（编辑器场景工作流是硬边界）；只发桌面/移动原生（Godot 路线更直）。</p></span><span data-en><h2>When to pick it, and when not to</h2>
-<p><strong>Pick it when</strong>: WeChat Mini Games is among your release targets; you want one 2D/3D codebase shipping cross-platform.</p>
+<p><strong>Pick it if</strong>: WeChat Mini Games is among your release targets; you want one 2D/3D codebase shipping cross-platform.</p>
 <p><strong>Do not pick it if</strong>: it is a pure web game (Phaser/Pixi are lighter and give AI more surface); you want AI writing end-to-end (the editor scene workflow is a hard boundary); desktop/native mobile only (the Godot route is more direct).</p></span></div>
 <hr>
         </div>

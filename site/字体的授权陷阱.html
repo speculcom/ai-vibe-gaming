@@ -94,19 +94,19 @@
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>一句话</strong>：图片、音频、音效你都会查授权。<strong>字体是唯一被系统性忽略的一项。</strong></p></span><span data-en><p><strong>In one line</strong>: you check the licence on images, audio and sound effects. <strong>Fonts are the only category that gets systematically ignored.</strong></p></span></div>
-<div class="bi-block"><span data-zh><h2>⚠ 为什么它特别危险</h2>
+<p><strong>一句话字体是唯一被系统性忽略的一项。</strong></p>
+<div class="bi-block"><span data-zh><h2>字体许可按嵌入方式分档</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>特征</th><th>图片/音频</th><th><strong>字体</strong></th></tr></thead><tbody>
-<tr><td>一眼能否看出是 AI 生成/抓来的</td><td>✅ 通常能</td><td>⚠ 看不出来 —— 它就是个字体文件</td></tr>
+<tr><td>一眼能否看出是 AI 生成/抓来的</td><td>✅ 通常能</td><td>⚠ 看不出来，就是个字体文件</td></tr>
 <tr><td>授权是否明确写在素材里</td><td>✅</td><td>⚠ 常藏在官网的「条款」页深处</td></tr>
-<tr><td>⚠ 侵权后果</td><td>可能被要求下架</td><td>⚠ <strong>可能被要求停止分发全部产品</strong></td></tr>
-</tbody></table></div></span><span data-en><h2>⚠ Why it is especially dangerous</h2>
+<tr><td>⚠ 侵权后果</td><td>可能被要求下架</td><td>⚠</td></tr>
+</tbody></table></div></span><span data-en><h2>Font licences depend on embedding method</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Property</th><th>Images / audio</th><th><strong>Fonts</strong></th></tr></thead><tbody>
 <tr><td>Can you tell at a glance that it was AI-generated or taken?</td><td>Usually</td><td>⚠ No — it is just a font file</td></tr>
 <tr><td>Is the licence stated inside the asset?</td><td>Yes</td><td>⚠ Often buried deep on the provider's terms page</td></tr>
-<tr><td>⚠ Consequence of infringement</td><td>Possibly a takedown</td><td>⚠ <strong>Possibly an order to stop distributing every product</strong></td></tr>
+<tr><td>⚠ Consequence of infringement</td><td>Possibly a takedown</td><td>⚠ Possibly an order to stop distributing every product</td></tr>
 </tbody></table></div></span></div>
-<div class="bi-block"><span data-zh><h2>⚠「个人免费」是陷阱</h2>
+<div class="bi-block"><span data-zh><h2>免费档通常不含商用</h2>
 <p>字体站最常见的授权写法是：</p>
 <pre class="code"><code>✅ 个人使用免费
 ✅ 商业使用需购买授权
@@ -114,7 +114,7 @@
    - 「个人」包不包括个人网站？
    - App 内嵌算商业吗？
    - ⚠ 游戏内嵌呢？</code></pre>
-<p>⚠ <strong>同一个字体在不同使用场景下，授权可能完全不同。</strong></p></span><span data-en><h2>⚠ &quot;Free for personal use&quot; is a trap</h2>
+<p>⚠ 同一个字体在不同使用场景下，授权可能完全不同。</p></span><span data-en><h2>Free tiers usually exclude commercial use</h2>
 <p>The most common wording on a font site is:</p>
 <pre class="code"><code>✅ Free for personal use
 ✅ Commercial use requires a paid licence
@@ -122,32 +122,31 @@
    - Does &quot;personal&quot; include a personal website?
    - Does embedding it in an app count as commercial?
    - ⚠ What about embedding it in a game?</code></pre>
-<p>⚠ <strong>The same font can be licensed completely differently depending on the use case.</strong></p></span></div>
+<p>⚠ The same font can be licensed completely differently depending on the use case.</p></span></div>
 <div class="bi-block"><span data-zh><h2>三个安全的做法</h2>
-<p><strong>1. 选明确写着「开源授权」的字体</strong></p>
-<p>⚠ 注意区分「开源字体」与「免费字体」—— 前者授权清晰（OFL/Apache 等），</p>
+<p>⚠ 注意区分「开源字体」与「免费字体」：前者授权清晰（OFL/Apache 等），</p>
 <p>后者只是「不收你钱」。</p>
 <p><strong>2. 程序化生成字体</strong></p>
-<p>⚠ 用代码画字形（比如用矢量路径生成像素字体）—— 版权归你，没有授权问题。</p>
+<p>⚠ 用代码画字形（比如用矢量路径生成像素字体）：版权归你，没有授权问题。</p>
 <p>⚠ 缺点是不好看，但至少不会出事。</p>
 <p><strong>3. 用引擎内置字体</strong></p>
 <p>⚠ Godot / Unity 等自带默认字体，<strong>授权随引擎</strong>（通常是引擎许可覆盖）。</p>
-<p>⚠ 但要注意：引擎许可是否覆盖字体，要看引擎的官方说明 —— 别默认。</p></span><span data-en><h2>Three safe approaches</h2>
-<p><strong>1. Pick fonts whose licence is explicitly open source</strong></p>
-<p>⚠ Distinguish an <strong>open-source font</strong> from a <strong>free font</strong> — the former has a clear licence (OFL, Apache, …), the latter merely charges you nothing.</p>
-<p><strong>2. Generate the glyphs programmatically</strong></p>
+<p>⚠ 但要注意：引擎许可是否覆盖字体，要看引擎的官方说明：别默认。</p></span><span data-en><h2>Three safe approaches</h2>
+<p>1. Pick fonts whose licence is explicitly open source</p>
+<p>⚠ Distinguish an  from a <strong>free font</strong> — the former has a clear licence (OFL, Apache, …), the latter merely charges you nothing.</p>
+<p>2. Generate the glyphs programmatically</p>
 <p>⚠ Drawing letterforms with code (for example generating a pixel font from vector paths) makes the copyright yours. ⚠ It looks worse, but it cannot get you into trouble.</p>
-<p><strong>3. Use the engine's built-in font</strong></p>
+<p>3. Use the engine's built-in font</p>
 <p>⚠ Godot, Unity and others ship a default font whose licence follows the engine's. ⚠ Check the engine's official statement that the licence covers the font — do not assume it.</p></span></div>
 <div class="bi-block"><span data-zh><h2>实操</h2>
 <p>在资产台账里给字体单列一行：</p>
 <div class="table-wrap"><table class="src"><thead><tr><th>文件</th><th>来源</th><th>授权</th></tr></thead><tbody>
-<tr><td><code>ui.ttf</code></td><td>某某字体站</td><td>⚠ 个人免费 —— <strong>未确认商用</strong></td></tr>
+<tr><td><code>ui.ttf</code></td><td>某某字体站</td><td>⚠ 个人免费：<strong>未确认商用</strong></td></tr>
 </tbody></table></div>
 <p>⚠ 「未确认商用」在发布前必须清零。见 <a href="./ai-资产台账.html">AI 资产台账</a>。</p></span><span data-en><h2>In practice</h2>
 <p>Give fonts their own row in the asset ledger:</p>
 <div class="table-wrap"><table class="src"><thead><tr><th>File</th><th>Source</th><th>Licence</th></tr></thead><tbody>
-<tr><td><code>ui.ttf</code></td><td>some font site</td><td>⚠ free for personal use — <strong>commercial use unconfirmed</strong></td></tr>
+<tr><td><code>ui.ttf</code></td><td>some font site</td><td>⚠ free for personal use — commercial use unconfirmed</td></tr>
 </tbody></table></div>
 <p>⚠ &quot;Commercial use unconfirmed&quot; must be cleared before shipping. See the <a href="./ai-资产台账.html">AI asset ledger</a>.</p></span></div>
 <hr>

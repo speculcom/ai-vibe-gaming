@@ -63,7 +63,7 @@ node scripts/build.mjs        # → site/
 bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "说明"
 ```
 
-⚠ 产物 = 25 个 HTML 页面 + `brand.*` + `site.css` + `CNAME` +
+⚠ 产物 = 34 个 HTML 页面 + `brand.*` + `site.css` + `CNAME` +
 `.nojekyll` + `robots.txt` + `sitemap.xml` + `README.md`。
 
 `sitemap.xml` 由构建末尾按 `site/` 实际文件枚举（中文文件名 percent-encode），
@@ -126,6 +126,8 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "说明"
 - [Phaser](terms/engines/Phaser.md)
 - [Pixi](terms/engines/Pixi.md)
 - [Three.js](terms/engines/Three.js.md)
+- [Unity](terms/engines/Unity.md)
+- [Unreal](terms/engines/Unreal.md)
 
 <!-- INDEX:END -->
 
@@ -135,7 +137,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "说明"
 | 项 | 实测值 |
 |---|---|
 | 词条 | 20 条（阶段 15 · 关键词 5） |
-| 引擎档案 | 7 个（Bevy · Cocos · Godot · libGDX · Phaser · Pixi · Three.js） |
+| 引擎档案 | 9 个（Bevy · Cocos · Godot · libGDX · Phaser · Pixi · Three.js · Unity · Unreal） |
 | 贯穿页 | 2 个（demos · method） |
-| 站点产物 | 32 个 HTML 页面 |
+| 站点产物 | 34 个 HTML 页面 |
 <!-- STATS:END -->

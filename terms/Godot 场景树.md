@@ -12,10 +12,10 @@ confidence: our-judgement
 
 # Godot's scene tree
 
-**一句话**：`.tscn` 是 Godot 的场景文件。**它长得很像文本，所以 AI 很想写它 —— 但它不该被写。**
+
 
 <!-- EN -->
-> **In one line**: `.tscn` is Godot's scene file. **It looks like text, so AI is keen to write it — but it should not be written.**
+> 
 
 ## 为什么 AI 不该写 .tscn
 
@@ -25,18 +25,18 @@ confidence: our-judgement
 - 能打开，但**资源引用断了**（贴图变红、脚本丢失）
 - ⚠ **更糟：能跑，但结构混乱**，你之后完全无法维护
 
-⚠ **根本原因**：这个格式是**工具的输出**，不是**人写的代码**。
-让 AI 模仿工具的输出，就像让它模仿编译器的中间表示 —— 偶尔能对，但不该这么干。
+⚠ **根本原因**，个格式是**工具的输出**，不是**人写的代码**。
+让 AI 模仿工具的输出，就像让它模仿编译器的中间表示：偶尔能对，但不该这么干。
 
 <!-- EN -->
 > ## Why AI should not write .tscn
 >
-> `.tscn` is a **generated format**. Its field order, `uid`s and `ext_resource` ids emerge from the editor's maintenance over time. What AI produces is usually:
+> `.tscn` is a . Its field order, `uid`s and `ext_resource` ids emerge from the editor's maintenance over time. What AI produces is usually:
 >
-> - Openable, but **with broken resource references** (red textures, missing scripts)
-> - ⚠ **Worse: it runs, but the structure is a mess** and you will not be able to maintain it afterwards
+> - Openable, but with broken resource references (red textures, missing scripts)
+> - ⚠ Worse: it runs, but the structure is a mess and you will not be able to maintain it afterwards
 >
-> ⚠ **The root reason**: this format is **an output of a tool**, not code a person writes. Asking AI to imitate a tool's output is like asking it to imitate a compiler's intermediate representation — occasionally right, but never the right approach.
+> ⚠ : this format is an output of a tool, not code a person writes. Asking AI to imitate a tool's output is like asking it to imitate a compiler's intermediate representation — occasionally right, but never the right approach.
 
 ## 正确的分工
 
@@ -47,7 +47,7 @@ confidence: our-judgement
 | **编辑器** | 生成与维护 `.tscn` |
 
 ⚠ 这与 S2「给明确的边界」是同一条原则：
-**明确说出「不要做什么」，比说「要做什么」更重要。**
+明确说出「不要做什么」，比说「要做什么」更重要。
 
 <!-- EN -->
 > ## The right division of labour
@@ -59,7 +59,7 @@ confidence: our-judgement
 > | **The editor** | Generates and maintains `.tscn` |
 >
 > ⚠ This is the same rule as S2's "give explicit boundaries":
-> **saying what NOT to do matters more than saying what to do.**
+> saying what NOT to do matters more than saying what to do.
 
 ## 提示词该怎么写
 
@@ -100,19 +100,19 @@ confidence: our-judgement
 >
 > → You get a scene that opens with every resource reference broken.
 
-## ⚠ 一个例外
+## 运行时改场景树会踩的坑
 
 ⚠ 如果你要**生成大量重复场景**（比如 50 个不同配置的敌人），
-写脚本生成 `.tscn` 反而是对的 —— 那属于工具用途，不是手写场景。
+写脚本生成 `.tscn` 反而是对的：那属于工具用途，不是手写场景。
 
-⚠ 判断标准：**你要造的是「一个场景」还是「一批场景」？**
+⚠ 判断标准：你要造的是「一个场景」还是「一批场景」？
 
 <!-- EN -->
-> ## ⚠ One exception
+> ## Editing the scene tree at runtime
 >
-> ⚠ If you are **generating many repeated scenes** (say 50 enemies with different configurations), scripting the generation of `.tscn` is correct — that is tool usage, not hand-authoring scenes.
+> ⚠ If you are generating many repeated scenes (say 50 enemies with different configurations), scripting the generation of `.tscn` is correct — that is tool usage, not hand-authoring scenes.
 >
-> ⚠ The test: **are you building "one scene" or "a batch of scenes"?**
+> ⚠ The test: are you building "one scene" or "a batch of scenes"?
 
 ---
 

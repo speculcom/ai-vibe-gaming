@@ -28,10 +28,10 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 
 # Cocos Creator
 
-**一句话**：它的读者问题不是「哪个引擎最好」，是「**要发微信小游戏**」—— 这件事它有官方文档，档案里的其他引擎没有。
+」，件事它有官方文档，档案里的其他引擎没有。
 
 <!-- EN -->
-> **In one line**: its reader question is not "which engine is best" but "**I need to ship to WeChat Mini Games**" — and it has official docs for that while the other profiles here do not.
+> " — and it has official docs for that while the other profiles here do not.
 
 ## 为什么它进档案
 
@@ -41,15 +41,15 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 | **官方定位** | 仓库描述自述 cross-platform + "instant web entertainment"（GitHub API，2026-10-29） |
 | **活跃** | 最后提交 2026-10-28（GitHub API 当日快照） |
 
-⚠ 本站不做实测：这里核对的是「官方文档有没有这条路」，不是「用它做小游戏一定顺利」。
+⚠ 本站不做实测，里核对的是「官方文档有没有这条路」，不是「用它做小游戏一定顺利」。
 
 <!-- EN -->
 > ## Why it is in the profiles
 >
 > | Basis | Note |
 > |---|---|
-> | **Official publish chapter** | The Cocos Creator 3.8 manual has a dedicated "Publish to WeChat Mini Game" chapter, plus a mini-game engine plugin and a memory/performance optimisation guide (docs.cocos.com, checked 2026-10-29) |
-> | **Official positioning** | The repo description says cross-platform + "instant web entertainment" (GitHub API, 2026-10-29) |
+> | Official publish chapter | The Cocos Creator 3.8 manual has a dedicated "Publish to WeChat Mini Game" chapter, plus a mini-game engine plugin and a memory/performance optimisation guide (docs.cocos.com, checked 2026-10-29) |
+> | Official positioning | The repo description says cross-platform + "instant web entertainment" (GitHub API, 2026-10-29) |
 > | **Active** | Last push 2026-10-28 (GitHub API snapshot that day) |
 >
 > ⚠ This site runs no measurements: what is checked here is "does the official doc have this path", not "shipping a mini game with it is guaranteed smooth".
@@ -58,9 +58,9 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 
 | 面 | 情况 |
 |---|---|
-| **TypeScript 脚本** | AI 写游戏逻辑代码没问题，语言本身训练素材多 |
-| ⚠ **场景与关卡在编辑器里** | `.scene` / `.prefab` 是 Creator 编辑器的格式 —— AI 生成不了也不该硬生成；**脚本归 AI，场景归你**，这是它和 Phaser/Godot 工作流最大的差别 |
-| **文档中文为主** | 官方手册中文最全，英文相对薄 —— AI 的英文训练素材少，问答时容易拿到过时 API |
+|  | AI 写游戏逻辑代码没问题，语言本身训练素材多 |
+| ⚠ ，这是它和 Phaser/Godot 工作流最大的差别 |
+| **文档中文为主** | 官方手册中文最全，英文相对薄：AI 的英文训练素材少，问答时容易拿到过时 API |
 | **许可有细节** | 见下面事实表：LICENSE.md 是 MIT，但 GitHub 许可字段显示 NOASSERTION |
 
 （「AI 友好度中等」是本站判断：脚本层加分、编辑器工作流减分，两条都写明依据。）
@@ -70,10 +70,10 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 >
 > | Aspect | Situation |
 > |---|---|
-> | **TypeScript scripts** | AI writing game-logic code is fine; the language has plenty of training material |
-> | ⚠ **Scenes and levels live in the editor** | `.scene` / `.prefab` are Creator editor formats — AI cannot generate them and should not try; **scripts to AI, scenes to you** — the biggest workflow difference versus Phaser/Godot |
-> | **Docs mostly in Chinese** | The manual is fullest in Chinese, thinner in English — less English training material, so Q&A easily returns outdated APIs |
-> | **Licence has a detail** | See the facts table: LICENSE.md is MIT, but GitHub's licence field shows NOASSERTION |
+> | TypeScript scripts | AI writing game-logic code is fine; the language has plenty of training material |
+> | ⚠ Scenes and levels live in the editor | `.scene` / `.prefab` are Creator editor formats — AI cannot generate them and should not try; scripts to AI, scenes to you — the biggest workflow difference versus Phaser/Godot |
+> | Docs mostly in Chinese | The manual is fullest in Chinese, thinner in English — less English training material, so Q&A easily returns outdated APIs |
+> | Licence has a detail | See the facts table: LICENSE.md is MIT, but GitHub's licence field shows NOASSERTION |
 >
 > ("Medium AI-friendliness" is this site's judgement: plus for the script layer, minus for the editor workflow — both sides stated with their basis.)
 
@@ -85,7 +85,7 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 | ★ | 9,894 | 同上 |
 | 最后提交 | 2026-10-28 | 同上（**活跃**）|
 | 仓库 LICENSE.md | **MIT** | 仓库 raw 文件当日核对 |
-| GitHub 许可字段 | ⚠ **NOASSERTION**（与 LICENSE.md 不一致）| GitHub API —— 合规审查时以仓库 LICENSE.md 文本为准，但别只看 GitHub 徽章 |
+| GitHub 许可字段 | ⚠ **NOASSERTION**（与 LICENSE.md 不一致）| GitHub API：合规审查时以仓库 LICENSE.md 文本为准，但别只看 GitHub 徽章 |
 
 <!-- EN -->
 > ## Verifiable facts
@@ -107,7 +107,7 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 <!-- EN -->
 > ## When to pick it, and when not to
 >
-> **Pick it when**: WeChat Mini Games is among your release targets; you want one 2D/3D codebase shipping cross-platform.
+> **Pick it if**: WeChat Mini Games is among your release targets; you want one 2D/3D codebase shipping cross-platform.
 >
 > **Do not pick it if**: it is a pure web game (Phaser/Pixi are lighter and give AI more surface); you want AI writing end-to-end (the editor scene workflow is a hard boundary); desktop/native mobile only (the Godot route is more direct).
 

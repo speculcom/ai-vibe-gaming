@@ -94,7 +94,6 @@
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>一句话</strong>：<code>.tscn</code> 是 Godot 的场景文件。<strong>它长得很像文本，所以 AI 很想写它 —— 但它不该被写。</strong></p></span><span data-en><p><strong>In one line</strong>: <code>.tscn</code> is Godot's scene file. <strong>It looks like text, so AI is keen to write it — but it should not be written.</strong></p></span></div>
 <div class="bi-block"><span data-zh><h2>为什么 AI 不该写 .tscn</h2>
 <p><code>.tscn</code> 是<strong>编辑器生成的格式</strong>，它的字段顺序、<code>uid</code>、<code>ext_resource</code> id</p>
 <p>都是编辑器在维护过程中逐渐形成的。AI 写出来的东西往往：</p>
@@ -102,14 +101,14 @@
 <li>能打开，但<strong>资源引用断了</strong>（贴图变红、脚本丢失）</li>
 <li>⚠ <strong>更糟：能跑，但结构混乱</strong>，你之后完全无法维护</li>
 </ul>
-<p>⚠ <strong>根本原因</strong>：这个格式是<strong>工具的输出</strong>，不是<strong>人写的代码</strong>。</p>
-<p>让 AI 模仿工具的输出，就像让它模仿编译器的中间表示 —— 偶尔能对，但不该这么干。</p></span><span data-en><h2>Why AI should not write .tscn</h2>
-<p><code>.tscn</code> is a <strong>generated format</strong>. Its field order, <code>uid</code>s and <code>ext_resource</code> ids emerge from the editor's maintenance over time. What AI produces is usually:</p>
+<p>⚠ <strong>根本原因</strong>，个格式是<strong>工具的输出</strong>，不是<strong>人写的代码</strong>。</p>
+<p>让 AI 模仿工具的输出，就像让它模仿编译器的中间表示：偶尔能对，但不该这么干。</p></span><span data-en><h2>Why AI should not write .tscn</h2>
+<p><code>.tscn</code> is a . Its field order, <code>uid</code>s and <code>ext_resource</code> ids emerge from the editor's maintenance over time. What AI produces is usually:</p>
 <ul>
-<li>Openable, but <strong>with broken resource references</strong> (red textures, missing scripts)</li>
-<li>⚠ <strong>Worse: it runs, but the structure is a mess</strong> and you will not be able to maintain it afterwards</li>
+<li>Openable, but with broken resource references (red textures, missing scripts)</li>
+<li>⚠ Worse: it runs, but the structure is a mess and you will not be able to maintain it afterwards</li>
 </ul>
-<p>⚠ <strong>The root reason</strong>: this format is <strong>an output of a tool</strong>, not code a person writes. Asking AI to imitate a tool's output is like asking it to imitate a compiler's intermediate representation — occasionally right, but never the right approach.</p></span></div>
+<p>⚠ : this format is an output of a tool, not code a person writes. Asking AI to imitate a tool's output is like asking it to imitate a compiler's intermediate representation — occasionally right, but never the right approach.</p></span></div>
 <div class="bi-block"><span data-zh><h2>正确的分工</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>谁</th><th>做什么</th></tr></thead><tbody>
 <tr><td><strong>AI</strong></td><td>写 GDScript 逻辑代码</td></tr>
@@ -117,14 +116,14 @@
 <tr><td><strong>编辑器</strong></td><td>生成与维护 <code>.tscn</code></td></tr>
 </tbody></table></div>
 <p>⚠ 这与 S2「给明确的边界」是同一条原则：</p>
-<p><strong>明确说出「不要做什么」，比说「要做什么」更重要。</strong></p></span><span data-en><h2>The right division of labour</h2>
+<p>明确说出「不要做什么」，比说「要做什么」更重要。</p></span><span data-en><h2>The right division of labour</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Who</th><th>Does what</th></tr></thead><tbody>
 <tr><td><strong>AI</strong></td><td>Writes the GDScript logic</td></tr>
 <tr><td><strong>You</strong></td><td>Build the scene tree, drag nodes, wire signals in the editor</td></tr>
 <tr><td><strong>The editor</strong></td><td>Generates and maintains <code>.tscn</code></td></tr>
 </tbody></table></div>
 <p>⚠ This is the same rule as S2's &quot;give explicit boundaries&quot;:</p>
-<p><strong>saying what NOT to do matters more than saying what to do.</strong></p></span></div>
+<p>saying what NOT to do matters more than saying what to do.</p></span></div>
 <div class="bi-block"><span data-zh><h2>提示词该怎么写</h2>
 <p>✅ 好的写法：</p>
 <pre class="code"><code>写 Godot 的 GDScript：
@@ -142,12 +141,12 @@
 <p>❌ The common wrong prompt:</p>
 <pre class="code"><code>Make me a Godot platformer, including the scene file and scripts</code></pre>
 <p>→ You get a scene that opens with every resource reference broken.</p></span></div>
-<div class="bi-block"><span data-zh><h2>⚠ 一个例外</h2>
+<div class="bi-block"><span data-zh><h2>运行时改场景树会踩的坑</h2>
 <p>⚠ 如果你要<strong>生成大量重复场景</strong>（比如 50 个不同配置的敌人），</p>
-<p>写脚本生成 <code>.tscn</code> 反而是对的 —— 那属于工具用途，不是手写场景。</p>
-<p>⚠ 判断标准：<strong>你要造的是「一个场景」还是「一批场景」？</strong></p></span><span data-en><h2>⚠ One exception</h2>
-<p>⚠ If you are <strong>generating many repeated scenes</strong> (say 50 enemies with different configurations), scripting the generation of <code>.tscn</code> is correct — that is tool usage, not hand-authoring scenes.</p>
-<p>⚠ The test: <strong>are you building &quot;one scene&quot; or &quot;a batch of scenes&quot;?</strong></p></span></div>
+<p>写脚本生成 <code>.tscn</code> 反而是对的：那属于工具用途，不是手写场景。</p>
+<p>⚠ 判断标准：你要造的是「一个场景」还是「一批场景」？</p></span><span data-en><h2>Editing the scene tree at runtime</h2>
+<p>⚠ If you are generating many repeated scenes (say 50 enemies with different configurations), scripting the generation of <code>.tscn</code> is correct — that is tool usage, not hand-authoring scenes.</p>
+<p>⚠ The test: are you building &quot;one scene&quot; or &quot;a batch of scenes&quot;?</p></span></div>
 <hr>
         </div>
 

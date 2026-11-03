@@ -107,33 +107,33 @@
 <div class="bi-block"><span data-zh><p><strong>一句话</strong>：做 2D 网页游戏时，它和 Three.js 共享「AI 最友好」的资格。</p></span><span data-en><p><strong>In one line</strong>: for 2D web games, it shares with Three.js the title of &quot;most AI-friendly&quot;.</p></span></div>
 <div class="bi-block"><span data-zh><h2>为什么对 AI 友好</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>原因</th><th>说明</th></tr></thead><tbody>
-<tr><td><strong>TypeScript</strong></td><td>训练数据最多、且带类型检查 —— AI 写错的概率明显低于其他游戏语言</td></tr>
-<tr><td><strong>WebGL/WebGPU</strong></td><td>跑在浏览器里，<strong>不需要装任何东西</strong>就能分享</td></tr>
-<tr><td><strong>概念少</strong></td><td>Sprite / Container / Texture —— 不需要学引擎架构</td></tr>
+<tr><td><strong>TypeScript</strong></td><td>训练数据最多、且带类型检查：AI 写错的概率明显低于其他游戏语言</td></tr>
+<tr><td></td><td>跑在浏览器里，<strong>不需要装任何东西</strong>就能分享</td></tr>
+<tr><td><strong>概念少</strong></td><td>Sprite / Container / Texture：不需要学引擎架构</td></tr>
 <tr><td><strong>MIT 许可</strong></td><td>商用无阻碍</td></tr>
 </tbody></table></div></span><span data-en><h2>Why it is AI-friendly</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Reason</th><th>Explanation</th></tr></thead><tbody>
 <tr><td><strong>TypeScript</strong></td><td>The most training data of any language, plus type checking — AI makes noticeably fewer mistakes in it than in other game languages</td></tr>
-<tr><td><strong>WebGL / WebGPU</strong></td><td>It runs in the browser, so <strong>you install nothing</strong> to share it</td></tr>
-<tr><td><strong>Few concepts</strong></td><td>Sprite / Container / Texture — no engine architecture to learn</td></tr>
+<tr><td>to share it</td></tr>
+<tr><td></td><td>Sprite / Container / Texture — no engine architecture to learn</td></tr>
 <tr><td><strong>MIT licence</strong></td><td>No obstacle to commercial use</td></tr>
 </tbody></table></div></span></div>
 <div class="bi-block"><span data-zh><h2>它的代价</h2>
 <ul>
-<li>⚠ <strong>没有内置物理系统</strong> —— 得自己接（matter.js / planck.js）</li>
-<li><strong>没有场景管理</strong> —— 大项目要自己组织</li>
-<li><strong>2D only</strong> —— 做 3D 得换 Three.js</li>
+<li>⚠ <strong>没有内置物理系统</strong>：得自己接（matter.js / planck.js）</li>
+<li>：<code>Container</code> 是通用容器，场景树要自己组织</li>
+<li><strong>2D only</strong>：做 3D 得换 Three.js</li>
 </ul></span><span data-en><h2>What it costs</h2>
 <ul>
-<li>⚠ <strong>No built-in physics</strong> — you attach one yourself (matter.js / planck.js)</li>
-<li><strong>No scene management</strong> — larger projects need their own organisation</li>
+<li>⚠ No built-in physics — you attach one yourself (matter.js / planck.js)</li>
+<li>No level / scene-management layer — <code>Container</code> is a generic container; you organise the scene tree yourself</li>
 <li><strong>2D only</strong> — for 3D you would switch to Three.js</li>
 </ul></span></div>
 <div class="bi-block"><span data-zh><h2>什么时候选它 / 不选</h2>
 <p><strong>选</strong>：2D 网页游戏、快速原型、Game Jam</p>
-<p><strong>不选</strong>：需要完整引擎功能（碰撞、场景、资源管理都现成）</p></span><span data-en><h2>When to pick it, and when not to</h2>
+<p><strong>不选</strong>：需要完整引擎功能（碰撞、关卡 / 资源管理都现成）</p></span><span data-en><h2>When to pick it, and when not to</h2>
 <p><strong>Pick it for</strong>: 2D web games, quick prototypes, game jams</p>
-<p><strong>Do not pick it if</strong>: you need complete engine features out of the box (collision, scenes, asset management)</p></span></div>
+<p><strong>Do not pick it if</strong>: you need complete engine features out of the box (collision, level management, asset management)</p></span></div>
 <div class="bi-block"><span data-zh><h2>可核验事实</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>项</th><th>值</th><th>核验源</th></tr></thead><tbody>
 <tr><td>仓库</td><td><code>pixijs/pixijs</code></td><td>GitHub API</td></tr>

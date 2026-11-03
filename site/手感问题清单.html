@@ -94,25 +94,25 @@
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>一句话</strong>：「手感不对」不是一种病，是六种。<strong>改错参数等于白改。</strong></p></span><span data-en><p><strong>In one line</strong>: &quot;it does not feel right&quot; is not one problem, it is six. <strong>Changing the wrong parameter achieves nothing.</strong></p></span></div>
+<p><strong>一句话改错参数等于白改。</strong></p>
 <div class="bi-block"><span data-zh><h2>先诊断</h2>
 <p>⚠ <strong>顺序很重要</strong>：先确认它是手感问题还是代码问题。</p>
 <div class="table-wrap"><table class="src"><thead><tr><th>症状</th><th>先查这个</th><th>再调这个</th></tr></thead><tbody>
 <tr><td>⚠ <strong>按键后有延迟感</strong></td><td><strong>输入缓冲有没有？</strong></td><td>⚠ 很可能不是手感问题</td></tr>
 <tr><td><strong>飘</strong></td><td>重力值</td><td>增大重力；落地加一点下压</td></tr>
 <tr><td><strong>粘</strong></td><td>空中控制是否过强</td><td>减小跳跃初速；加 coyote time</td></tr>
-<tr><td><strong>滑</strong>（停不下来）</td><td>摩擦 vs 空中阻力的比例</td><td>增大地面摩擦；<strong>注意两者是独立参数</strong></td></tr>
+<tr><td></td></tr>
 <tr><td>⚠ <strong>边缘判定模糊</strong></td><td><strong>碰撞盒是不是比视觉大</strong></td><td>玩家碰撞盒通常该小一点</td></tr>
 <tr><td><strong>操作延迟响应</strong></td><td>动画是否阻塞了输入</td><td>动画期间不应锁输入</td></tr>
 </tbody></table></div></span><span data-en><h2>Diagnose first</h2>
-<p>⚠ <strong>Order matters</strong>: establish whether it is a feel problem or a code problem.</p>
+<p>⚠ : establish whether it is a feel problem or a code problem.</p>
 <div class="table-wrap"><table class="src"><thead><tr><th>Symptom</th><th>Check this first</th><th>Then tune</th></tr></thead><tbody>
-<tr><td>⚠ <strong>Lag after a keypress</strong></td><td><strong>Is there an input buffer?</strong></td><td>⚠ It is probably not a feel problem at all</td></tr>
+<tr><td>⚠ Lag after a keypress</td><td>Is there an input buffer?</td><td>⚠ It is probably not a feel problem at all</td></tr>
 <tr><td><strong>Floaty</strong></td><td>The gravity value</td><td>Raise gravity; add a little downward force on landing</td></tr>
 <tr><td><strong>Sticky</strong></td><td>Is air control too strong</td><td>Lower jump velocity; add coyote time</td></tr>
-<tr><td><strong>Slippery</strong> (won't stop)</td><td>The ratio of friction to air drag</td><td>Raise ground friction; <strong>note they are separate parameters</strong></td></tr>
-<tr><td>⚠ <strong>Uncertain edges</strong></td><td><strong>Is the collider larger than the sprite?</strong></td><td>A player's hitbox is usually smaller</td></tr>
-<tr><td><strong>Delayed response</strong></td><td>Is animation blocking input</td><td>Input should not be locked during animation</td></tr>
+<tr><td></td></tr>
+<tr><td>⚠</td><td>Is the collider larger than the sprite?</td><td>A player's hitbox is usually smaller</td></tr>
+<tr><td></td><td>Is animation blocking input</td><td>Input should not be locked during animation</td></tr>
 </tbody></table></div></span></div>
 <div class="bi-block"><span data-zh><h2>三个最常被忽略的参数</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>参数</th><th>作用</th><th>忽略它的后果</th></tr></thead><tbody>
@@ -120,25 +120,25 @@
 <tr><td><strong>jump buffer</strong></td><td>落地前按跳会缓存（帧）</td><td>同上</td></tr>
 <tr><td><strong>可变跳跃高度</strong></td><td>松开跳跃键时截断上升</td><td>每次跳跃都一样高 → 失去控制感</td></tr>
 </tbody></table></div>
-<p>⚠ 这三个是「操作手感」的地基。<strong>它们不解决就会一直觉得不对劲，但你可能说不出为什么。</strong></p></span><span data-en><h2>The three most forgotten parameters</h2>
+<p>⚠ 这三个是「操作手感」的地基。它们不解决就会一直觉得不对劲，但你可能说不出为什么。</p></span><span data-en><h2>The three most forgotten parameters</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Parameter</th><th>What it does</th><th>What happens without it</th></tr></thead><tbody>
 <tr><td><strong>coyote time</strong></td><td>Grace window after leaving a platform during which you can still jump (in frames)</td><td>Players feel &quot;but I definitely pressed it&quot;</td></tr>
 <tr><td><strong>jump buffer</strong></td><td>A jump pressed before landing is remembered (in frames)</td><td>Same</td></tr>
-<tr><td><strong>Variable jump height</strong></td><td>Releasing the button cuts the rise short</td><td>Every jump is the same height → loss of control</td></tr>
+<tr><td>Variable jump height</td><td>Releasing the button cuts the rise short</td><td>Every jump is the same height → loss of control</td></tr>
 </tbody></table></div>
-<p>⚠ These three are the foundation of control feel. <strong>Without them something always feels off, and you may not be able to say why.</strong></p></span></div>
-<div class="bi-block"><span data-zh><h2>⚠ 最反直觉的一点</h2>
+<p>⚠ These three are the foundation of control feel. Without them something always feels off, and you may not be able to say why.</p></span></div>
+<div class="bi-block"><span data-zh><h2>手感问题不能靠加动画解决</h2>
 <blockquote>
-<p><strong>大部分「手感不对」是数值问题，不是代码问题。</strong></p>
+<p>大部分「手感不对」是数值问题，不是代码问题。</p>
 </blockquote>
 <p>把代码重写三遍不如把重力从 980 调到 1150 试一次。</p>
-<p>⚠ 而且改完要<strong>每次只改一个</strong> —— 一次改三个，你就不知道是哪个起的作用，</p>
-<p>下次遇到相似问题还是不知道怎么调。</p></span><span data-en><h2>⚠ The most counter-intuitive point</h2>
+<p>⚠ 而且改完要<strong>每次只改一个</strong>：一次改三个，你就不知道是哪个起的作用，</p>
+<p>下次遇到相似问题还是不知道怎么调。</p></span><span data-en><h2>Game feel cannot be fixed by adding animation</h2>
 <blockquote>
-<p><strong>Most &quot;it does not feel right&quot; cases are a numbers problem, not a code problem.</strong></p>
+<p>Most &quot;it does not feel right&quot; cases are a numbers problem, not a code problem.</p>
 </blockquote>
 <p>Rewriting the code three times is worse than trying gravity 1150 instead of 980 once.</p>
-<p>⚠ And change <strong>one thing at a time</strong> — change three and you will not know which one mattered, so the next time you meet a similar problem you still cannot tune it.</p></span></div>
+<p>⚠ And change one thing at a time — change three and you will not know which one mattered, so the next time you meet a similar problem you still cannot tune it.</p></span></div>
 <div class="bi-block"><span data-zh><h2>判断你可以进入下一阶段了吗</h2>
 <ul class="checklist">
 <li> 别人玩过，<strong>没有问「这游戏怎么玩」</strong></li>
@@ -146,7 +146,7 @@
 <li> 关键参数是<strong>可调</strong>的（不是硬编码）</li>
 </ul></span><span data-en><h2>Can you move to the next stage?</h2>
 <ul class="checklist">
-<li> Someone else played it and <strong>did not ask &quot;how do I play this?&quot;</strong></li>
+<li> Someone else played it and did not ask &quot;how do I play this?&quot;</li>
 <li> You have played it for 30 minutes and still find it interesting</li>
 <li> The key parameters are <strong>adjustable</strong> rather than hard-coded</li>
 </ul></span></div>

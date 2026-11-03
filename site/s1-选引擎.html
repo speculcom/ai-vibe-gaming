@@ -94,10 +94,10 @@
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>这一步决定什么</strong>：决定后面四阶段你有多少自由度。引擎的短板不会消失，只会被你绕着走。</p></span><span data-en><p><strong>What this stage decides</strong>: how much freedom you have in the four stages after it. An engine's weaknesses do not disappear — you just route around them.</p></span></div>
+<div class="bi-block"><span data-zh><p><strong>这一步决定什么</strong>：决定后面四阶段你有多少自由度。引擎的短板不会消失，只会被你绕着走。</p></span><span data-en><p>What this stage decides: how much freedom you have in the four stages after it. An engine's weaknesses do not disappear — you just route around them.</p></span></div>
 <div class="bi-block"><span data-zh><h2>先问瓶颈在哪</h2>
-<p>选引擎前先回答一个问题：<strong>我这个项目，最难的部分是什么？</strong></p></span><span data-en><h2>Ask where the bottleneck is</h2>
-<p>Before picking an engine, answer one question: <strong>what is the hardest part of this project?</strong></p></span></div>
+<p>选引擎前先回答一个问题：</p></span><span data-en><h2>Ask where the bottleneck is</h2>
+<p>Before picking an engine, answer one question: what is the hardest part of this project?</p></span></div>
 <div class="bi-block"><span data-zh><div class="table-wrap"><table class="src"><thead><tr><th>你的瓶颈</th><th>别选</th><th>为什么</th></tr></thead><tbody>
 <tr><td>玩法逻辑复杂</td><td>3D 引擎（Godot/Unity/Bevy）</td><td>2D 引擎在状态管理上更省心，复杂逻辑用 3D 引擎是白付成本</td></tr>
 <tr><td>想要 3D 表现</td><td>2D 引擎（Pixi/Phaser）</td><td>2D 引擎没有 3D 管线，后期迁移等于重写</td></tr>
@@ -110,39 +110,41 @@
 <tr><td>You are working alone</td><td>Anything is fine, but not Bevy</td><td>Rust's compile errors are very unfriendly to AI (see S2)</td></tr>
 </tbody></table></div></span></div>
 <div class="bi-block"><span data-zh><h2>三类引擎的实际差别</h2>
-<p><strong>原生引擎</strong>（Godot / Unity / Bevy / libGDX）—— 功能完整。但<strong>导出到网页通常残缺</strong>。</p>
-<p><strong>Web 引擎</strong>（Pixi / Three.js / Phaser）—— 打开就是网页。但<strong>没有构建系统</strong>，你要自己解决打包、缓存、版本。</p>
-<p>⚠ <strong>Three.js 不是完整引擎</strong> —— 它没有场景管理、物理、资源管理。你要自己搭壳。这不是缺点，但要知道。</p></span><span data-en><h2>The real difference between three kinds</h2>
-<p><strong>Native engines</strong> (Godot / Unity / Bevy / libGDX) — full-featured, but <strong>the web export is usually incomplete</strong>.</p>
+<p><strong>原生引擎</strong>（Godot / Unity / Unreal / Bevy / libGDX）—— 功能完整。但<strong>导出到网页通常残缺</strong>。</p>
+<p><strong>Web 引擎</strong>（Pixi / Three.js / Phaser）—— 打开就是网页。但没有构建系统，你要自己解决打包、缓存、版本。</p>
+<p>⚠ <strong>Three.js 不是完整引擎</strong> —— 它有 <code>Scene</code> / <code>Object3D</code> 场景图，但缺<strong>关卡 / 资源管理层</strong>（模型与贴图的加载缓存、生命周期）、物理与构建系统。你要自己搭壳。这不是缺点，但要知道。</p>
+<p><strong>Unity 与 Unreal 的取舍</strong>：已有 Unity 项目、要发主机或移动端，看 <a href="./engine-unity.html">Unity 档案</a>；要做高保真 3D、已有 Unreal 团队，看 <a href="./engine-unreal.html">Unreal 档案</a>。单人 + AI 小项目不建议 Unreal——引擎复杂度会盖过 AI 省下的时间。</p></span><span data-en><h2>The real difference between three kinds</h2>
+<p><strong>Native engines</strong> (Godot / Unity / Unreal / Bevy / libGDX) — full-featured, but <strong>the web export is usually incomplete</strong>.</p>
 <p><strong>Web engines</strong> (Pixi / Three.js / Phaser) — open a page and it runs, but <strong>there is no build system</strong>; bundling, caching and versioning are yours to solve.</p>
-<p>⚠ <strong>Three.js is not a full engine</strong> — it has no scene management, physics or asset management. You build the shell yourself. That is not a flaw, but you should know.</p></span></div>
+<p>⚠ Three.js is not a full engine — it has a <code>Scene</code> / <code>Object3D</code> scene graph, but no level / asset-management layer (loading, caching and lifecycle for models and textures), no physics, and no build system. You build the shell yourself. That is not a flaw, but you should know.</p>
+<p><strong>Unity vs Unreal</strong>: for an existing Unity project or console/mobile release, see the <a href="./engine-unity.html">Unity profile</a>; for high-fidelity 3D with an existing Unreal team, see the <a href="./engine-unreal.html">Unreal profile</a>. Solo AI-first small projects should avoid Unreal — engine complexity outweighs the time AI saves.</p></span></div>
 <div class="bi-block"><span data-zh><h2>本站的判断</h2>
 <blockquote>
 <p>⚠ 下面是我们的判断，不是数据。</p>
 </blockquote>
-<p><strong>如果拿不准，Godot 是最不容易出错的选择</strong> —— 官方文档完整、MIT 许可。脚本语言 GDScript 接近 Python，AI 生成代码时错得最少。</p>
-<p><strong>但如果你只做网页游戏，别为了「引擎更强」上 Godot</strong>。对单人项目，Web 引擎的迭代速度更重要。</p></span><span data-en><h2>Our judgement</h2>
+<p>如果拿不准，Godot 是最不容易出错的选择：官方文档完整、MIT 许可。脚本语言 GDScript 接近 Python，AI 生成代码时错得最少。</p>
+<p>但如果你只做网页游戏，别为了「引擎更强」上 Godot。对单人项目，Web 引擎的迭代速度更重要。</p></span><span data-en><h2>Our judgement</h2>
 <blockquote>
 <p>⚠ What follows is our judgement, not data.</p>
 </blockquote>
-<p><strong>If you are undecided, Godot is the least likely to bite you</strong> — complete official docs, MIT licence, and a scripting language (GDScript) close to Python, which means AI-generated code makes fewer mistakes.</p>
-<p><strong>But if you are only making a web game, do not pick Godot for &quot;the engine is stronger&quot;</strong> — a web engine's iteration speed matters more for a solo project.</p></span></div>
+<p>If you are undecided, Godot is the least likely to bite you — complete official docs, MIT licence, and a scripting language (GDScript) close to Python, which means AI-generated code makes fewer mistakes.</p>
+<p>But if you are only making a web game, do not pick Godot for &quot;the engine is stronger&quot; — a web engine's iteration speed matters more for a solo project.</p></span></div>
 <div class="bi-block"><span data-zh><h2>常见失败</h2>
 <ul>
-<li><strong>选了「以后可能要用 3D」的 2D 引擎</strong> —— 迁移成本远大于当初省下的</li>
-<li><strong>被星数吸引</strong> —— 引擎的星数反映知名度，不反映「AI 能不能写对」。星数高的是 C++ 引擎（Godot/Three），而 AI 写 C++ 明显比写 TypeScript/Python 弱</li>
-<li><strong>先学引擎再想做什么</strong> —— 顺序反了。<strong>先有玩法，再选工具</strong></li>
+<li>选了「以后可能要用 3D」的 2D 引擎：迁移成本远大于当初省下的</li>
+<li><strong>被星数吸引</strong>：引擎的星数反映知名度，不反映「AI 能不能写对」。星数高的是 C++ 引擎（Godot/Three），而 AI 写 C++ 明显比写 TypeScript/Python 弱</li>
+<li><strong>先学引擎再想做什么</strong>：顺序反了。<strong>先有玩法，再选工具</strong></li>
 </ul></span><span data-en><h2>Common failures</h2>
 <ul>
-<li><strong>Choosing a 2D engine &quot;in case I need 3D later&quot;</strong> — the migration cost far exceeds what you saved.</li>
-<li><strong>Being tempted by star counts</strong> — stars reflect notoriety, not &quot;can AI write it correctly&quot;. The high-star engines are C++ ones (Godot/Three), and AI writes C++ clearly worse than TypeScript or Python.</li>
-<li><strong>Learning the engine before deciding what to build</strong> — the order is backwards. <strong>Have the gameplay first, then pick the tool.</strong></li>
+<li>Choosing a 2D engine &quot;in case I need 3D later&quot; — the migration cost far exceeds what you saved.</li>
+<li>Being tempted by star counts — stars reflect notoriety, not &quot;can AI write it correctly&quot;. The high-star engines are C++ ones (Godot/Three), and AI writes C++ clearly worse than TypeScript or Python.</li>
+<li>Learning the engine before deciding what to build — the order is backwards. Have the gameplay first, then pick the tool.</li>
 </ul></span></div>
 <div class="bi-block"><span data-zh><h2>数据依据</h2>
 <p>本页的引擎事实来自 GitHub 官方 API。包括星数、许可、最后提交日、脚本语言。</p>
 <p>快照时间 <strong>2026-10-05</strong>，见首页的「引擎事实表」。</p>
 <p>⚠ 其中 cocos 与 love 的许可在 GitHub 上是 <code>NOASSERTION</code>（机器无法判定），</p>
-<p>须读官方 LICENSE —— 本站不替它们判断。</p></span><span data-en><h2>Where the facts come from</h2>
+<p>须读官方 LICENSE：本站不替它们判断。</p></span><span data-en><h2>Where the facts come from</h2>
 <p>The engine facts on this page (stars, licence, last push, scripting language) come from the official GitHub API, snapshotted <strong>2026-10-05</strong>; see the engine facts table on the home page.</p>
 <p>⚠ For cocos and love the GitHub licence field reads <code>NOASSERTION</code> — machine-undeterminable. Read the official LICENSE. This site does not judge for them.</p></span></div>
 <hr>

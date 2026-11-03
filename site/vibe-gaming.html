@@ -94,42 +94,41 @@
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>定义</strong>：通过与 AI 对话来制作游戏。⚠ <strong>但这个词有歧义 —— 它混着两件事，只有一件成立。</strong></p></span><span data-en><p><strong>Definition</strong>: making a game by talking to AI. ⚠ <strong>But the phrase is ambiguous — it mixes two things, and only one of them holds.</strong></p></span></div>
 <div class="bi-block"><span data-zh><h2>两件事，只有一件成立</h2>
-<div class="table-wrap"><table class="src"><thead><tr><th></th><th><strong>A. 用 AI 写代码</strong></th><th><strong>B. 用 AI 生成内容</strong></th></tr></thead><tbody>
+<div class="table-wrap"><table class="src"><thead><tr><th></th><th><strong>A. 用 AI 写代码</strong></th><th></th></tr></thead><tbody>
 <tr><td>动作</td><td>AI 写引擎代码、逻辑、调参</td><td>AI 生成美术、配乐、关卡、剧情</td></tr>
 <tr><td>「聊天」这个动作</td><td>✅ <strong>成立</strong></td><td>❌ <strong>不成立</strong></td></tr>
 <tr><td>瓶颈</td><td>引擎 API 记忆、调试</td><td><strong>风格一致性</strong>、可玩性</td></tr>
 <tr><td>成熟度</td><td>已成熟</td><td>半成熟</td></tr>
 </tbody></table></div></span><span data-en><h2>Two things, and only one holds</h2>
-<div class="table-wrap"><table class="src"><thead><tr><th></th><th><strong>A. AI writes the code</strong></th><th><strong>B. AI generates the content</strong></th></tr></thead><tbody>
+<div class="table-wrap"><table class="src"><thead><tr><th></th><th>A. AI writes the code</th><th>B. AI generates the content</th></tr></thead><tbody>
 <tr><td>Action</td><td>AI writes engine code, logic, tuning</td><td>AI generates art, music, levels, story</td></tr>
 <tr><td>Is &quot;talking&quot; the right word?</td><td>Yes</td><td>⚠ <strong>No</strong></td></tr>
-<tr><td>Bottleneck</td><td>Engine API recall, debugging</td><td><strong>Style consistency</strong>, playability</td></tr>
+<tr><td>Bottleneck</td><td>Engine API recall, debugging</td><td>, playability</td></tr>
 <tr><td>Maturity</td><td>Mature</td><td>Half-mature</td></tr>
 </tbody></table></div></span></div>
-<div class="bi-block"><span data-zh><h2>⚠ 为什么 B 里「聊天」不成立</h2>
+<div class="bi-block"><span data-zh><h2>只聊天不写文件，做不出游戏</h2>
 <blockquote>
-<p><strong>风格不一致是生成模型的缺陷，不是提示词问题。</strong></p>
+<p>风格不一致是生成模型的缺陷，不是提示词问题。</p>
 </blockquote>
-<p>多轮对话不会让风格更一致 —— 只会让生成结果更散。</p>
+<p>多轮对话不会让风格更一致，让生成结果更散。</p>
 <p>你无法用聊天生成一套风格统一的手游美术包。</p>
-<p>所以「跟 AI 聊天就能做出游戏」这个说法，<strong>在代码层面成立，在内容层面不成立</strong>。</p></span><span data-en><h2>⚠ Why &quot;talking&quot; does not hold for content</h2>
+<p>所以「跟 AI 聊天就能做出游戏」这个说法，。</p></span><span data-en><h2>Chat alone cannot make a game</h2>
 <blockquote>
-<p><strong>Style inconsistency is a defect of the generative model, not a prompting problem.</strong></p>
+<p>Style inconsistency is a defect of the generative model, not a prompting problem.</p>
 </blockquote>
 <p>More dialogue does not make a style more consistent — it only spreads the results further.</p>
 <p>You cannot generate a coherent art pack for a mobile game by having a conversation.</p>
-<p>So &quot;make a game by talking to AI&quot; holds <strong>at the level of code, and fails at the level of content</strong>.</p></span></div>
+<p>So &quot;make a game by talking to AI&quot; holds at the level of code, and fails at the level of content.</p></span></div>
 <div class="bi-block"><span data-zh><h2>由此得出的判断</h2>
-<p><strong>AI 让做游戏的成本下降是「不均匀」的：</strong></p>
+<p>AI 让做游戏的成本下降是「不均匀」的：</p>
 <ul>
 <li>写代码：<strong>大幅下降</strong>（这是 vibe coding 的成果）</li>
 <li>做美术 / 配乐 / 关卡：<strong>几乎没降</strong></li>
 </ul>
 <p>于是「一个人做游戏」的瓶颈从「写不出来」变成了「凑不齐」。</p>
 <p>→ 完整分析见首页的三张判定表。</p></span><span data-en><h2>The judgement this implies</h2>
-<p><strong>The cost of making a game with AI falls &quot;unevenly&quot;:</strong></p>
+<p>The cost of making a game with AI falls &quot;unevenly&quot;:</p>
 <ul>
 <li>Writing code: falls sharply — that is the result vibe coding produced</li>
 <li>Art, music and level design: barely moves</li>
@@ -140,7 +139,7 @@
 <p>vibe coding 的方法论<strong>不能直接搬到游戏开发</strong>，因为它依赖四个前提，</p>
 <p>其中两个在游戏里不成立（<strong>结果无法自动验证</strong> + <strong>失败是沉默的</strong>）。</p>
 <p>→ 见首页「表 2 · vibe coding 的哪些前提在游戏里不成立」。</p></span><span data-en><h2>How this differs from vibe coding</h2>
-<p>vibe coding's method <strong>does not carry over to game development unchanged</strong>, because it relies on four premises, and two of them fail for games (<strong>results cannot be verified automatically</strong>, and <strong>failure is silent</strong>).</p>
+<p>vibe coding's method does not carry over to game development unchanged, because it relies on four premises, and two of them fail for games (results cannot be verified automatically, and ).</p>
 <p>→ See &quot;Table 2 · Which premises of vibe coding do not hold for games&quot; on the home page.</p></span></div>
 <hr>
         </div>

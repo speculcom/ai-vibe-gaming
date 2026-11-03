@@ -94,54 +94,54 @@
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>一句话</strong>：所有主流引擎都说能导出到网页。<strong>但「能导出」和「能正常用」差得很远。</strong></p></span><span data-en><p><strong>In one line</strong>: every mainstream engine claims web export. <strong>But &quot;can export&quot; and &quot;works properly&quot; are far apart.</strong></p></span></div>
+<p><strong>一句话</strong>：所有主流引擎都说能导出到网页。但「能导出」和「能正常用」差得很远。</p>
 <div class="bi-block"><span data-zh><h2>三个真正会出问题的地方</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>环节</th><th>常见问题</th></tr></thead><tbody>
-<tr><td><strong>存档</strong></td><td>⚠ 原生引擎的本地存档 API 在 Web 上通常不可用；要改用浏览器存储，<strong>这需要你自己改代码</strong></td></tr>
+<tr><td></td></tr>
 <tr><td><strong>性能</strong></td><td>⚠ Web 构建默认不带优化；着色器编译、资源加载策略都要自己调</td></tr>
-<tr><td><strong>加载</strong></td><td>首屏加载量可能几十 MB —— ⚠ 手机网络下会很慢</td></tr>
+<tr><td><strong>加载</strong></td><td>首屏加载量可能几十 MB：⚠ 手机网络下会很慢</td></tr>
 </tbody></table></div>
 <p>⚠ 这三项<strong>都需要改代码</strong>，不是导出时打个勾就完事。</p></span><span data-en><h2>The three things that actually break</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Area</th><th>The common problem</th></tr></thead><tbody>
-<tr><td><strong>Saves</strong></td><td>⚠ A native engine's local-save API is usually unavailable on the web; you must switch to browser storage, <strong>which means changing code yourself</strong></td></tr>
+<tr><td></td></tr>
 <tr><td><strong>Performance</strong></td><td>⚠ Web builds ship without optimisation by default; shader compilation and asset loading both need tuning</td></tr>
 <tr><td><strong>Loading</strong></td><td>First load can be tens of megabytes — ⚠ very slow on mobile networks</td></tr>
 </tbody></table></div>
-<p>⚠ All three <strong>require code changes</strong>. They are not a checkbox in the export dialog.</p></span></div>
-<div class="bi-block"><span data-zh><h2>⚠ 一个结构性差异</h2>
-<p>原生引擎导出到 Web。本质上是<strong>把 C++/Rust 编译成 WebAssembly</strong>。</p>
+<p>⚠ All three require code changes. They are not a checkbox in the export dialog.</p></span></div>
+<div class="bi-block"><span data-zh><h2>网页导出缺的是构建与存档层</h2>
+<p>原生引擎导出到 Web。本质上是把 C++/Rust 编译成 WebAssembly。</p>
 <p>这带来两个后果：</p>
-<p>1. <strong>体积大</strong> —— Rust/C++ 编出的 wasm 通常比原生 JS 大一个量级</p>
-<p>2. ⚠ <strong>性能损耗</strong> —— WebAssembly 在浏览器里跑，但仍受 JS 主线程调度限制</p>
-<p>⚠ 所以「用 Bevy 导出 Web」技术上可行，但<strong>通常不是你该选它的理由</strong>。</p></span><span data-en><h2>⚠ A structural difference</h2>
-<p>Exporting a native engine to the web is, underneath, <strong>compiling C++ or Rust to WebAssembly</strong>.</p>
+<p>1. <strong>体积大</strong>：Rust/C++ 编出的 wasm 通常比原生 JS 大一个量级</p>
+<p>2. ⚠ <strong>性能损耗</strong>：WebAssembly 在浏览器里跑，但仍受 JS 主线程调度限制</p>
+<p>⚠ 所以「用 Bevy 导出 Web」技术上可行，但<strong>通常不是你该选它的理由</strong>。</p></span><span data-en><h2>Web export lacks a build and save layer</h2>
+<p>Exporting a native engine to the web is, underneath, compiling C++ or Rust to WebAssembly.</p>
 <p>Two consequences:</p>
 <p>1. <strong>It is large</strong> — wasm produced from Rust or C++ is typically an order of magnitude larger than native JS</p>
-<p>2. ⚠ <strong>It costs performance</strong> — WebAssembly runs in the browser but is still subject to JS main-thread scheduling</p>
-<p>⚠ So &quot;export Bevy to the web&quot; is technically possible, but it is <strong>usually not the reason to choose Bevy</strong>.</p></span></div>
+<p>2. ⚠ It costs performance — WebAssembly runs in the browser but is still subject to JS main-thread scheduling</p>
+<p>⚠ So &quot;export Bevy to the web&quot; is technically possible, but it is usually not the reason to choose Bevy.</p></span></div>
 <div class="bi-block"><span data-zh><h2>判断标准</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>你的需求</th><th>建议</th></tr></thead><tbody>
 <tr><td>短体验、无存档</td><td>✅ Web 引擎最省事</td></tr>
 <tr><td>需要长期存档</td><td>⚠ 原生引擎 + 自己接浏览器存储</td></tr>
 <tr><td>重度 3D</td><td>⚠ Web 引擎（Bevy/Unity 的 Web 导出损耗大）</td></tr>
-<tr><td>⚠ 要发到 Steam</td><td><strong>别考虑 Web</strong> —— Steam 有原生分发，没必要降级</td></tr>
+<tr><td>⚠ 要发到 Steam</td><td><strong>别考虑 Web</strong>：Steam 有原生分发，没必要降级</td></tr>
 </tbody></table></div></span><span data-en><h2>How to decide</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Your requirement</th><th>Advice</th></tr></thead><tbody>
 <tr><td>Short sessions, no saves</td><td>✅ A web engine is least work</td></tr>
 <tr><td>Long-term saves</td><td>⚠ Native engine + your own browser-storage layer</td></tr>
 <tr><td>Heavy 3D</td><td>⚠ Web engines (Bevy/Unity lose a lot in their web exports)</td></tr>
-<tr><td>⚠ Shipping on Steam</td><td><strong>Do not consider web</strong> — Steam ships natively, so there is no reason to downgrade</td></tr>
+<tr><td>⚠ Shipping on Steam</td><td>Do not consider web — Steam ships natively, so there is no reason to downgrade</td></tr>
 </tbody></table></div></span></div>
 <div class="bi-block"><span data-zh><h2>常见失败</h2>
 <ul>
-<li><strong>相信「引擎支持 Web 导出」这句话</strong> —— 支持 ≠ 可用</li>
-<li><strong>没测首屏加载</strong> —— 到线上才发现手机上要等 30 秒</li>
-<li><strong>忘了存档</strong> —— 用户刷新页面进度没了</li>
+<li>相信「引擎支持 Web 导出」这句话：支持 ≠ 可用</li>
+<li><strong>没测首屏加载</strong>：到线上才发现手机上要等 30 秒</li>
+<li><strong>忘了存档</strong>：用户刷新页面进度没了</li>
 </ul></span><span data-en><h2>Common failures</h2>
 <ul>
-<li><strong>Believing the phrase &quot;the engine supports web export&quot;</strong> — supported is not the same as usable</li>
-<li><strong>Not measuring first load</strong> — you find out in production that phones wait 30 seconds</li>
-<li><strong>Forgetting saves</strong> — the player refreshes and loses progress</li>
+<li>Believing the phrase &quot;the engine supports web export&quot; — supported is not the same as usable</li>
+<li>Not measuring first load — you find out in production that phones wait 30 seconds</li>
+<li> — the player refreshes and loses progress</li>
 </ul></span></div>
 <hr>
         </div>

@@ -104,35 +104,34 @@
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>一句话</strong>：Java/Kotlin 生态里的完整引擎。<strong>AI 写得不错，但构建流程是它的门槛。</strong></p></span><span data-en><p><strong>In one line</strong>: the complete engine in the Java/Kotlin ecosystem. <strong>AI handles it decently, but the build process is the barrier.</strong></p></span></div>
 <div class="bi-block"><span data-zh><h2>对 AI 友好的部分</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>原因</th><th>说明</th></tr></thead><tbody>
-<tr><td><strong>Java 是训练数据大户</strong></td><td>语法严格但模式固定，AI 的 Java 能力优于 Rust/C++</td></tr>
+<tr><td></td><td>语法严格但模式固定，AI 的 Java 能力优于 Rust/C++</td></tr>
 <tr><td><strong>Kotlin 也很好写</strong></td><td>协程与空安全降低了出错的可能</td></tr>
 <tr><td><strong>Apache-2.0</strong></td><td>商用无阻碍</td></tr>
 <tr><td><strong>跨平台成熟</strong></td><td>桌面 + Android + iOS + Web</td></tr>
 </tbody></table></div></span><span data-en><h2>Where it is AI-friendly</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Reason</th><th>Explanation</th></tr></thead><tbody>
-<tr><td><strong>Java has a large body of training data</strong></td><td>The syntax is strict but the patterns are fixed; AI's Java is better than its Rust or C++</td></tr>
-<tr><td><strong>Kotlin is also easy to write</strong></td><td>Coroutines and null safety remove a class of mistakes</td></tr>
+<tr><td>Java has a large body of training data</td><td>The syntax is strict but the patterns are fixed; AI's Java is better than its Rust or C++</td></tr>
+<tr><td>Kotlin is also easy to write</td><td>Coroutines and null safety remove a class of mistakes</td></tr>
 <tr><td><strong>Apache-2.0</strong></td><td>No obstacle to commercial use</td></tr>
-<tr><td><strong>Mature cross-platform</strong></td><td>Desktop + Android + iOS + Web</td></tr>
+<tr><td>Mature cross-platform</td><td>Desktop + Android + iOS + Web</td></tr>
 </tbody></table></div></span></div>
-<div class="bi-block"><span data-zh><h2>⚠ 它的真正门槛：构建</h2>
-<p><strong>这是 AI 帮不上忙的地方</strong>：</p>
+<div class="bi-block"><span data-zh><h2>libGDX 的门槛在 Gradle 构建</h2>
+<p>构建是它的真正门槛：</p>
 <ul>
-<li>Gradle 依赖解析 —— 版本冲突时的报错<strong>极难读懂</strong></li>
-<li>Android 打包需要 Android SDK —— 环境配置本身就是一道坎</li>
-<li>⚠ <strong>AI 会写出能编译逻辑但配不出环境的构建文件</strong></li>
+<li>Gradle 依赖解析：版本冲突时的报错<strong>极难读懂</strong></li>
+<li>Android 打包需要 Android SDK：环境配置本身就是一道坎</li>
+<li>⚠ AI 会写出能编译逻辑但配不出环境的构建文件</li>
 </ul>
-<p>⚠ 这一点与 S5「导出与发布」是同一类问题：<strong>确定性工程，模型只能猜。</strong></p></span><span data-en><h2>⚠ The real barrier: the build</h2>
-<p><strong>This is where AI cannot help:</strong></p>
+<p>⚠ 这一点与 S5「导出与发布」是同一类问题：</p></span><span data-en><h2>libGDX's barrier is the Gradle build</h2>
+<p>This is where AI cannot help:</p>
 <ul>
-<li>Gradle dependency resolution — the errors on a version conflict are <strong>extremely hard to read</strong></li>
+<li>Gradle dependency resolution — the errors on a version conflict are extremely hard to read</li>
 <li>Android packaging needs the Android SDK — the environment setup is its own hurdle</li>
-<li>⚠ <strong>AI can write build files whose logic compiles but whose environment never resolves</strong></li>
+<li>⚠ AI can write build files whose logic compiles but whose environment never resolves</li>
 </ul>
-<p>⚠ This is the same class of problem as S5's &quot;ship it&quot;: <strong>deterministic engineering, where a model can only guess.</strong></p></span></div>
+<p>⚠ This is the same class of problem as S5's &quot;ship it&quot;: deterministic engineering, where a model can only guess.</p></span></div>
 <div class="bi-block"><span data-zh><h2>什么时候选它 / 不选</h2>
 <p><strong>选</strong>：⚠ 需要 Android 发布。团队用 Java/Kotlin。跨平台是硬需求。</p>
 <p><strong>不选</strong>：只做桌面或网页（Godot 或 Pixi 都更省事）</p></span><span data-en><h2>When to pick it, and when not to</h2>

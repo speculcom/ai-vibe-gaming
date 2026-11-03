@@ -133,6 +133,8 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "message"
 - [Phaser](terms/engines/Phaser.md)
 - [Pixi](terms/engines/Pixi.md)
 - [Three.js](terms/engines/Three.js.md)
+- [Unity](terms/engines/Unity.md)
+- [Unreal](terms/engines/Unreal.md)
 
 <!-- INDEX:END -->
 
@@ -142,7 +144,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "message"
 | Item | Measured value |
 |---|---|
 | Term entries | 20 (stage 15 · keyword 5) |
-| Engine profiles | 7 (Bevy · Cocos · Godot · libGDX · Phaser · Pixi · Three.js) |
+| Engine profiles | 9 (Bevy · Cocos · Godot · libGDX · Phaser · Pixi · Three.js · Unity · Unreal) |
 | Cross-cutting pages | 2 (demos · method) |
-| Site output | 32 HTML pages |
+| Site output | 34 HTML pages |
 <!-- STATS:END -->

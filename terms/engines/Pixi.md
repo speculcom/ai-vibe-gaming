@@ -37,9 +37,9 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 
 | 原因 | 说明 |
 |---|---|
-| **TypeScript** | 训练数据最多、且带类型检查 —— AI 写错的概率明显低于其他游戏语言 |
-| **WebGL/WebGPU** | 跑在浏览器里，**不需要装任何东西**就能分享 |
-| **概念少** | Sprite / Container / Texture —— 不需要学引擎架构 |
+| **TypeScript** | 训练数据最多、且带类型检查：AI 写错的概率明显低于其他游戏语言 |
+|  | 跑在浏览器里，**不需要装任何东西**就能分享 |
+| **概念少** | Sprite / Container / Texture：不需要学引擎架构 |
 | **MIT 许可** | 商用无阻碍 |
 
 <!-- EN -->
@@ -48,35 +48,35 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 > | Reason | Explanation |
 > |---|---|
 > | **TypeScript** | The most training data of any language, plus type checking — AI makes noticeably fewer mistakes in it than in other game languages |
-> | **WebGL / WebGPU** | It runs in the browser, so **you install nothing** to share it |
-> | **Few concepts** | Sprite / Container / Texture — no engine architecture to learn |
+> |  to share it |
+> |  | Sprite / Container / Texture — no engine architecture to learn |
 > | **MIT licence** | No obstacle to commercial use |
 
 ## 它的代价
 
-- ⚠ **没有内置物理系统** —— 得自己接（matter.js / planck.js）
-- **没有场景管理** —— 大项目要自己组织
-- **2D only** —— 做 3D 得换 Three.js
+- ⚠ **没有内置物理系统**：得自己接（matter.js / planck.js）
+- ：`Container` 是通用容器，场景树要自己组织
+- **2D only**：做 3D 得换 Three.js
 
 <!-- EN -->
 > ## What it costs
 >
-> - ⚠ **No built-in physics** — you attach one yourself (matter.js / planck.js)
-> - **No scene management** — larger projects need their own organisation
+> - ⚠ No built-in physics — you attach one yourself (matter.js / planck.js)
+> - No level / scene-management layer — `Container` is a generic container; you organise the scene tree yourself
 > - **2D only** — for 3D you would switch to Three.js
 
 ## 什么时候选它 / 不选
 
 **选**：2D 网页游戏、快速原型、Game Jam
 
-**不选**：需要完整引擎功能（碰撞、场景、资源管理都现成）
+**不选**：需要完整引擎功能（碰撞、关卡 / 资源管理都现成）
 
 <!-- EN -->
 > ## When to pick it, and when not to
 >
 > **Pick it for**: 2D web games, quick prototypes, game jams
 >
-> **Do not pick it if**: you need complete engine features out of the box (collision, scenes, asset management)
+> **Do not pick it if**: you need complete engine features out of the box (collision, level management, asset management)
 
 ## 可核验事实
 

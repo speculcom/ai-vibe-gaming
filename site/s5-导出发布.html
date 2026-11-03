@@ -94,7 +94,7 @@
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>这一步决定什么</strong>：让人真的玩到。<strong>AI 在这一步几乎帮不上忙 —— 这很正常。</strong></p></span><span data-en><p><strong>What this stage decides</strong>: getting it in front of players. <strong>AI is almost no help here — and that is normal.</strong></p></span></div>
+<div class="bi-block"><span data-zh><p><strong>这一步决定什么</strong>：让人真的玩到。AI 在这一步几乎帮不上忙，很正常。</p></span><span data-en><p>What this stage decides: getting it in front of players. AI is almost no help here — and that is normal.</p></span></div>
 <div class="bi-block"><span data-zh><h2>为什么 AI 在这里作用最小</h2>
 <p>导出是<strong>确定性工程</strong>：固定的流程、固定的工具链、明确的成功条件。</p>
 <div class="table-wrap"><table class="src"><thead><tr><th>环节</th><th>AI 能做什么</th></tr></thead><tbody>
@@ -104,75 +104,75 @@
 <tr><td>商店页面文案</td><td>✅ 能写</td></tr>
 <tr><td><strong>实际测试每种设备</strong></td><td>❌ 做不了</td></tr>
 </tbody></table></div>
-<p>⚠ 这不是 AI 的缺陷。<strong>导出是工程问题，工程问题的解法是查文档，不是让模型猜。</strong></p></span><span data-en><h2>Why AI helps least here</h2>
-<p>Exporting is <strong>deterministic engineering</strong>: a fixed process, a fixed toolchain, an unambiguous success condition.</p>
+<p>⚠ 这不是 AI 的缺陷。导出是工程问题，工程问题的解法是查文档，不是让模型猜。</p></span><span data-en><h2>Why AI helps least here</h2>
+<p>Exporting is deterministic engineering: a fixed process, a fixed toolchain, an unambiguous success condition.</p>
 <div class="table-wrap"><table class="src"><thead><tr><th>Stage</th><th>What AI can do</th></tr></thead><tbody>
 <tr><td>Configure export settings</td><td>✅ It can give a template</td></tr>
 <tr><td>Fix an export error</td><td>⚠ It can guess, but error messages are often incomplete</td></tr>
 <tr><td>Platform review compliance</td><td>❌ You must check this yourself</td></tr>
 <tr><td>Store page copy</td><td>✅ It can write it</td></tr>
-<tr><td><strong>Actually testing on each device</strong></td><td>❌ It cannot</td></tr>
+<tr><td>Actually testing on each device</td><td>❌ It cannot</td></tr>
 </tbody></table></div>
-<p>⚠ This is not a flaw of AI. <strong>Engineering problems are solved by reading the docs, not by asking a model to guess.</strong></p></span></div>
+<p>⚠ This is not a flaw of AI. Engineering problems are solved by reading the docs, not by asking a model to guess.</p></span></div>
 <div class="bi-block"><span data-zh><h2>各平台的实际差异</h2>
 <p>⚠ 以下是我们的判断，具体条款请以平台官方为准。</p>
 <div class="table-wrap"><table class="src"><thead><tr><th>平台</th><th>门槛</th><th>⚠ 常见的坑</th></tr></thead><tbody>
-<tr><td><strong>网页（itch.io 等）</strong></td><td>最低</td><td>浏览器差异（Safari 的音频、WebGL 版本）</td></tr>
-<tr><td><strong>Windows / macOS</strong></td><td>中</td><td>签名与公证（macOS Gatekeeper）</td></tr>
+<tr><td></td><td>最低</td><td>浏览器差异（Safari 的音频、WebGL 版本）</td></tr>
+<tr><td></td><td>中</td><td>签名与公证（macOS Gatekeeper）</td></tr>
 <tr><td><strong>移动端</strong></td><td>高</td><td>商店审核周期长；隐私合规</td></tr>
 <tr><td><strong>主机（Steam 等）</strong></td><td>最高</td><td>开发者账号费、审核、年龄分级</td></tr>
 </tbody></table></div></span><span data-en><h2>How platforms actually differ</h2>
 <p>⚠ What follows is our judgement; check the platforms' own terms for specifics.</p>
 <div class="table-wrap"><table class="src"><thead><tr><th>Platform</th><th>Barrier</th><th>⚠ Common traps</th></tr></thead><tbody>
-<tr><td><strong>Web (itch.io and similar)</strong></td><td>Lowest</td><td>Browser differences (Safari audio, WebGL versions)</td></tr>
-<tr><td><strong>Windows / macOS</strong></td><td>Medium</td><td>Signing and notarisation (macOS Gatekeeper)</td></tr>
+<tr><td>Web (itch.io and similar)</td><td>Lowest</td><td>Browser differences (Safari audio, WebGL versions)</td></tr>
+<tr><td></td><td>Medium</td><td>Signing and notarisation (macOS Gatekeeper)</td></tr>
 <tr><td><strong>Mobile</strong></td><td>High</td><td>Long store review cycles; privacy compliance</td></tr>
-<tr><td><strong>Consoles (Steam and similar)</strong></td><td>Highest</td><td>Developer account fee, review, age rating</td></tr>
+<tr><td>Consoles (Steam and similar)</td><td>Highest</td><td>Developer account fee, review, age rating</td></tr>
 </tbody></table></div></span></div>
 <div class="bi-block"><span data-zh><h2>发布前必须自己测的</h2>
 <p>AI 帮不了、也必须做的：</p>
 <ul class="checklist">
-<li> <strong>在目标设备上真的跑过</strong> —— 不是在开发机上</li>
-<li> <strong>首次加载时间</strong> —— 网页游戏尤其重要</li>
-<li> <strong>音量/静音状态</strong> —— ⚠ 忘记检查这个的开发者很多</li>
-<li> <strong>存档是否真的保存</strong> —— 清理浏览器数据后重试</li>
-<li> ⚠ <strong>离线/断网行为</strong> —— 是崩溃还是优雅降级？</li>
+<li> <strong>在目标设备上真的跑过</strong>：不是在开发机上</li>
+<li> <strong>首次加载时间</strong>：网页游戏尤其重要</li>
+<li> <strong>音量/静音状态</strong>：⚠ 忘记检查这个的开发者很多</li>
+<li> <strong>存档是否真的保存</strong>：清理浏览器数据后重试</li>
+<li> ⚠ <strong>离线/断网行为</strong>：是崩溃还是优雅降级？</li>
 </ul></span><span data-en><h2>What AI cannot do and you must</h2>
 <ul class="checklist">
-<li> <strong>You ran it on the target device</strong> — not just the dev machine</li>
-<li> <strong>First-load time</strong> — especially for web games</li>
-<li> <strong>Volume / mute state</strong> — ⚠ many developers forget this one</li>
-<li> <strong>Whether saves actually persist</strong> — retry after clearing browser data</li>
-<li> ⚠ <strong>Offline / no-network behaviour</strong> — does it crash or degrade gracefully?</li>
+<li> You ran it on the target device — not just the dev machine</li>
+<li>  — especially for web games</li>
+<li> Volume / mute state — ⚠ many developers forget this one</li>
+<li> Whether saves actually persist — retry after clearing browser data</li>
+<li> ⚠ Offline / no-network behaviour — does it crash or degrade gracefully?</li>
 </ul></span></div>
-<div class="bi-block"><span data-zh><h2>⚠ 一个真实建议</h2>
+<div class="bi-block"><span data-zh><h2>先发一个能玩的极简版</h2>
 <blockquote>
 <p><strong>先发一个「极简版」。</strong></p>
 </blockquote>
 <p>在 itch.io 上传一个能玩的、但素材很粗糙的版本，然后看有没有人玩。</p>
-<p>⚠ 理由：这个行业的最大风险不是「游戏不好玩」，而是<strong>你不知道它好不好玩</strong>。</p>
+<p>⚠ 理由，个行业的最大风险不是「游戏不好玩」，而是<strong>你不知道它好不好玩</strong>。</p>
 <p>与其做完 80% 再发现方向错了，不如花 20% 做一个能验证方向的版本。</p>
-<p><strong>AI 让这个策略变得可行</strong> —— 因为原型成本降到了可以「多发几个试」的程度。</p></span><span data-en><h2>⚠ One real piece of advice</h2>
+<p>：因为原型成本降到了可以「多发几个试」的程度。</p></span><span data-en><h2>Ship a playable minimal version first</h2>
 <blockquote>
-<p><strong>Ship an extremely rough version first.</strong></p>
+<p>Ship an extremely rough version first.</p>
 </blockquote>
 <p>Upload something playable on itch.io, with deliberately crude assets, and see whether anyone plays it.</p>
-<p>⚠ The reason: the biggest risk in this industry is not &quot;the game is bad&quot; — it is <strong>that you do not know whether the game is bad</strong>. Rather than discovering the wrong direction after 80% is done, spend 20% on something that validates it.</p>
-<p><strong>AI makes this strategy affordable</strong> — because prototype cost has dropped enough to &quot;ship a few and try&quot;.</p></span></div>
+<p>⚠ The reason: the biggest risk in this industry is not &quot;the game is bad&quot; — it is that you do not know whether the game is bad. Rather than discovering the wrong direction after 80% is done, spend 20% on something that validates it.</p>
+<p>AI makes this strategy affordable — because prototype cost has dropped enough to &quot;ship a few and try&quot;.</p></span></div>
 <div class="bi-block"><span data-zh><h2>常见失败</h2>
 <ul>
-<li><strong>追求「做完再发」</strong> —— ⚠ 最常见的失败模式</li>
-<li><strong>发给朋友</strong> —— ⚠ 朋友会给你礼貌性反馈，陌生人才给你真实反馈</li>
-<li><strong>只在开发机上测</strong> —— 开发机的显卡和真实用户差得远</li>
-<li><strong>忽略 Safari / 老浏览器</strong> —— 网页游戏的最大流失点</li>
-<li><strong>第一次发布就上商店</strong> —— 审核周期会让你失去调整的窗口</li>
+<li><strong>追求「做完再发」</strong>：⚠ 最常见的失败模式</li>
+<li><strong>发给朋友</strong>：⚠ 朋友会给你礼貌性反馈，陌生人才给你真实反馈</li>
+<li><strong>只在开发机上测</strong>：开发机的显卡和真实用户差得远</li>
+<li>：网页游戏的最大流失点</li>
+<li><strong>第一次发布就上商店</strong>：审核周期会让你失去调整的窗口</li>
 </ul></span><span data-en><h2>Common failures</h2>
 <ul>
-<li><strong>Aiming to finish before shipping</strong> — ⚠ the most common failure mode</li>
-<li><strong>Sending it to friends</strong> — ⚠ friends give you polite feedback; strangers give you real feedback</li>
-<li><strong>Testing only on the dev machine</strong> — its GPU is nothing like a real user's</li>
-<li><strong>Ignoring Safari / older browsers</strong> — the biggest leak for web games</li>
-<li><strong>Going straight to a store on the first release</strong> — the review cycle removes your window to adjust</li>
+<li>Aiming to finish before shipping — ⚠ the most common failure mode</li>
+<li>Sending it to friends — ⚠ friends give you polite feedback; strangers give you real feedback</li>
+<li>Testing only on the dev machine — its GPU is nothing like a real user's</li>
+<li>Ignoring Safari / older browsers — the biggest leak for web games</li>
+<li>Going straight to a store on the first release — the review cycle removes your window to adjust</li>
 </ul></span></div>
 <div class="bi-block"><span data-zh><h2>判断你这一步做完了吗</h2>
 <ul class="checklist">
@@ -181,7 +181,7 @@
 <li> ⚠ 存档、离线、音量都测过</li>
 </ul></span><span data-en><h2>Are you done with this stage?</h2>
 <ul class="checklist">
-<li> It runs on a <strong>machine that is not your dev machine</strong></li>
+<li> It runs on a machine that is not your dev machine</li>
 <li> Someone who is not you has played it and given you feedback</li>
 <li> ⚠ Saves, offline behaviour and volume have all been tested</li>
 </ul></span></div>

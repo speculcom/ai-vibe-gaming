@@ -28,16 +28,16 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 
 # libGDX
 
-**一句话**：Java/Kotlin 生态里的完整引擎。**AI 写得不错，但构建流程是它的门槛。**
+
 
 <!-- EN -->
-> **In one line**: the complete engine in the Java/Kotlin ecosystem. **AI handles it decently, but the build process is the barrier.**
+> 
 
 ## 对 AI 友好的部分
 
 | 原因 | 说明 |
 |---|---|
-| **Java 是训练数据大户** | 语法严格但模式固定，AI 的 Java 能力优于 Rust/C++ |
+|  | 语法严格但模式固定，AI 的 Java 能力优于 Rust/C++ |
 | **Kotlin 也很好写** | 协程与空安全降低了出错的可能 |
 | **Apache-2.0** | 商用无阻碍 |
 | **跨平台成熟** | 桌面 + Android + iOS + Web |
@@ -47,31 +47,31 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 >
 > | Reason | Explanation |
 > |---|---|
-> | **Java has a large body of training data** | The syntax is strict but the patterns are fixed; AI's Java is better than its Rust or C++ |
-> | **Kotlin is also easy to write** | Coroutines and null safety remove a class of mistakes |
+> | Java has a large body of training data | The syntax is strict but the patterns are fixed; AI's Java is better than its Rust or C++ |
+> | Kotlin is also easy to write | Coroutines and null safety remove a class of mistakes |
 > | **Apache-2.0** | No obstacle to commercial use |
-> | **Mature cross-platform** | Desktop + Android + iOS + Web |
+> | Mature cross-platform | Desktop + Android + iOS + Web |
 
-## ⚠ 它的真正门槛：构建
+## libGDX 的门槛在 Gradle 构建
 
-**这是 AI 帮不上忙的地方**：
+构建是它的真正门槛：
 
-- Gradle 依赖解析 —— 版本冲突时的报错**极难读懂**
-- Android 打包需要 Android SDK —— 环境配置本身就是一道坎
-- ⚠ **AI 会写出能编译逻辑但配不出环境的构建文件**
+- Gradle 依赖解析：版本冲突时的报错**极难读懂**
+- Android 打包需要 Android SDK：环境配置本身就是一道坎
+- ⚠ AI 会写出能编译逻辑但配不出环境的构建文件
 
-⚠ 这一点与 S5「导出与发布」是同一类问题：**确定性工程，模型只能猜。**
+⚠ 这一点与 S5「导出与发布」是同一类问题：
 
 <!-- EN -->
-> ## ⚠ The real barrier: the build
+> ## libGDX's barrier is the Gradle build
 >
-> **This is where AI cannot help:**
+> This is where AI cannot help:
 >
-> - Gradle dependency resolution — the errors on a version conflict are **extremely hard to read**
+> - Gradle dependency resolution — the errors on a version conflict are extremely hard to read
 > - Android packaging needs the Android SDK — the environment setup is its own hurdle
-> - ⚠ **AI can write build files whose logic compiles but whose environment never resolves**
+> - ⚠ AI can write build files whose logic compiles but whose environment never resolves
 >
-> ⚠ This is the same class of problem as S5's "ship it": **deterministic engineering, where a model can only guess.**
+> ⚠ This is the same class of problem as S5's "ship it": deterministic engineering, where a model can only guess.
 
 ## 什么时候选它 / 不选
 

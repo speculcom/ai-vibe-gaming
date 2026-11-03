@@ -100,7 +100,7 @@
           <p class="t-sm"><span data-zh><strong>安装步骤</strong></span><span data-en><strong>Install</strong></span><span data-zh>：官网下 Windows 包 → <strong>解压即用，无需安装</strong>（官方原文：Godot is self-contained and does not require installation）。当前稳定版 4.7.2（2026-08-18）。只有要 C# 才另装 .NET SDK；导出时需另下 Export templates。商店版（Steam / itch / EGS）不含 .NET 支持。</span><span data-en>: Download the Windows build from the official site and <strong>extract it — there is no installation step</strong> (official wording: Godot is self-contained and does not require installation). Current stable is 4.7.2 (18 Aug 2026). Only C# needs the .NET SDK on top; export templates are a separate download. Store builds (Steam / itch / EGS) do not include .NET support.</span></p>
           <p class="t-xs"><span data-zh>安装事实来源</span><span data-en>Install source</span>：<a href="https://godotengine.org/download/windows/" target="_blank" rel="noopener">https://godotengine.org/download/windows/</a> · <span data-zh>核验日</span><span data-en>verified</span> 2026-10-30</p>
           <p class="t-sm mt-2"><span data-zh><strong>上手难度</strong></span><span data-en><strong>Onboarding</strong></span><span data-zh>：低</span><span data-en>: low</span> <span class="t-xs muted"><span data-zh>（本站判断，未经实测）</span><span data-en>(the site’s judgement, not measured)</span></span></p>
-          <p class="t-sm"><span data-zh>零安装、零构建工具：解压、双击、新建项目，就能写第一行 GDScript。上面五个里只有它不需要额外运行时。</span><span data-en>No installer and no build toolchain: extract, double-click, create a project, write your first GDScript. It is the only one of the five that needs no extra runtime.</span></p>
+          <p class="t-sm"><span data-zh>零安装、零构建工具：解压、双击、新建项目，就能写第一行 GDScript。这些引擎里只有它不需要额外运行时。</span><span data-en>No installer and no build toolchain: extract, double-click, create a project, write your first GDScript. It is the only one of these engines that needs no extra runtime.</span></p>
         </div>
 
         <div class="term-body">
@@ -108,45 +108,45 @@
 <div class="bi-block"><span data-zh><h2>为什么对 AI 友好</h2>
 <p>⚠ 下面是我们对「AI 写起来出错的概率」的判断，<strong>不是实测</strong>。</p>
 <div class="table-wrap"><table class="src"><thead><tr><th>原因</th><th>说明</th></tr></thead><tbody>
-<tr><td><strong>GDScript 接近 Python</strong></td><td>缩进语法、动态类型、<code>var</code>/<code>if</code>/<code>for</code> 都与 Python 同源。AI 生成 Python 风格的代码，改成 GDScript 的错率最低</td></tr>
+<tr><td>GDScript 接近 Python</td><td>缩进语法、动态类型、<code>var</code>/<code>if</code>/<code>for</code> 都与 Python 同源。AI 生成 Python 风格的代码，改成 GDScript 的错率最低</td></tr>
 <tr><td><strong>错误信息友好</strong></td><td>脚本报错会指出行号与变量名，AI 能据此定位</td></tr>
 <tr><td><strong>官方文档完整</strong></td><td>类参考有明确的参数与返回值，AI 引用的 API 大多真实存在</td></tr>
 <tr><td><strong>静态类型可选</strong></td><td>GDScript 支持类型标注，AI 可以写出更安全的代码</td></tr>
 <tr><td><strong>⚠ 不用 C#</strong></td><td>选 C# 就要 .NET 环境，AI 常写出版本不匹配的 API</td></tr>
 </tbody></table></div></span><span data-en><h2>Why it is AI-friendly</h2>
-<p>⚠ What follows is our judgement of <strong>how likely AI is to get it wrong</strong>, not a measurement.</p>
+<p>⚠ What follows is our judgement of how likely AI is to get it wrong, not a measurement.</p>
 <div class="table-wrap"><table class="src"><thead><tr><th>Reason</th><th>Explanation</th></tr></thead><tbody>
-<tr><td><strong>GDScript is close to Python</strong></td><td>Indentation-based, dynamically typed, with <code>var</code>/<code>if</code>/<code>for</code> all coming from Python. AI-generated Python translates into GDScript with the fewest mistakes</td></tr>
-<tr><td><strong>Friendly error messages</strong></td><td>Script errors point at a line and a variable name, which is enough for AI to locate the problem</td></tr>
-<tr><td><strong>Complete official docs</strong></td><td>The class reference documents parameters and return types; most APIs AI cites actually exist</td></tr>
-<tr><td><strong>Optional static typing</strong></td><td>GDScript supports type annotations, so AI can produce safer code</td></tr>
-<tr><td><strong>⚠ Do not use C#</strong></td><td>Choosing C# pulls in a .NET environment, and AI frequently writes APIs from the wrong version</td></tr>
+<tr><td>GDScript is close to Python</td><td>Indentation-based, dynamically typed, with <code>var</code>/<code>if</code>/<code>for</code> all coming from Python. AI-generated Python translates into GDScript with the fewest mistakes</td></tr>
+<tr><td>Friendly error messages</td><td>Script errors point at a line and a variable name, which is enough for AI to locate the problem</td></tr>
+<tr><td>Complete official docs</td><td>The class reference documents parameters and return types; most APIs AI cites actually exist</td></tr>
+<tr><td>Optional static typing</td><td>GDScript supports type annotations, so AI can produce safer code</td></tr>
+<tr><td></td><td>Choosing C# pulls in a .NET environment, and AI frequently writes APIs from the wrong version</td></tr>
 </tbody></table></div></span></div>
 <div class="bi-block"><span data-zh><h2>它的代价</h2>
 <ul>
-<li><strong>Web 导出不算完整</strong> —— 存档、性能、加载在大项目上会出问题</li>
-<li><strong>C# 支持仍在推进</strong> —— ⚠ 官方文档自己列了一长串「已知问题」，别当稳定特性用</li>
-<li><strong>生态比 Unity 小</strong> —— 找现成插件的余地少</li>
+<li><strong>Web 导出不算完整</strong>：存档、性能、加载在大项目上会出问题</li>
+<li><strong>C# 支持仍在推进</strong>：⚠ 官方文档自己列了一长串「已知问题」，别当稳定特性用</li>
+<li><strong>生态比 Unity 小</strong>：找现成插件的余地少</li>
 </ul></span><span data-en><h2>What it costs</h2>
 <ul>
-<li><strong>The web export is not complete</strong> — saves, performance and loading fall apart on larger projects</li>
-<li><strong>C# support is still being worked on</strong> — ⚠ the official docs list a long set of known issues; do not treat it as stable</li>
-<li><strong>A smaller ecosystem than Unity</strong> — fewer ready-made plugins</li>
+<li>The web export is not complete — saves, performance and loading fall apart on larger projects</li>
+<li>C# support is still being worked on — ⚠ the official docs list a long set of known issues; do not treat it as stable</li>
+<li>A smaller ecosystem than Unity — fewer ready-made plugins</li>
 </ul></span></div>
-<div class="bi-block"><span data-zh><h2>⚠ 但对 AI 友好的另一面</h2>
-<p><strong>Godot 的场景树（scene）系统对 AI 是不友好的</strong>：</p>
+<div class="bi-block"><span data-zh><h2>GDScript 对 AI 生成更稳，但生态有边界</h2>
+<p>Godot 的场景树（scene）系统对 AI 是不友好的：</p>
 <ul>
-<li>场景是 <code>.tscn</code> 文本格式，<strong>但它是编辑器生成的，不该手写</strong></li>
+<li>场景是 <code>.tscn</code> 文本格式，</li>
 <li>AI 写 <code>.tscn</code> 文件经常格式错误</li>
 </ul>
 <p>⚠ <strong>正确做法</strong>：让 AI 写 GDScript 代码，场景在编辑器里搭。</p>
-<p>这与 S2「给明确的边界」是同一条原则。</p></span><span data-en><h2>⚠ The other side of being AI-friendly</h2>
+<p>这与 S2「给明确的边界」是同一条原则。</p></span><span data-en><h2>GDScript is steadier for AI, but the ecosystem has limits</h2>
 <p><strong>Godot's scene tree is <em>not</em> AI-friendly</strong>:</p>
 <ul>
-<li>Scenes are <code>.tscn</code> text files — but they are <strong>generated by the editor and should not be hand-written</strong></li>
+<li>Scenes are <code>.tscn</code> text files — but they are generated by the editor and should not be hand-written</li>
 <li>AI-written <code>.tscn</code> files are frequently malformed</li>
 </ul>
-<p>⚠ <strong>The right split</strong>: let AI write GDScript, and build the scene in the editor.</p>
+<p>⚠ : let AI write GDScript, and build the scene in the editor.</p>
 <p>That is the same rule as S2's &quot;give explicit boundaries&quot;.</p></span></div>
 <div class="bi-block"><span data-zh><h2>什么时候不该选</h2>
 <ul>
@@ -155,9 +155,9 @@
 <li>你<strong>不写代码</strong>（那该用更简单的方案）</li>
 </ul></span><span data-en><h2>When not to pick it</h2>
 <ul>
-<li>You are building a <strong>large commercial project</strong> (the ecosystem and talent pool are both thin)</li>
-<li>You need a <strong>full-fat web game</strong> (the export is limited)</li>
-<li>You <strong>do not write code</strong> (there are simpler options)</li>
+<li>You are building a large commercial project (the ecosystem and talent pool are both thin)</li>
+<li>You need a  (the export is limited)</li>
+<li>You  (there are simpler options)</li>
 </ul></span></div>
 <div class="bi-block"><span data-zh><h2>可核验事实</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>项</th><th>值</th><th>核验源</th></tr></thead><tbody>

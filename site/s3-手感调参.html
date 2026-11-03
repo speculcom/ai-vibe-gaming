@@ -94,23 +94,23 @@
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>这一步决定什么</strong>：从「能跑」到「想玩」。<strong>这是全站最关键的一步，也是 AI 最帮不上的一步。</strong></p></span><span data-en><p><strong>What this stage decides</strong>: the move from &quot;it runs&quot; to &quot;I want to play it&quot;. <strong>This is the most important step in the whole process, and the one AI helps least with.</strong></p></span></div>
+<div class="bi-block"><span data-zh><p><strong>这一步决定什么</strong>：从「能跑」到「想玩」。这是全站最关键的一步，也是 AI 最帮不上的一步。</p></span><span data-en><p>What this stage decides: the move from &quot;it runs&quot; to &quot;I want to play it&quot;. This is the most important step in the whole process, and the one AI helps least with.</p></span></div>
 <div class="bi-block"><span data-zh><h2>为什么 AI 在这里失效</h2>
-<p>不是模型不够强，是<strong>这个问题本质上没有可验证的答案</strong>：</p>
+<p>不是模型不够强，是：</p>
 <div class="table-wrap"><table class="src"><thead><tr><th>问题</th><th>AI 能不能回答</th></tr></thead><tbody>
 <tr><td>「跳跃高度应该是多少」</td><td>✅ 能给合理区间</td></tr>
-<tr><td>「这个跳跃手感好不好」</td><td>❌ <strong>不能</strong> —— 没有测试能告诉你</td></tr>
+<tr><td>「这个跳跃手感好不好」</td><td>❌ <strong>不能</strong>：没有测试能告诉你</td></tr>
 <tr><td>「为什么我觉得它很飘」</td><td>⚠ 能列可能原因，但列不出你真正的原因</td></tr>
 </tbody></table></div>
-<p>⚠ <strong>AI 会给你一个看起来很专业的参数，然后你就照着改了 —— 然后手感还是不对。</strong></p>
+<p>⚠ AI 会给你一个看起来很专业的参数，然后你就照着改了：然后手感还是不对。</p>
 <p>因为它优化的是「典型值」，而手感是<strong>你的</strong>判断。</p></span><span data-en><h2>Why AI fails here</h2>
-<p>It is not that the model is not strong enough — it is that <strong>the question has no verifiable answer</strong>:</p>
+<p>It is not that the model is not strong enough — it is that the question has no verifiable answer:</p>
 <div class="table-wrap"><table class="src"><thead><tr><th>Question</th><th>Can AI answer it</th></tr></thead><tbody>
 <tr><td>&quot;What should jump height be?&quot;</td><td>Yes — it can give a sensible range</td></tr>
 <tr><td>&quot;Does this jump feel good?&quot;</td><td><strong>No</strong> — no test can tell it</td></tr>
 <tr><td>&quot;Why does it feel floaty to me?&quot;</td><td>⚠ It can list possible causes, but not your actual cause</td></tr>
 </tbody></table></div>
-<p>⚠ <strong>AI will hand you a parameter that looks professional. You apply it. The feel is still wrong.</strong></p>
+<p>⚠ AI will hand you a parameter that looks professional. You apply it. The feel is still wrong.</p>
 <p>Because it optimises for the typical value, and feel is <strong>your</strong> judgement.</p></span></div>
 <div class="bi-block"><span data-zh><h2>常见的手感问题与对应参数</h2>
 <p>⚠ 下面是经验判断，不是实测数据。</p>
@@ -127,38 +127,38 @@
 <tr><td><strong>Sticky</strong></td><td>Lower gravity or jump velocity; add coyote time (the grace window after leaving a platform)</td></tr>
 <tr><td><strong>Slippery</strong> (won't stop)</td><td>Raise friction/deceleration; note that air control and ground friction are separate parameters</td></tr>
 <tr><td><strong>Uncertain</strong> (fuzzy edge detection)</td><td>Change the collider size; a player's hitbox is usually smaller than the sprite</td></tr>
-<tr><td><strong>Input feels laggy</strong></td><td>Check the input buffer — that is a code problem, not a feel problem</td></tr>
+<tr><td></td><td>Check the input buffer — that is a code problem, not a feel problem</td></tr>
 </tbody></table></div></span></div>
 <div class="bi-block"><span data-zh><h2>一个反直觉的技巧</h2>
 <p>⚠ <strong>先改数值，再改代码。</strong></p>
 <p>大部分「手感不对」其实是一个数值问题，不是逻辑问题。把代码重写三遍不如把重力从 980 调到 1150 试一次。</p></span><span data-en><h2>One counter-intvious trick</h2>
-<p>⚠ <strong>Change numbers before changing code.</strong></p>
+<p>⚠ Change numbers before changing code.</p>
 <p>Most &quot;it does not feel right&quot; cases are a numbers problem, not a logic problem. Rewriting the code three times is worse than trying gravity 1150 instead of 980 once.</p></span></div>
 <div class="bi-block"><span data-zh><h2>为什么这条最难教</h2>
-<p>因为<strong>它需要你的直觉，而直觉来自你玩过很多游戏</strong>。</p>
+<p>因为它需要你的直觉，而直觉来自你玩过很多游戏。</p>
 <p>AI 帮不了你建立直觉，但 AI 能帮你<strong>快速试参数</strong>：</p>
 <ul>
 <li>让它做一个「手感参数调试面板」（滑块 + 实时生效）</li>
 <li>这样你调参从「改代码 → 重启 → 试」变成「拖滑块 → 立刻试」</li>
 </ul>
-<p>⚠ <strong>这是 AI 在这一段唯一真正有用的地方：缩短试错循环，不是替你判断。</strong></p></span><span data-en><h2>Why this stage is hardest to teach</h2>
-<p>Because it requires <strong>your intuition, and intuition comes from having played many games</strong>.</p>
-<p>AI cannot build that intuition for you, but it can help you <strong>try parameters fast</strong>:</p>
+<p>⚠ 这是 AI 在这一段唯一真正有用的地方：缩短试错循环，不是替你判断。</p></span><span data-en><h2>Why this stage is hardest to teach</h2>
+<p>Because it requires your intuition, and intuition comes from having played many games.</p>
+<p>AI cannot build that intuition for you, but it can help you try parameters fast:</p>
 <ul>
 <li>Ask it to build a &quot;game feel debug panel&quot; (sliders that apply live)</li>
 <li>Tuning then goes from &quot;edit code → restart → try&quot; to &quot;drag a slider → try immediately&quot;</li>
 </ul>
-<p>⚠ <strong>This is the only genuinely useful thing AI does in this stage: shortening the trial loop, not making the judgement for you.</strong></p></span></div>
+<p>⚠ This is the only genuinely useful thing AI does in this stage: shortening the trial loop, not making the judgement for you.</p></span></div>
 <div class="bi-block"><span data-zh><h2>常见失败</h2>
 <ul>
-<li><strong>让 AI「优化手感」</strong> —— 它会给你一个参数表，你按着改完仍然不对</li>
-<li><strong>一次改多个参数</strong> —— 改完不知道是哪个起作用</li>
-<li><strong>跳过这一步</strong> —— 觉得「能跑就行」，结果玩起来没意思</li>
+<li><strong>让 AI「优化手感」</strong>，会给你一个参数表，你按着改完仍然不对</li>
+<li><strong>一次改多个参数</strong>：改完不知道是哪个起作用</li>
+<li><strong>跳过这一步</strong>：觉得「能跑就行」，结果玩起来没意思</li>
 </ul></span><span data-en><h2>Common failures</h2>
 <ul>
-<li><strong>Asking AI to &quot;optimise the feel&quot;</strong> — you get a table of parameters, apply them, and it still feels wrong</li>
-<li><strong>Changing several parameters at once</strong> — afterwards you cannot tell which one mattered</li>
-<li><strong>Skipping this stage</strong> — deciding &quot;it runs, good enough&quot;, and ending up with something nobody wants to play</li>
+<li>Asking AI to &quot;optimise the feel&quot; — you get a table of parameters, apply them, and it still feels wrong</li>
+<li>Changing several parameters at once — afterwards you cannot tell which one mattered</li>
+<li>Skipping this stage — deciding &quot;it runs, good enough&quot;, and ending up with something nobody wants to play</li>
 </ul></span></div>
 <div class="bi-block"><span data-zh><h2>判断你这一步做完了吗</h2>
 <ul class="checklist">
@@ -167,9 +167,9 @@
 <li> 关键参数是滑块可调的（不是硬编码）</li>
 </ul></span><span data-en><h2>Are you done with this stage?</h2>
 <ul class="checklist">
-<li> Someone else has played it and <strong>did not ask &quot;how do I play this?&quot;</strong></li>
+<li> Someone else has played it and did not ask &quot;how do I play this?&quot;</li>
 <li> You have played it for 30 minutes and still find it interesting</li>
-<li> The key parameters are <strong>slider-adjustable</strong> rather than hard-coded</li>
+<li> The key parameters are  rather than hard-coded</li>
 </ul></span></div>
 <hr>
         </div>

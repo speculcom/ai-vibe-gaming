@@ -94,62 +94,59 @@
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>一句话</strong>：游戏代码的形态（长期演化、多文件耦合）与 AI 的上下文限制<strong>正好相冲</strong>。</p></span><span data-en><p><strong>In one line</strong>: the shape of game code (long-lived, multi-file, coupled) runs directly into the limits of AI context.</p></span></div>
-<div class="bi-block"><span data-zh><h2>⚠ 为什么这是个真问题</h2>
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>：游戏代码的形态（长期运行、多文件、强耦合）会直接撞上 AI 上下文的上限。</p></span><span data-en><p><strong>In one line</strong>: the shape of game code (long-lived, multi-file, coupled) runs directly into the limits of AI context.</p></span></div>
+<div class="bi-block"><span data-zh><h2>文件一多，上下文就不够用</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>游戏代码的特点</th><th>对上下文窗口的影响</th></tr></thead><tbody>
 <tr><td><strong>单个文件很大</strong></td><td>玩家控制器、敌人 AI、关卡逻辑都几百行起</td></tr>
 <tr><td><strong>跨文件耦合</strong></td><td>改一个参数要看三个文件才知道影响</td></tr>
 <tr><td>⚠ <strong>长程一致性</strong></td><td>⚠ 游戏逻辑要前后一致（这个变量在第 3 章出现过）</td></tr>
 </tbody></table></div>
-<p>⚠ 模型<strong>一次只能看到一部分代码</strong> —— 所以它会：</p>
+<p>⚠ 模型<strong>一次只能看到一部分代码</strong>，它会：</p>
 <ul>
 <li>重复定义已经存在的函数</li>
 <li>用不同的命名做同一件事</li>
-<li>⚠ <strong>忘记自己在第 200 行时约定过什么</strong></li>
-</ul></span><span data-en><h2>⚠ Why this is a real problem</h2>
+<li>⚠ 忘记自己在第 200 行时约定过什么</li>
+</ul></span><span data-en><h2>Once the file count grows, context runs out</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Property of game code</th><th>Effect on the context window</th></tr></thead><tbody>
-<tr><td><strong>Large single files</strong></td><td>Player controllers, enemy AI and level logic run to hundreds of lines</td></tr>
-<tr><td><strong>Cross-file coupling</strong></td><td>Changing one parameter means reading three files to see the effect</td></tr>
-<tr><td>⚠ <strong>Long-range consistency</strong></td><td>⚠ Game logic must stay consistent (this variable appeared in chapter 3)</td></tr>
+<tr><td>Large single files</td><td>Player controllers, enemy AI and level logic run to hundreds of lines</td></tr>
+<tr><td>Cross-file coupling</td><td>Changing one parameter means reading three files to see the effect</td></tr>
+<tr><td>⚠ Long-range consistency</td><td>⚠ Game logic must stay consistent (this variable appeared in chapter 3)</td></tr>
 </tbody></table></div>
-<p>A model <strong>sees only part of the code at a time</strong> — so it will:</p>
+<p>A model sees only part of the code at a time — so it will:</p>
 <ul>
 <li>redefine functions that already exist</li>
 <li>use different names for the same thing</li>
-<li>⚠ <strong>forget what it agreed at line 200</strong></li>
+<li>⚠ forget what it agreed at line 200</li>
 </ul></span></div>
 <div class="bi-block"><span data-zh><h2>实操建议</h2>
-<p><strong>1. 单文件控制在几百行内</strong></p>
-<p>⚠ 超了就拆。⚠ 这不只对 AI 有好处 —— 人类也受益。</p>
-<p><strong>2. 每次只让 AI 处理一个模块</strong></p>
+<p>⚠ 超了就拆。⚠ 这不只对 AI 有好处：人类也受益。</p>
 <p>✅ 好：「把敌人 AI 从 80 行扩到 200 行，保持现有的状态机结构」</p>
 <p>❌ 差：「加上敌人 AI、关卡、UI」</p>
-<p><strong>3. ⚠ 关键约定写进注释或文档</strong></p>
 <p>AI 看不到「上次的约定」，但它<strong>能读注释</strong>：</p>
 <pre class="code"><code class="lang-python"># 约定：所有伤害计算走 damage() 函数，不要直接改 hp
-# ⚠ 这个约定是项目级的，不要在单个函数里临时改</code></pre>
-<p><strong>4. ⚠ 定期让 AI 总结当前状态</strong></p>
+# 这个约定是项目级的，不要在单个函数里临时改</code></pre>
+<p>4. ⚠ 定期让 AI 总结当前状态</p>
 <p>⚠ 让它写一份「这个项目现在有什么」的文档，</p>
-<p>然后<strong>每次新会话先让它读这份文档</strong>。这比硬塞代码进上下文有效得多。</p></span><span data-en><h2>Practical advice</h2>
-<p><strong>1. Keep single files to a few hundred lines</strong></p>
+<p>然后。这比硬塞代码进上下文有效得多。</p></span><span data-en><h2>Practical advice</h2>
+<p>1. Keep single files to a few hundred lines</p>
 <p>⚠ Split them when they grow past that. ⚠ This helps humans too, not only AI.</p>
-<p><strong>2. Let AI work on one module at a time</strong></p>
+<p>2. Let AI work on one module at a time</p>
 <p>✅ Good: &quot;expand the enemy AI from 80 to 200 lines, keeping the existing state-machine structure&quot;</p>
 <p>❌ Bad: &quot;add enemy AI, levels and UI&quot;</p>
-<p><strong>3. ⚠ Put key conventions in comments or a document</strong></p>
-<p>AI cannot see &quot;what we agreed last time&quot;, but it <strong>can read comments</strong>:</p>
+<p>3. ⚠ Put key conventions in comments or a document</p>
+<p>AI cannot see &quot;what we agreed last time&quot;, but it :</p>
 <pre class="code"><code class="lang-python"># Convention: all damage goes through damage(); do not modify hp directly
-# ⚠ This convention is project-level — do not break it inside a single function</code></pre>
-<p><strong>4. ⚠ Have AI summarise the project state regularly</strong></p>
-<p>⚠ Ask it to write a document listing &quot;what this project currently has&quot;, then <strong>have it read that document at the start of every new session</strong>. That works far better than stuffing code into the context.</p></span></div>
-<div class="bi-block"><span data-zh><h2>⚠ 一个诚实的说明</h2>
+# This convention is project-level — do not break it inside a single function</code></pre>
+<p>4. ⚠ Have AI summarise the project state regularly</p>
+<p>⚠ Ask it to write a document listing &quot;what this project currently has&quot;, then have it read that document at the start of every new session. That works far better than stuffing code into the context.</p></span></div>
+<div class="bi-block"><span data-zh><h2>本站没有实测长项目上下文</h2>
 <p>本站<strong>没有实测</strong>不同模型在不同上下文长度下的表现。</p>
 <p>以上是基于「上下文窗口是硬约束」这个事实的推断。</p>
-<p>⚠ 具体某个模型会怎么退化，请自己测 —— 这恰好也符合</p>
-<p>本站的精神：<strong>说「未知」比猜好</strong>。</p></span><span data-en><h2>⚠ An honest caveat</h2>
-<p>This site has <strong>not measured</strong> how different models degrade at different context lengths.</p>
+<p>⚠ 具体某个模型会怎么退化，请自己测，恰好也符合</p>
+<p>本站的精神：<strong>说「未知」比猜好</strong>。</p></span><span data-en><h2>This site has not tested long-project context</h2>
+<p>This site has  how different models degrade at different context lengths.</p>
 <p>What follows is an inference from the one hard fact: the context window is bounded.</p>
-<p>⚠ Test how your model of choice actually degrades — which is itself in the spirit of this site: <strong>saying &quot;unknown&quot; beats guessing.</strong></p></span></div>
+<p>⚠ Test how your model of choice actually degrades — which is itself in the spirit of this site: saying &quot;unknown&quot; beats guessing.</p></span></div>
 <hr>
         </div>
 

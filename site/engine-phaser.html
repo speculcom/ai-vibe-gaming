@@ -104,34 +104,34 @@
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>一句话</strong>：Pixi 给你一块画布，Phaser 给你一台装好的机器 —— 循环、物理、场景、资源加载都在里面。</p></span><span data-en><p><strong>In one line</strong>: Pixi hands you a canvas; Phaser hands you a fitted-out machine — loop, physics, scenes and asset loading are already inside.</p></span></div>
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>：Pixi 给你一块画布，Phaser 给你一台装好的机器：循环、物理、场景、资源加载都在里面。</p></span><span data-en><p><strong>In one line</strong>: Pixi hands you a canvas; Phaser hands you a fitted-out machine — loop, physics, scenes and asset loading are already inside.</p></span></div>
 <div class="bi-block"><span data-zh><h2>为什么对 AI 友好</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>原因</th><th>说明</th></tr></thead><tbody>
-<tr><td><strong>TypeScript / JavaScript</strong></td><td>训练数据最多的游戏语言之一，AI 一次写对的概率高</td></tr>
-<tr><td><strong>官方脚手架</strong></td><td><code>create-phaser-game</code> 交互式选模板 —— AI 不用自己拼构建配置</td></tr>
-<tr><td><strong>内置系统全</strong></td><td>物理、输入、tween、场景、资源加载都是现成的 —— AI 要发明的代码少</td></tr>
+<tr><td>TypeScript / JavaScript</td><td>训练数据最多的游戏语言之一，AI 一次写对的概率高</td></tr>
+<tr><td><strong>官方脚手架</strong></td><td><code>create-phaser-game</code> 交互式选模板：AI 不用自己拼构建配置</td></tr>
+<tr><td><strong>内置系统全</strong></td><td>物理、输入、tween、场景、资源加载都是现成的：AI 要发明的代码少</td></tr>
 <tr><td><strong>文档与示例量大</strong></td><td>官方教程 + 海量社区示例，AI 的「记忆」里素材多</td></tr>
 <tr><td><strong>官方明说 AI 友好</strong></td><td>官方 README 专设「AI-Assisted Game Development」一节：称其 API 被主流大模型深度理解，仓库还自带 <code>skills/</code> 目录给 AI agent 用（官方说法，非本站实测）</td></tr>
 <tr><td><strong>MIT 许可</strong></td><td>商用无阻碍</td></tr>
 </tbody></table></div></span><span data-en><h2>Why it is AI-friendly</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Reason</th><th>Explanation</th></tr></thead><tbody>
-<tr><td><strong>TypeScript / JavaScript</strong></td><td>One of the most-trained game languages — AI gets it right first try more often</td></tr>
-<tr><td><strong>Official scaffolding</strong></td><td><code>create-phaser-game</code> interactively picks an official template — AI never assembles a build setup</td></tr>
-<tr><td><strong>Built-in systems</strong></td><td>Physics, input, tweens, scenes, asset loading are ready — less for AI to invent</td></tr>
-<tr><td><strong>Docs &amp; examples volume</strong></td><td>Official tutorials plus a huge example base — lots of material in AI's &quot;memory&quot;</td></tr>
-<tr><td><strong>Officially AI-friendly</strong></td><td>The README has an &quot;AI-Assisted Game Development&quot; section: it claims mainstream LLMs understand the Phaser API deeply, and the repo ships a <code>skills/</code> folder for AI agents (their claim, not our measurement)</td></tr>
+<tr><td>TypeScript / JavaScript</td><td>One of the most-trained game languages — AI gets it right first try more often</td></tr>
+<tr><td>Official scaffolding</td><td><code>create-phaser-game</code> interactively picks an official template — AI never assembles a build setup</td></tr>
+<tr><td></td><td>Physics, input, tweens, scenes, asset loading are ready — less for AI to invent</td></tr>
+<tr><td>Docs &amp; examples volume</td><td>Official tutorials plus a huge example base — lots of material in AI's &quot;memory&quot;</td></tr>
+<tr><td>Officially AI-friendly</td><td>The README has an &quot;AI-Assisted Game Development&quot; section: it claims mainstream LLMs understand the Phaser API deeply, and the repo ships a <code>skills/</code> folder for AI agents (their claim, not our measurement)</td></tr>
 <tr><td><strong>MIT licence</strong></td><td>No obstacle to commercial use</td></tr>
 </tbody></table></div></span></div>
 <div class="bi-block"><span data-zh><h2>它的代价</h2>
 <ul>
-<li>⚠ <strong>API 面大</strong> —— 概念比 Pixi 多（Scene / config / game object 模型），读文档的时间要留够</li>
-<li><strong>框架不小</strong> —— 官方 README：完整 min 构建 gzip 后约 345 KB（比多数贴图还小，但不是零成本）</li>
-<li><strong>2D only</strong> —— 做 3D 得换 Three.js</li>
-<li><strong>Web only</strong> —— 发桌面/手机原生要另套壳（Electron/Capacitor 等）</li>
+<li>⚠ <strong>API 面大</strong>：概念比 Pixi 多（Scene / config / game object 模型），读文档的时间要留够</li>
+<li><strong>框架不小</strong>：官方 README：完整 min 构建 gzip 后约 345 KB（比多数贴图还小，但不是零成本）</li>
+<li><strong>2D only</strong>：做 3D 得换 Three.js</li>
+<li><strong>Web only</strong>：发桌面/手机原生要另套壳（Electron/Capacitor 等）</li>
 </ul></span><span data-en><h2>What it costs</h2>
 <ul>
-<li>⚠ <strong>Large API surface</strong> — more concepts than Pixi (Scene / config / game-object model); budget reading time</li>
-<li><strong>Not a small framework</strong> — official README: the full minified build is ~345 KB gzipped (smaller than most textures, but not free)</li>
+<li>⚠  — more concepts than Pixi (Scene / config / game-object model); budget reading time</li>
+<li>Not a small framework — official README: the full minified build is ~345 KB gzipped (smaller than most textures, but not free)</li>
 <li><strong>2D only</strong> — for 3D switch to Three.js</li>
 <li><strong>Web only</strong> — desktop or native mobile needs another wrapper (Electron/Capacitor etc.)</li>
 </ul></span></div>

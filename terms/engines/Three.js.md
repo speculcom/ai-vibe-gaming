@@ -10,8 +10,8 @@ aiFriendly: high
 aiScore: 4
 what: "对 AI 最友好的 3D 方案 —— 但它不是引擎，缺的东西要自己补。"
 whatEn: "The most AI-friendly 3D option — but it is not an engine, and the gaps are yours to fill."
-decision: "你要的不是「引擎」而是「3D 库」时选它。别指望它帮你管场景。"
-decisionEn: "Pick it when what you want is a 3D library rather than an engine. Do not expect it to manage your scenes."
+decision: "你要的不是「引擎」而是「3D 库」时选它。它有 Scene / Object3D 场景图，但没有关卡与资源管理层。"
+decisionEn: "Pick it when what you want is a 3D library rather than an engine. It has a Scene / Object3D scene graph, but no level or asset-management layer."
 bestFor: "网页 3D 展示、可以自己搭架构的项目"
 bestForEn: "Web 3D showcases, and projects where you are willing to build the architecture"
 install: "两条路。① npm + 构建工具：装 Node.js，然后 `npm install --save three` 与 `npm install --save-dev vite`，跑 `npx vite`。② 不用构建工具：在 index.html 里写 import map 指向 CDN，再用 `npx serve .` 起本地服务器。**官方没有脚手架**，工程结构（index.html + main.js + public/）要自己建；addons 不需另装、但要单独 import。"
@@ -28,41 +28,39 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 
 # Three.js
 
-**一句话**：做网页 3D 时 AI 最可能一次写对的库 —— **但它不是引擎。**
+**一句话**：对 AI 最友好的 3D 方案，但它不是引擎，缺的东西要自己补。
 
 <!-- EN -->
-> **In one line**: the library AI is most likely to get right first time for web 3D — **but it is not an engine**.
+> **In one line**: the most AI-friendly 3D option, but it is a library rather than an engine, and the gaps are yours to fill.
 
-## ⚠ 先说最重要的一件事
+## Three.js 是库，不是完整引擎
 
-**Three.js 不是完整引擎。** 它没有：
+它有 `Scene` / `Object3D` 场景图，但没有：
 
-- 场景图管理
+- 关卡 / 资源管理层（模型、贴图的加载、缓存与生命周期）
 - 物理系统
-- 资源管理（模型/贴图的加载与生命周期）
-- 游戏循环之外的状态管理
+- 构建系统（打包、缓存、版本）
 
-**这些都要你自己搭。** 这不是缺点 —— 但你得知道自己在搭什么。
+**这些都要你自己搭。** 这不是缺点，你得知道自己在搭什么。
 
 <!-- EN -->
-> ## ⚠ The most important thing first
+> ## Three.js is a library, not a full engine
 >
-> **Three.js is not a complete engine.** It has none of:
+> It has a `Scene` / `Object3D` scene graph, but none of:
 >
-> - scene graph management
+> - a level / asset-management layer (loading, caching and lifecycle for models and textures)
 > - a physics system
-> - asset management (loading models/textures and their lifetimes)
-> - state management beyond the render loop
+> - a build system (bundling, caching and versioning)
 >
-> **You build all of that yourself.** That is not a flaw — but you should know what you are building.
+> You build all of that yourself. That is not a flaw — but you should know what you are building.
 
 ## 为什么对 AI 友好
 
 | 原因 | 说明 |
 |---|---|
-| **JavaScript/TypeScript 训练数据最多** | ⚠ 这是最大的优势 —— 模型的训练集里 JS 代码的量级远大于其他游戏语言 |
+| JavaScript/TypeScript 训练数据最多 | ⚠ 这是最大的优势：模型的训练集里 JS 代码的量级远大于其他游戏语言 |
 | **API 极其稳定** | Three.js 的 API 十多年没大改，AI 学到的是当前的知识 |
-| **概念少** | 场景、相机、渲染器、光源、材质 —— 五件事说完，没有引擎的复杂度 |
+| **概念少** | 场景、相机、渲染器、光源、材质：五件事说完，没有引擎的复杂度 |
 | **错误容易看出来** | 画不出来通常是相机位置或灯光问题，AI 能猜对 |
 
 <!-- EN -->
@@ -70,18 +68,18 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 >
 > | Reason | Explanation |
 > |---|---|
-> | **JavaScript/TypeScript has by far the most training data** | ⚠ This is the big one — the volume of JS in the training set dwarfs that of any other game language |
-> | **The API is extremely stable** | Three.js has not changed much in over a decade, so what AI learned is still current |
-> | **Few concepts** | Scene, camera, renderer, lights, materials — five things, with none of an engine's complexity |
-> | **Failures are visible** | If it renders wrong it is usually camera position or lighting, and AI can guess that |
+> | JavaScript/TypeScript has by far the most training data | ⚠ This is the big one — the volume of JS in the training set dwarfs that of any other game language |
+> | The API is extremely stable | Three.js has not changed much in over a decade, so what AI learned is still current |
+> |  | Scene, camera, renderer, lights, materials — five things, with none of an engine's complexity |
+> | Failures are visible | If it renders wrong it is usually camera position or lighting, and AI can guess that |
 
 ## 它的代价
 
-⚠ **代价就是「你得自己搭引擎」：**
+⚠ 代价是「你得自己搭引擎」：
 
 | 你要自己解决的 | 意味着 |
 |---|---|
-| 场景管理 | 每次切换关卡要自己处理资源释放 |
+| 关卡 / 资源管理 | 每次切换关卡要自己处理加载与资源释放 |
 | 物理 | 得自己接一个物理库（ cannon-es / rapier） |
 | 资产加载 | 得自己写加载器与进度条 |
 | 后期 | 得自己做对象池、垃圾回收控制 |
@@ -89,27 +87,25 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 <!-- EN -->
 > ## What it costs
 >
-> ⚠ **The cost is "you have to build the engine yourself":**
+> ⚠ The cost is "you have to build the engine yourself":
 >
 > | What you must solve | What that means |
 > |---|---|
-> | Scene management | Every level switch means handling asset disposal yourself |
+> | Level / asset management | Every level switch means handling loading and asset disposal yourself |
 > | Physics | You must attach a physics library (cannon-es / rapier) |
 > | Asset loading | You write the loader and the progress bar |
 > | Frame budget | You build object pooling and garbage-collection control |
 
-## 什么时候选它 / 不选
+**选**：网页 3D 展示、你愿意自己搭架构，或者你已经有一个引擎、只缺渲染层
 
-**选**：网页 3D 展示、你愿意自己搭架构、⚠ 或者你**已经有一个引擎**只缺渲染层
-
-**不选**：想要完整游戏功能（碰撞检测、场景管理开箱即用）
+**不选**：想要完整游戏功能（碰撞检测、关卡 / 资源管理开箱即用）
 
 <!-- EN -->
 > ## When to pick it, and when not to
 >
-> **Pick it if**: web 3D showcases; you are willing to build the architecture; ⚠ or you **already have an engine** and only need a rendering layer
+> **Pick it if**: web 3D showcases, projects where you build the architecture, or you already have an engine and only need a rendering layer.
 >
-> **Do not pick it if**: you want complete game features out of the box (collision detection, scene management)
+> **Do not pick it if**: you want complete game features out of the box (collision detection, level / asset management).
 
 ## 可核验事实
 

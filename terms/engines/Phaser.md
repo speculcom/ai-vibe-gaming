@@ -28,7 +28,7 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 
 # Phaser
 
-**一句话**：Pixi 给你一块画布，Phaser 给你一台装好的机器 —— 循环、物理、场景、资源加载都在里面。
+**一句话**：Pixi 给你一块画布，Phaser 给你一台装好的机器：循环、物理、场景、资源加载都在里面。
 
 <!-- EN -->
 > **In one line**: Pixi hands you a canvas; Phaser hands you a fitted-out machine — loop, physics, scenes and asset loading are already inside.
@@ -37,9 +37,9 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 
 | 原因 | 说明 |
 |---|---|
-| **TypeScript / JavaScript** | 训练数据最多的游戏语言之一，AI 一次写对的概率高 |
-| **官方脚手架** | `create-phaser-game` 交互式选模板 —— AI 不用自己拼构建配置 |
-| **内置系统全** | 物理、输入、tween、场景、资源加载都是现成的 —— AI 要发明的代码少 |
+| TypeScript / JavaScript | 训练数据最多的游戏语言之一，AI 一次写对的概率高 |
+| **官方脚手架** | `create-phaser-game` 交互式选模板：AI 不用自己拼构建配置 |
+| **内置系统全** | 物理、输入、tween、场景、资源加载都是现成的：AI 要发明的代码少 |
 | **文档与示例量大** | 官方教程 + 海量社区示例，AI 的「记忆」里素材多 |
 | **官方明说 AI 友好** | 官方 README 专设「AI-Assisted Game Development」一节：称其 API 被主流大模型深度理解，仓库还自带 `skills/` 目录给 AI agent 用（官方说法，非本站实测） |
 | **MIT 许可** | 商用无阻碍 |
@@ -49,25 +49,25 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 >
 > | Reason | Explanation |
 > |---|---|
-> | **TypeScript / JavaScript** | One of the most-trained game languages — AI gets it right first try more often |
-> | **Official scaffolding** | `create-phaser-game` interactively picks an official template — AI never assembles a build setup |
-> | **Built-in systems** | Physics, input, tweens, scenes, asset loading are ready — less for AI to invent |
-> | **Docs & examples volume** | Official tutorials plus a huge example base — lots of material in AI's "memory" |
-> | **Officially AI-friendly** | The README has an "AI-Assisted Game Development" section: it claims mainstream LLMs understand the Phaser API deeply, and the repo ships a `skills/` folder for AI agents (their claim, not our measurement) |
+> | TypeScript / JavaScript | One of the most-trained game languages — AI gets it right first try more often |
+> | Official scaffolding | `create-phaser-game` interactively picks an official template — AI never assembles a build setup |
+> |  | Physics, input, tweens, scenes, asset loading are ready — less for AI to invent |
+> | Docs & examples volume | Official tutorials plus a huge example base — lots of material in AI's "memory" |
+> | Officially AI-friendly | The README has an "AI-Assisted Game Development" section: it claims mainstream LLMs understand the Phaser API deeply, and the repo ships a `skills/` folder for AI agents (their claim, not our measurement) |
 > | **MIT licence** | No obstacle to commercial use |
 
 ## 它的代价
 
-- ⚠ **API 面大** —— 概念比 Pixi 多（Scene / config / game object 模型），读文档的时间要留够
-- **框架不小** —— 官方 README：完整 min 构建 gzip 后约 345 KB（比多数贴图还小，但不是零成本）
-- **2D only** —— 做 3D 得换 Three.js
-- **Web only** —— 发桌面/手机原生要另套壳（Electron/Capacitor 等）
+- ⚠ **API 面大**：概念比 Pixi 多（Scene / config / game object 模型），读文档的时间要留够
+- **框架不小**：官方 README：完整 min 构建 gzip 后约 345 KB（比多数贴图还小，但不是零成本）
+- **2D only**：做 3D 得换 Three.js
+- **Web only**：发桌面/手机原生要另套壳（Electron/Capacitor 等）
 
 <!-- EN -->
 > ## What it costs
 >
-> - ⚠ **Large API surface** — more concepts than Pixi (Scene / config / game-object model); budget reading time
-> - **Not a small framework** — official README: the full minified build is ~345 KB gzipped (smaller than most textures, but not free)
+> - ⚠  — more concepts than Pixi (Scene / config / game-object model); budget reading time
+> - Not a small framework — official README: the full minified build is ~345 KB gzipped (smaller than most textures, but not free)
 > - **2D only** — for 3D switch to Three.js
 > - **Web only** — desktop or native mobile needs another wrapper (Electron/Capacitor etc.)
 
