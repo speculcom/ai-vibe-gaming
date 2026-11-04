@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Unreal Engine · 引擎档案 · AI 做游戏</title>
-  <meta name="description" content="AI 写 C++ 与 Blueprint 都难；5.8 起官方 MCP 插件让外部 agent 通过本地 HTTP 驱动编辑器。 要做高保真 3D 或已用 Unreal 时选它；单人 + AI 小项目不建议。" />
+  <meta name="description" content="包含 C++、Blueprint 与编辑器资产流程的实时 3D 工具。 按视觉目标、现有经验、工具链和发布条件评估。 高保真 3D、已有 Unreal 团队、愿意用 MCP 驱动编辑器" />
   <link rel="canonical" href="https://vg.specul.com/engine-unreal.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Unreal Engine · 引擎档案 · AI 做游戏" />
   <meta property="og:url" content="https://vg.specul.com/engine-unreal.html" />
   <meta property="og:title" content="Unreal Engine · 引擎档案 · AI 做游戏" />
-  <meta property="og:description" content="AI 写 C++ 与 Blueprint 都难；5.8 起官方 MCP 插件让外部 agent 通过本地 HTTP 驱动编辑器。 要做高保真 3D 或已用 Unreal 时选它；单人 + AI 小项目不建议。" />
+  <meta property="og:description" content="包含 C++、Blueprint 与编辑器资产流程的实时 3D 工具。 按视觉目标、现有经验、工具链和发布条件评估。 高保真 3D、已有 Unreal 团队、愿意用 MCP 驱动编辑器" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
   <script src="brand.js?v=6a580ac0420e"></script>
   <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Unreal Engine · 引擎档案","url":"https://vg.specul.com/engine-unreal.html","description":"AI 写 C++ 与 Blueprint 都难；5.8 起官方 MCP 插件让外部 agent 通过本地 HTTP 驱动编辑器。 要做高保真 3D 或已用 Unreal 时选它；单人 + AI 小项目不建议。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"unreal","applicationCategory":"GameEngine"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Unreal Engine · 引擎档案","url":"https://vg.specul.com/engine-unreal.html","description":"包含 C++、Blueprint 与编辑器资产流程的实时 3D 工具。 按视觉目标、现有经验、工具链和发布条件评估。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"unreal","applicationCategory":"GameEngine"}}</script>
 </head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
@@ -89,8 +89,8 @@
 
         <div class="panel term-meta">
           <p class="t-lead"><span data-zh><strong>对 AI 的友好度</strong></span><span data-en><strong>How AI-friendly it is</strong></span><span data-zh>：★☆☆☆（不友好）</span><span data-en>: ★☆☆☆ (unfriendly)</span></p>
-          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：AI 写 C++ 与 Blueprint 都难；5.8 起官方 MCP 插件让外部 agent 通过本地 HTTP 驱动编辑器。</span><span data-en>: AI struggles with both C++ and Blueprint; since 5.8 an official MCP plugin lets external agents drive the editor over local HTTP.</span></p>
-          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：要做高保真 3D 或已用 Unreal 时选它；单人 + AI 小项目不建议。</span><span data-en>: Pick it for high-fidelity 3D or an existing Unreal team; solo AI-first small projects should avoid it.</span></p>
+          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：包含 C++、Blueprint 与编辑器资产流程的实时 3D 工具。</span><span data-en>: A real-time 3D tool with C++, Blueprint and editor asset workflows.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：按视觉目标、现有经验、工具链和发布条件评估。</span><span data-en>: Assess visual goals, experience, toolchain and release requirements.</span></p>
           <p class="t-sm"><span data-zh><strong>适合</strong></span><span data-en><strong>Best for</strong></span><span data-zh>：高保真 3D、已有 Unreal 团队、愿意用 MCP 驱动编辑器</span><span data-en>: High-fidelity 3D, existing Unreal teams, and teams willing to drive the editor through MCP</span></p>
           <p class="t-xs muted"><span data-zh>性质：部分可核验</span><span data-en>Nature: partly verifiable</span> · <span data-zh>事实核验：2026-11-03 · Epic UE 5.8 官方文档</span><span data-en>Facts verified: 2026-11-03 · Epic UE 5.8 official docs</span></p>
         </div>
@@ -100,18 +100,18 @@
           <p class="t-sm"><span data-zh><strong>安装步骤</strong></span><span data-en><strong>Install</strong></span><span data-zh>：用 Epic Games Launcher 安装 UE 5.8。5.8 提供 Experimental MCP 插件：在编辑器进程内嵌 MCP server，任何兼容 MCP 的客户端（Claude Code、Cursor、MCP Inspector 等）可通过本地 HTTP 连接，调用 spawn actor、配置灯光、创建材质实例、检查 Slate 控件、跑自动化测试等工具（官方 5.8 文档，2026-11-03）。</span><span data-en>: Install UE 5.8 through the Epic Games Launcher. 5.8 ships an Experimental MCP plugin: it embeds an MCP server inside the editor process, and any MCP-compatible client (Claude Code, Cursor, MCP Inspector and others) can connect over local HTTP to spawn actors, configure lighting, create material instances, inspect Slate widgets and run automation tests (official 5.8 docs, 2026-11-03).</span></p>
           <p class="t-xs"><span data-zh>安装事实来源</span><span data-en>Install source</span>：<a href="https://dev.epicgames.com/documentation/unreal-engine/unreal-mcp-in-unreal-editor" target="_blank" rel="noopener">https://dev.epicgames.com/documentation/unreal-engine/unreal-mcp-in-unreal-editor</a> · <span data-zh>核验日</span><span data-en>verified</span> 2026-11-03</p>
           <p class="t-sm mt-2"><span data-zh><strong>上手难度</strong></span><span data-en><strong>Onboarding</strong></span><span data-zh>：高</span><span data-en>: high</span> <span class="t-xs muted"><span data-zh>（本站判断，未经实测）</span><span data-en>(the site’s judgement, not measured)</span></span></p>
-          <p class="t-sm"><span data-zh>编辑器、C++ 编译、Blueprint 与资产管线都重；AI 生成代码能编译，但性能与引擎约定要人判断。</span><span data-en>The editor, C++ compilation, Blueprints and the asset pipeline are all heavy. AI code may compile, but performance and engine conventions need human judgement.</span></p>
+          <p class="t-sm"><span data-zh>需要维护编辑器、编译、蓝图和资产流程；代码能编译仍需检查行为与性能。</span><span data-en>Maintain editor, compilation, Blueprint and asset workflows; compiling code still needs behavioral and performance checks.</span></p>
         </div>
 
         <div class="term-body">
 <div class="bi-block"><span data-zh><p><strong>一句话</strong>：做高保真 3D 它很强，但对 AI 写作和单人小项目都很重。</p></span><span data-en><p><strong>In one line</strong>: it is strong for high-fidelity 3D, but heavy for both AI-written code and solo small projects.</p></span></div>
-<div class="bi-block"><span data-zh><h2>为什么对 AI 不友好</h2>
+<div class="bi-block"><span data-zh><h2>使用条件与检查</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>原因</th><th>说明</th></tr></thead><tbody>
 <tr><td>C++ 与 Blueprint 双栈</td><td>AI 要同时理解编译型 C++ 与可视化 Blueprint，跨栈改动容易漏</td></tr>
 <tr><td>引擎约定多</td><td>生命周期、垃圾回收、反射系统、模块依赖都有固定写法，偏离就编译或运行失败</td></tr>
 <tr><td>资产与场景是二进制/序列化</td><td>直接改 <code>.uasset</code> / <code>.umap</code> 风险高，官方路线是通过编辑器工具</td></tr>
 <tr><td><strong>5.8 的 MCP 是补丁，不是替代</strong></td><td>外部 agent 能驱动编辑器，但仍要理解引擎 API 与项目约定</td></tr>
-</tbody></table></div></span><span data-en><h2>Why it is unfriendly to AI</h2>
+</tbody></table></div></span><span data-en><h2>Usage conditions and checks</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Reason</th><th>Explanation</th></tr></thead><tbody>
 <tr><td>Two stacks: C++ and Blueprint</td><td>AI must understand both compiled C++ and visual Blueprints; cross-stack changes easily miss something</td></tr>
 <tr><td>Many engine conventions</td><td>Lifecycle, garbage collection, the reflection system and module dependencies have fixed patterns; deviating breaks the build or runtime</td></tr>

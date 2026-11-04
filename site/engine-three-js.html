@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Three.js · 引擎档案 · AI 做游戏</title>
-  <meta name="description" content="对 AI 最友好的 3D 方案 —— 但它不是引擎，缺的东西要自己补。 你要的不是「引擎」而是「3D 库」时选它。它有 Scene / Object3D 场景图，但没有关卡与资源管理层。" />
+  <meta name="description" content="面向网页的 JavaScript 3D 库；具体游戏功能需要自行组合。 适合需要网页 3D 渲染、能自行安排玩法和资源流程的项目。 网页 3D 展示、可以自己搭架构的项目" />
   <link rel="canonical" href="https://vg.specul.com/engine-three-js.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Three.js · 引擎档案 · AI 做游戏" />
   <meta property="og:url" content="https://vg.specul.com/engine-three-js.html" />
   <meta property="og:title" content="Three.js · 引擎档案 · AI 做游戏" />
-  <meta property="og:description" content="对 AI 最友好的 3D 方案 —— 但它不是引擎，缺的东西要自己补。 你要的不是「引擎」而是「3D 库」时选它。它有 Scene / Object3D 场景图，但没有关卡与资源管理层。" />
+  <meta property="og:description" content="面向网页的 JavaScript 3D 库；具体游戏功能需要自行组合。 适合需要网页 3D 渲染、能自行安排玩法和资源流程的项目。 网页 3D 展示、可以自己搭架构的项目" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
   <script src="brand.js?v=6a580ac0420e"></script>
   <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Three.js · 引擎档案","url":"https://vg.specul.com/engine-three-js.html","description":"对 AI 最友好的 3D 方案 —— 但它不是引擎，缺的东西要自己补。 你要的不是「引擎」而是「3D 库」时选它。它有 Scene / Object3D 场景图，但没有关卡与资源管理层。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"three","applicationCategory":"GameEngine"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Three.js · 引擎档案","url":"https://vg.specul.com/engine-three-js.html","description":"面向网页的 JavaScript 3D 库；具体游戏功能需要自行组合。 适合需要网页 3D 渲染、能自行安排玩法和资源流程的项目。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"three","applicationCategory":"GameEngine"}}</script>
 </head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
@@ -89,8 +89,8 @@
 
         <div class="panel term-meta">
           <p class="t-lead"><span data-zh><strong>对 AI 的友好度</strong></span><span data-en><strong>How AI-friendly it is</strong></span><span data-zh>：★★★★（友好）</span><span data-en>: ★★★★ (friendly)</span></p>
-          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：对 AI 最友好的 3D 方案 —— 但它不是引擎，缺的东西要自己补。</span><span data-en>: The most AI-friendly 3D option — but it is not an engine, and the gaps are yours to fill.</span></p>
-          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：你要的不是「引擎」而是「3D 库」时选它。它有 Scene / Object3D 场景图，但没有关卡与资源管理层。</span><span data-en>: Pick it when what you want is a 3D library rather than an engine. It has a Scene / Object3D scene graph, but no level or asset-management layer.</span></p>
+          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：面向网页的 JavaScript 3D 库；具体游戏功能需要自行组合。</span><span data-en>: A JavaScript 3D library for the web; compose game-specific features separately.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：适合需要网页 3D 渲染、能自行安排玩法和资源流程的项目。</span><span data-en>: Assess it for web 3D rendering when you can organize gameplay and asset workflows.</span></p>
           <p class="t-sm"><span data-zh><strong>适合</strong></span><span data-en><strong>Best for</strong></span><span data-zh>：网页 3D 展示、可以自己搭架构的项目</span><span data-en>: Web 3D showcases, and projects where you are willing to build the architecture</span></p>
           <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span> · <span data-zh>事实核验：2026-10-30 · GitHub API 快照</span><span data-en>Facts verified: 2026-10-30 · GitHub API snapshot</span></p>
         </div>
@@ -100,36 +100,26 @@
           <p class="t-sm"><span data-zh><strong>安装步骤</strong></span><span data-en><strong>Install</strong></span><span data-zh>：两条路。① npm + 构建工具：装 Node.js，然后 <code>npm install --save three</code> 与 <code>npm install --save-dev vite</code>，跑 <code>npx vite</code>。② 不用构建工具：在 index.html 里写 import map 指向 CDN，再用 <code>npx serve .</code> 起本地服务器。<strong>官方没有脚手架</strong>，工程结构（index.html + main.js + public/）要自己建；addons 不需另装、但要单独 import。</span><span data-en>: Two routes. (1) npm plus a build tool: install Node.js, then <code>npm install --save three</code> and <code>npm install --save-dev vite</code>, and run <code>npx vite</code>. (2) Without a build tool: add an import map in index.html pointing at a CDN, then start a local server with <code>npx serve .</code>. <strong>There is no official scaffolding</strong> — you create the project layout (index.html + main.js + public/) yourself; addons need no separate install but must be imported separately.</span></p>
           <p class="t-xs"><span data-zh>安装事实来源</span><span data-en>Install source</span>：<a href="https://threejs.org/docs/#manual/en/introduction/Installation" target="_blank" rel="noopener">https://threejs.org/docs/#manual/en/introduction/Installation</a> · <span data-zh>核验日</span><span data-en>verified</span> 2026-10-30</p>
           <p class="t-sm mt-2"><span data-zh><strong>上手难度</strong></span><span data-en><strong>Onboarding</strong></span><span data-zh>：中</span><span data-en>: medium</span> <span class="t-xs muted"><span data-zh>（本站判断，未经实测）</span><span data-en>(the site’s judgement, not measured)</span></span></p>
-          <p class="t-sm"><span data-zh>装包是一行，但「一个能跑的画面」要自己拼：没有脚手架，场景 / 相机 / 渲染器都得手写（官方入门示例约 20 行）。</span><span data-en>The package is one line; a running scene is not. There is no scaffolding, so scene, camera and renderer are hand-written (the official example is about 20 lines).</span></p>
+          <p class="t-sm"><span data-zh>场景、相机、渲染器及构建需要配置；依据对应版本的入门文档开始。</span><span data-en>Configure scene, camera, renderer and build using the target version’s getting-started documentation.</span></p>
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>一句话</strong>：对 AI 最友好的 3D 方案，但它不是引擎，缺的东西要自己补。</p></span><span data-en><p><strong>In one line</strong>: the most AI-friendly 3D option, but it is a library rather than an engine, and the gaps are yours to fill.</p></span></div>
-<div class="bi-block"><span data-zh><h2>Three.js 是库，不是完整引擎</h2>
-<p>它有 <code>Scene</code> / <code>Object3D</code> 场景图，但没有：</p>
-<ul>
-<li>关卡 / 资源管理层（模型、贴图的加载、缓存与生命周期）</li>
-<li>物理系统</li>
-<li>构建系统（打包、缓存、版本）</li>
-</ul>
-<p><strong>这些都要你自己搭。</strong> 这不是缺点，你得知道自己在搭什么。</p></span><span data-en><h2>Three.js is a library, not a full engine</h2>
-<p>It has a <code>Scene</code> / <code>Object3D</code> scene graph, but none of:</p>
-<ul>
-<li>a level / asset-management layer (loading, caching and lifecycle for models and textures)</li>
-<li>a physics system</li>
-<li>a build system (bundling, caching and versioning)</li>
-</ul>
-<p>You build all of that yourself. That is not a flaw — but you should know what you are building.</p></span></div>
-<div class="bi-block"><span data-zh><h2>为什么对 AI 友好</h2>
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>：提供网页 3D 渲染；具体游戏功能需要自行组合。</p></span><span data-en><p><strong>In one line</strong>: a web 3D rendering library; assemble the game-specific features separately.</p></span></div>
+<div class="bi-block"><span data-zh><h2>Three.js 提供什么，项目还要安排什么</h2>
+<p>Three.js 提供场景图、加载器与加载管理等能力。它们能帮助显示与加载资源，但游戏的关卡规则、资源在各阶段何时创建和释放、物理与构建流程仍需要按项目组合。</p>
+<p>不要把“不是完整游戏引擎”误写成“没有加载器或缓存相关工具”。具体 API 以 <a href="https://threejs.org/docs/pages/LoadingManager.html" target="_blank" rel="noopener">官方加载管理文档</a> 和目标版本为准。</p></span><span data-en><h2>Library features and project responsibilities</h2>
+<p>Three.js provides a scene graph, loaders and loading management. These support rendering/loading, while level rules, asset creation/disposal policy, physics and builds still need project-specific composition.</p>
+<p>“Not a full game engine” does not mean “no loaders or cache-related tools.” Check the <a href="https://threejs.org/docs/pages/LoadingManager.html" target="_blank" rel="noopener">official loading-manager documentation</a> and the target version.</p></span></div>
+<div class="bi-block"><span data-zh><h2>使用条件与检查</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>原因</th><th>说明</th></tr></thead><tbody>
-<tr><td>JavaScript/TypeScript 训练数据最多</td><td>⚠ 这是最大的优势：模型的训练集里 JS 代码的量级远大于其他游戏语言</td></tr>
+<tr><td>JavaScript/TypeScript</td><td>可以结合类型检查和浏览器开发工具核对代码；本站不知道各模型训练语料的完整构成</td></tr>
 <tr><td><strong>API 极其稳定</strong></td><td>Three.js 的 API 十多年没大改，AI 学到的是当前的知识</td></tr>
 <tr><td><strong>概念少</strong></td><td>场景、相机、渲染器、光源、材质：五件事说完，没有引擎的复杂度</td></tr>
 <tr><td><strong>错误容易看出来</strong></td><td>画不出来通常是相机位置或灯光问题，AI 能猜对</td></tr>
-</tbody></table></div></span><span data-en><h2>Why it is AI-friendly</h2>
+</tbody></table></div></span><span data-en><h2>Usage conditions and checks</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Reason</th><th>Explanation</th></tr></thead><tbody>
-<tr><td>JavaScript/TypeScript has by far the most training data</td><td>⚠ This is the big one — the volume of JS in the training set dwarfs that of any other game language</td></tr>
-<tr><td>The API is extremely stable</td><td>Three.js has not changed much in over a decade, so what AI learned is still current</td></tr>
+<tr><td>JavaScript/TypeScript</td><td>Use type checking and browser tools to inspect code; this site does not know the full training-data composition of each model</td></tr>
+<tr><td>API version</td><td>Match examples and dependencies to the actual release; the same library name does not establish compatibility</td></tr>
 <tr><td></td><td>Scene, camera, renderer, lights, materials — five things, with none of an engine's complexity</td></tr>
 <tr><td>Failures are visible</td><td>If it renders wrong it is usually camera position or lighting, and AI can guess that</td></tr>
 </tbody></table></div></span></div>

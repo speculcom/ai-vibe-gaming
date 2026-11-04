@@ -3,95 +3,70 @@ zh: "Vibe Gaming"
 en: "Vibe Gaming"
 kind: "keyword"
 ord: 0
-what: "跟 AI 聊天把游戏做出来。但这句话要先拆开，否则会误判。"
-whatEn: "Making a game by talking to AI. But that sentence has to be taken apart first, or you will misjudge it."
-decision: "它实际混着两件事，只有一件成立。"
-decisionEn: "It actually mixes two things, and only one of them holds."
+what: "借助 AI 编写游戏代码、制作素材并迭代原型的做法。"
+whatEn: "Using AI to help write game code, create assets and iterate on prototypes."
+decision: "分别检查代码、玩法和素材；某一部分能生成，不代表整个游戏已经可发布。"
+decisionEn: "Check code, gameplay and assets separately; generating one part does not establish a releasable game."
 confidence: our-judgement
 ---
 
 # Vibe Gaming
 
+## 先分清在做什么
 
+AI 可以参与代码、图像、声音和关卡草案。不同环节的验收方式不一样。
+本站按这些环节组织资料，不把它们合成一个成熟度或效率排名。
 
-<!-- EN -->
-> 
-
-## 两件事，只有一件成立
-
-| | **A. 用 AI 写代码** |  |
+| 环节 | 可以请求的产出 | 还需要检查 |
 |---|---|---|
-| 动作 | AI 写引擎代码、逻辑、调参 | AI 生成美术、配乐、关卡、剧情 |
-| 「聊天」这个动作 | ✅ **成立** | ❌ **不成立** |
-| 瓶颈 | 引擎 API 记忆、调试 | **风格一致性**、可玩性 |
-| 成熟度 | 已成熟 | 半成熟 |
+| 代码 | 一个角色的移动、碰撞或计分逻辑 | 引擎版本、报错、状态与边界 |
+| 素材 | 单张图、短音效、界面草案 | 风格、尺寸、来源与授权 |
+| 玩法 | 规则、关卡布局或数值起点 | 目标是否清楚，反馈是否及时，是否有可玩的选择 |
+| 发布 | 导出步骤与检查清单 | 别的设备能否打开、输入是否可用、存档是否保留 |
 
 <!-- EN -->
-> ## Two things, and only one holds
+> ## Separate the tasks
 >
-> | | A. AI writes the code | B. AI generates the content |
+> AI can contribute code, images, sound and level drafts. Each needs a different kind of acceptance check. This site organizes resources by stage without turning them into one maturity or efficiency ranking.
+>
+> | Area | Possible output | Checks still needed |
 > |---|---|---|
-> | Action | AI writes engine code, logic, tuning | AI generates art, music, levels, story |
-> | Is "talking" the right word? | Yes | ⚠ **No** |
-> | Bottleneck | Engine API recall, debugging | , playability |
-> | Maturity | Mature | Half-mature |
+> | Code | Movement, collision or scoring | Engine version, errors, state and boundaries |
+> | Assets | An image, short sound or UI draft | Consistency, dimensions, provenance and rights |
+> | Gameplay | Rules, layouts or initial values | Clear goals, timely feedback and meaningful choices |
+> | Release | Export steps and checklists | Other devices, input and saved progress |
 
-## 只聊天不写文件，做不出游戏
+## 对话之后还要留下什么
 
-> 风格不一致是生成模型的缺陷，不是提示词问题。
+把当前引擎版本、文件结构和这次只改的功能交代清楚。每次得到代码或素材后，保存到实际工程，再检查它与现有内容能否配合。
 
-多轮对话不会让风格更一致，让生成结果更散。
-你无法用聊天生成一套风格统一的手游美术包。
-
-所以「跟 AI 聊天就能做出游戏」这个说法不成立。
+例如，只做一个“接住下落方块”的原型：先让方块下落、玩家能移动、接住后加分。然后分别检查漏接、重复计分与重新开始。图像和声音可以之后加入，也可以先用简单素材验证风格需求。
 
 <!-- EN -->
-> ## Chat alone cannot make a game
+> ## Keep an actual project behind the conversation
 >
-> > Style inconsistency is a defect of the generative model, not a prompting problem.
+> State the engine version, file structure and the single feature being changed. Save generated code/assets into the project and check their interaction with existing content.
 >
-> More dialogue does not make a style more consistent — it only spreads the results further.
-> You cannot generate a coherent art pack for a mobile game by having a conversation.
->
-> So "make a game by talking to AI" holds at the level of code, and fails at the level of content.
+> For a falling-block catcher, start with falling blocks, player movement and scoring. Then check missed blocks, duplicate scores and restart. Add art and sound later, or use small assets early to test a required style.
 
-## 由此得出的判断
+## 不把生成速度当成完成度
 
-AI 让做游戏的成本下降是「不均匀」的：
+本站没有测量各环节能节省多少时间。对具体项目，应记录生成、修改、检查和返工的时间，才能比较工作量。
 
-- 写代码：**大幅下降**（这是 vibe coding 的成果）
-- 做美术 / 配乐 / 关卡：**几乎没降**
-
-于是「一个人做游戏」的瓶颈从「写不出来」变成了「凑不齐」。
-
-→ 完整分析见首页的三张判定表。
+风格一致性、关卡是否有趣和发布是否顺利，都需要单独检查。不能从一段代码能运行，推断整套素材或整个游戏都已可用。
 
 <!-- EN -->
-> ## The judgement this implies
+> ## Generation speed is not completion
 >
-> The cost of making a game with AI falls "unevenly":
+> This site has not measured time saved at each stage. Record generation, editing, checking and rework for a project before comparing effort.
 >
-> - Writing code: falls sharply — that is the result vibe coding produced
-> - Art, music and level design: barely moves
->
-> So the bottleneck for a solo developer shifts from "cannot write it" to "cannot assemble it".
->
-> → For the full analysis, see the three tables on the home page.
+> Asset consistency, engaging levels and successful release need separate checks. Working code does not establish usable assets or a finished game.
 
-## 与 vibe coding 的差别
+## 从哪里继续
 
-vibe coding 的方法论**不能直接搬到游戏开发**，因为它依赖四个前提，
-其中两个在游戏里不成立（**结果无法自动验证** + **失败是沉默的**）。
-
-→ 见首页「表 2 · vibe coding 的哪些前提在游戏里不成立」。
+想开始一个项目，先看 [选引擎](./s1-选引擎.html)，再按 [五步流程](./method.html) 做到可以分享。只想看小段代码，可以从 [最小原型](./demos.html) 选一个骨架；它们未经本站运行验证，请检查对应版本和官方文档。
 
 <!-- EN -->
-> ## How this differs from vibe coding
+> ## Continue from here
 >
-> vibe coding's method does not carry over to game development unchanged, because it relies on four premises, and two of them fail for games (results cannot be verified automatically, and ).
->
-> → See "Table 2 · Which premises of vibe coding do not hold for games" on the home page.
-
----
-
-<!-- 层：概念 · 这个词本身，以及它需要被拆开的原因。 -->
+> Start with [engine selection](./s1-选引擎.html), then follow the [five-stage process](./method.html) toward a shareable build. For code, pick a [minimal skeleton](./demos.html). These skeletons have not been run by this site; check versions and official documentation.

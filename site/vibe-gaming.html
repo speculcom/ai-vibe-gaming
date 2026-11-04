@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Vibe Gaming · AI 做游戏</title>
-  <meta name="description" content="跟 AI 聊天把游戏做出来。但这句话要先拆开，否则会误判。 它实际混着两件事，只有一件成立。 —— AI 做游戏：判断依据、失败点与我们的口径都在档案里。" />
+  <meta name="description" content="借助 AI 编写游戏代码、制作素材并迭代原型的做法。 分别检查代码、玩法和素材；某一部分能生成，不代表整个游戏已经可发布。" />
   <link rel="canonical" href="https://vg.specul.com/vibe-gaming.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Vibe Gaming · AI 做游戏" />
   <meta property="og:url" content="https://vg.specul.com/vibe-gaming.html" />
   <meta property="og:title" content="Vibe Gaming · AI 做游戏" />
-  <meta property="og:description" content="跟 AI 聊天把游戏做出来。但这句话要先拆开，否则会误判。 它实际混着两件事，只有一件成立。 —— AI 做游戏：判断依据、失败点与我们的口径都在档案里。" />
+  <meta property="og:description" content="借助 AI 编写游戏代码、制作素材并迭代原型的做法。 分别检查代码、玩法和素材；某一部分能生成，不代表整个游戏已经可发布。" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
   <script src="brand.js?v=6a580ac0420e"></script>
   <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Vibe Gaming","url":"https://vg.specul.com/vibe-gaming.html","description":"跟 AI 聊天把游戏做出来。但这句话要先拆开，否则会误判。 它实际混着两件事，只有一件成立。 —— AI 做游戏：判断依据、失败点与我们的口径都在档案里。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Vibe Gaming","url":"https://vg.specul.com/vibe-gaming.html","description":"借助 AI 编写游戏代码、制作素材并迭代原型的做法。 分别检查代码、玩法和素材；某一部分能生成，不代表整个游戏已经可发布。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
 </head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
@@ -88,60 +88,41 @@
         <p class="lede">Vibe Gaming</p>
 
         <div class="panel term-meta">
-          <p class="t-lead"><span data-zh><strong>这一步决定什么</strong></span><span data-en><strong>What this stage decides</strong></span><span data-zh>：跟 AI 聊天把游戏做出来。但这句话要先拆开，否则会误判。</span><span data-en>: Making a game by talking to AI. But that sentence has to be taken apart first, or you will misjudge it.</span></p>
-          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：它实际混着两件事，只有一件成立。</span><span data-en>: It actually mixes two things, and only one of them holds.</span></p>
+          <p class="t-lead"><span data-zh><strong>这一步决定什么</strong></span><span data-en><strong>What this stage decides</strong></span><span data-zh>：借助 AI 编写游戏代码、制作素材并迭代原型的做法。</span><span data-en>: Using AI to help write game code, create assets and iterate on prototypes.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：分别检查代码、玩法和素材；某一部分能生成，不代表整个游戏已经可发布。</span><span data-en>: Check code, gameplay and assets separately; generating one part does not establish a releasable game.</span></p>
           <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span></p>
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><h2>两件事，只有一件成立</h2>
-<div class="table-wrap"><table class="src"><thead><tr><th></th><th><strong>A. 用 AI 写代码</strong></th><th></th></tr></thead><tbody>
-<tr><td>动作</td><td>AI 写引擎代码、逻辑、调参</td><td>AI 生成美术、配乐、关卡、剧情</td></tr>
-<tr><td>「聊天」这个动作</td><td>✅ <strong>成立</strong></td><td>❌ <strong>不成立</strong></td></tr>
-<tr><td>瓶颈</td><td>引擎 API 记忆、调试</td><td><strong>风格一致性</strong>、可玩性</td></tr>
-<tr><td>成熟度</td><td>已成熟</td><td>半成熟</td></tr>
-</tbody></table></div></span><span data-en><h2>Two things, and only one holds</h2>
-<div class="table-wrap"><table class="src"><thead><tr><th></th><th>A. AI writes the code</th><th>B. AI generates the content</th></tr></thead><tbody>
-<tr><td>Action</td><td>AI writes engine code, logic, tuning</td><td>AI generates art, music, levels, story</td></tr>
-<tr><td>Is &quot;talking&quot; the right word?</td><td>Yes</td><td>⚠ <strong>No</strong></td></tr>
-<tr><td>Bottleneck</td><td>Engine API recall, debugging</td><td>, playability</td></tr>
-<tr><td>Maturity</td><td>Mature</td><td>Half-mature</td></tr>
+<div class="bi-block"><span data-zh><h2>先分清在做什么</h2>
+<p>AI 可以参与代码、图像、声音和关卡草案。不同环节的验收方式不一样。</p>
+<p>本站按这些环节组织资料，不把它们合成一个成熟度或效率排名。</p>
+<div class="table-wrap"><table class="src"><thead><tr><th>环节</th><th>可以请求的产出</th><th>还需要检查</th></tr></thead><tbody>
+<tr><td>代码</td><td>一个角色的移动、碰撞或计分逻辑</td><td>引擎版本、报错、状态与边界</td></tr>
+<tr><td>素材</td><td>单张图、短音效、界面草案</td><td>风格、尺寸、来源与授权</td></tr>
+<tr><td>玩法</td><td>规则、关卡布局或数值起点</td><td>目标是否清楚，反馈是否及时，是否有可玩的选择</td></tr>
+<tr><td>发布</td><td>导出步骤与检查清单</td><td>别的设备能否打开、输入是否可用、存档是否保留</td></tr>
+</tbody></table></div></span><span data-en><h2>Separate the tasks</h2>
+<p>AI can contribute code, images, sound and level drafts. Each needs a different kind of acceptance check. This site organizes resources by stage without turning them into one maturity or efficiency ranking.</p>
+<div class="table-wrap"><table class="src"><thead><tr><th>Area</th><th>Possible output</th><th>Checks still needed</th></tr></thead><tbody>
+<tr><td>Code</td><td>Movement, collision or scoring</td><td>Engine version, errors, state and boundaries</td></tr>
+<tr><td>Assets</td><td>An image, short sound or UI draft</td><td>Consistency, dimensions, provenance and rights</td></tr>
+<tr><td>Gameplay</td><td>Rules, layouts or initial values</td><td>Clear goals, timely feedback and meaningful choices</td></tr>
+<tr><td>Release</td><td>Export steps and checklists</td><td>Other devices, input and saved progress</td></tr>
 </tbody></table></div></span></div>
-<div class="bi-block"><span data-zh><h2>只聊天不写文件，做不出游戏</h2>
-<blockquote>
-<p>风格不一致是生成模型的缺陷，不是提示词问题。</p>
-</blockquote>
-<p>多轮对话不会让风格更一致，让生成结果更散。</p>
-<p>你无法用聊天生成一套风格统一的手游美术包。</p>
-<p>所以「跟 AI 聊天就能做出游戏」这个说法不成立。</p></span><span data-en><h2>Chat alone cannot make a game</h2>
-<blockquote>
-<p>Style inconsistency is a defect of the generative model, not a prompting problem.</p>
-</blockquote>
-<p>More dialogue does not make a style more consistent — it only spreads the results further.</p>
-<p>You cannot generate a coherent art pack for a mobile game by having a conversation.</p>
-<p>So &quot;make a game by talking to AI&quot; holds at the level of code, and fails at the level of content.</p></span></div>
-<div class="bi-block"><span data-zh><h2>由此得出的判断</h2>
-<p>AI 让做游戏的成本下降是「不均匀」的：</p>
-<ul>
-<li>写代码：<strong>大幅下降</strong>（这是 vibe coding 的成果）</li>
-<li>做美术 / 配乐 / 关卡：<strong>几乎没降</strong></li>
-</ul>
-<p>于是「一个人做游戏」的瓶颈从「写不出来」变成了「凑不齐」。</p>
-<p>→ 完整分析见首页的三张判定表。</p></span><span data-en><h2>The judgement this implies</h2>
-<p>The cost of making a game with AI falls &quot;unevenly&quot;:</p>
-<ul>
-<li>Writing code: falls sharply — that is the result vibe coding produced</li>
-<li>Art, music and level design: barely moves</li>
-</ul>
-<p>So the bottleneck for a solo developer shifts from &quot;cannot write it&quot; to &quot;cannot assemble it&quot;.</p>
-<p>→ For the full analysis, see the three tables on the home page.</p></span></div>
-<div class="bi-block"><span data-zh><h2>与 vibe coding 的差别</h2>
-<p>vibe coding 的方法论<strong>不能直接搬到游戏开发</strong>，因为它依赖四个前提，</p>
-<p>其中两个在游戏里不成立（<strong>结果无法自动验证</strong> + <strong>失败是沉默的</strong>）。</p>
-<p>→ 见首页「表 2 · vibe coding 的哪些前提在游戏里不成立」。</p></span><span data-en><h2>How this differs from vibe coding</h2>
-<p>vibe coding's method does not carry over to game development unchanged, because it relies on four premises, and two of them fail for games (results cannot be verified automatically, and ).</p>
-<p>→ See &quot;Table 2 · Which premises of vibe coding do not hold for games&quot; on the home page.</p></span></div>
-<hr>
+<div class="bi-block"><span data-zh><h2>对话之后还要留下什么</h2>
+<p>把当前引擎版本、文件结构和这次只改的功能交代清楚。每次得到代码或素材后，保存到实际工程，再检查它与现有内容能否配合。</p>
+<p>例如，只做一个“接住下落方块”的原型：先让方块下落、玩家能移动、接住后加分。然后分别检查漏接、重复计分与重新开始。图像和声音可以之后加入，也可以先用简单素材验证风格需求。</p></span><span data-en><h2>Keep an actual project behind the conversation</h2>
+<p>State the engine version, file structure and the single feature being changed. Save generated code/assets into the project and check their interaction with existing content.</p>
+<p>For a falling-block catcher, start with falling blocks, player movement and scoring. Then check missed blocks, duplicate scores and restart. Add art and sound later, or use small assets early to test a required style.</p></span></div>
+<div class="bi-block"><span data-zh><h2>不把生成速度当成完成度</h2>
+<p>本站没有测量各环节能节省多少时间。对具体项目，应记录生成、修改、检查和返工的时间，才能比较工作量。</p>
+<p>风格一致性、关卡是否有趣和发布是否顺利，都需要单独检查。不能从一段代码能运行，推断整套素材或整个游戏都已可用。</p></span><span data-en><h2>Generation speed is not completion</h2>
+<p>This site has not measured time saved at each stage. Record generation, editing, checking and rework for a project before comparing effort.</p>
+<p>Asset consistency, engaging levels and successful release need separate checks. Working code does not establish usable assets or a finished game.</p></span></div>
+<div class="bi-block"><span data-zh><h2>从哪里继续</h2>
+<p>想开始一个项目，先看 <a href="./s1-选引擎.html">选引擎</a>，再按 <a href="./method.html">五步流程</a> 做到可以分享。只想看小段代码，可以从 <a href="./demos.html">最小原型</a> 选一个骨架；它们未经本站运行验证，请检查对应版本和官方文档。</p></span><span data-en><h2>Continue from here</h2>
+<p>Start with <a href="./s1-选引擎.html">engine selection</a>, then follow the <a href="./method.html">five-stage process</a> toward a shareable build. For code, pick a <a href="./demos.html">minimal skeleton</a>. These skeletons have not been run by this site; check versions and official documentation.</p></span></div>
         </div>
 
         <div class="panel is-slim">

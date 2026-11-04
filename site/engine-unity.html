@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Unity · 引擎档案 · AI 做游戏</title>
-  <meta name="description" content="AI 能写 C#，但改场景与预制件仍要过编辑器这层；Unity 6 起官方内置 AI 菜单。 已有 Unity 项目、要发主机/移动端时选它；别指望 AI 直接改 .unity 场景文件。" />
+  <meta name="description" content="包含编辑器、C# 脚本与资产流程的游戏引擎。 结合已有项目、目标平台、许可与资产需求评估，不以 AI 语言偏好代替判断。 已有 Unity 项目、主机/移动发布、需要成熟资产管线" />
   <link rel="canonical" href="https://vg.specul.com/engine-unity.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Unity · 引擎档案 · AI 做游戏" />
   <meta property="og:url" content="https://vg.specul.com/engine-unity.html" />
   <meta property="og:title" content="Unity · 引擎档案 · AI 做游戏" />
-  <meta property="og:description" content="AI 能写 C#，但改场景与预制件仍要过编辑器这层；Unity 6 起官方内置 AI 菜单。 已有 Unity 项目、要发主机/移动端时选它；别指望 AI 直接改 .unity 场景文件。" />
+  <meta property="og:description" content="包含编辑器、C# 脚本与资产流程的游戏引擎。 结合已有项目、目标平台、许可与资产需求评估，不以 AI 语言偏好代替判断。 已有 Unity 项目、主机/移动发布、需要成熟资产管线" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
   <script src="brand.js?v=6a580ac0420e"></script>
   <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Unity · 引擎档案","url":"https://vg.specul.com/engine-unity.html","description":"AI 能写 C#，但改场景与预制件仍要过编辑器这层；Unity 6 起官方内置 AI 菜单。 已有 Unity 项目、要发主机/移动端时选它；别指望 AI 直接改 .unity 场景文件。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"unity","applicationCategory":"GameEngine"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Unity · 引擎档案","url":"https://vg.specul.com/engine-unity.html","description":"包含编辑器、C# 脚本与资产流程的游戏引擎。 结合已有项目、目标平台、许可与资产需求评估，不以 AI 语言偏好代替判断。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"unity","applicationCategory":"GameEngine"}}</script>
 </head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
@@ -89,8 +89,8 @@
 
         <div class="panel term-meta">
           <p class="t-lead"><span data-zh><strong>对 AI 的友好度</strong></span><span data-en><strong>How AI-friendly it is</strong></span><span data-zh>：★★★☆（一般）</span><span data-en>: ★★★☆ (mixed)</span></p>
-          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：AI 能写 C#，但改场景与预制件仍要过编辑器这层；Unity 6 起官方内置 AI 菜单。</span><span data-en>: AI can write C#, but scene and prefab changes still go through the editor; Unity 6 ships an official AI menu.</span></p>
-          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：已有 Unity 项目、要发主机/移动端时选它；别指望 AI 直接改 .unity 场景文件。</span><span data-en>: Pick it for an existing Unity project or console/mobile release; do not expect AI to edit .unity scene files directly.</span></p>
+          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：包含编辑器、C# 脚本与资产流程的游戏引擎。</span><span data-en>: A game engine with an editor, C# scripting and asset workflows.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：结合已有项目、目标平台、许可与资产需求评估，不以 AI 语言偏好代替判断。</span><span data-en>: Assess existing projects, platforms, licensing and assets rather than assumed AI language preferences.</span></p>
           <p class="t-sm"><span data-zh><strong>适合</strong></span><span data-en><strong>Best for</strong></span><span data-zh>：已有 Unity 项目、主机/移动发布、需要成熟资产管线</span><span data-en>: Existing Unity projects, console/mobile releases, and a mature asset pipeline</span></p>
           <p class="t-xs muted"><span data-zh>性质：部分可核验</span><span data-en>Nature: partly verifiable</span> · <span data-zh>事实核验：2026-11-03 · Unity 6000.6 官方文档</span><span data-en>Facts verified: 2026-11-03 · Unity 6000.6 official docs</span></p>
         </div>
@@ -100,20 +100,20 @@
           <p class="t-sm"><span data-zh><strong>安装步骤</strong></span><span data-en><strong>Install</strong></span><span data-zh>：用 Unity Hub 安装编辑器。AI 功能在 6000.6 的 AI 菜单里：Assistant 负责问答与改场景/资产，Generators 生成 Sprite、Texture2D、Sound、Animation、Material；需在编辑器内接受条款，并在 Unity Dashboard 管理用量（官方文档 2026-11-03）。</span><span data-en>: Install the editor through Unity Hub. In 6000.6 the AI menu holds Assistant (Q&amp;A plus scene/asset actions) and Generators (Sprite, Texture2D, Sound, Animation, Material). You must accept the terms in the editor and manage usage in the Unity Dashboard (official docs, 2026-11-03).</span></p>
           <p class="t-xs"><span data-zh>安装事实来源</span><span data-en>Install source</span>：<a href="https://docs.unity.com/en-us/engine/6000.6/manual/unity-ai/ai-menu-access" target="_blank" rel="noopener">https://docs.unity.com/en-us/engine/6000.6/manual/unity-ai/ai-menu-access</a> · <span data-zh>核验日</span><span data-en>verified</span> 2026-11-03</p>
           <p class="t-sm mt-2"><span data-zh><strong>上手难度</strong></span><span data-en><strong>Onboarding</strong></span><span data-zh>：中</span><span data-en>: medium</span> <span class="t-xs muted"><span data-zh>（本站判断，未经实测）</span><span data-en>(the site’s judgement, not measured)</span></span></p>
-          <p class="t-sm"><span data-zh>编辑器、包管理与平台导出链都要学；AI 能帮写 C#，但场景与预制件仍要在编辑器里操作。</span><span data-en>You learn the editor, package management and platform export chains. AI can write the C#, but scenes and prefabs are still edited by hand.</span></p>
+          <p class="t-sm"><span data-zh>需要理解编辑器、包管理、场景及平台导出；检查自动化工具实际能覆盖哪些操作。</span><span data-en>Learn editor, packages, scenes and platform export; check which operations your automation tools actually support.</span></p>
         </div>
 
         <div class="term-body">
 <div class="bi-block"><span data-zh><p><strong>一句话</strong>：AI 能写 C#，但 Unity 的硬边界是编辑器里的场景与预制件。</p></span><span data-en><p><strong>In one line</strong>: AI can write the C#, but Unity's hard boundary is the scenes and prefabs inside the editor.</p></span></div>
-<div class="bi-block"><span data-zh><h2>为什么对 AI 友好（以及哪里会卡）</h2>
+<div class="bi-block"><span data-zh><h2>使用条件与检查</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>原因</th><th>说明</th></tr></thead><tbody>
-<tr><td>C# 训练数据多</td><td>通用编程语料充足，AI 写 C# 的错率低于 GDScript 之外的多数游戏语言</td></tr>
+<tr><td>C# 工具链</td><td>使用编译器和编辑器控制台定位问题；本站没有跨语言错误率比较</td></tr>
 <tr><td>官方 API 文档完整</td><td>类参考给出参数、返回值与示例，AI 引用的 API 大多真实存在</td></tr>
 <tr><td><strong>AI 菜单已内建</strong></td><td>6000.6 的 Assistant 可在编辑器里生成代码、排查问题、对场景与资产执行动作</td></tr>
 <tr><td><strong>场景/预制件是硬边界</strong></td><td><code>.unity</code> / <code>.prefab</code> 是序列化资产，直接让 AI 改容易破坏引用；官方 AI 也是通过编辑器接口操作</td></tr>
-</tbody></table></div></span><span data-en><h2>Why it is AI-friendly, and where it gets stuck</h2>
+</tbody></table></div></span><span data-en><h2>Usage conditions and checks</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Reason</th><th>Explanation</th></tr></thead><tbody>
-<tr><td>Lots of C# training data</td><td>General programming corpora are plentiful, so AI makes fewer C# mistakes than with most game languages other than GDScript</td></tr>
+<tr><td>C# toolchain</td><td>Use the C# compiler and Unity console to inspect generated code; this site has no cross-language error-rate comparison</td></tr>
 <tr><td>Complete official API docs</td><td>The class reference gives parameters, return types and examples; most APIs AI cites exist</td></tr>
 <tr><td>AI menu is built in</td><td>In 6000.6, Assistant can generate code, troubleshoot and act on scenes and assets inside the editor</td></tr>
 <tr><td>Scenes/prefabs are the hard boundary</td><td><code>.unity</code> / <code>.prefab</code> are serialized assets; letting AI edit them directly easily breaks references, which is why the official AI acts through editor interfaces</td></tr>
@@ -122,7 +122,7 @@
 <ul>
 <li><strong>场景与预制件不能交给 AI 盲改</strong>：改引用、丢组件、合并冲突都要人来判断</li>
 <li><strong>AI 功能按用量计费</strong>：官方要求接受条款并在 Dashboard 管理点数，具体额度以官方页为准</li>
-<li><strong>导出链复杂</strong>：主机/移动平台需要对应模块与证书，AI 只能帮到代码层</li>
+<li><strong>导出链复杂</strong>：主机/移动平台需要对应模块与证书，自动化能覆盖的编辑器与导出步骤取决于工具和权限</li>
 <li><strong>许可与收入门槛</strong>：个人版有收入上限，商用前读官方定价与许可页</li>
 </ul></span><span data-en><h2>What it costs</h2>
 <ul>

@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Godot · 引擎档案 · AI 做游戏</title>
-  <meta name="description" content="对 AI 最不容易出错的通用引擎 —— 原因不在引擎本身，在 GDScript 这门语言。 拿不准就用 Godot。这不是推荐，是「出错的代价最小」。" />
+  <meta name="description" content="面向 2D 和 3D 的游戏引擎；检查编辑器、脚本语言和目标平台的版本条件。 按项目与导出要求评估，不根据未经测量的 AI 正确率选型。 第一次用 AI 做游戏、玩法驱动的 2D 或 3D 原型" />
   <link rel="canonical" href="https://vg.specul.com/engine-godot.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Godot · 引擎档案 · AI 做游戏" />
   <meta property="og:url" content="https://vg.specul.com/engine-godot.html" />
   <meta property="og:title" content="Godot · 引擎档案 · AI 做游戏" />
-  <meta property="og:description" content="对 AI 最不容易出错的通用引擎 —— 原因不在引擎本身，在 GDScript 这门语言。 拿不准就用 Godot。这不是推荐，是「出错的代价最小」。" />
+  <meta property="og:description" content="面向 2D 和 3D 的游戏引擎；检查编辑器、脚本语言和目标平台的版本条件。 按项目与导出要求评估，不根据未经测量的 AI 正确率选型。 第一次用 AI 做游戏、玩法驱动的 2D 或 3D 原型" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
   <script src="brand.js?v=6a580ac0420e"></script>
   <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Godot · 引擎档案","url":"https://vg.specul.com/engine-godot.html","description":"对 AI 最不容易出错的通用引擎 —— 原因不在引擎本身，在 GDScript 这门语言。 拿不准就用 Godot。这不是推荐，是「出错的代价最小」。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"godot","applicationCategory":"GameEngine"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Godot · 引擎档案","url":"https://vg.specul.com/engine-godot.html","description":"面向 2D 和 3D 的游戏引擎；检查编辑器、脚本语言和目标平台的版本条件。 按项目与导出要求评估，不根据未经测量的 AI 正确率选型。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"godot","applicationCategory":"GameEngine"}}</script>
 </head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
@@ -89,8 +89,8 @@
 
         <div class="panel term-meta">
           <p class="t-lead"><span data-zh><strong>对 AI 的友好度</strong></span><span data-en><strong>How AI-friendly it is</strong></span><span data-zh>：★★★★（友好）</span><span data-en>: ★★★★ (friendly)</span></p>
-          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：对 AI 最不容易出错的通用引擎 —— 原因不在引擎本身，在 GDScript 这门语言。</span><span data-en>: The general engine least likely to trip AI up — and the reason is not the engine, it is the GDScript language.</span></p>
-          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：拿不准就用 Godot。这不是推荐，是「出错的代价最小」。</span><span data-en>: If you are undecided, use Godot. This is not a recommendation — it is the smallest cost of being wrong.</span></p>
+          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：面向 2D 和 3D 的游戏引擎；检查编辑器、脚本语言和目标平台的版本条件。</span><span data-en>: A 2D/3D game engine; check editor, scripting and target-platform versions.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：按项目与导出要求评估，不根据未经测量的 AI 正确率选型。</span><span data-en>: Assess project and export requirements rather than unmeasured AI error rates.</span></p>
           <p class="t-sm"><span data-zh><strong>适合</strong></span><span data-en><strong>Best for</strong></span><span data-zh>：第一次用 AI 做游戏、玩法驱动的 2D 或 3D 原型</span><span data-en>: A first AI-assisted game, or a gameplay-driven 2D/3D prototype</span></p>
           <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span> · <span data-zh>事实核验：2026-10-30 · GitHub API 快照</span><span data-en>Facts verified: 2026-10-30 · GitHub API snapshot</span></p>
         </div>
@@ -100,23 +100,23 @@
           <p class="t-sm"><span data-zh><strong>安装步骤</strong></span><span data-en><strong>Install</strong></span><span data-zh>：官网下 Windows 包 → <strong>解压即用，无需安装</strong>（官方原文：Godot is self-contained and does not require installation）。当前稳定版 4.7.2（2026-08-18）。只有要 C# 才另装 .NET SDK；导出时需另下 Export templates。商店版（Steam / itch / EGS）不含 .NET 支持。</span><span data-en>: Download the Windows build from the official site and <strong>extract it — there is no installation step</strong> (official wording: Godot is self-contained and does not require installation). Current stable is 4.7.2 (18 Aug 2026). Only C# needs the .NET SDK on top; export templates are a separate download. Store builds (Steam / itch / EGS) do not include .NET support.</span></p>
           <p class="t-xs"><span data-zh>安装事实来源</span><span data-en>Install source</span>：<a href="https://godotengine.org/download/windows/" target="_blank" rel="noopener">https://godotengine.org/download/windows/</a> · <span data-zh>核验日</span><span data-en>verified</span> 2026-10-30</p>
           <p class="t-sm mt-2"><span data-zh><strong>上手难度</strong></span><span data-en><strong>Onboarding</strong></span><span data-zh>：低</span><span data-en>: low</span> <span class="t-xs muted"><span data-zh>（本站判断，未经实测）</span><span data-en>(the site’s judgement, not measured)</span></span></p>
-          <p class="t-sm"><span data-zh>零安装、零构建工具：解压、双击、新建项目，就能写第一行 GDScript。这些引擎里只有它不需要额外运行时。</span><span data-en>No installer and no build toolchain: extract, double-click, create a project, write your first GDScript. It is the only one of these engines that needs no extra runtime.</span></p>
+          <p class="t-sm"><span data-zh>标准编辑器可解压运行；C#、导出模板和其他平台的依赖另查官方文档。</span><span data-en>The standard editor can run after extraction; check documentation for C#, export templates and platform dependencies.</span></p>
         </div>
 
         <div class="term-body">
 <div class="bi-block"><span data-zh><p><strong>一句话</strong>：如果 AI 帮你写游戏时你只能选一个引擎，选 Godot。</p></span><span data-en><p><strong>In one line</strong>: if you can only pick one engine when AI is writing your game, pick Godot.</p></span></div>
-<div class="bi-block"><span data-zh><h2>为什么对 AI 友好</h2>
-<p>⚠ 下面是我们对「AI 写起来出错的概率」的判断，<strong>不是实测</strong>。</p>
+<div class="bi-block"><span data-zh><h2>使用条件与检查</h2>
+<p>⚠ 下面讨论语言与工具链条件；<strong>本站没有测量生成代码的错误率</strong>。</p>
 <div class="table-wrap"><table class="src"><thead><tr><th>原因</th><th>说明</th></tr></thead><tbody>
-<tr><td>GDScript 接近 Python</td><td>缩进语法、动态类型、<code>var</code>/<code>if</code>/<code>for</code> 都与 Python 同源。AI 生成 Python 风格的代码，改成 GDScript 的错率最低</td></tr>
+<tr><td>GDScript 语法</td><td>部分语法与 Python 相似，但 API、类型与场景访问应按目标 Godot 版本核对</td></tr>
 <tr><td><strong>错误信息友好</strong></td><td>脚本报错会指出行号与变量名，AI 能据此定位</td></tr>
 <tr><td><strong>官方文档完整</strong></td><td>类参考有明确的参数与返回值，AI 引用的 API 大多真实存在</td></tr>
 <tr><td><strong>静态类型可选</strong></td><td>GDScript 支持类型标注，AI 可以写出更安全的代码</td></tr>
 <tr><td><strong>⚠ 不用 C#</strong></td><td>选 C# 就要 .NET 环境，AI 常写出版本不匹配的 API</td></tr>
-</tbody></table></div></span><span data-en><h2>Why it is AI-friendly</h2>
+</tbody></table></div></span><span data-en><h2>Usage conditions and checks</h2>
 <p>⚠ What follows is our judgement of how likely AI is to get it wrong, not a measurement.</p>
 <div class="table-wrap"><table class="src"><thead><tr><th>Reason</th><th>Explanation</th></tr></thead><tbody>
-<tr><td>GDScript is close to Python</td><td>Indentation-based, dynamically typed, with <code>var</code>/<code>if</code>/<code>for</code> all coming from Python. AI-generated Python translates into GDScript with the fewest mistakes</td></tr>
+<tr><td>GDScript syntax</td><td>Some syntax resembles Python; verify APIs, types and scene access against the target Godot version</td></tr>
 <tr><td>Friendly error messages</td><td>Script errors point at a line and a variable name, which is enough for AI to locate the problem</td></tr>
 <tr><td>Complete official docs</td><td>The class reference documents parameters and return types; most APIs AI cites actually exist</td></tr>
 <tr><td>Optional static typing</td><td>GDScript supports type annotations, so AI can produce safer code</td></tr>
@@ -133,15 +133,15 @@
 <li>C# support is still being worked on — ⚠ the official docs list a long set of known issues; do not treat it as stable</li>
 <li>A smaller ecosystem than Unity — fewer ready-made plugins</li>
 </ul></span></div>
-<div class="bi-block"><span data-zh><h2>GDScript 对 AI 生成更稳，但生态有边界</h2>
-<p>Godot 的场景树（scene）系统对 AI 是不友好的：</p>
+<div class="bi-block"><span data-zh><h2>GDScript 与项目生态的使用条件</h2>
+<p>使用 Godot 场景树时，要把节点结构与脚本路径说明清楚：</p>
 <ul>
 <li>场景是 <code>.tscn</code> 文本格式，</li>
 <li>AI 写 <code>.tscn</code> 文件经常格式错误</li>
 </ul>
 <p>⚠ <strong>正确做法</strong>：让 AI 写 GDScript 代码，场景在编辑器里搭。</p>
 <p>这与 S2「给明确的边界」是同一条原则。</p></span><span data-en><h2>GDScript is steadier for AI, but the ecosystem has limits</h2>
-<p><strong>Godot's scene tree is <em>not</em> AI-friendly</strong>:</p>
+<p><strong>Provide scene structure and node paths when generating scripts</strong>:</p>
 <ul>
 <li>Scenes are <code>.tscn</code> text files — but they are generated by the editor and should not be hand-written</li>
 <li>AI-written <code>.tscn</code> files are frequently malformed</li>

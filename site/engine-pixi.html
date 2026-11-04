@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Pixi · 引擎档案 · AI 做游戏</title>
-  <meta name="description" content="2D 网页游戏里对 AI 最友好的选择 —— 因为 TypeScript 是 AI 最擅长的语言之一。 做 2D 网页游戏，选它。前提是你能接受没有内置物理。" />
+  <meta name="description" content="面向网页的 2D 渲染库；游戏逻辑和其他系统按需求组合。 先明确是否只需要渲染层，再决定物理、场景与打包方案。 2D 网页游戏、小游戏原型" />
   <link rel="canonical" href="https://vg.specul.com/engine-pixi.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Pixi · 引擎档案 · AI 做游戏" />
   <meta property="og:url" content="https://vg.specul.com/engine-pixi.html" />
   <meta property="og:title" content="Pixi · 引擎档案 · AI 做游戏" />
-  <meta property="og:description" content="2D 网页游戏里对 AI 最友好的选择 —— 因为 TypeScript 是 AI 最擅长的语言之一。 做 2D 网页游戏，选它。前提是你能接受没有内置物理。" />
+  <meta property="og:description" content="面向网页的 2D 渲染库；游戏逻辑和其他系统按需求组合。 先明确是否只需要渲染层，再决定物理、场景与打包方案。 2D 网页游戏、小游戏原型" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
   <script src="brand.js?v=6a580ac0420e"></script>
   <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Pixi · 引擎档案","url":"https://vg.specul.com/engine-pixi.html","description":"2D 网页游戏里对 AI 最友好的选择 —— 因为 TypeScript 是 AI 最擅长的语言之一。 做 2D 网页游戏，选它。前提是你能接受没有内置物理。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"pixi","applicationCategory":"GameEngine"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Pixi · 引擎档案","url":"https://vg.specul.com/engine-pixi.html","description":"面向网页的 2D 渲染库；游戏逻辑和其他系统按需求组合。 先明确是否只需要渲染层，再决定物理、场景与打包方案。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"pixi","applicationCategory":"GameEngine"}}</script>
 </head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
@@ -89,8 +89,8 @@
 
         <div class="panel term-meta">
           <p class="t-lead"><span data-zh><strong>对 AI 的友好度</strong></span><span data-en><strong>How AI-friendly it is</strong></span><span data-zh>：★★★★（友好）</span><span data-en>: ★★★★ (friendly)</span></p>
-          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：2D 网页游戏里对 AI 最友好的选择 —— 因为 TypeScript 是 AI 最擅长的语言之一。</span><span data-en>: The most AI-friendly choice for 2D web games — because TypeScript is one of the languages AI is best at.</span></p>
-          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：做 2D 网页游戏，选它。前提是你能接受没有内置物理。</span><span data-en>: For a 2D web game, pick it — provided you can live without built-in physics.</span></p>
+          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：面向网页的 2D 渲染库；游戏逻辑和其他系统按需求组合。</span><span data-en>: A 2D web rendering library; compose gameplay and other systems as needed.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：先明确是否只需要渲染层，再决定物理、场景与打包方案。</span><span data-en>: Establish whether a rendering layer is sufficient, then choose physics, scene and packaging tools.</span></p>
           <p class="t-sm"><span data-zh><strong>适合</strong></span><span data-en><strong>Best for</strong></span><span data-zh>：2D 网页游戏、小游戏原型</span><span data-en>: 2D web games and small prototypes</span></p>
           <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span> · <span data-zh>事实核验：2026-10-30 · GitHub API 快照</span><span data-en>Facts verified: 2026-10-30 · GitHub API snapshot</span></p>
         </div>
@@ -100,22 +100,22 @@
           <p class="t-sm"><span data-zh><strong>安装步骤</strong></span><span data-en><strong>Install</strong></span><span data-zh>：装 Node.js v20 或更高 → <code>npm create pixi.js@latest</code> 生成脚手架（官方推荐 Vite + PixiJS 模板）→ <code>npm install</code> → <code>npm run dev</code>。也可以只往已有工程里加：<code>npm install pixi.js</code>。</span><span data-en>: Install Node.js v20 or newer → <code>npm create pixi.js@latest</code> to scaffold (the docs recommend the Vite + PixiJS template) → <code>npm install</code> → <code>npm run dev</code>. Or add it to an existing project with <code>npm install pixi.js</code>.</span></p>
           <p class="t-xs"><span data-zh>安装事实来源</span><span data-en>Install source</span>：<a href="https://pixijs.com/8.x/guides/getting-started/quick-start" target="_blank" rel="noopener">https://pixijs.com/8.x/guides/getting-started/quick-start</a> · <span data-zh>核验日</span><span data-en>verified</span> 2026-10-30</p>
           <p class="t-sm mt-2"><span data-zh><strong>上手难度</strong></span><span data-en><strong>Onboarding</strong></span><span data-zh>：低</span><span data-en>: low</span> <span class="t-xs muted"><span data-zh>（本站判断，未经实测）</span><span data-en>(the site’s judgement, not measured)</span></span></p>
-          <p class="t-sm"><span data-zh>一条命令出可跑工程 —— 官方给了脚手架模板，比自己拼一份构建配置省事。前置只有一个 Node.js。</span><span data-en>One command yields a runnable project — the docs ship scaffolding templates, so you do not assemble a build setup yourself. The only prerequisite is Node.js.</span></p>
+          <p class="t-sm"><span data-zh>官方模板可帮助建立工程；依赖、构建与浏览器支持仍需按版本检查。</span><span data-en>Official templates can establish a project; check dependencies, builds and browser support by version.</span></p>
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>一句话</strong>：做 2D 网页游戏时，它和 Three.js 共享「AI 最友好」的资格。</p></span><span data-en><p><strong>In one line</strong>: for 2D web games, it shares with Three.js the title of &quot;most AI-friendly&quot;.</p></span></div>
-<div class="bi-block"><span data-zh><h2>为什么对 AI 友好</h2>
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>：适合需要 2D 渲染层的网页项目，不能仅凭语言判断 AI 生成代码的可靠性。</p></span><span data-en><p><strong>In one line</strong>: it supplies a 2D rendering layer for web projects; language choice alone does not establish generated-code reliability.</p></span></div>
+<div class="bi-block"><span data-zh><h2>使用条件与检查</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>原因</th><th>说明</th></tr></thead><tbody>
-<tr><td><strong>TypeScript</strong></td><td>训练数据最多、且带类型检查：AI 写错的概率明显低于其他游戏语言</td></tr>
-<tr><td></td><td>跑在浏览器里，<strong>不需要装任何东西</strong>就能分享</td></tr>
-<tr><td><strong>概念少</strong></td><td>Sprite / Container / Texture：不需要学引擎架构</td></tr>
+<tr><td><strong>TypeScript</strong></td><td>类型检查可帮助发现部分错误；本站没有跨语言生成正确率数据</td></tr>
+<tr><td>浏览器分发</td><td>发布后的网页可通过链接打开；开发和构建仍需配置</td></tr>
+<tr><td><strong>概念少</strong></td><td>学习 Sprite / Container / Texture，并单独安排玩法与其他系统</td></tr>
 <tr><td><strong>MIT 许可</strong></td><td>商用无阻碍</td></tr>
-</tbody></table></div></span><span data-en><h2>Why it is AI-friendly</h2>
+</tbody></table></div></span><span data-en><h2>Usage conditions and checks</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Reason</th><th>Explanation</th></tr></thead><tbody>
-<tr><td><strong>TypeScript</strong></td><td>The most training data of any language, plus type checking — AI makes noticeably fewer mistakes in it than in other game languages</td></tr>
-<tr><td>to share it</td></tr>
-<tr><td></td><td>Sprite / Container / Texture — no engine architecture to learn</td></tr>
+<tr><td><strong>TypeScript</strong></td><td>Type checking can expose some errors; this site has no cross-language generation-accuracy measurements</td></tr>
+<tr><td>Browser delivery</td><td>A deployed build can be opened by URL; development still has setup requirements</td></tr>
+<tr><td>Rendering concepts</td><td>Learn Sprite / Container / Texture and the systems your project adds</td></tr>
 <tr><td><strong>MIT licence</strong></td><td>No obstacle to commercial use</td></tr>
 </tbody></table></div></span></div>
 <div class="bi-block"><span data-zh><h2>它的代价</h2>

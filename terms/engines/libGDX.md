@@ -8,10 +8,10 @@ tier: "Java 跨平台"
 tierEn: "Java cross-platform"
 aiFriendly: medium
 aiScore: 3
-what: "Java 生态里唯一的完整游戏引擎 —— AI 写得不错，但你得先接受 JVM 的构建流程。"
-whatEn: "The only complete game engine in the Java ecosystem — AI handles it decently, but you have to accept the JVM build process first."
-decision: "⚠ 跨平台需求明确（尤其要 Android）时才选它。桌面项目直接选 Godot。"
-decisionEn: "⚠ Pick it only when cross-platform is a hard requirement (especially Android). For desktop, choose Godot."
+what: "基于 Java 的跨平台游戏开发框架，项目需配置 JVM 构建与目标平台。"
+whatEn: "A Java-based cross-platform game-development framework; configure JVM builds and target platforms."
+decision: "已有 Java/Kotlin 经验时可按平台要求评估，并先跑通官方示例。"
+decisionEn: "Assess target-platform requirements with Java/Kotlin experience and start from an official example."
 bestFor: "⚠ 要发布到 Android、且团队用 Java/Kotlin"
 bestForEn: "⚠ Shipping to Android with a Java/Kotlin team"
 install: "先装 JDK 17 或更高，官方推荐**正好 21**（否则 Construo 桌面打包要额外改配置）。从 gdx-liftoff 的 releases 下那个**名字里不带操作系统的 .jar**（跨平台）→ `java -jar gdx-liftoff-VERSION.jar` → 在 GUI 里填工程名 / 目标平台 / 语言 → Generate。产出是 Gradle 多模块工程，再用 IDE 打开。当前默认对应 libGDX 1.14.2。"
@@ -19,8 +19,8 @@ installEn: "Install JDK 17 or newer; the docs recommend **exactly 21** (otherwis
 installSrc: "https://github.com/libgdx/gdx-liftoff"
 installVerified: "2026-10-30"
 difficulty: high
-difficultyWhy: "JDK + jar + Gradle 多模块 + IDE 配置，四步都走完才能看到空窗口；官方为此单独写了一篇 Troubleshooting。"
-difficultyWhyEn: "JDK, the jar, a multi-module Gradle project and IDE setup — four steps before an empty window appears; the project ships a dedicated Troubleshooting guide for exactly this."
+difficultyWhy: "需要 JDK、项目生成与 Gradle 等构建步骤；按目标平台核对额外依赖。"
+difficultyWhyEn: "Account for JDK, project generation and Gradle, plus target-platform dependencies."
 confidence: our-judgement
 verified: "2026-10-30 · GitHub API 快照"
 verifiedEn: "2026-10-30 · GitHub API snapshot"
@@ -33,7 +33,7 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 <!-- EN -->
 > 
 
-## 对 AI 友好的部分
+## 使用条件与检查
 
 | 原因 | 说明 |
 |---|---|
@@ -43,11 +43,11 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 | **跨平台成熟** | 桌面 + Android + iOS + Web |
 
 <!-- EN -->
-> ## Where it is AI-friendly
+> ## Usage conditions and checks
 >
 > | Reason | Explanation |
 > |---|---|
-> | Java has a large body of training data | The syntax is strict but the patterns are fixed; AI's Java is better than its Rust or C++ |
+> | Java toolchain | Compiler checks help locate some errors; no language-level AI accuracy ranking is asserted |
 > | Kotlin is also easy to write | Coroutines and null safety remove a class of mistakes |
 > | **Apache-2.0** | No obstacle to commercial use |
 > | Mature cross-platform | Desktop + Android + iOS + Web |
@@ -65,7 +65,7 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 <!-- EN -->
 > ## libGDX's barrier is the Gradle build
 >
-> This is where AI cannot help:
+> These build steps still need to be configured and checked:
 >
 > - Gradle dependency resolution — the errors on a version conflict are extremely hard to read
 > - Android packaging needs the Android SDK — the environment setup is its own hurdle

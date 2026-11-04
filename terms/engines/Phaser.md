@@ -8,10 +8,10 @@ tier: "Web 2D"
 tierEn: "web 2D"
 aiFriendly: high
 aiScore: 4
-what: "2D 网页框架里最完整的一个 —— 物理、场景、资源加载全都内置；TypeScript/JavaScript 又是 AI 最擅长的语言。"
-whatEn: "The most complete 2D web framework — physics, scenes and asset loading are all built in, and TypeScript/JavaScript is what AI writes best."
-decision: "做 2D 网页游戏，要内置物理与场景管理就选它；要概念最少、最轻的渲染层就选 Pixi。"
-decisionEn: "For a 2D web game: pick it when you want built-in physics and scene management; pick Pixi when you want the fewest concepts and the lightest rendering layer."
+what: "面向网页的 2D 游戏框架，包含场景、物理与资源加载等功能。"
+whatEn: "A 2D web-game framework with scenes, physics and asset loading."
+decision: "需要框架功能时查看 Phaser；仅需渲染层时再比较 Pixi 等方案。"
+decisionEn: "Assess Phaser for framework features; compare rendering libraries such as Pixi when that is all you need."
 bestFor: "2D 网页游戏（平台跳跃、射击、拼图等需要物理与场景流转的）"
 bestForEn: "2D web games that need physics and scene flow — platformers, shooters, puzzle games"
 install: "官方推荐脚手架：`npm create @phaserjs/game@latest`（交互式选官方模板，支持 Vite/Rollup/Webpack 等，多数模板有 JS 与 TS 两版）；已有工程里直接 `npm install phaser`。"
@@ -19,8 +19,8 @@ installEn: "The official scaffold: `npm create @phaserjs/game@latest` (interacti
 installSrc: "https://github.com/phaserjs/phaser#create-phaser-game-app"
 installVerified: "2026-10-30"
 difficulty: low
-difficultyWhy: "一条命令出可跑工程（官方模板），物理/输入/场景/资源加载都是内置的 —— 自己要写的代码比 Pixi 少；代价是 API 面比 Pixi 大，概念要多认一些。"
-difficultyWhyEn: "One command yields a runnable project (official templates), and physics/input/scenes/asset loading are built in — less code for you than Pixi; the price is a larger API surface and more concepts to learn."
+difficultyWhy: "核对模板、依赖与 API 版本；场景、物理和输入仍需分别验证。"
+difficultyWhyEn: "Check templates, dependencies and API version; validate scenes, physics and input separately."
 confidence: our-judgement
 verified: "2026-10-30 · GitHub API 快照"
 verifiedEn: "2026-10-30 · GitHub API snapshot"
@@ -33,11 +33,11 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 <!-- EN -->
 > **In one line**: Pixi hands you a canvas; Phaser hands you a fitted-out machine — loop, physics, scenes and asset loading are already inside.
 
-## 为什么对 AI 友好
+## 使用条件与检查
 
 | 原因 | 说明 |
 |---|---|
-| TypeScript / JavaScript | 训练数据最多的游戏语言之一，AI 一次写对的概率高 |
+| TypeScript / JavaScript | 可使用类型检查和浏览器调试工具；仍需验证生成代码 |
 | **官方脚手架** | `create-phaser-game` 交互式选模板：AI 不用自己拼构建配置 |
 | **内置系统全** | 物理、输入、tween、场景、资源加载都是现成的：AI 要发明的代码少 |
 | **文档与示例量大** | 官方教程 + 海量社区示例，AI 的「记忆」里素材多 |
@@ -45,7 +45,7 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 | **MIT 许可** | 商用无阻碍 |
 
 <!-- EN -->
-> ## Why it is AI-friendly
+> ## Usage conditions and checks
 >
 > | Reason | Explanation |
 > |---|---|

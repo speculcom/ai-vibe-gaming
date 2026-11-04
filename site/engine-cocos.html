@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Cocos Creator · 引擎档案 · AI 做游戏</title>
-  <meta name="description" content="微信小游戏生态的默认选择 —— 官方手册专设「发布到微信小游戏」章节；代价是关卡与场景在编辑器里做，AI 只能接管脚本层。 发布目标里有微信小游戏就绕不开它；纯网页游戏或想让 AI 多写代码，选 Phaser/Godot 更顺。" />
+  <meta name="description" content="包含编辑器、场景与脚本流程的游戏开发工具；小游戏发布需核对对应平台说明。 分别核对脚本、场景配置与发布平台；自动操作编辑器取决于工具和权限。" />
   <link rel="canonical" href="https://vg.specul.com/engine-cocos.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Cocos Creator · 引擎档案 · AI 做游戏" />
   <meta property="og:url" content="https://vg.specul.com/engine-cocos.html" />
   <meta property="og:title" content="Cocos Creator · 引擎档案 · AI 做游戏" />
-  <meta property="og:description" content="微信小游戏生态的默认选择 —— 官方手册专设「发布到微信小游戏」章节；代价是关卡与场景在编辑器里做，AI 只能接管脚本层。 发布目标里有微信小游戏就绕不开它；纯网页游戏或想让 AI 多写代码，选 Phaser/Godot 更顺。" />
+  <meta property="og:description" content="包含编辑器、场景与脚本流程的游戏开发工具；小游戏发布需核对对应平台说明。 分别核对脚本、场景配置与发布平台；自动操作编辑器取决于工具和权限。" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
   <script src="brand.js?v=6a580ac0420e"></script>
   <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Cocos Creator · 引擎档案","url":"https://vg.specul.com/engine-cocos.html","description":"微信小游戏生态的默认选择 —— 官方手册专设「发布到微信小游戏」章节；代价是关卡与场景在编辑器里做，AI 只能接管脚本层。 发布目标里有微信小游戏就绕不开它；纯网页游戏或想让 AI 多写代码，选 Phaser/Godot 更顺。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"cocos","applicationCategory":"GameEngine"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Cocos Creator · 引擎档案","url":"https://vg.specul.com/engine-cocos.html","description":"包含编辑器、场景与脚本流程的游戏开发工具；小游戏发布需核对对应平台说明。 分别核对脚本、场景配置与发布平台；自动操作编辑器取决于工具和权限。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"cocos","applicationCategory":"GameEngine"}}</script>
 </head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
@@ -89,8 +89,8 @@
 
         <div class="panel term-meta">
           <p class="t-lead"><span data-zh><strong>对 AI 的友好度</strong></span><span data-en><strong>How AI-friendly it is</strong></span><span data-zh>：★★★☆（一般）</span><span data-en>: ★★★☆ (mixed)</span></p>
-          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：微信小游戏生态的默认选择 —— 官方手册专设「发布到微信小游戏」章节；代价是关卡与场景在编辑器里做，AI 只能接管脚本层。</span><span data-en>: The default pick in the WeChat Mini Game ecosystem — the official manual has a dedicated "Publish to WeChat Mini Game" chapter; the price is that scenes live in the editor, so AI can only take over the scripting layer.</span></p>
-          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：发布目标里有微信小游戏就绕不开它；纯网页游戏或想让 AI 多写代码，选 Phaser/Godot 更顺。</span><span data-en>: If WeChat Mini Games is in your release targets, you can't avoid it; for pure web games or more AI-written code, Phaser/Godot go smoother.</span></p>
+          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：包含编辑器、场景与脚本流程的游戏开发工具；小游戏发布需核对对应平台说明。</span><span data-en>: A game-development tool with editor, scene and scripting workflows; check target mini-game platform documentation.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：分别核对脚本、场景配置与发布平台；自动操作编辑器取决于工具和权限。</span><span data-en>: Check scripts, scene configuration and release platform separately; editor automation depends on tools and permissions.</span></p>
           <p class="t-sm"><span data-zh><strong>适合</strong></span><span data-en><strong>Best for</strong></span><span data-zh>：微信小游戏 / 即时网页娱乐为主的 2D/3D 跨平台发布</span><span data-en>: 2D/3D cross-platform releases targeting WeChat Mini Games / instant web entertainment</span></p>
           <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span> · <span data-zh>事实核验：2026-10-30 · GitHub API 快照</span><span data-en>Facts verified: 2026-10-30 · GitHub API snapshot</span></p>
         </div>
@@ -100,7 +100,7 @@
           <p class="t-sm"><span data-zh><strong>安装步骤</strong></span><span data-en><strong>Install</strong></span><span data-zh>：官网下载 <strong>Dashboard</strong>，经 Dashboard 安装各版本 Cocos Creator；工程在 Creator 编辑器里创建、构建、发布（不是 npm 脚手架工作流）。</span><span data-en>: Download the <strong>Dashboard</strong> from the official site and install Cocos Creator versions through it; projects are created, built and published inside the Creator editor (not an npm-scaffold workflow).</span></p>
           <p class="t-xs"><span data-zh>安装事实来源</span><span data-en>Install source</span>：<a href="https://www.cocos.com/creator-download" target="_blank" rel="noopener">https://www.cocos.com/creator-download</a> · <span data-zh>核验日</span><span data-en>verified</span> 2026-10-30</p>
           <p class="t-sm mt-2"><span data-zh><strong>上手难度</strong></span><span data-en><strong>Onboarding</strong></span><span data-zh>：中</span><span data-en>: medium</span> <span class="t-xs muted"><span data-zh>（本站判断，未经实测）</span><span data-en>(the site’s judgement, not measured)</span></span></p>
-          <p class="t-sm"><span data-zh>脚本层是 TypeScript（AI 友好），但主入口是 GUI 编辑器：装 Dashboard、开编辑器、在场景视图里搭东西 —— 没有「一条命令出可跑工程」的路径，AI 也进不了场景编辑那一步。</span><span data-en>The scripting layer is TypeScript (AI-friendly), but the main entry is a GUI editor: install the Dashboard, open Creator, assemble things in the scene view — there is no one-command runnable-project path, and AI cannot enter the scene-editing step.</span></p>
+          <p class="t-sm"><span data-zh>脚本、Dashboard、编辑器与场景配置都是项目的一部分，不能只检查代码。</span><span data-en>Scripts, Dashboard, editor and scene configuration all form part of the project; code checks alone are insufficient.</span></p>
         </div>
 
         <div class="term-body">
@@ -118,21 +118,21 @@
 <tr><td><strong>Active</strong></td><td>Last push 2026-10-28 (GitHub API snapshot that day)</td></tr>
 </tbody></table></div>
 <p>⚠ This site runs no measurements: what is checked here is &quot;does the official doc have this path&quot;, not &quot;shipping a mini game with it is guaranteed smooth&quot;.</p></span></div>
-<div class="bi-block"><span data-zh><h2>对 AI 的友好度：脚本层高、场景层进不去</h2>
+<div class="bi-block"><span data-zh><h2>使用 AI 时分开检查脚本和场景配置</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>面</th><th>情况</th></tr></thead><tbody>
 <tr><td></td><td>AI 写游戏逻辑代码没问题，语言本身训练素材多</td></tr>
 <tr><td>⚠ ，这是它和 Phaser/Godot 工作流最大的差别</td></tr>
-<tr><td><strong>文档中文为主</strong></td><td>官方手册中文最全，英文相对薄：AI 的英文训练素材少，问答时容易拿到过时 API</td></tr>
+<tr><td><strong>文档中文为主</strong></td><td>按所用语言与引擎版本选择手册，并核对示例 API；不推测模型训练资料的构成</td></tr>
 <tr><td><strong>许可有细节</strong></td><td>见下面事实表：LICENSE.md 是 MIT，但 GitHub 许可字段显示 NOASSERTION</td></tr>
 </tbody></table></div>
-<p>（「AI 友好度中等」是本站判断：脚本层加分、编辑器工作流减分，两条都写明依据。）</p></span><span data-en><h2>AI-friendliness: the script layer is in, the scene layer is not</h2>
+<p>脚本和编辑器操作是两类工作；检查现有工具是否覆盖所需步骤。</p></span><span data-en><h2>Check scripts and scene configuration separately</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Aspect</th><th>Situation</th></tr></thead><tbody>
-<tr><td>TypeScript scripts</td><td>AI writing game-logic code is fine; the language has plenty of training material</td></tr>
-<tr><td>⚠ Scenes and levels live in the editor</td><td><code>.scene</code> / <code>.prefab</code> are Creator editor formats — AI cannot generate them and should not try; scripts to AI, scenes to you — the biggest workflow difference versus Phaser/Godot</td></tr>
-<tr><td>Docs mostly in Chinese</td><td>The manual is fullest in Chinese, thinner in English — less English training material, so Q&amp;A easily returns outdated APIs</td></tr>
+<tr><td>TypeScript scripts</td><td>Check generated TypeScript with the compiler and the target engine APIs</td></tr>
+<tr><td>⚠ Scenes and levels live in the editor</td><td>Check Creator scene/prefab formats against the editor version and the automation tools actually available</td></tr>
+<tr><td>Docs mostly in Chinese</td><td>Use the documentation matching your language and engine version; verify API examples against that version</td></tr>
 <tr><td>Licence has a detail</td><td>See the facts table: LICENSE.md is MIT, but GitHub's licence field shows NOASSERTION</td></tr>
 </tbody></table></div>
-<p>(&quot;Medium AI-friendliness&quot; is this site's judgement: plus for the script layer, minus for the editor workflow — both sides stated with their basis.)</p></span></div>
+<p>Script generation and editor operations are separate tasks; check coverage for each.</p></span></div>
 <div class="bi-block"><span data-zh><h2>最小 starter</h2>
 <p>一个最小 Component，在 update 里按帧推进节点位置。</p>
 <pre class="code"><code>import { _decorator, Component, Vec3 } from 'cc';

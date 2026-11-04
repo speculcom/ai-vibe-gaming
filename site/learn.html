@@ -93,7 +93,7 @@
       <a class="stage-card" href="s1-选引擎.html">
         <span class="stage-n">1</span>
         <b><span data-zh>S1 · 选引擎</span><span data-en>S1 · Pick an engine</span></b>
-        <span class="t-sm"><span data-zh>选错引擎，后面每一阶段都在替它的短板还债。</span><span data-en>Pick the wrong engine and every later stage ends up paying off its weaknesses.</span></span>
+        <span class="t-sm"><span data-zh>按目标平台、玩法和已有经验，检查引擎是否满足项目约束。</span><span data-en>Check an engine against target platforms, gameplay and existing experience.</span></span>
       </a>
       <a class="stage-card" href="web-导出可行性.html">
         <span class="stage-n">1</span>
@@ -123,7 +123,7 @@
       <a class="stage-card" href="s3-手感调参.html">
         <span class="stage-n">3</span>
         <b><span data-zh>S3 · 手感调参</span><span data-en>S3 · Game feel &amp; tuning</span></b>
-        <span class="t-sm"><span data-zh>这是 AI 帮不上忙的一段 —— 也是整个流程里唯一必须你自己判断的。</span><span data-en>This is the stage AI cannot help with — and the only one in the whole process that requires your own judgement.</span></span>
+        <span class="t-sm"><span data-zh>根据操作、节奏和反馈调整手感；参数建议仍需放进实际玩法中检查。</span><span data-en>This is the stage AI cannot help with — and the only one in the whole process that requires your own judgement.</span></span>
       </a>
       <a class="stage-card" href="手感问题清单.html">
         <span class="stage-n">3</span>
@@ -153,7 +153,7 @@
       <a class="stage-card" href="s5-导出发布.html">
         <span class="stage-n">5</span>
         <b><span data-zh>S5 · 导出与发布</span><span data-en>S5 · Ship it</span></b>
-        <span class="t-sm"><span data-zh>这一步 AI 帮得最少 —— 因为它是确定性工程，不是生成任务。</span><span data-en>This is where AI helps least — because it is deterministic engineering, not a generation task.</span></span>
+        <span class="t-sm"><span data-zh>检查导出包、目标设备和发布设置；不要把开发机运行成功当成发布完成。</span><span data-en>This is where AI helps least — because it is deterministic engineering, not a generation task.</span></span>
       </a>
       <a class="stage-card" href="先发极简版.html">
         <span class="stage-n">5</span>
@@ -173,7 +173,7 @@
           <p class="t-sm mb-3"><span data-zh>不属于单一阶段的概念。</span><span data-en>Concepts that do not belong to a single stage.</span></p>
           <ul class="kw-list">
         <li><a href="vibe-gaming.html"><b><span data-zh>Vibe Gaming</span><span data-en>Vibe Gaming</span></b></a>
-          <span class="t-sm"><span data-zh>跟 AI 聊天把游戏做出来。但这句话要先拆开，否则会误判。</span><span data-en>Making a game by talking to AI. But that sentence has to be taken apart first, or you will misjudge it.</span></span></li>
+          <span class="t-sm"><span data-zh>借助 AI 编写游戏代码、制作素材并迭代原型的做法。</span><span data-en>Using AI to help write game code, create assets and iterate on prototypes.</span></span></li>
         <li><a href="ai-资产台账.html"><b><span data-zh>AI 资产台账</span><span data-en>AI asset ledger</span></b></a>
           <span class="t-sm"><span data-zh>一份记录「每个资产从哪来、能不能商用」的表格。它不是法务要求，是保命要求。</span><span data-en>A table recording where each asset came from and whether it can be used commercially. It is not a legal formality — it is what saves the project.</span></span></li>
         <li><a href="godot-场景树.html"><b><span data-zh>Godot 的场景树</span><span data-en>Godot's scene tree</span></b></a>
@@ -191,47 +191,47 @@
           <div class="eng-grid">
       <a class="eng-card" href="engine-godot.html">
         <div class="eng-head"><b><span data-zh>Godot</span><span data-en>Godot</span></b><span class="ai-badge high"><span data-zh>友好</span><span data-en>friendly</span></span></div>
-        <span class="t-sm"><span data-zh>对 AI 最不容易出错的通用引擎 —— 原因不在引擎本身，在 GDScript 这门语言。</span><span data-en>The general engine least likely to trip AI up — and the reason is not the engine, it is the GDScript language.</span></span>
+        <span class="t-sm"><span data-zh>面向 2D 和 3D 的游戏引擎；检查编辑器、脚本语言和目标平台的版本条件。</span><span data-en>A 2D/3D game engine; check editor, scripting and target-platform versions.</span></span>
         
       </a>
       <a class="eng-card" href="engine-phaser.html">
         <div class="eng-head"><b><span data-zh>Phaser</span><span data-en>Phaser</span></b><span class="ai-badge high"><span data-zh>友好</span><span data-en>friendly</span></span></div>
-        <span class="t-sm"><span data-zh>2D 网页框架里最完整的一个 —— 物理、场景、资源加载全都内置；TypeScript/JavaScript 又是 AI 最擅长的语言。</span><span data-en>The most complete 2D web framework — physics, scenes and asset loading are all built in, and TypeScript/JavaScript is what AI writes best.</span></span>
+        <span class="t-sm"><span data-zh>面向网页的 2D 游戏框架，包含场景、物理与资源加载等功能。</span><span data-en>A 2D web-game framework with scenes, physics and asset loading.</span></span>
         
       </a>
       <a class="eng-card" href="engine-pixi.html">
         <div class="eng-head"><b><span data-zh>Pixi</span><span data-en>Pixi</span></b><span class="ai-badge high"><span data-zh>友好</span><span data-en>friendly</span></span></div>
-        <span class="t-sm"><span data-zh>2D 网页游戏里对 AI 最友好的选择 —— 因为 TypeScript 是 AI 最擅长的语言之一。</span><span data-en>The most AI-friendly choice for 2D web games — because TypeScript is one of the languages AI is best at.</span></span>
+        <span class="t-sm"><span data-zh>面向网页的 2D 渲染库；游戏逻辑和其他系统按需求组合。</span><span data-en>A 2D web rendering library; compose gameplay and other systems as needed.</span></span>
         
       </a>
       <a class="eng-card" href="engine-three-js.html">
         <div class="eng-head"><b><span data-zh>Three.js</span><span data-en>Three.js</span></b><span class="ai-badge high"><span data-zh>友好</span><span data-en>friendly</span></span></div>
-        <span class="t-sm"><span data-zh>对 AI 最友好的 3D 方案 —— 但它不是引擎，缺的东西要自己补。</span><span data-en>The most AI-friendly 3D option — but it is not an engine, and the gaps are yours to fill.</span></span>
+        <span class="t-sm"><span data-zh>面向网页的 JavaScript 3D 库；具体游戏功能需要自行组合。</span><span data-en>A JavaScript 3D library for the web; compose game-specific features separately.</span></span>
         
       </a>
       <a class="eng-card" href="engine-cocos.html">
         <div class="eng-head"><b><span data-zh>Cocos Creator</span><span data-en>Cocos Creator</span></b><span class="ai-badge medium"><span data-zh>一般</span><span data-en>mixed</span></span></div>
-        <span class="t-sm"><span data-zh>微信小游戏生态的默认选择 —— 官方手册专设「发布到微信小游戏」章节；代价是关卡与场景在编辑器里做，AI 只能接管脚本层。</span><span data-en>The default pick in the WeChat Mini Game ecosystem — the official manual has a dedicated &quot;Publish to WeChat Mini Game&quot; chapter; the price is that scenes live in the editor, so AI can only take over the scripting layer.</span></span>
+        <span class="t-sm"><span data-zh>包含编辑器、场景与脚本流程的游戏开发工具；小游戏发布需核对对应平台说明。</span><span data-en>A game-development tool with editor, scene and scripting workflows; check target mini-game platform documentation.</span></span>
         
       </a>
       <a class="eng-card" href="engine-libgdx.html">
         <div class="eng-head"><b><span data-zh>libGDX</span><span data-en>libGDX</span></b><span class="ai-badge medium"><span data-zh>一般</span><span data-en>mixed</span></span></div>
-        <span class="t-sm"><span data-zh>Java 生态里唯一的完整游戏引擎 —— AI 写得不错，但你得先接受 JVM 的构建流程。</span><span data-en>The only complete game engine in the Java ecosystem — AI handles it decently, but you have to accept the JVM build process first.</span></span>
+        <span class="t-sm"><span data-zh>基于 Java 的跨平台游戏开发框架，项目需配置 JVM 构建与目标平台。</span><span data-en>A Java-based cross-platform game-development framework; configure JVM builds and target platforms.</span></span>
         
       </a>
       <a class="eng-card" href="engine-unity.html">
         <div class="eng-head"><b><span data-zh>Unity</span><span data-en>Unity</span></b><span class="ai-badge medium"><span data-zh>一般</span><span data-en>mixed</span></span></div>
-        <span class="t-sm"><span data-zh>AI 能写 C#，但改场景与预制件仍要过编辑器这层；Unity 6 起官方内置 AI 菜单。</span><span data-en>AI can write C#, but scene and prefab changes still go through the editor; Unity 6 ships an official AI menu.</span></span>
+        <span class="t-sm"><span data-zh>包含编辑器、C# 脚本与资产流程的游戏引擎。</span><span data-en>A game engine with an editor, C# scripting and asset workflows.</span></span>
         
       </a>
       <a class="eng-card" href="engine-bevy.html">
         <div class="eng-head"><b><span data-zh>Bevy</span><span data-en>Bevy</span></b><span class="ai-badge low"><span data-zh>不友好</span><span data-en>unfriendly</span></span></div>
-        <span class="t-sm"><span data-zh>AI 最容易写错的主流引擎 —— 但它的架构可能是最干净的。</span><span data-en>The mainstream engine AI gets wrong most easily — and yet its architecture may be the cleanest.</span></span>
+        <span class="t-sm"><span data-zh>使用 Rust 与 ECS 架构的游戏引擎；项目需处理构建、依赖与系统调度。</span><span data-en>A Rust/ECS game engine; account for builds, dependencies and system scheduling.</span></span>
         
       </a>
       <a class="eng-card" href="engine-unreal.html">
         <div class="eng-head"><b><span data-zh>Unreal Engine</span><span data-en>Unreal Engine</span></b><span class="ai-badge low"><span data-zh>不友好</span><span data-en>unfriendly</span></span></div>
-        <span class="t-sm"><span data-zh>AI 写 C++ 与 Blueprint 都难；5.8 起官方 MCP 插件让外部 agent 通过本地 HTTP 驱动编辑器。</span><span data-en>AI struggles with both C++ and Blueprint; since 5.8 an official MCP plugin lets external agents drive the editor over local HTTP.</span></span>
+        <span class="t-sm"><span data-zh>包含 C++、Blueprint 与编辑器资产流程的实时 3D 工具。</span><span data-en>A real-time 3D tool with C++, Blueprint and editor asset workflows.</span></span>
         
       </a>
           </div>

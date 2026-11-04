@@ -3,8 +3,8 @@ zh: "作品库与最小可玩原型"
 en: "Showcase and minimal prototypes"
 what: "15 个有可核验 AI 参与痕迹的作品（只放外链），外加六个引擎各一份「能操作 / 有目标 / 有反馈」的最小骨架。"
 whatEn: "15 works with verifiable AI involvement (links only), plus one minimal skeleton per engine covering operable / goal-directed / responsive."
-decision: "作品库只收有一手 AI 痕迹的样本；骨架只抄最小循环、只改三个数，先让它跑起来 —— 原型阶段加美术是最贵的弯路。"
-decisionEn: "Only works with first-party AI evidence are included; copy the minimal loop and change three numbers, then get it running — polishing art during prototyping is the most expensive detour."
+decision: "先选一个骨架，保留最小玩法循环，再逐项修改参数。需要特定视觉风格时，可用少量示意素材验证，不必先完成全部美术。"
+decisionEn: "Choose one skeleton, keep its minimal gameplay loop, then change parameters one at a time. Use small placeholder assets to check a required visual style without finishing all artwork first."
 confidence: our-judgement
 ---
 
@@ -12,11 +12,11 @@ confidence: our-judgement
 
 这一页分两部分：**15 个有可核验 AI 参与痕迹的作品**（只放站外链接，不展示截图、不镜像代码），以及**六个引擎的最小可玩骨架**。
 
-⚠ **本站铁律：不做实测。** 作品库只记录「作者自己给出的一手 AI 痕迹」与链接；骨架是**起点模板，未经本站运行验证**。跑不通时，先看官方文档。
+作品库记录作者公开说明的 AI 参与环节与证据链接。下面的骨架**未经本站运行验证**；请按对应引擎版本检查，并结合官方文档使用。
 
-## 作品库（试点）
+## 作品库
 
-收录规则（D3=A）：原址可访问、无需登录/付费；必须有一手 AI 痕迹（项目页 / README / 作者公开帖点名工具或模型），目录转述不算；只放外链，不截图、不镜像；不做排名。核验日 **2026-11-03**。仓库型条目只核验 README / 在线 demo / 最近提交，**未在本地 clone 构建**；页面不声称已实测。
+收录规则：原址可访问、无需登录/付费；必须有一手 AI 痕迹（项目页 / README / 作者公开帖点名工具或模型），目录转述不算；只放外链，不截图、不镜像；不做排名。核验日 **2026-11-03**。仓库型条目只核验 README / 在线 demo / 最近提交，**未在本地 clone 构建**；页面不声称已实测。
 
 | 作品（外链） | 类目 | AI 用在哪 | 授权 | 一手证据 / 备注 |
 |---|---|---|---|---|
@@ -39,11 +39,11 @@ confidence: our-judgement
 <!-- EN -->
 > This page has two parts: **15 works with verifiable AI involvement** (external links only, no screenshots or mirrored code), plus **minimal playable skeletons for six engines**.
 >
-> ⚠ **The site's rule: no measurements.** The showcase only records first-party AI evidence supplied by the authors, plus links; the skeletons are **starting templates, not run or verified by this site**. If one does not run, go to the official docs first.
+> The showcase records authors’ public evidence of AI involvement. The skeletons below are **not run or verified by this site**; check the engine version and official documentation before using them.
 >
-> ## Showcase (pilot)
+> ## Showcase
 >
-> Acceptance rules (D3=A): the original URL is reachable without login or paywall; there is first-party AI evidence (the project page, README or a public author post naming the tool or model) — directory descriptions do not count; links only, no screenshots or mirrors; no ranking. Verified **2026-11-03**. Repo-backed entries were checked via README / live demo / last commit, **not built locally**; the page does not claim they were measured.
+> Acceptance rules: the original URL is reachable without login or paywall; there is first-party AI evidence (the project page, README or a public author post naming the tool or model) — directory descriptions do not count; links only, no screenshots or mirrors; no ranking. Verified **2026-11-03**. Repo-backed entries were checked via README / live demo / last commit, **not built locally**; the page does not claim they were measured.
 >
 > | Work (external link) | Category | AI scope | License | First-party evidence / note |
 > |---|---|---|---|---|

@@ -8,10 +8,10 @@ tier: "2D/3D 跨平台"
 tierEn: "2D/3D cross-platform"
 aiFriendly: medium
 aiScore: 3
-what: "微信小游戏生态的默认选择 —— 官方手册专设「发布到微信小游戏」章节；代价是关卡与场景在编辑器里做，AI 只能接管脚本层。"
-whatEn: "The default pick in the WeChat Mini Game ecosystem — the official manual has a dedicated \"Publish to WeChat Mini Game\" chapter; the price is that scenes live in the editor, so AI can only take over the scripting layer."
-decision: "发布目标里有微信小游戏就绕不开它；纯网页游戏或想让 AI 多写代码，选 Phaser/Godot 更顺。"
-decisionEn: "If WeChat Mini Games is in your release targets, you can't avoid it; for pure web games or more AI-written code, Phaser/Godot go smoother."
+what: "包含编辑器、场景与脚本流程的游戏开发工具；小游戏发布需核对对应平台说明。"
+whatEn: "A game-development tool with editor, scene and scripting workflows; check target mini-game platform documentation."
+decision: "分别核对脚本、场景配置与发布平台；自动操作编辑器取决于工具和权限。"
+decisionEn: "Check scripts, scene configuration and release platform separately; editor automation depends on tools and permissions."
 bestFor: "微信小游戏 / 即时网页娱乐为主的 2D/3D 跨平台发布"
 bestForEn: "2D/3D cross-platform releases targeting WeChat Mini Games / instant web entertainment"
 install: "官网下载 **Dashboard**，经 Dashboard 安装各版本 Cocos Creator；工程在 Creator 编辑器里创建、构建、发布（不是 npm 脚手架工作流）。"
@@ -19,8 +19,8 @@ installEn: "Download the **Dashboard** from the official site and install Cocos 
 installSrc: "https://www.cocos.com/creator-download"
 installVerified: "2026-10-30"
 difficulty: medium
-difficultyWhy: "脚本层是 TypeScript（AI 友好），但主入口是 GUI 编辑器：装 Dashboard、开编辑器、在场景视图里搭东西 —— 没有「一条命令出可跑工程」的路径，AI 也进不了场景编辑那一步。"
-difficultyWhyEn: "The scripting layer is TypeScript (AI-friendly), but the main entry is a GUI editor: install the Dashboard, open Creator, assemble things in the scene view — there is no one-command runnable-project path, and AI cannot enter the scene-editing step."
+difficultyWhy: "脚本、Dashboard、编辑器与场景配置都是项目的一部分，不能只检查代码。"
+difficultyWhyEn: "Scripts, Dashboard, editor and scene configuration all form part of the project; code checks alone are insufficient."
 confidence: our-judgement
 verified: "2026-10-30 · GitHub API 快照"
 verifiedEn: "2026-10-30 · GitHub API snapshot"
@@ -54,28 +54,28 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 >
 > ⚠ This site runs no measurements: what is checked here is "does the official doc have this path", not "shipping a mini game with it is guaranteed smooth".
 
-## 对 AI 的友好度：脚本层高、场景层进不去
+## 使用 AI 时分开检查脚本和场景配置
 
 | 面 | 情况 |
 |---|---|
 |  | AI 写游戏逻辑代码没问题，语言本身训练素材多 |
 | ⚠ ，这是它和 Phaser/Godot 工作流最大的差别 |
-| **文档中文为主** | 官方手册中文最全，英文相对薄：AI 的英文训练素材少，问答时容易拿到过时 API |
+| **文档中文为主** | 按所用语言与引擎版本选择手册，并核对示例 API；不推测模型训练资料的构成 |
 | **许可有细节** | 见下面事实表：LICENSE.md 是 MIT，但 GitHub 许可字段显示 NOASSERTION |
 
-（「AI 友好度中等」是本站判断：脚本层加分、编辑器工作流减分，两条都写明依据。）
+脚本和编辑器操作是两类工作；检查现有工具是否覆盖所需步骤。
 
 <!-- EN -->
-> ## AI-friendliness: the script layer is in, the scene layer is not
+> ## Check scripts and scene configuration separately
 >
 > | Aspect | Situation |
 > |---|---|
-> | TypeScript scripts | AI writing game-logic code is fine; the language has plenty of training material |
-> | ⚠ Scenes and levels live in the editor | `.scene` / `.prefab` are Creator editor formats — AI cannot generate them and should not try; scripts to AI, scenes to you — the biggest workflow difference versus Phaser/Godot |
-> | Docs mostly in Chinese | The manual is fullest in Chinese, thinner in English — less English training material, so Q&A easily returns outdated APIs |
+> | TypeScript scripts | Check generated TypeScript with the compiler and the target engine APIs |
+> | ⚠ Scenes and levels live in the editor | Check Creator scene/prefab formats against the editor version and the automation tools actually available |
+> | Docs mostly in Chinese | Use the documentation matching your language and engine version; verify API examples against that version |
 > | Licence has a detail | See the facts table: LICENSE.md is MIT, but GitHub's licence field shows NOASSERTION |
 >
-> ("Medium AI-friendliness" is this site's judgement: plus for the script layer, minus for the editor workflow — both sides stated with their basis.)
+> Script generation and editor operations are separate tasks; check coverage for each.
 
 ## 最小 starter
 

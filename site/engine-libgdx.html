@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>libGDX · 引擎档案 · AI 做游戏</title>
-  <meta name="description" content="Java 生态里唯一的完整游戏引擎 —— AI 写得不错，但你得先接受 JVM 的构建流程。 ⚠ 跨平台需求明确（尤其要 Android）时才选它。桌面项目直接选 Godot。" />
+  <meta name="description" content="基于 Java 的跨平台游戏开发框架，项目需配置 JVM 构建与目标平台。 已有 Java/Kotlin 经验时可按平台要求评估，并先跑通官方示例。" />
   <link rel="canonical" href="https://vg.specul.com/engine-libgdx.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="libGDX · 引擎档案 · AI 做游戏" />
   <meta property="og:url" content="https://vg.specul.com/engine-libgdx.html" />
   <meta property="og:title" content="libGDX · 引擎档案 · AI 做游戏" />
-  <meta property="og:description" content="Java 生态里唯一的完整游戏引擎 —— AI 写得不错，但你得先接受 JVM 的构建流程。 ⚠ 跨平台需求明确（尤其要 Android）时才选它。桌面项目直接选 Godot。" />
+  <meta property="og:description" content="基于 Java 的跨平台游戏开发框架，项目需配置 JVM 构建与目标平台。 已有 Java/Kotlin 经验时可按平台要求评估，并先跑通官方示例。" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
   <script src="brand.js?v=6a580ac0420e"></script>
   <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"libGDX · 引擎档案","url":"https://vg.specul.com/engine-libgdx.html","description":"Java 生态里唯一的完整游戏引擎 —— AI 写得不错，但你得先接受 JVM 的构建流程。 ⚠ 跨平台需求明确（尤其要 Android）时才选它。桌面项目直接选 Godot。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"libgdx","applicationCategory":"GameEngine"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"libGDX · 引擎档案","url":"https://vg.specul.com/engine-libgdx.html","description":"基于 Java 的跨平台游戏开发框架，项目需配置 JVM 构建与目标平台。 已有 Java/Kotlin 经验时可按平台要求评估，并先跑通官方示例。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"libgdx","applicationCategory":"GameEngine"}}</script>
 </head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
@@ -89,8 +89,8 @@
 
         <div class="panel term-meta">
           <p class="t-lead"><span data-zh><strong>对 AI 的友好度</strong></span><span data-en><strong>How AI-friendly it is</strong></span><span data-zh>：★★★☆（一般）</span><span data-en>: ★★★☆ (mixed)</span></p>
-          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：Java 生态里唯一的完整游戏引擎 —— AI 写得不错，但你得先接受 JVM 的构建流程。</span><span data-en>: The only complete game engine in the Java ecosystem — AI handles it decently, but you have to accept the JVM build process first.</span></p>
-          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：⚠ 跨平台需求明确（尤其要 Android）时才选它。桌面项目直接选 Godot。</span><span data-en>: ⚠ Pick it only when cross-platform is a hard requirement (especially Android). For desktop, choose Godot.</span></p>
+          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：基于 Java 的跨平台游戏开发框架，项目需配置 JVM 构建与目标平台。</span><span data-en>: A Java-based cross-platform game-development framework; configure JVM builds and target platforms.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：已有 Java/Kotlin 经验时可按平台要求评估，并先跑通官方示例。</span><span data-en>: Assess target-platform requirements with Java/Kotlin experience and start from an official example.</span></p>
           <p class="t-sm"><span data-zh><strong>适合</strong></span><span data-en><strong>Best for</strong></span><span data-zh>：⚠ 要发布到 Android、且团队用 Java/Kotlin</span><span data-en>: ⚠ Shipping to Android with a Java/Kotlin team</span></p>
           <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span> · <span data-zh>事实核验：2026-10-30 · GitHub API 快照</span><span data-en>Facts verified: 2026-10-30 · GitHub API snapshot</span></p>
         </div>
@@ -100,19 +100,19 @@
           <p class="t-sm"><span data-zh><strong>安装步骤</strong></span><span data-en><strong>Install</strong></span><span data-zh>：先装 JDK 17 或更高，官方推荐<strong>正好 21</strong>（否则 Construo 桌面打包要额外改配置）。从 gdx-liftoff 的 releases 下那个<strong>名字里不带操作系统的 .jar</strong>（跨平台）→ <code>java -jar gdx-liftoff-VERSION.jar</code> → 在 GUI 里填工程名 / 目标平台 / 语言 → Generate。产出是 Gradle 多模块工程，再用 IDE 打开。当前默认对应 libGDX 1.14.2。</span><span data-en>: Install JDK 17 or newer; the docs recommend <strong>exactly 21</strong> (otherwise Construo desktop packaging needs extra configuration). Download the <strong>.jar with no OS in its name</strong> (cross-platform) from the gdx-liftoff releases → <code>java -jar gdx-liftoff-VERSION.jar</code> → set project name, target platforms and language in the GUI → Generate. It produces a multi-module Gradle project that you then open in an IDE. It currently targets libGDX 1.14.2.</span></p>
           <p class="t-xs"><span data-zh>安装事实来源</span><span data-en>Install source</span>：<a href="https://github.com/libgdx/gdx-liftoff" target="_blank" rel="noopener">https://github.com/libgdx/gdx-liftoff</a> · <span data-zh>核验日</span><span data-en>verified</span> 2026-10-30</p>
           <p class="t-sm mt-2"><span data-zh><strong>上手难度</strong></span><span data-en><strong>Onboarding</strong></span><span data-zh>：高</span><span data-en>: high</span> <span class="t-xs muted"><span data-zh>（本站判断，未经实测）</span><span data-en>(the site’s judgement, not measured)</span></span></p>
-          <p class="t-sm"><span data-zh>JDK + jar + Gradle 多模块 + IDE 配置，四步都走完才能看到空窗口；官方为此单独写了一篇 Troubleshooting。</span><span data-en>JDK, the jar, a multi-module Gradle project and IDE setup — four steps before an empty window appears; the project ships a dedicated Troubleshooting guide for exactly this.</span></p>
+          <p class="t-sm"><span data-zh>需要 JDK、项目生成与 Gradle 等构建步骤；按目标平台核对额外依赖。</span><span data-en>Account for JDK, project generation and Gradle, plus target-platform dependencies.</span></p>
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><h2>对 AI 友好的部分</h2>
+<div class="bi-block"><span data-zh><h2>使用条件与检查</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>原因</th><th>说明</th></tr></thead><tbody>
 <tr><td></td><td>语法严格但模式固定，AI 的 Java 能力优于 Rust/C++</td></tr>
 <tr><td><strong>Kotlin 也很好写</strong></td><td>协程与空安全降低了出错的可能</td></tr>
 <tr><td><strong>Apache-2.0</strong></td><td>商用无阻碍</td></tr>
 <tr><td><strong>跨平台成熟</strong></td><td>桌面 + Android + iOS + Web</td></tr>
-</tbody></table></div></span><span data-en><h2>Where it is AI-friendly</h2>
+</tbody></table></div></span><span data-en><h2>Usage conditions and checks</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Reason</th><th>Explanation</th></tr></thead><tbody>
-<tr><td>Java has a large body of training data</td><td>The syntax is strict but the patterns are fixed; AI's Java is better than its Rust or C++</td></tr>
+<tr><td>Java toolchain</td><td>Compiler checks help locate some errors; no language-level AI accuracy ranking is asserted</td></tr>
 <tr><td>Kotlin is also easy to write</td><td>Coroutines and null safety remove a class of mistakes</td></tr>
 <tr><td><strong>Apache-2.0</strong></td><td>No obstacle to commercial use</td></tr>
 <tr><td>Mature cross-platform</td><td>Desktop + Android + iOS + Web</td></tr>
@@ -125,7 +125,7 @@
 <li>⚠ AI 会写出能编译逻辑但配不出环境的构建文件</li>
 </ul>
 <p>⚠ 这一点与 S5「导出与发布」是同一类问题：</p></span><span data-en><h2>libGDX's barrier is the Gradle build</h2>
-<p>This is where AI cannot help:</p>
+<p>These build steps still need to be configured and checked:</p>
 <ul>
 <li>Gradle dependency resolution — the errors on a version conflict are extremely hard to read</li>
 <li>Android packaging needs the Android SDK — the environment setup is its own hurdle</li>

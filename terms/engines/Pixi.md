@@ -8,10 +8,10 @@ tier: "Web 2D"
 tierEn: "web 2D"
 aiFriendly: high
 aiScore: 4
-what: "2D 网页游戏里对 AI 最友好的选择 —— 因为 TypeScript 是 AI 最擅长的语言之一。"
-whatEn: "The most AI-friendly choice for 2D web games — because TypeScript is one of the languages AI is best at."
-decision: "做 2D 网页游戏，选它。前提是你能接受没有内置物理。"
-decisionEn: "For a 2D web game, pick it — provided you can live without built-in physics."
+what: "面向网页的 2D 渲染库；游戏逻辑和其他系统按需求组合。"
+whatEn: "A 2D web rendering library; compose gameplay and other systems as needed."
+decision: "先明确是否只需要渲染层，再决定物理、场景与打包方案。"
+decisionEn: "Establish whether a rendering layer is sufficient, then choose physics, scene and packaging tools."
 bestFor: "2D 网页游戏、小游戏原型"
 bestForEn: "2D web games and small prototypes"
 install: "装 Node.js v20 或更高 → `npm create pixi.js@latest` 生成脚手架（官方推荐 Vite + PixiJS 模板）→ `npm install` → `npm run dev`。也可以只往已有工程里加：`npm install pixi.js`。"
@@ -19,8 +19,8 @@ installEn: "Install Node.js v20 or newer → `npm create pixi.js@latest` to scaf
 installSrc: "https://pixijs.com/8.x/guides/getting-started/quick-start"
 installVerified: "2026-10-30"
 difficulty: low
-difficultyWhy: "一条命令出可跑工程 —— 官方给了脚手架模板，比自己拼一份构建配置省事。前置只有一个 Node.js。"
-difficultyWhyEn: "One command yields a runnable project — the docs ship scaffolding templates, so you do not assemble a build setup yourself. The only prerequisite is Node.js."
+difficultyWhy: "官方模板可帮助建立工程；依赖、构建与浏览器支持仍需按版本检查。"
+difficultyWhyEn: "Official templates can establish a project; check dependencies, builds and browser support by version."
 confidence: our-judgement
 verified: "2026-10-30 · GitHub API 快照"
 verifiedEn: "2026-10-30 · GitHub API snapshot"
@@ -28,28 +28,28 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 
 # Pixi
 
-**一句话**：做 2D 网页游戏时，它和 Three.js 共享「AI 最友好」的资格。
+**一句话**：适合需要 2D 渲染层的网页项目，不能仅凭语言判断 AI 生成代码的可靠性。
 
 <!-- EN -->
-> **In one line**: for 2D web games, it shares with Three.js the title of "most AI-friendly".
+> **In one line**: it supplies a 2D rendering layer for web projects; language choice alone does not establish generated-code reliability.
 
-## 为什么对 AI 友好
+## 使用条件与检查
 
 | 原因 | 说明 |
 |---|---|
-| **TypeScript** | 训练数据最多、且带类型检查：AI 写错的概率明显低于其他游戏语言 |
-|  | 跑在浏览器里，**不需要装任何东西**就能分享 |
-| **概念少** | Sprite / Container / Texture：不需要学引擎架构 |
+| **TypeScript** | 类型检查可帮助发现部分错误；本站没有跨语言生成正确率数据 |
+| 浏览器分发 | 发布后的网页可通过链接打开；开发和构建仍需配置 |
+| **概念少** | 学习 Sprite / Container / Texture，并单独安排玩法与其他系统 |
 | **MIT 许可** | 商用无阻碍 |
 
 <!-- EN -->
-> ## Why it is AI-friendly
+> ## Usage conditions and checks
 >
 > | Reason | Explanation |
 > |---|---|
-> | **TypeScript** | The most training data of any language, plus type checking — AI makes noticeably fewer mistakes in it than in other game languages |
-> |  to share it |
-> |  | Sprite / Container / Texture — no engine architecture to learn |
+> | **TypeScript** | Type checking can expose some errors; this site has no cross-language generation-accuracy measurements |
+> | Browser delivery | A deployed build can be opened by URL; development still has setup requirements |
+> | Rendering concepts | Learn Sprite / Container / Texture and the systems your project adds |
 > | **MIT licence** | No obstacle to commercial use |
 
 ## 它的代价

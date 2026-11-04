@@ -27,9 +27,8 @@ Want to know *why* we say that? [`pages/method.md`](./pages/method.md) has it.
 
 The core claim (see `claims/`):
 
-> AI has lowered the cost of making games **unevenly** — writing code is down 70–80%,
-> while art, music and level design have barely moved. So the bottleneck for making a
-> game alone has shifted from "I can't write it" to "I can't assemble the parts."
+> AI can assist code and assets. Gameplay, consistency, rights and release need separate checks.
+> This site has no data establishing a universal cost reduction.
 
 ## Content structure
 
@@ -100,7 +99,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "message"
 
 | Stage | Term | In one line |
 |---|---|---|
-| S1 · Pick an engine | [S1 · Pick an engine](terms/S1-%E9%80%89%E5%BC%95%E6%93%8E.md) | Pick the wrong engine and every later sta… |
+| S1 · Pick an engine | [S1 · Pick an engine](terms/S1-%E9%80%89%E5%BC%95%E6%93%8E.md) | Check an engine against target platforms,… |
 | S2 · The core loop | [S2 · The core loop](terms/S2-%E6%A0%B8%E5%BF%83%E5%BE%AA%E7%8E%AF.md) | A gameplay prototype is verifiable — if t… |
 | S3 · Feel and tuning | [S3 · Game feel & tuning](terms/S3-%E6%89%8B%E6%84%9F%E8%B0%83%E5%8F%82.md) | This is the stage AI cannot help with — a… |
 | S4 · Assets and licensing | [S4 · Asset licensing](terms/S4-%E8%B5%84%E4%BA%A7%E5%90%88%E8%A7%84.md) | This step is not technical, it is legal —… |
@@ -108,7 +107,7 @@ bash _audit/push-site.sh _data/game/site speculcom/vibe-gaming "message"
 
 ### Keywords
 
-- [Vibe Gaming](terms/Vibe%20Gaming.md) —— It actually mixes two things, and only on…
+- [Vibe Gaming](terms/Vibe%20Gaming.md) —— Check code, gameplay and assets separatel…
 - [Web export feasibility](terms/Web%20%E5%AF%BC%E5%87%BA%E5%8F%AF%E8%A1%8C%E6%80%A7.md) —— If you need long-term saves, multiplayer,…
 - [Structuring the prompt](terms/%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%9A%84%E7%BB%93%E6%9E%84.md) —— Give three things each time: the input ma…
 - [Minimal playable prototype](terms/%E6%9C%80%E5%B0%8F%E5%8F%AF%E7%8E%A9%E5%8E%9F%E5%9E%8B.md) —— How far is far enough? Far enough that th…

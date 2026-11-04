@@ -8,10 +8,10 @@ tier: "高保真 3D"
 tierEn: "high-fidelity 3D"
 aiFriendly: low
 aiScore: 1
-what: "AI 写 C++ 与 Blueprint 都难；5.8 起官方 MCP 插件让外部 agent 通过本地 HTTP 驱动编辑器。"
-whatEn: "AI struggles with both C++ and Blueprint; since 5.8 an official MCP plugin lets external agents drive the editor over local HTTP."
-decision: "要做高保真 3D 或已用 Unreal 时选它；单人 + AI 小项目不建议。"
-decisionEn: "Pick it for high-fidelity 3D or an existing Unreal team; solo AI-first small projects should avoid it."
+what: "包含 C++、Blueprint 与编辑器资产流程的实时 3D 工具。"
+whatEn: "A real-time 3D tool with C++, Blueprint and editor asset workflows."
+decision: "按视觉目标、现有经验、工具链和发布条件评估。"
+decisionEn: "Assess visual goals, experience, toolchain and release requirements."
 bestFor: "高保真 3D、已有 Unreal 团队、愿意用 MCP 驱动编辑器"
 bestForEn: "High-fidelity 3D, existing Unreal teams, and teams willing to drive the editor through MCP"
 install: "用 Epic Games Launcher 安装 UE 5.8。5.8 提供 Experimental MCP 插件：在编辑器进程内嵌 MCP server，任何兼容 MCP 的客户端（Claude Code、Cursor、MCP Inspector 等）可通过本地 HTTP 连接，调用 spawn actor、配置灯光、创建材质实例、检查 Slate 控件、跑自动化测试等工具（官方 5.8 文档，2026-11-03）。"
@@ -19,8 +19,8 @@ installEn: "Install UE 5.8 through the Epic Games Launcher. 5.8 ships an Experim
 installSrc: "https://dev.epicgames.com/documentation/unreal-engine/unreal-mcp-in-unreal-editor"
 installVerified: "2026-11-03"
 difficulty: high
-difficultyWhy: "编辑器、C++ 编译、Blueprint 与资产管线都重；AI 生成代码能编译，但性能与引擎约定要人判断。"
-difficultyWhyEn: "The editor, C++ compilation, Blueprints and the asset pipeline are all heavy. AI code may compile, but performance and engine conventions need human judgement."
+difficultyWhy: "需要维护编辑器、编译、蓝图和资产流程；代码能编译仍需检查行为与性能。"
+difficultyWhyEn: "Maintain editor, compilation, Blueprint and asset workflows; compiling code still needs behavioral and performance checks."
 confidence: partial
 verified: "2026-11-03 · Epic UE 5.8 官方文档"
 verifiedEn: "2026-11-03 · Epic UE 5.8 official docs"
@@ -33,7 +33,7 @@ verifiedEn: "2026-11-03 · Epic UE 5.8 official docs"
 <!-- EN -->
 > **In one line**: it is strong for high-fidelity 3D, but heavy for both AI-written code and solo small projects.
 
-## 为什么对 AI 不友好
+## 使用条件与检查
 
 | 原因 | 说明 |
 |---|---|
@@ -43,7 +43,7 @@ verifiedEn: "2026-11-03 · Epic UE 5.8 official docs"
 | **5.8 的 MCP 是补丁，不是替代** | 外部 agent 能驱动编辑器，但仍要理解引擎 API 与项目约定 |
 
 <!-- EN -->
-> ## Why it is unfriendly to AI
+> ## Usage conditions and checks
 >
 > | Reason | Explanation |
 > |---|---|

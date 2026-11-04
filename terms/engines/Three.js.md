@@ -8,10 +8,10 @@ tier: "Web 3D"
 tierEn: "web 3D"
 aiFriendly: high
 aiScore: 4
-what: "对 AI 最友好的 3D 方案 —— 但它不是引擎，缺的东西要自己补。"
-whatEn: "The most AI-friendly 3D option — but it is not an engine, and the gaps are yours to fill."
-decision: "你要的不是「引擎」而是「3D 库」时选它。它有 Scene / Object3D 场景图，但没有关卡与资源管理层。"
-decisionEn: "Pick it when what you want is a 3D library rather than an engine. It has a Scene / Object3D scene graph, but no level or asset-management layer."
+what: "面向网页的 JavaScript 3D 库；具体游戏功能需要自行组合。"
+whatEn: "A JavaScript 3D library for the web; compose game-specific features separately."
+decision: "适合需要网页 3D 渲染、能自行安排玩法和资源流程的项目。"
+decisionEn: "Assess it for web 3D rendering when you can organize gameplay and asset workflows."
 bestFor: "网页 3D 展示、可以自己搭架构的项目"
 bestForEn: "Web 3D showcases, and projects where you are willing to build the architecture"
 install: "两条路。① npm + 构建工具：装 Node.js，然后 `npm install --save three` 与 `npm install --save-dev vite`，跑 `npx vite`。② 不用构建工具：在 index.html 里写 import map 指向 CDN，再用 `npx serve .` 起本地服务器。**官方没有脚手架**，工程结构（index.html + main.js + public/）要自己建；addons 不需另装、但要单独 import。"
@@ -19,8 +19,8 @@ installEn: "Two routes. (1) npm plus a build tool: install Node.js, then `npm in
 installSrc: "https://threejs.org/docs/#manual/en/introduction/Installation"
 installVerified: "2026-10-30"
 difficulty: medium
-difficultyWhy: "装包是一行，但「一个能跑的画面」要自己拼：没有脚手架，场景 / 相机 / 渲染器都得手写（官方入门示例约 20 行）。"
-difficultyWhyEn: "The package is one line; a running scene is not. There is no scaffolding, so scene, camera and renderer are hand-written (the official example is about 20 lines)."
+difficultyWhy: "场景、相机、渲染器及构建需要配置；依据对应版本的入门文档开始。"
+difficultyWhyEn: "Configure scene, camera, renderer and build using the target version’s getting-started documentation."
 confidence: our-judgement
 verified: "2026-10-30 · GitHub API 快照"
 verifiedEn: "2026-10-30 · GitHub API snapshot"
@@ -28,48 +28,40 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 
 # Three.js
 
-**一句话**：对 AI 最友好的 3D 方案，但它不是引擎，缺的东西要自己补。
+**一句话**：提供网页 3D 渲染；具体游戏功能需要自行组合。
 
 <!-- EN -->
-> **In one line**: the most AI-friendly 3D option, but it is a library rather than an engine, and the gaps are yours to fill.
+> **In one line**: a web 3D rendering library; assemble the game-specific features separately.
 
-## Three.js 是库，不是完整引擎
+## Three.js 提供什么，项目还要安排什么
 
-它有 `Scene` / `Object3D` 场景图，但没有：
+Three.js 提供场景图、加载器与加载管理等能力。它们能帮助显示与加载资源，但游戏的关卡规则、资源在各阶段何时创建和释放、物理与构建流程仍需要按项目组合。
 
-- 关卡 / 资源管理层（模型、贴图的加载、缓存与生命周期）
-- 物理系统
-- 构建系统（打包、缓存、版本）
-
-**这些都要你自己搭。** 这不是缺点，你得知道自己在搭什么。
+不要把“不是完整游戏引擎”误写成“没有加载器或缓存相关工具”。具体 API 以 [官方加载管理文档](https://threejs.org/docs/pages/LoadingManager.html) 和目标版本为准。
 
 <!-- EN -->
-> ## Three.js is a library, not a full engine
+> ## Library features and project responsibilities
 >
-> It has a `Scene` / `Object3D` scene graph, but none of:
+> Three.js provides a scene graph, loaders and loading management. These support rendering/loading, while level rules, asset creation/disposal policy, physics and builds still need project-specific composition.
 >
-> - a level / asset-management layer (loading, caching and lifecycle for models and textures)
-> - a physics system
-> - a build system (bundling, caching and versioning)
->
-> You build all of that yourself. That is not a flaw — but you should know what you are building.
+> “Not a full game engine” does not mean “no loaders or cache-related tools.” Check the [official loading-manager documentation](https://threejs.org/docs/pages/LoadingManager.html) and the target version.
 
-## 为什么对 AI 友好
+## 使用条件与检查
 
 | 原因 | 说明 |
 |---|---|
-| JavaScript/TypeScript 训练数据最多 | ⚠ 这是最大的优势：模型的训练集里 JS 代码的量级远大于其他游戏语言 |
+| JavaScript/TypeScript | 可以结合类型检查和浏览器开发工具核对代码；本站不知道各模型训练语料的完整构成 |
 | **API 极其稳定** | Three.js 的 API 十多年没大改，AI 学到的是当前的知识 |
 | **概念少** | 场景、相机、渲染器、光源、材质：五件事说完，没有引擎的复杂度 |
 | **错误容易看出来** | 画不出来通常是相机位置或灯光问题，AI 能猜对 |
 
 <!-- EN -->
-> ## Why it is AI-friendly
+> ## Usage conditions and checks
 >
 > | Reason | Explanation |
 > |---|---|
-> | JavaScript/TypeScript has by far the most training data | ⚠ This is the big one — the volume of JS in the training set dwarfs that of any other game language |
-> | The API is extremely stable | Three.js has not changed much in over a decade, so what AI learned is still current |
+> | JavaScript/TypeScript | Use type checking and browser tools to inspect code; this site does not know the full training-data composition of each model |
+> | API version | Match examples and dependencies to the actual release; the same library name does not establish compatibility |
 > |  | Scene, camera, renderer, lights, materials — five things, with none of an engine's complexity |
 > | Failures are visible | If it renders wrong it is usually camera position or lighting, and AI can guess that |
 

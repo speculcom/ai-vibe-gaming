@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Phaser · 引擎档案 · AI 做游戏</title>
-  <meta name="description" content="2D 网页框架里最完整的一个 —— 物理、场景、资源加载全都内置；TypeScript/JavaScript 又是 AI 最擅长的语言。 做 2D 网页游戏，要内置物理与场景管理就选它；要概念最少、最轻的渲染层就选 Pixi。" />
+  <meta name="description" content="面向网页的 2D 游戏框架，包含场景、物理与资源加载等功能。 需要框架功能时查看 Phaser；仅需渲染层时再比较 Pixi 等方案。 2D 网页游戏（平台跳跃、射击、拼图等需要物理与场景流转的）" />
   <link rel="canonical" href="https://vg.specul.com/engine-phaser.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Phaser · 引擎档案 · AI 做游戏" />
   <meta property="og:url" content="https://vg.specul.com/engine-phaser.html" />
   <meta property="og:title" content="Phaser · 引擎档案 · AI 做游戏" />
-  <meta property="og:description" content="2D 网页框架里最完整的一个 —— 物理、场景、资源加载全都内置；TypeScript/JavaScript 又是 AI 最擅长的语言。 做 2D 网页游戏，要内置物理与场景管理就选它；要概念最少、最轻的渲染层就选 Pixi。" />
+  <meta property="og:description" content="面向网页的 2D 游戏框架，包含场景、物理与资源加载等功能。 需要框架功能时查看 Phaser；仅需渲染层时再比较 Pixi 等方案。 2D 网页游戏（平台跳跃、射击、拼图等需要物理与场景流转的）" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
   <script src="brand.js?v=6a580ac0420e"></script>
   <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Phaser · 引擎档案","url":"https://vg.specul.com/engine-phaser.html","description":"2D 网页框架里最完整的一个 —— 物理、场景、资源加载全都内置；TypeScript/JavaScript 又是 AI 最擅长的语言。 做 2D 网页游戏，要内置物理与场景管理就选它；要概念最少、最轻的渲染层就选 Pixi。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"phaser","applicationCategory":"GameEngine"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Phaser · 引擎档案","url":"https://vg.specul.com/engine-phaser.html","description":"面向网页的 2D 游戏框架，包含场景、物理与资源加载等功能。 需要框架功能时查看 Phaser；仅需渲染层时再比较 Pixi 等方案。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"phaser","applicationCategory":"GameEngine"}}</script>
 </head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
@@ -89,8 +89,8 @@
 
         <div class="panel term-meta">
           <p class="t-lead"><span data-zh><strong>对 AI 的友好度</strong></span><span data-en><strong>How AI-friendly it is</strong></span><span data-zh>：★★★★（友好）</span><span data-en>: ★★★★ (friendly)</span></p>
-          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：2D 网页框架里最完整的一个 —— 物理、场景、资源加载全都内置；TypeScript/JavaScript 又是 AI 最擅长的语言。</span><span data-en>: The most complete 2D web framework — physics, scenes and asset loading are all built in, and TypeScript/JavaScript is what AI writes best.</span></p>
-          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：做 2D 网页游戏，要内置物理与场景管理就选它；要概念最少、最轻的渲染层就选 Pixi。</span><span data-en>: For a 2D web game: pick it when you want built-in physics and scene management; pick Pixi when you want the fewest concepts and the lightest rendering layer.</span></p>
+          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：面向网页的 2D 游戏框架，包含场景、物理与资源加载等功能。</span><span data-en>: A 2D web-game framework with scenes, physics and asset loading.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：需要框架功能时查看 Phaser；仅需渲染层时再比较 Pixi 等方案。</span><span data-en>: Assess Phaser for framework features; compare rendering libraries such as Pixi when that is all you need.</span></p>
           <p class="t-sm"><span data-zh><strong>适合</strong></span><span data-en><strong>Best for</strong></span><span data-zh>：2D 网页游戏（平台跳跃、射击、拼图等需要物理与场景流转的）</span><span data-en>: 2D web games that need physics and scene flow — platformers, shooters, puzzle games</span></p>
           <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span> · <span data-zh>事实核验：2026-10-30 · GitHub API 快照</span><span data-en>Facts verified: 2026-10-30 · GitHub API snapshot</span></p>
         </div>
@@ -100,20 +100,20 @@
           <p class="t-sm"><span data-zh><strong>安装步骤</strong></span><span data-en><strong>Install</strong></span><span data-zh>：官方推荐脚手架：<code>npm create @phaserjs/game@latest</code>（交互式选官方模板，支持 Vite/Rollup/Webpack 等，多数模板有 JS 与 TS 两版）；已有工程里直接 <code>npm install phaser</code>。</span><span data-en>: The official scaffold: <code>npm create @phaserjs/game@latest</code> (interactive picker of official templates; Vite/Rollup/Webpack and more, most in both JS and TS); in an existing project just <code>npm install phaser</code>.</span></p>
           <p class="t-xs"><span data-zh>安装事实来源</span><span data-en>Install source</span>：<a href="https://github.com/phaserjs/phaser#create-phaser-game-app" target="_blank" rel="noopener">https://github.com/phaserjs/phaser#create-phaser-game-app</a> · <span data-zh>核验日</span><span data-en>verified</span> 2026-10-30</p>
           <p class="t-sm mt-2"><span data-zh><strong>上手难度</strong></span><span data-en><strong>Onboarding</strong></span><span data-zh>：低</span><span data-en>: low</span> <span class="t-xs muted"><span data-zh>（本站判断，未经实测）</span><span data-en>(the site’s judgement, not measured)</span></span></p>
-          <p class="t-sm"><span data-zh>一条命令出可跑工程（官方模板），物理/输入/场景/资源加载都是内置的 —— 自己要写的代码比 Pixi 少；代价是 API 面比 Pixi 大，概念要多认一些。</span><span data-en>One command yields a runnable project (official templates), and physics/input/scenes/asset loading are built in — less code for you than Pixi; the price is a larger API surface and more concepts to learn.</span></p>
+          <p class="t-sm"><span data-zh>核对模板、依赖与 API 版本；场景、物理和输入仍需分别验证。</span><span data-en>Check templates, dependencies and API version; validate scenes, physics and input separately.</span></p>
         </div>
 
         <div class="term-body">
 <div class="bi-block"><span data-zh><p><strong>一句话</strong>：Pixi 给你一块画布，Phaser 给你一台装好的机器：循环、物理、场景、资源加载都在里面。</p></span><span data-en><p><strong>In one line</strong>: Pixi hands you a canvas; Phaser hands you a fitted-out machine — loop, physics, scenes and asset loading are already inside.</p></span></div>
-<div class="bi-block"><span data-zh><h2>为什么对 AI 友好</h2>
+<div class="bi-block"><span data-zh><h2>使用条件与检查</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>原因</th><th>说明</th></tr></thead><tbody>
-<tr><td>TypeScript / JavaScript</td><td>训练数据最多的游戏语言之一，AI 一次写对的概率高</td></tr>
+<tr><td>TypeScript / JavaScript</td><td>可使用类型检查和浏览器调试工具；仍需验证生成代码</td></tr>
 <tr><td><strong>官方脚手架</strong></td><td><code>create-phaser-game</code> 交互式选模板：AI 不用自己拼构建配置</td></tr>
 <tr><td><strong>内置系统全</strong></td><td>物理、输入、tween、场景、资源加载都是现成的：AI 要发明的代码少</td></tr>
 <tr><td><strong>文档与示例量大</strong></td><td>官方教程 + 海量社区示例，AI 的「记忆」里素材多</td></tr>
 <tr><td><strong>官方明说 AI 友好</strong></td><td>官方 README 专设「AI-Assisted Game Development」一节：称其 API 被主流大模型深度理解，仓库还自带 <code>skills/</code> 目录给 AI agent 用（官方说法，非本站实测）</td></tr>
 <tr><td><strong>MIT 许可</strong></td><td>商用无阻碍</td></tr>
-</tbody></table></div></span><span data-en><h2>Why it is AI-friendly</h2>
+</tbody></table></div></span><span data-en><h2>Usage conditions and checks</h2>
 <div class="table-wrap"><table class="src"><thead><tr><th>Reason</th><th>Explanation</th></tr></thead><tbody>
 <tr><td>TypeScript / JavaScript</td><td>One of the most-trained game languages — AI gets it right first try more often</td></tr>
 <tr><td>Official scaffolding</td><td><code>create-phaser-game</code> interactively picks an official template — AI never assembles a build setup</td></tr>

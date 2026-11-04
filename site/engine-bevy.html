@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Bevy · 引擎档案 · AI 做游戏</title>
-  <meta name="description" content="AI 最容易写错的主流引擎 —— 但它的架构可能是最干净的。 ⚠ 如果用 AI 写 Bevy，改用 Web 引擎。除非你本人就是 Rust 开发者。" />
+  <meta name="description" content="使用 Rust 与 ECS 架构的游戏引擎；项目需处理构建、依赖与系统调度。 熟悉 Rust 或愿意维护其工具链时可评估；先验证一个小场景。" />
   <link rel="canonical" href="https://vg.specul.com/engine-bevy.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Bevy · 引擎档案 · AI 做游戏" />
   <meta property="og:url" content="https://vg.specul.com/engine-bevy.html" />
   <meta property="og:title" content="Bevy · 引擎档案 · AI 做游戏" />
-  <meta property="og:description" content="AI 最容易写错的主流引擎 —— 但它的架构可能是最干净的。 ⚠ 如果用 AI 写 Bevy，改用 Web 引擎。除非你本人就是 Rust 开发者。" />
+  <meta property="og:description" content="使用 Rust 与 ECS 架构的游戏引擎；项目需处理构建、依赖与系统调度。 熟悉 Rust 或愿意维护其工具链时可评估；先验证一个小场景。" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
   <script src="brand.js?v=6a580ac0420e"></script>
   <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
   <link rel="stylesheet" href="site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Bevy · 引擎档案","url":"https://vg.specul.com/engine-bevy.html","description":"AI 最容易写错的主流引擎 —— 但它的架构可能是最干净的。 ⚠ 如果用 AI 写 Bevy，改用 Web 引擎。除非你本人就是 Rust 开发者。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"bevy","applicationCategory":"GameEngine"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Bevy · 引擎档案","url":"https://vg.specul.com/engine-bevy.html","description":"使用 Rust 与 ECS 架构的游戏引擎；项目需处理构建、依赖与系统调度。 熟悉 Rust 或愿意维护其工具链时可评估；先验证一个小场景。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"},"about":{"@type":"SoftwareApplication","name":"bevy","applicationCategory":"GameEngine"}}</script>
 </head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
@@ -89,9 +89,9 @@
 
         <div class="panel term-meta">
           <p class="t-lead"><span data-zh><strong>对 AI 的友好度</strong></span><span data-en><strong>How AI-friendly it is</strong></span><span data-zh>：★☆☆☆（不友好）</span><span data-en>: ★☆☆☆ (unfriendly)</span></p>
-          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：AI 最容易写错的主流引擎 —— 但它的架构可能是最干净的。</span><span data-en>: The mainstream engine AI gets wrong most easily — and yet its architecture may be the cleanest.</span></p>
-          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：⚠ 如果用 AI 写 Bevy，改用 Web 引擎。除非你本人就是 Rust 开发者。</span><span data-en>: ⚠ If AI is writing your Bevy code, use a web engine instead — unless you are a Rust developer yourself.</span></p>
-          <p class="t-sm"><span data-zh><strong>适合</strong></span><span data-en><strong>Best for</strong></span><span data-zh>：⚠ 熟悉 Rust 且愿意被 AI 拖累的人</span><span data-en>: ⚠ People who know Rust and accept being slowed down by AI</span></p>
+          <p class="t-sm"><span data-zh><strong>一句话</strong></span><span data-en><strong>In one line</strong></span><span data-zh>：使用 Rust 与 ECS 架构的游戏引擎；项目需处理构建、依赖与系统调度。</span><span data-en>: A Rust/ECS game engine; account for builds, dependencies and system scheduling.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：熟悉 Rust 或愿意维护其工具链时可评估；先验证一个小场景。</span><span data-en>: Assess it with Rust experience or capacity to maintain the toolchain; validate a small scene first.</span></p>
+          <p class="t-sm"><span data-zh><strong>适合</strong></span><span data-en><strong>Best for</strong></span><span data-zh>：熟悉 Rust、愿意维护其构建与依赖的项目</span><span data-en>: Projects with Rust experience and capacity to maintain builds and dependencies</span></p>
           <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span> · <span data-zh>事实核验：2026-10-30 · GitHub API 快照</span><span data-en>Facts verified: 2026-10-30 · GitHub API snapshot</span></p>
         </div>
 
@@ -100,30 +100,16 @@
           <p class="t-sm"><span data-zh><strong>安装步骤</strong></span><span data-en><strong>Install</strong></span><span data-zh>：先装 Rust 工具链（rustup）；<strong>Windows 还要装 Visual Studio C++ Build Tools</strong>，勾选 Desktop development with C++。然后 <code>cargo new my_bevy_game</code> → <code>cargo add bevy</code> → <code>cargo run</code>。首次会<strong>从源码编译整个引擎</strong>，耗时明显；官方建议在 Cargo.toml 里给 dev profile 加 opt-level。</span><span data-en>: Install the Rust toolchain (rustup); <strong>on Windows you also need the Visual Studio C++ Build Tools</strong> with the Desktop development with C++ workload. Then <code>cargo new my_bevy_game</code> → <code>cargo add bevy</code> → <code>cargo run</code>. The first build <strong>compiles the whole engine from source</strong> and takes a while; the docs recommend dev-profile opt-level settings in Cargo.toml.</span></p>
           <p class="t-xs"><span data-zh>安装事实来源</span><span data-en>Install source</span>：<a href="https://bevy.org/learn/quick-start/getting-started/setup/" target="_blank" rel="noopener">https://bevy.org/learn/quick-start/getting-started/setup/</a> · <span data-zh>核验日</span><span data-en>verified</span> 2026-10-30</p>
           <p class="t-sm mt-2"><span data-zh><strong>上手难度</strong></span><span data-en><strong>Onboarding</strong></span><span data-zh>：高</span><span data-en>: high</span> <span class="t-xs muted"><span data-zh>（本站判断，未经实测）</span><span data-en>(the site’s judgement, not measured)</span></span></p>
-          <p class="t-sm"><span data-zh>三件前置（Rust 工具链 + C++ Build Tools + 首次长编译），外加 ECS 这套与「对象 / 继承」完全不同的心智模型。</span><span data-en>Three prerequisites (Rust toolchain, C++ Build Tools, a long first compile), plus ECS — a mental model with nothing in common with objects and inheritance.</span></p>
+          <p class="t-sm"><span data-zh>需要 Rust 及平台构建依赖；ECS 的数据与系统组织也应纳入学习成本。</span><span data-en>Budget for Rust, platform build dependencies and learning ECS data/system organization.</span></p>
         </div>
 
         <div class="term-body">
-<div class="bi-block"><span data-zh><p><strong>一句话</strong>：技术上很优雅，但<strong>是 AI 最难写的引擎</strong>。</p></span><span data-en><p><strong>In one line</strong>: technically elegant, but <strong>the hardest engine for AI to write</strong>.</p></span></div>
-<div class="bi-block"><span data-zh><h2>Rust 编译错误对 AI 不友好</h2>
-<p>这一条是本站最明确的判断，请认真对待：</p>
-<blockquote>
-<p>Rust 的所有权模型对 AI 很不友好。</p>
-</blockquote>
-<p>AI 写 Rust 时最常见的错误是<strong>借用检查失败</strong>：</p>
-<pre class="code"><code>cannot borrow `x` as mutable because it is also borrowed as immutable</code></pre>
-<p>⚠ 这类错误的成因是<strong>生命周期推断</strong>， AI 没有真正的类型系统模型，</p>
-<p>它只是在模仿训练数据里的代码形态。当代码需要跨越生命周期时，模仿就失效了。</p>
-<p>这与 AI 写 Python/TypeScript 的差距是数量级的：后两者里 AI 写的代码</p>
-<p>即使风格不对也能跑，Rust 里直接编译失败。</p></span><span data-en><h2>Rust compile errors are unfriendly to AI</h2>
-<p>This is the strongest judgement on this site; please take it seriously:</p>
-<blockquote>
-<p>Rust's ownership model is very unfriendly to AI.</p>
-</blockquote>
-<p>The most common error when AI writes Rust is a borrow-check failure:</p>
-<pre class="code"><code>cannot borrow `x` as mutable because it is also borrowed as immutable</code></pre>
-<p>⚠ These errors come from lifetime inference — and AI has no real model of a type system. It is imitating the <em>shape</em> of code it saw in training. When the code has to cross a lifetime boundary, the imitation breaks down.</p>
-<p>The gap between this and Python/TypeScript is an order of magnitude — in those languages AI-written code usually runs even if the style is wrong. In Rust it simply fails to compile.</p></span></div>
+<div class="bi-block"><span data-zh><p><strong>一句话</strong>：使用 Rust 与 ECS 架构，接入 AI 生成代码时要核对版本、借用规则和系统调度。</p></span><span data-en><p><strong>In one line</strong>: Rust and ECS require version, borrowing and scheduling checks.</p></span></div>
+<div class="bi-block"><span data-zh><h2>检查 Rust 错误与版本</h2>
+<p>生成代码仍要符合 Rust 的借用规则。遇到“同一值已经被不可变借用，不能再可变借用”这类错误时，保留错误位置、最小代码和版本信息，检查借用是否重叠；不要把重复生成当成已经修复。</p>
+<p>这类错误本身不提供不同语言或引擎的 AI 正确率比较。规则说明见 <a href="https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html" target="_blank" rel="noopener">Rust 官方书：引用与借用</a>。</p></span><span data-en><h2>Check Rust errors and versions</h2>
+<p>Generated code must satisfy Rust's borrowing rules. For an overlapping immutable/mutable borrow error, keep the location, minimal code and versions, then inspect the overlapping borrows. Repeated regeneration does not establish a fix.</p>
+<p>This error does not measure AI accuracy across languages or engines. See <a href="https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html" target="_blank" rel="noopener">the Rust Book: references and borrowing</a>.</p></span></div>
 <div class="bi-block"><span data-zh><h2>它值得的地方</h2>
 <p>⚠ 本站判断它<strong>技术方向是对的</strong>：</p>
 <ul>
@@ -147,7 +133,7 @@
 <p>2. Change one place at a time — borrow errors cascade, and one change is easy to locate</p>
 <p>3. ⚠ Budget more time for compile errors</p></span></div>
 <div class="bi-block"><span data-zh><h2>什么时候选它 / 不选</h2>
-<p><strong>选</strong>：⚠ 你本人是 Rust 开发者（那你根本不需要 AI 帮你写）</p>
+<p><strong>选</strong>：你熟悉 Rust，且项目愿意采用 ECS 的组织方式</p>
 <p><strong>不选</strong>：单人 + 用 AI 做游戏，是本站的首选建议</p></span><span data-en><h2>When to pick it, and when not to</h2>
 <p><strong>Pick it if</strong>: ⚠ you are a Rust developer yourself (in which case you do not need AI to write it)</p>
 <p><strong>Do not pick it if</strong>: you are solo and using AI — this is the site's strongest recommendation</p></span></div>

@@ -123,7 +123,7 @@
 </ul>
 <p>→ 先按 <a href="./s1-选引擎.html">选引擎</a> 的判据定工具，再谈风格。</p>
 <ul>
-<li>⚠ <strong>把「AI 友好」当成「引擎好不好」</strong>：本站的友好度只回答「AI 写错代码的概率」，不回答引擎强弱。</li>
+<li>⚠ <strong>把「AI 友好」当成「引擎好不好」</strong>：本站只整理语言、文档与工具链的适用条件，没有测量 AI 写错代码的概率，也不据此给引擎排强弱。</li>
 <li>⚠ <strong>没看导出</strong>：网页与移动端导出各有硬限制，见 <a href="./web-导出可行性.html">Web 导出可行性</a>。</li>
 </ul></span><span data-en><h3>1 · Picking an engine</h3>
 <ul>
@@ -131,7 +131,7 @@
 </ul>
 <p>→ Pick the tool by the criteria in <a href="./s1-选引擎.html">Picking an engine</a> first, then talk about style.</p>
 <ul>
-<li>⚠ <strong>Reading &quot;AI-friendly&quot; as &quot;a better engine&quot;</strong>: our friendliness rating only answers &quot;how often AI gets the code wrong&quot;, not how strong the engine is.</li>
+<li>⚠ <strong>Reading &quot;AI-friendly&quot; as &quot;a better engine&quot;</strong>: this site describes language, documentation and toolchain constraints. It does not measure AI error rates or rank engine quality from them.</li>
 <li>⚠ <strong>Ignoring export</strong>: web and mobile exports each have hard limits — see <a href="./web-导出可行性.html">Web export feasibility</a>.</li>
 </ul></span></div>
 <div class="bi-block"><span data-zh><h3>2 · 核心循环</h3>
@@ -198,7 +198,22 @@
 <p>⚠ 那些骨架<strong>未经本站实测</strong>，是起点模板，每个都附了官方入门出处。</p></span><span data-en><h2>If you just want code to copy</h2>
 <p>Minimal skeletons for the six engines (operable / goal-directed / responsive) are in <a href="./demos.html">The minimal prototype code list</a>.</p>
 <p>⚠ Those skeletons are <strong>not tested by this site</strong> — they are starting templates, each with a link to the official tutorial.</p></span></div>
-<hr>
+<div class="bi-block"><span data-zh><hr>
+<h2>完整例子：接住下落的方块</h2>
+<p>下面是假设项目的实施与验收记录，不是本站已运行的游戏。目标是在网页里，用键盘或触屏接住方块，每接住一次加一分。</p>
+<p>1. <strong>选工具</strong>：记录目标浏览器、语言经验和候选版本。先检查输入与网页导出；不根据“AI 友好度”直接定胜负。</p>
+<p>2. <strong>做循环</strong>：先用矩形占位，包含下落、左右移动、碰撞和计分。记录三种输入：接住、漏接、重新开始。接住后重复加分时，先修状态或碰撞处理，不加更多关卡。</p>
+<p>3. <strong>调手感</strong>：固定方块速度，只改玩家移动速度；用同样的一组操作比较。再单独改下落速度。记录主观感受与具体改动，避免把感觉写成性能数据。</p>
+<p>4. <strong>登记素材</strong>：即使只用简单图形，也记录生成或取得方式。加入字体、音乐时分别补来源、许可和署名位置；不沿用其他素材的许可判断。</p>
+<p>5. <strong>导出检查</strong>：在目标浏览器检查加载、输入、暂停、失败与重开；换一个窗口尺寸检查遮挡。分享后，记录其他设备是否出现问题，再决定下一步。</p>
+<p>这份记录完成后，得到的是可以复查的最小项目过程。它不证明游戏有趣，也不保证所有设备都支持；未检查的浏览器或功能应继续留在未确认项中。</p></span><span data-en><h2>Worked example: catch falling blocks</h2>
+<p>This hypothetical implementation/acceptance record is not a game executed by this site. The goal is a browser game with keyboard/touch input and one point per catch.</p>
+<p>1. <strong>Choose tools</strong>: record target browser, language experience and candidate versions. Check input/export rather than declaring a winner from supposed AI friendliness.</p>
+<p>2. <strong>Build the loop</strong>: use rectangles for falling, movement, collision and score. Check catches, misses and restart. Fix repeated-scoring/state errors before adding levels.</p>
+<p>3. <strong>Tune feel</strong>: keep fall speed fixed while changing movement speed and repeating the same actions. Change fall speed separately afterwards. Record subjective impressions and values without treating them as performance data.</p>
+<p>4. <strong>Record assets</strong>: document even simple shapes. Track font/music sources, licenses and attribution separately; one asset's permission does not establish another's.</p>
+<p>5. <strong>Check the export</strong>: inspect loading, input, pause, failure and restart in the target browser; check another window size for obstruction. Record issues on other devices after sharing.</p>
+<p>The result is a reviewable minimal-project process. It does not establish engaging gameplay or support for every device. Keep unchecked browsers and features unresolved.</p></span></div>
         </div>
 
         <div class="panel is-slim">

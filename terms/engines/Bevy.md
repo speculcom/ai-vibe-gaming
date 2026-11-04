@@ -8,19 +8,19 @@ tier: "原生 3D"
 tierEn: "native 3D"
 aiFriendly: low
 aiScore: 1
-what: "AI 最容易写错的主流引擎 —— 但它的架构可能是最干净的。"
-whatEn: "The mainstream engine AI gets wrong most easily — and yet its architecture may be the cleanest."
-decision: "⚠ 如果用 AI 写 Bevy，改用 Web 引擎。除非你本人就是 Rust 开发者。"
-decisionEn: "⚠ If AI is writing your Bevy code, use a web engine instead — unless you are a Rust developer yourself."
-bestFor: "⚠ 熟悉 Rust 且愿意被 AI 拖累的人"
-bestForEn: "⚠ People who know Rust and accept being slowed down by AI"
+what: "使用 Rust 与 ECS 架构的游戏引擎；项目需处理构建、依赖与系统调度。"
+whatEn: "A Rust/ECS game engine; account for builds, dependencies and system scheduling."
+decision: "熟悉 Rust 或愿意维护其工具链时可评估；先验证一个小场景。"
+decisionEn: "Assess it with Rust experience or capacity to maintain the toolchain; validate a small scene first."
+bestFor: "熟悉 Rust、愿意维护其构建与依赖的项目"
+bestForEn: "Projects with Rust experience and capacity to maintain builds and dependencies"
 install: "先装 Rust 工具链（rustup）；**Windows 还要装 Visual Studio C++ Build Tools**，勾选 Desktop development with C++。然后 `cargo new my_bevy_game` → `cargo add bevy` → `cargo run`。首次会**从源码编译整个引擎**，耗时明显；官方建议在 Cargo.toml 里给 dev profile 加 opt-level。"
 installEn: "Install the Rust toolchain (rustup); **on Windows you also need the Visual Studio C++ Build Tools** with the Desktop development with C++ workload. Then `cargo new my_bevy_game` → `cargo add bevy` → `cargo run`. The first build **compiles the whole engine from source** and takes a while; the docs recommend dev-profile opt-level settings in Cargo.toml."
 installSrc: "https://bevy.org/learn/quick-start/getting-started/setup/"
 installVerified: "2026-10-30"
 difficulty: high
-difficultyWhy: "三件前置（Rust 工具链 + C++ Build Tools + 首次长编译），外加 ECS 这套与「对象 / 继承」完全不同的心智模型。"
-difficultyWhyEn: "Three prerequisites (Rust toolchain, C++ Build Tools, a long first compile), plus ECS — a mental model with nothing in common with objects and inheritance."
+difficultyWhy: "需要 Rust 及平台构建依赖；ECS 的数据与系统组织也应纳入学习成本。"
+difficultyWhyEn: "Budget for Rust, platform build dependencies and learning ECS data/system organization."
 confidence: our-judgement
 verified: "2026-10-30 · GitHub API 快照"
 verifiedEn: "2026-10-30 · GitHub API snapshot"
@@ -28,45 +28,23 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 
 # Bevy
 
-**一句话**：技术上很优雅，但**是 AI 最难写的引擎**。
+**一句话**：使用 Rust 与 ECS 架构，接入 AI 生成代码时要核对版本、借用规则和系统调度。
 
 <!-- EN -->
-> **In one line**: technically elegant, but **the hardest engine for AI to write**.
+> **In one line**: Rust and ECS require version, borrowing and scheduling checks.
 
-## Rust 编译错误对 AI 不友好
+## 检查 Rust 错误与版本
 
-这一条是本站最明确的判断，请认真对待：
+生成代码仍要符合 Rust 的借用规则。遇到“同一值已经被不可变借用，不能再可变借用”这类错误时，保留错误位置、最小代码和版本信息，检查借用是否重叠；不要把重复生成当成已经修复。
 
-> Rust 的所有权模型对 AI 很不友好。
-
-AI 写 Rust 时最常见的错误是**借用检查失败**：
-
-```
-cannot borrow `x` as mutable because it is also borrowed as immutable
-```
-
-⚠ 这类错误的成因是**生命周期推断**， AI 没有真正的类型系统模型，
-它只是在模仿训练数据里的代码形态。当代码需要跨越生命周期时，模仿就失效了。
-
-这与 AI 写 Python/TypeScript 的差距是数量级的：后两者里 AI 写的代码
-即使风格不对也能跑，Rust 里直接编译失败。
+这类错误本身不提供不同语言或引擎的 AI 正确率比较。规则说明见 [Rust 官方书：引用与借用](https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html)。
 
 <!-- EN -->
-> ## Rust compile errors are unfriendly to AI
+> ## Check Rust errors and versions
 >
-> This is the strongest judgement on this site; please take it seriously:
+> Generated code must satisfy Rust's borrowing rules. For an overlapping immutable/mutable borrow error, keep the location, minimal code and versions, then inspect the overlapping borrows. Repeated regeneration does not establish a fix.
 >
-> > Rust's ownership model is very unfriendly to AI.
->
-> The most common error when AI writes Rust is a borrow-check failure:
->
-> ```
-> cannot borrow `x` as mutable because it is also borrowed as immutable
-> ```
->
-> ⚠ These errors come from lifetime inference — and AI has no real model of a type system. It is imitating the *shape* of code it saw in training. When the code has to cross a lifetime boundary, the imitation breaks down.
->
-> The gap between this and Python/TypeScript is an order of magnitude — in those languages AI-written code usually runs even if the style is wrong. In Rust it simply fails to compile.
+> This error does not measure AI accuracy across languages or engines. See [the Rust Book: references and borrowing](https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html).
 
 ## 它值得的地方
 
@@ -104,7 +82,7 @@ cannot borrow `x` as mutable because it is also borrowed as immutable
 
 ## 什么时候选它 / 不选
 
-**选**：⚠ 你本人是 Rust 开发者（那你根本不需要 AI 帮你写）
+**选**：你熟悉 Rust，且项目愿意采用 ECS 的组织方式
 
 **不选**：单人 + 用 AI 做游戏，是本站的首选建议
 

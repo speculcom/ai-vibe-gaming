@@ -55,7 +55,7 @@ confidence: our-judgement
 
 - ⚠ **顺序倒置**：先定了美术风格或玩法体量，再回头找引擎 —— 于是引擎的导出与性能限制变成硬伤。
   → 先按 [选引擎](./s1-选引擎.html) 的判据定工具，再谈风格。
-- ⚠ **把「AI 友好」当成「引擎好不好」**：本站的友好度只回答「AI 写错代码的概率」，不回答引擎强弱。
+- ⚠ **把「AI 友好」当成「引擎好不好」**：本站只整理语言、文档与工具链的适用条件，没有测量 AI 写错代码的概率，也不据此给引擎排强弱。
 - ⚠ **没看导出**：网页与移动端导出各有硬限制，见 [Web 导出可行性](./web-导出可行性.html)。
 
 <!-- EN -->
@@ -63,7 +63,7 @@ confidence: our-judgement
 >
 > - ⚠ **Inverted order**: settling the art style or the scope first, then hunting for an engine — and its export and performance limits become hard blockers.
 >   → Pick the tool by the criteria in [Picking an engine](./s1-选引擎.html) first, then talk about style.
-> - ⚠ **Reading "AI-friendly" as "a better engine"**: our friendliness rating only answers "how often AI gets the code wrong", not how strong the engine is.
+> - ⚠ **Reading "AI-friendly" as "a better engine"**: this site describes language, documentation and toolchain constraints. It does not measure AI error rates or rank engine quality from them.
 > - ⚠ **Ignoring export**: web and mobile exports each have hard limits — see [Web export feasibility](./web-导出可行性.html).
 
 ### 2 · 核心循环
@@ -148,4 +148,29 @@ confidence: our-judgement
 
 ---
 
-<!-- 层：贯穿层 · 把五个阶段缝成一条线，专讲交接处的失败。 -->
+## 完整例子：接住下落的方块
+
+下面是假设项目的实施与验收记录，不是本站已运行的游戏。目标是在网页里，用键盘或触屏接住方块，每接住一次加一分。
+
+1. **选工具**：记录目标浏览器、语言经验和候选版本。先检查输入与网页导出；不根据“AI 友好度”直接定胜负。
+2. **做循环**：先用矩形占位，包含下落、左右移动、碰撞和计分。记录三种输入：接住、漏接、重新开始。接住后重复加分时，先修状态或碰撞处理，不加更多关卡。
+3. **调手感**：固定方块速度，只改玩家移动速度；用同样的一组操作比较。再单独改下落速度。记录主观感受与具体改动，避免把感觉写成性能数据。
+4. **登记素材**：即使只用简单图形，也记录生成或取得方式。加入字体、音乐时分别补来源、许可和署名位置；不沿用其他素材的许可判断。
+5. **导出检查**：在目标浏览器检查加载、输入、暂停、失败与重开；换一个窗口尺寸检查遮挡。分享后，记录其他设备是否出现问题，再决定下一步。
+
+这份记录完成后，得到的是可以复查的最小项目过程。它不证明游戏有趣，也不保证所有设备都支持；未检查的浏览器或功能应继续留在未确认项中。
+
+<!-- EN -->
+> ## Worked example: catch falling blocks
+>
+> This hypothetical implementation/acceptance record is not a game executed by this site. The goal is a browser game with keyboard/touch input and one point per catch.
+>
+> 1. **Choose tools**: record target browser, language experience and candidate versions. Check input/export rather than declaring a winner from supposed AI friendliness.
+> 2. **Build the loop**: use rectangles for falling, movement, collision and score. Check catches, misses and restart. Fix repeated-scoring/state errors before adding levels.
+> 3. **Tune feel**: keep fall speed fixed while changing movement speed and repeating the same actions. Change fall speed separately afterwards. Record subjective impressions and values without treating them as performance data.
+> 4. **Record assets**: document even simple shapes. Track font/music sources, licenses and attribution separately; one asset's permission does not establish another's.
+> 5. **Check the export**: inspect loading, input, pause, failure and restart in the target browser; check another window size for obstruction. Record issues on other devices after sharing.
+>
+> The result is a reviewable minimal-project process. It does not establish engaging gameplay or support for every device. Keep unchecked browsers and features unresolved.
+
+<!-- 层：贯穿层 · 五个阶段的交接与具体例子。 -->

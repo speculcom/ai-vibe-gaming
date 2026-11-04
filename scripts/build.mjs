@@ -137,8 +137,8 @@ function claimsBlock() {
         <div class="panel" id="claims">
           <h2>${bi('表 1 · AI 改变了做游戏的哪部分', 'Table 1 · What AI changed about making games')}</h2>
           <p class="t-sm mb-3">${bi(
-            inline('⚠ 「成本变化」一列是**我们的判断**，不是实测数据 —— 这个领域没有权威统计。判断依据写在第三列。'),
-            inline('⚠ The "cost movement" column is **our judgement, not measured data** — no authoritative statistics exist for this. The reasoning is in the third column.'),
+            inline('⚠ 「成本变化」一列是**我们的判断**，不是实测数据 —— 本站没有可据以估计统一降幅的测量数据。判断依据写在第三列。'),
+            inline('⚠ The "cost movement" column is **our judgement, not measured data** — this site has no measurements establishing a universal reduction. The reasoning is in the third column.'),
           )}</p>
           <div class="table-wrap">
             <table class="src">
@@ -278,12 +278,12 @@ function page() {
         <div class="panel">
           <h2>${bi('核心判断', 'The core claim')}</h2>
           <p class="t-lead">${bi(
-            'AI 让做游戏的成本下降是<strong>不均匀</strong>的：写代码降了 70~80%，做美术 / 配乐 / 关卡几乎没降。',
-            'The cost of making a game with AI falls <strong>unevenly</strong>: code drops 70–80%, while art, music and level design barely move.',
+            'AI 可以协助写代码和制作素材，但玩法、资产一致性、授权与发布仍需分别处理。本站没有数据支持各环节统一的成本降幅。',
+            'AI can assist coding and asset creation. Gameplay, asset consistency, licensing and release still need separate work. This site has no data establishing a universal cost reduction for these stages.',
           )}</p>
           <p>${bi(
-            '于是「一个人做游戏」的瓶颈从「写不出来」变成了「凑不齐」。',
-            'So the bottleneck for a solo developer shifts from "cannot write it" to "cannot assemble it".',
+            '对个人项目，除了代码，还要检查玩法能否成立、素材是否一致，以及别人能否顺利打开。',
+            'A solo project needs checks for playable mechanics, coherent assets and a build that others can open, as well as working code.',
           )}</p>
         </div>
 
