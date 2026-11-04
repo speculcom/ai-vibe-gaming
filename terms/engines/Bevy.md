@@ -35,7 +35,7 @@ verifiedEn: "2026-10-30 · GitHub API snapshot"
 
 ## Rust 编译错误对 AI 不友好
 
-这一条是本站最强的判断，请认真对待：
+这一条是本站最明确的判断，请认真对待：
 
 > Rust 的所有权模型对 AI 很不友好。
 
@@ -106,7 +106,7 @@ cannot borrow `x` as mutable because it is also borrowed as immutable
 
 **选**：⚠ 你本人是 Rust 开发者（那你根本不需要 AI 帮你写）
 
-**不选**：单人 + 用 AI 做游戏，是本站最强烈的建议
+**不选**：单人 + 用 AI 做游戏，是本站的首选建议
 
 <!-- EN -->
 > ## When to pick it, and when not to

@@ -9,11 +9,11 @@ The **source repo** for "Vibe Gaming" — single source of truth.
 
 ## How to read this
 
-20 terms and 7 engine profiles. Go by the stage you're actually at:
+20 terms and 9 engine profiles. Go by the stage you're actually at:
 
 | Where you are | What to read |
 |---|---|
-| Haven't picked an engine yet | `terms/engines/` — six profiles, starting with which one treats AI best |
+| Haven't picked an engine yet | `terms/engines/` — nine profiles, starting with which one treats AI best |
 | Got a demo that runs | `S1 选引擎` → `S2 核心循环` |
 | It runs but doesn't feel good | `S3 手感调参` — why the parameters AI hands you are always slightly off |
 | About to let other people play it | `S4 资产合规` (which art and audio you may ship) → `S5 导出发布` |

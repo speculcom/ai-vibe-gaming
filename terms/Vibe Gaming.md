@@ -43,7 +43,7 @@ confidence: our-judgement
 多轮对话不会让风格更一致，让生成结果更散。
 你无法用聊天生成一套风格统一的手游美术包。
 
-所以「跟 AI 聊天就能做出游戏」这个说法，。
+所以「跟 AI 聊天就能做出游戏」这个说法不成立。
 
 <!-- EN -->
 > ## Chat alone cannot make a game

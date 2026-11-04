@@ -71,7 +71,7 @@ verifiedEn: "2026-11-03 · Epic UE 5.8 official docs"
 
 **选**：高保真 3D、已有 Unreal 团队、愿意用 MCP 把编辑器能力接给外部 agent。
 
-**不选**：单人 + 用 AI 做小项目（这是本站最强烈的建议）；纯 2D 或网页小游戏；不想维护 C++ 构建链。
+**不选**：单人 + 用 AI 做小项目（这是本站的首选建议）；纯 2D 或网页小游戏；不想维护 C++ 构建链。
 
 <!-- EN -->
 > ## When to pick it, and when not to
