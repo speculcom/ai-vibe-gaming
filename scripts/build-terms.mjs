@@ -633,6 +633,8 @@ ${engineCards(true)}
               <span class="t-sm">${bi('五步串成一条线，专讲阶段之间的失败点', 'The five steps as one line, focused on failures between stages')}</span></li>
             <li><a href="./demos.html"><b>${bi('作品库与最小可玩原型', 'Showcase and minimal prototypes')}</b></a>
               <span class="t-sm">${bi(`${DEMO_SKELETON_COUNT} 个引擎各一份「能操作 / 有目标 / 有反馈」的骨架`, `One operable / goal-directed / responsive skeleton per engine (${DEMO_SKELETON_COUNT})`)}</span></li>
+            <li><a href="./three-stars.html"><b>${bi('连续项目「三颗星，一扇门」', 'The worked project “Three stars, one door”')}</b></a>
+              <span class="t-sm">${bi('本站编写的浏览器样例：同一个游戏分六个阶段逐步做完整，可玩、可下载、附检查记录', 'A browser sample written for this site: one game built out over six stages, playable, downloadable, with its checks recorded')}</span></li>
           </ul>
         </div>
 

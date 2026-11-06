@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>怎么定一个两周能做完的范围 · AI 做游戏</title>
+  <meta name="description" content="用两周作为一个练习周期，把首版范围裁到「周期内能导出来、能让陌生人验证」的那一小块。 两周是本站建议的练习周期，不是行业标准；裁范围判据只有一条 —— 这项东西缺了，验证问题就不成立。" />
+  <link rel="canonical" href="https://vg.specul.com/怎么定一个两周能做完的范围.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="怎么定一个两周能做完的范围 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/怎么定一个两周能做完的范围.html" />
+  <meta property="og:title" content="怎么定一个两周能做完的范围 · AI 做游戏" />
+  <meta property="og:description" content="用两周作为一个练习周期，把首版范围裁到「周期内能导出来、能让陌生人验证」的那一小块。 两周是本站建议的练习周期，不是行业标准；裁范围判据只有一条 —— 这项东西缺了，验证问题就不成立。" />
+  <meta name="theme-color" content="#16121f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <script src="brand.js?v=bf69a6d205ad"></script>
+  <link rel="stylesheet" href="brand.css?v=bf69a6d205ad" />
+  <link rel="stylesheet" href="site.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"怎么定一个两周能做完的范围","url":"https://vg.specul.com/怎么定一个两周能做完的范围.html","description":"用两周作为一个练习周期，把首版范围裁到「周期内能导出来、能让陌生人验证」的那一小块。 两周是本站建议的练习周期，不是行业标准；裁范围判据只有一条 —— 这项东西缺了，验证问题就不成立。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+          <span class="brand-sub" id="markSub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://tools.specul.com/"><span data-zh>AI 工具</span><span data-en>AI Tools</span></a>
+        <a href="https://models.specul.com/"><span data-zh>AI 模型</span><span data-en>AI Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
+      </nav>
+      <!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+      <span class="nav-tools">
+        <a class="icon-btn" href="https://specul.com/search.html" aria-label="搜索" data-ui-aria-label-zh="搜索" data-ui-aria-label-en="Search" title="搜索全站" data-ui-title-zh="搜索全站" data-ui-title-en="Search all sites"><span aria-hidden="true">⌕</span></a>
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+        <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+      </span>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <span class="brand-sub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://tools.specul.com/"><span><span data-zh>AI 工具</span><span data-en>AI Tools</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>AI 模型</span><span data-en>AI Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>AI 导航</span><span data-en>AI Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>学习路径</span><span data-en>Learning path</span></a> · <span data-zh>关键词</span><span data-en>Keyword</span></p>
+        <h1 class="t-hero"><span data-zh>怎么定一个两周能做完的范围</span><span data-en>How to scope a game down to two weeks</span></h1>
+        <p class="lede">How to scope a game down to two weeks</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>这一步决定什么</strong></span><span data-en><strong>What this stage decides</strong></span><span data-zh>：用两周作为一个练习周期，把首版范围裁到「周期内能导出来、能让陌生人验证」的那一小块。</span><span data-en>: Treat two weeks as a practice cycle: cut the first version down to the piece you can export within it and show a stranger.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：两周是本站建议的练习周期，不是行业标准；裁范围判据只有一条 —— 这项东西缺了，验证问题就不成立。</span><span data-en>: Two weeks is a practice cycle we suggest, not an industry standard. One cut test: without this item, does the validation question still hold?</span></p>
+          <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p><strong>这篇解决什么</strong>：首版做太大的问题。AI 降低了写代码和出素材的成本，但没有降低「决定做什么」的难度 —— 范围仍然要人裁。</p>
+<p>⚠ 先说清口径：「两周」是<strong>我们建议的练习周期</strong>（方便设检查点），不是实测的完成时间，也不是行业标准；下文所有工时数字都是<strong>虚构示例</strong>。</p></span><span data-en><p><strong>What this guide solves</strong>: first versions that are too big. AI lowered the cost of writing code and making assets; it did not lower the difficulty of deciding what to build. The scope still gets cut by a human.</p>
+<p>⚠ Framing first: &quot;two weeks&quot; is <strong>a practice cycle we suggest</strong> (handy for checkpoints) — not a measured completion time, not an industry standard. Every effort figure below is a <strong>fictitious example</strong>.</p></span></div>
+<div class="bi-block"><span data-zh><h2>适用条件</h2>
+<ul>
+<li>✅ 个人或两三个人的验证型项目：目标是「证明这个玩法有没有戏」</li>
+<li>✅ 你已有一个能跑的核心循环原型，或准备在周期第 1 周得到它</li>
+<li>⚠ 不适用：签了交付合同的商业项目 —— 合同范围不由这篇决定</li>
+<li>⚠ 不适用：还没定引擎工具 —— 先看 <a href="./s1-选引擎.html">S1 · 选引擎</a></li>
+</ul></span><span data-en><h2>When this applies</h2>
+<ul>
+<li>✅ A solo or two-three-person validation project: the goal is &quot;does this mechanic have a future&quot;</li>
+<li>✅ You already have a running core-loop prototype, or you will have one in week one</li>
+<li>⚠ Not for contracted commercial work — the contract decides that scope</li>
+<li>⚠ Not before the tool is picked — start at <a href="./s1-选引擎.html">S1 · Pick an engine</a></li>
+</ul></span></div>
+<div class="bi-block"><span data-zh><h2>步骤</h2>
+<p>1. <strong>写验证问题，不写愿望。</strong> 一句话形如「到第 10 天（虚构），陌生人玩 3 分钟后能说出这游戏的目标，并且想再来一局」。判断标准：这句话可证伪。</p>
+<p>2. <strong>把所有想要的东西列全。</strong> 玩法、界面、存档、教学关、成就、多平台 —— 先不裁，列到不想加为止。</p>
+<p>3. <strong>三档分类。</strong> 必须（验证问题缺了它就不成立）/ 可有（有它体验更好，不影响验证）/ 本期砍掉。检验「必须」的唯一问法：<strong>没有它，第 1 步那句话还怎么做？</strong></p>
+<p>4. <strong>给每个「必须」写完成条件。</strong> 形如「拖拽放置方块，吸附到网格，放置失败有反馈」—— 写不出完成条件的项，多半是「可有」伪装成「必须」。</p>
+<p>5. <strong>估一遍并砍到留余量。</strong> 按天估每个「必须」（估法是练习，数字虚构）；全部加起来明显超过周期六成时（虚构阈值，我们的口径是留缓冲），继续从「必须」里砍，或把大项拆小。</p>
+<p>6. <strong>第 6 天中检（虚构日）。</strong> 有任何一项「必须」还没动过：第一动作是删「可有」，不是加班。</p>
+<p>7. <strong>周期末导出一次。</strong> 哪怕粗糙，必须走通导出 —— 见 <a href="./怎么做一次发布前检查.html">怎么做一次发布前检查</a>；发出去收集反馈走 <a href="./先发极简版.html">先发极简版</a>。</p></span><span data-en><h2>The steps</h2>
+<p>1. <strong>Write a validation question, not a wish.</strong> One sentence: &quot;by day 10 (fictitious), a stranger plays for 3 minutes, can state the goal, and wants another round.&quot; Test: it must be falsifiable.</p>
+<p>2. <strong>List everything you want.</strong> Mechanics, menus, saves, tutorial levels, achievements, multi-platform — no cutting yet.</p>
+<p>3. <strong>Sort into three piles.</strong> Must-have (without it the validation question collapses) / nice-to-have / cut-this-cycle. The only test for must-have: <strong>without it, how does the sentence from step 1 get answered?</strong></p>
+<p>4. <strong>Give each must-have a done-condition.</strong> Like &quot;drag a block, it snaps to the grid, a failed placement gives feedback&quot; — items you cannot phrase this way are usually nice-to-haves in disguise.</p>
+<p>5. <strong>Estimate, then cut to leave slack.</strong> Day-size estimates per must-have (the exercise is invented, the numbers are fictitious). When the total clearly exceeds about 60% of the cycle (invented threshold — our reading is: keep a buffer), cut deeper or split big items.</p>
+<p>6. <strong>Day-6 checkpoint (fictitious day).</strong> Any untouched must-have: the first move is deleting nice-to-haves, not overtime.</p>
+<p>7. <strong>Export once at the end of the cycle.</strong> Rough is fine; exporting must actually happen — see <a href="./怎么做一次发布前检查.html">How to run a pre-release check</a>; collecting feedback afterwards is <a href="./先发极简版.html">Ship the smallest version first</a>.</p></span></div>
+<div class="bi-block"><span data-zh><h2>一个可走查的例子</h2>
+<p>⚠ 功能清单、天数、通过线全部为<strong>虚构示例</strong>。</p>
+<ul>
+<li><strong>输入</strong>：一款网格解谜游戏。验证问题：「第 10 天，陌生人 3 分钟内过关 1 关并说出规则」。候选功能五项：核心推拉机制、关卡选择界面、云存档、音效、新手教学关。</li>
+<li><strong>处理</strong>：分类 → 必须 = 核心机制 + 1 关内容（关卡数据组织见 <a href="./关卡数据的组织方式.html">关卡数据的组织方式</a>）；可有 = 音效、教学关；砍 = 云存档、关卡选择。第 6 天（虚构）检查：核心机制已能玩，第 1 关拼图中——音效一行没动，属「可有」，不慌。</li>
+<li><strong>结果判断</strong>：按验证问题逐项问「缺了还能验证吗」—— 五项里只有两项答「不能」，范围成立。</li>
+<li><strong>失败后下一步</strong>：假如第 8 天（虚构）核心机制仍卡住 → 不是砍功能（已经没可砍），而是回查改动质量：按 <a href="./怎么验收-ai-生成的游戏代码.html">怎么验收 AI 生成的游戏代码</a> 走一遍，通常问题在那一层。</li>
+</ul></span><span data-en><h2>A walk-through example</h2>
+<p>⚠ The feature list, the days and the pass line are all <strong>fictitious examples</strong>.</p>
+<ul>
+<li><strong>Input</strong>: a grid puzzle game. Validation question: &quot;by day 10, a stranger clears level 1 in 3 minutes and states the rule.&quot; Five candidate features: core push-pull mechanic, level-select menu, cloud saves, sound, tutorial level.</li>
+<li><strong>Processing</strong>: sorting → must-haves = the mechanic + one playable level (level data: <a href="./关卡数据的组织方式.html">How to organise level data</a>); nice-to-haves = sound, tutorial; cut = cloud saves, level select. Day-6 checkpoint (invented): the mechanic plays, level 1 is being assembled, zero audio touched — that is the nice-to-have pile, no panic.</li>
+<li><strong>Result</strong>: one question per item — &quot;can the validation still happen without it?&quot; Only two of five answer &quot;no&quot;, so the scope holds.</li>
+<li><strong>After the failure</strong>: if by day 8 (invented) the core mechanic is still broken → there is nothing left to cut; the problem is change quality — run <a href="./怎么验收-ai-生成的游戏代码.html">How to accept AI-generated game code</a> instead; that is usually the layer at fault.</li>
+</ul></span></div>
+<div class="bi-block"><span data-zh><h2>失败分支</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>失败形态</th><th>下一步</th></tr></thead><tbody>
+<tr><td>每项都「必须」，砍不动</td><td>回到三条判据重认核心：<a href="./最小可玩原型.html">最小可玩原型</a></td></tr>
+<tr><td>两周到了但没导出</td><td>先补一次真实导出 —— 没导出过的那部分，验证依据还是空的</td></tr>
+<tr><td>范围做完了但没人说得清验证了什么</td><td>第 1 步的验证问题写得不可证伪，重写它</td></tr>
+<tr><td>反复超期，怀疑是估算而非范围</td><td>把每项的实际耗时记进日志，下个周期用你自己的数据校准</td></tr>
+</tbody></table></div></span><span data-en><h2>Failure branches</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>Shape of failure</th><th>Next step</th></tr></thead><tbody>
+<tr><td>Everything is a must-have</td><td>Re-identify the core with the three criteria: <a href="./最小可玩原型.html">Minimal playable prototype</a></td></tr>
+<tr><td>Two weeks passed, nothing exported</td><td>Do one real export first — an unexported scope is an unvalidated scope</td></tr>
+<tr><td>Finished, but nobody can say what was validated</td><td>The step-1 question was unfalsifiable; rewrite it</td></tr>
+<tr><td>Constant overruns — suspect estimation, not scope</td><td>Log actual time per item and calibrate the next cycle with your own numbers</td></tr>
+</tbody></table></div></span></div>
+<div class="bi-block"><span data-zh><h2>下一步</h2>
+<ul>
+<li>定完范围进入完整循环：<a href="./s2-核心循环.html">S2 · 核心循环</a></li>
+<li>周期末的发法：<a href="./先发极简版.html">先发极简版</a></li>
+</ul></span><span data-en><h2>Next steps</h2>
+<ul>
+<li>Scope set, enter the full loop: <a href="./s2-核心循环.html">S2 · The core loop</a></li>
+<li>How to release at the end of the cycle: <a href="./先发极简版.html">Ship the smallest version first</a></li>
+</ul></span></div>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p class="t-xs"><span data-zh>有序路径 · 第 25 / 26 篇</span><span data-en>Ordered path · item 25 of 26</span></p>
+          <nav class="term-nav" aria-label="上一篇 / 下一篇">
+            <a class="tn-prev" href="上下文窗口与-ai-写游戏.html"><span class="tn-dir"><span data-zh>← 上一篇</span><span data-en>← Previous</span></span><b><span data-zh>上下文窗口与 AI 写游戏</span><span data-en>Context window and AI-written games</span></b></a>
+            <a class="tn-next" href="怎么处理引擎版本差异.html"><span class="tn-dir"><span data-zh>下一篇 →</span><span data-en>Next →</span></span><b><span data-zh>怎么处理引擎版本差异</span><span data-en>How to handle engine version differences</span></b></a>
+          </nav>
+          <p class="mt-2"><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 <span data-zh>投机取巧</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://tools.specul.com/"><span data-zh>AI 工具</span><span data-en>AI Tools</span></a>
+          <a href="https://models.specul.com/"><span data-zh>AI 模型</span><span data-en>AI Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener"><span data-zh>开源</span><span data-en>Open source</span></a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+    <div class="container">
+      <p><a href="https://specul.com/search.html"><span data-zh>搜索六站内容</span><span data-en>Search all six sites</span></a></p>
+      <p><a href="https://specul.com/correct.html"><span data-zh>发现错误？生成纠错草稿</span><span data-en>Spot an error? Compose a correction draft</span></a></p>
+      <p class="foot-trademark"><span data-zh>产品名与商标归各权利方所有，本站仅作识别与评论之用。</span><span data-en>Product names and trademarks belong to their respective owners and are used here for identification and commentary only.</span></p>
+    </div>
+  </footer>
+<nav class="nav-tabbar" aria-label="快捷导航">
+  <a href="https://specul.com/"><span class="ti" aria-hidden="true">◎</span><span data-zh>首页</span><span data-en>Home</span></a>
+  <a href="https://learn.specul.com/"><span class="ti" aria-hidden="true">▤</span><span data-zh>学 AI</span><span data-en>Learn</span></a>
+  <a href="https://tools.specul.com/"><span class="ti" aria-hidden="true">◈</span><span data-zh>工具</span><span data-en>Tools</span></a>
+  <a href="https://models.specul.com/"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
+  <button type="button" id="tabMore" aria-controls="navDrawer" aria-expanded="false"><span class="ti" aria-hidden="true">⋯</span><span data-zh>更多</span><span data-en>More</span></button>
+</nav>
+</body>
+</html>

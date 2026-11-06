@@ -294,7 +294,7 @@ function page() {
             'Five stages in the order you actually build a game. Each stage has four fixed parts: what, how, common failures, and our reading.',
           )}</p>
           <ol class="stage-list">
-            <li><b><a href="s1-选引擎.html">${bi('选引擎', 'Pick an engine')}</a></b><span class="t-sm">${bi('哪个引擎对 AI 最友好', 'Which engine AI handles best')}</span></li>
+            <li><b><a href="s1-选引擎.html">${bi('选引擎', 'Pick an engine')}</a></b><span class="t-sm">${bi('按官方披露与许可挑，不看口号', 'Choose on disclosed capability and licence, not slogans')}</span></li>
             <li><b><a href="s2-核心循环.html">${bi('核心循环', 'The core loop')}</a></b><span class="t-sm">${bi('怎么把玩法变成代码', 'Turning mechanics into code')}</span></li>
             <li><b><a href="s3-手感调参.html">${bi('手感调参', 'Game feel')}</a></b><span class="t-sm">${bi('为什么 AI 给的参数不对', 'Why AI’s parameters feel wrong')}</span></li>
             <li><b><a href="s4-资产合规.html">${bi('资产合规', 'Asset licensing')}</a></b><span class="t-sm">${bi('美术 / 音频从哪来，哪些能商用', 'Where assets come from and what is usable')}</span></li>
@@ -303,6 +303,7 @@ function page() {
           <p class="t-sm mt-2"><a href="learn.html">${bi('→ 进入学习路径（含完整教学与常见失败）', '→ Enter the learning path (full walkthrough and common failures)')}</a></p>
           <p class="t-sm mt-2"><a href="method.html">${bi('→ 实战流程（五步串成一条线，专讲交接处的失败）', '→ The build order (five steps as one line, focused on handoff failures)')}</a></p>
           <p class="t-sm"><a href="demos.html">${bi(`→ 作品库与最小可玩原型（可核验作品 + ${ZH_NUM[DEMO_SKELETON_COUNT]}个引擎骨架）`, `→ Showcase and minimal prototypes (verified works + ${EN_NUM[DEMO_SKELETON_COUNT] || DEMO_SKELETON_COUNT} engine skeletons)`)}</a></p>
+          <p class="t-sm"><a href="three-stars.html">${bi('→ 连续项目「三颗星，一扇门」：本站编写的浏览器样例，六个阶段逐步做完整，可玩也可下载', '→ The worked project “Three stars, one door”: a browser sample written for this site, built out over six stages, playable and downloadable')}</a></p>
         </div>
 
         ${claimsBlock()}
@@ -398,6 +399,12 @@ for (const f of ['brand.css', 'brand.js']) {
 // 词条层（P2）：生成 learn.html + 每个词条的详情页
 {
   const mod = await import(pathToFileURL(path.join(HERE, 'build-terms.mjs')).href);
+}
+
+/* 连续项目层（P4）：three-stars 项目页 + 静态资产 + 可下载成品包。
+ * 必须排在 sitemap 之前 —— sitemap 按 site/ 实际 .html 枚举，晚写才能收到 three-stars.html。*/
+{
+  await import(pathToFileURL(path.join(HERE, 'build-project.mjs')).href);
 }
 
 /* sitemap 必须写在最后 —— 词条页与引擎页都是上面那两个模块产出的，

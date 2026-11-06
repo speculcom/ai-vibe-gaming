@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>怎么给 AI 美术素材做商用可用性判断 · AI 做游戏</title>
+  <meta name="description" content="对每张 AI 生成的图走一遍三条线：服务条款的授予、你的输入素材、版权保护的未知 —— 结论按状态记录，不按感觉记录。 三条线里任何一条说不清，状态就只能写「待确认」；商用可用性是被证明的，不是被默认假设的。" />
+  <link rel="canonical" href="https://vg.specul.com/怎么给-ai-美术素材做商用可用性判断.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="怎么给 AI 美术素材做商用可用性判断 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/怎么给-ai-美术素材做商用可用性判断.html" />
+  <meta property="og:title" content="怎么给 AI 美术素材做商用可用性判断 · AI 做游戏" />
+  <meta property="og:description" content="对每张 AI 生成的图走一遍三条线：服务条款的授予、你的输入素材、版权保护的未知 —— 结论按状态记录，不按感觉记录。 三条线里任何一条说不清，状态就只能写「待确认」；商用可用性是被证明的，不是被默认假设的。" />
+  <meta name="theme-color" content="#16121f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <script src="brand.js?v=bf69a6d205ad"></script>
+  <link rel="stylesheet" href="brand.css?v=bf69a6d205ad" />
+  <link rel="stylesheet" href="site.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"怎么给 AI 美术素材做商用可用性判断","url":"https://vg.specul.com/怎么给-ai-美术素材做商用可用性判断.html","description":"对每张 AI 生成的图走一遍三条线：服务条款的授予、你的输入素材、版权保护的未知 —— 结论按状态记录，不按感觉记录。 三条线里任何一条说不清，状态就只能写「待确认」；商用可用性是被证明的，不是被默认假设的。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+          <span class="brand-sub" id="markSub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://tools.specul.com/"><span data-zh>AI 工具</span><span data-en>AI Tools</span></a>
+        <a href="https://models.specul.com/"><span data-zh>AI 模型</span><span data-en>AI Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
+      </nav>
+      <!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+      <span class="nav-tools">
+        <a class="icon-btn" href="https://specul.com/search.html" aria-label="搜索" data-ui-aria-label-zh="搜索" data-ui-aria-label-en="Search" title="搜索全站" data-ui-title-zh="搜索全站" data-ui-title-en="Search all sites"><span aria-hidden="true">⌕</span></a>
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+        <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+      </span>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <span class="brand-sub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://tools.specul.com/"><span><span data-zh>AI 工具</span><span data-en>AI Tools</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>AI 模型</span><span data-en>AI Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>AI 导航</span><span data-en>AI Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>学习路径</span><span data-en>Learning path</span></a> · <span data-zh>第 4 阶段</span><span data-en>Stage 4</span></p>
+        <h1 class="t-hero"><span data-zh>怎么给 AI 美术素材做商用可用性判断</span><span data-en>How to check AI art for commercial use</span></h1>
+        <p class="lede">How to check AI art for commercial use</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>这一步决定什么</strong></span><span data-en><strong>What this stage decides</strong></span><span data-zh>：对每张 AI 生成的图走一遍三条线：服务条款的授予、你的输入素材、版权保护的未知 —— 结论按状态记录，不按感觉记录。</span><span data-en>: Run every AI-generated image through three checks: what the service terms grant, what you fed the model, and the unsettled copyright question. Record states, not feelings.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：三条线里任何一条说不清，状态就只能写「待确认」；商用可用性是被证明的，不是被默认假设的。</span><span data-en>: If any of the three lines is unclear, the state can only be 'unconfirmed'. Commercial usability is proven, never assumed.</span></p>
+          <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p><strong>这篇解决什么</strong>：AI 生成的一张图能不能放进要卖、要发布的包里。它和 <a href="./ai-生成内容的版权.html">AI 生成内容的版权归属</a> 的关系是：那篇讲为什么问题存在，这篇讲单张素材怎么走完判断。</p></span><span data-en><p><strong>What this guide solves</strong>: whether one AI-generated image may enter a package you will ship or sell. Its relation to <a href="./ai-生成内容的版权.html">Copyright of AI-generated work</a>: that entry explains why the question exists; this one walks a single asset through the decision.</p></span></div>
+<div class="bi-block"><span data-zh><h2>适用条件</h2>
+<ul>
+<li>✅ 素材由某个生成服务产出（图像、贴图、图标、概念图）</li>
+<li>✅ 项目存在商用可能：上架、带货金、接受捐赠、公司项目都算</li>
+<li>⚠ 不适用：你自己画的图（直接进台账，来源填本人）与引擎商店素材（按对应商店条款走）</li>
+<li>本站不是法律意见，也不对任何司法辖区下结论；这篇给的是<strong>工程上可执行的检查流程</strong>。</li>
+</ul></span><span data-en><h2>When this applies</h2>
+<ul>
+<li>✅ The asset came out of a generation service (images, textures, icons, concept art)</li>
+<li>✅ There is a commercial path for the project: stores, monetised releases, donations, company work</li>
+<li>Not for art you drew yourself (goes straight into the ledger, source: you) or engine-store assets (that store's terms decide)</li>
+<li>This site is not legal advice and concludes for no jurisdiction. What follows is an <strong>executable engineering check</strong>.</li>
+</ul></span></div>
+<div class="bi-block"><span data-zh><h2>三条线</h2>
+<p>1. <strong>服务条款线</strong>：生成时的服务条款是否授予商用？注意三点 —— 授予可能按<strong>套餐档位</strong>不同；条款<strong>会变</strong>；「授予你使用输出」不等于「输出归你所有」。这是服务方给的许可，不是版权法的结论。</p>
+<p>2. <strong>输入线</strong>：提示词之外，你是否垫了有版权的图（参考图、IP 角色）？输入带着别人的权利，输出不会自动洗干净。</p>
+<p>3. <strong>版权线</strong>：纯 AI 输出能否获得著作权保护，各司法辖区结论不同（见 <a href="./ai-生成内容的版权.html">AI 生成内容的版权归属</a>）。这条线你<strong>无法在工程上清零</strong>，只能知道风险在哪：条款授予你使用权，不等于你能起诉抄袭者。</p></span><span data-en><h2>The three lines</h2>
+<p>1. <strong>Service terms</strong>: do the terms at generation time grant commercial use? Three cautions — the grant may differ by <strong>subscription tier</strong>; terms <strong>change</strong>; &quot;you may use the output&quot; is not &quot;you own the output&quot;. It is a licence from the provider, not a conclusion of copyright law.</p>
+<p>2. <strong>Your inputs</strong>: besides the prompt, did you feed copyrighted images (reference art, an IP character)? Rights that entered with your inputs do not wash off in the output.</p>
+<p>3. <strong>Copyright status</strong>: whether purely AI-generated output is copyright-protectable differs across jurisdictions (see <a href="./ai-生成内容的版权.html">Copyright of AI-generated work</a>). This line cannot be cleared by engineering — only understood: the terms may let you use it without granting you a claim against copycats.</p></span></div>
+<div class="bi-block"><span data-zh><h2>步骤</h2>
+<p>1. <strong>登记三件事</strong>：服务名、账号档位、生成日期。缺任何一件，后面无法复核。</p>
+<p>2. <strong>当日核对条款文本</strong>：打开该服务<strong>当前的</strong>条款/许可页，找到关于输出商用授予的原文，摘录一句进台账备注，写核验日。档位差异是真实存在的 —— 例如 Stability AI 官方许可页按其口径描述了不同许可范围下的商用条款（见文末核验表；具体边界以该页当前文本为准）。</p>
+<p>3. <strong>过输入线</strong>：翻生成记录，确认没有垫第三方有版权的图；用了 IP 参考图的，直接判「不可用」，不要指望模型稀释。</p>
+<p>4. <strong>给出状态</strong>：条款有明确商用授予 + 输入干净 → 「可商用（附条款摘录与核验日）」；条款含糊、档位不明、页面无商用字样 → 「待确认」；条款明确限制 → 「不可商用」。</p>
+<p>5. <strong>「待确认」只有两种出路</strong>：发布前换成条款明确的素材，或回到第 2 步拿到能存档的证据。</p>
+<p>6. <strong>写进台账</strong>：全部字段按 <a href="./怎么做一份素材与许可台账.html">怎么做一份素材与许可台账</a> 的七列落位；对照物是 CC0（无需请求即可商用，见核验表）——生成素材拿它当「什么叫条款清楚」。</p></span><span data-en><h2>The steps</h2>
+<p>1. <strong>Register three facts</strong>: service, account tier, generation date. Missing any one makes later re-checks impossible.</p>
+<p>2. <strong>Read the current terms, today</strong>: open the service's terms/licence page now, find the sentence on commercial rights to outputs, quote it into the ledger note with a verification date. Tier differences are real — Stability AI's official licence page describes commercial terms across its licence scopes (table at the end; the page's current text is the boundary).</p>
+<p>3. <strong>Run the input check</strong>: go through generation records — no third-party copyrighted images fed in? An IP reference image means &quot;not usable&quot;, full stop; do not hope the model dilutes it.</p>
+<p>4. <strong>Assign a state</strong>: explicit commercial grant + clean inputs → &quot;commercial OK (quote + date)&quot;; vague terms, unknown tier, no commercial wording → &quot;unconfirmed&quot;; explicit restriction → &quot;not commercial&quot;.</p>
+<p>5. <strong>&quot;Unconfirmed&quot; has exactly two exits</strong>: replace the asset before release with one whose terms are clear, or return to step 2 and get archivable evidence.</p>
+<p>6. <strong>File it in the ledger</strong>: all fields per the seven columns of <a href="./怎么做一份素材与许可台账.html">How to build an asset and licence ledger</a>. The reference point is CC0 — commercially usable without asking (see the table); treat it as the picture of &quot;what clear terms look like&quot;.</p></span></div>
+<div class="bi-block"><span data-zh><h2>一个可走查的例子</h2>
+<p>⚠ 服务名（泛指的工具 X）、图标数量与状态变化是<strong>虚构示例</strong>。</p>
+<ul>
+<li><strong>输入</strong>：用工具 X 免费档生成 12 个 UI 图标（虚构），项目计划上 itch 页面接受付费下载。台账初始行：服务 X / 免费档 / 生成日期 2026-10（虚构）。</li>
+<li><strong>处理</strong>：第 2 步打开工具 X 当前条款页 → 免费档文本没有出现商用授予字样；输入线检查：12 张全部纯文字提示词，干净。</li>
+<li><strong>结果判断</strong>：条款线不清 → 状态「待确认」—— 哪怕「大家都这么用」也不改判；12 个图标暂不进导出包。</li>
+<li><strong>失败后下一步</strong>：路线 A：升级到有商用字样的档位、重新生成、条款页截图存档、状态改「可商用」；路线 B：改用 CC0 图标包（对照：CC0 官方页写明商用无需请求许可），台账记来源与许可页。例子选了 B，因为图标不是核心美术。</li>
+</ul></span><span data-en><h2>A walk-through example</h2>
+<p>⚠ The service (a generic &quot;tool X&quot;), the icon count and the status change are <strong>fictitious examples</strong>.</p>
+<ul>
+<li><strong>Input</strong>: 12 UI icons generated on tool X's free tier (invented); the plan is a paid-download itch page. Ledger row: tool X / free tier / generated 2026-10 (invented).</li>
+<li><strong>Processing</strong>: step 2 opens tool X's current terms → the free-tier text carries no commercial grant; input check: all twelve were prompt-only, clean.</li>
+<li><strong>Result</strong>: the terms line is unclear → state &quot;unconfirmed&quot; — &quot;everyone does this&quot; does not change the verdict; the twelve icons stay out of the export.</li>
+<li><strong>After the failure</strong>: route A — move to a tier whose text states commercial use, regenerate, screenshot and date the terms page, flip to &quot;commercial OK&quot;; route B — switch to a CC0 icon pack (reference: the CC0 page allows commercial use without asking), with source and licence page in the ledger. This example took B, because the icons are not the key art.</li>
+</ul></span></div>
+<div class="bi-block"><span data-zh><h2>失败分支</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>失败形态</th><th>下一步</th></tr></thead><tbody>
+<tr><td>条款页当日打不开或版本混乱</td><td>记「未核验」+ 日期；本站 2026-11-06 尝试访问部分主流生成服务条款页未成功 —— 这本身就是标「待确认」的理由，不是默认可用的理由</td></tr>
+<tr><td>输出与某个已有角色高度相像</td><td>换提示方向重做；相像不是「风格致敬」能解决的，风险在形象本身</td></tr>
+<tr><td>已经发布后发现条款变了</td><td>按台账核验日回溯当时的文本评估暴露面；处理走 <a href="./ai-资产台账.html">AI 资产台账</a> 的「条款会变」条目</td></tr>
+<tr><td>说不清当时用的哪个档位</td><td>该行降「待确认」，能复现生成就重记，不能就替换素材</td></tr>
+</tbody></table></div></span><span data-en><h2>Failure branches</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>Shape of failure</th><th>Next step</th></tr></thead><tbody>
+<tr><td>The terms page is unreachable or version-murky</td><td>Log &quot;unverified&quot; with the date; on 2026-11-06 this site failed to reach some major generators' terms pages — that is a reason to mark &quot;unconfirmed&quot;, never a reason to assume usable</td></tr>
+<tr><td>The output strongly resembles an existing character</td><td>Regenerate with a different direction; &quot;style homage&quot; does not defuse it — the risk is the likeness itself</td></tr>
+<tr><td>Terms changed after you shipped</td><td>Use the ledger's verification date to reconstruct what you saw at the time; handling: the &quot;terms change&quot; note in the <a href="./ai-资产台账.html">AI asset ledger</a></td></tr>
+<tr><td>Nobody remembers which tier generated it</td><td>Demote the row to &quot;unconfirmed&quot;; re-record if the generation is reproducible, replace the asset if not</td></tr>
+</tbody></table></div></span></div>
+<div class="bi-block"><span data-zh><h2>下一步</h2>
+<ul>
+<li>素材进包前的清零流程：<a href="./怎么做一份素材与许可台账.html">怎么做一份素材与许可台账</a></li>
+<li>阶段总览与人做素材的许可分层：<a href="./s4-资产合规.html">S4 · 资产合规</a></li>
+</ul></span><span data-en><h2>Next steps</h2>
+<p>The clear-before-packaging flow: <a href="./怎么做一份素材与许可台账.html">How to build an asset and licence ledger</a></p>
+<p>Stage overview and the licence tiers for human-made art: <a href="./s4-资产合规.html">S4 · Asset licensing</a></p></span></div>
+<h2>来源与核验日</h2>
+<ul>
+<li>商用条款按许可范围划分（以 Stability 为例，边界以其页面当前文本为准） — <a href="https://stability.ai/license" target="_blank" rel="noopener">Stability AI 官方许可页</a> · 2026-11-06</li>
+</ul>
+<blockquote>
+<p>Commercial terms are scoped by licence tier (Stability shown as an example; its current page text is the boundary) — <a href="https://stability.ai/license" target="_blank" rel="noopener">Stability AI licence page</a> · 2026-11-06</p>
+</blockquote>
+<ul>
+<li>CC0：可商用、无需请求许可 — <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 官方页</a> · 2026-11-06</li>
+</ul>
+<blockquote>
+<p>CC0: commercial use allowed without asking — <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 official page</a> · 2026-11-06</p>
+</blockquote>
+<ul>
+<li>CC BY 4.0：商用须按规范署名 — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0 官方页</a> · 2026-11-06</li>
+</ul>
+<blockquote>
+<p>CC BY 4.0: commercial use requires attribution as specified — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0 official page</a> · 2026-11-06</p>
+</blockquote>
+<ul>
+<li>OpenAI、Midjourney 等服务的条款页 — 本站 2026-11-06 访问未成功，未核验 —— 涉及时一律按「待确认」处理 · —</li>
+</ul>
+<blockquote>
+<p>Terms pages for services such as OpenAI and Midjourney: our fetch failed on 2026-11-06, so anything touching them stays marked to-verify — fetch failed on 2026-11-06 · —</p>
+</blockquote>
+<ul>
+<li>纯 AI 输出的版权保护程度 — 各司法辖区结论不同，官方未给统一结论；本站不代判 · —</li>
+</ul>
+<blockquote>
+<p>How far purely AI-generated output is copyright-protected differs by jurisdiction and there is no unified official answer; we do not decide it for you — no unified official answer across jurisdictions · —</p>
+</blockquote>
+<ul>
+<li>「三条线」框架与状态三分法 — 本站的判断（工程检查流程），不是法律意见 · —</li>
+</ul>
+<blockquote>
+<p>The three-line framework and three-state labels are our engineering checklist design, not legal advice — our checklist design, not legal advice · —</p>
+</blockquote>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p class="t-xs"><span data-zh>有序路径 · 第 15 / 26 篇</span><span data-en>Ordered path · item 15 of 26</span></p>
+          <nav class="term-nav" aria-label="上一篇 / 下一篇">
+            <a class="tn-prev" href="怎么做一份素材与许可台账.html"><span class="tn-dir"><span data-zh>← 上一篇</span><span data-en>← Previous</span></span><b><span data-zh>怎么做一份素材与许可台账</span><span data-en>How to build an asset and licence ledger</span></b></a>
+            <a class="tn-next" href="s5-导出发布.html"><span class="tn-dir"><span data-zh>下一篇 →</span><span data-en>Next →</span></span><b><span data-zh>S5 · 导出与发布</span><span data-en>S5 · Ship it</span></b></a>
+          </nav>
+          <p class="mt-2"><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 <span data-zh>投机取巧</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://tools.specul.com/"><span data-zh>AI 工具</span><span data-en>AI Tools</span></a>
+          <a href="https://models.specul.com/"><span data-zh>AI 模型</span><span data-en>AI Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener"><span data-zh>开源</span><span data-en>Open source</span></a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+    <div class="container">
+      <p><a href="https://specul.com/search.html"><span data-zh>搜索六站内容</span><span data-en>Search all six sites</span></a></p>
+      <p><a href="https://specul.com/correct.html"><span data-zh>发现错误？生成纠错草稿</span><span data-en>Spot an error? Compose a correction draft</span></a></p>
+      <p class="foot-trademark"><span data-zh>产品名与商标归各权利方所有，本站仅作识别与评论之用。</span><span data-en>Product names and trademarks belong to their respective owners and are used here for identification and commentary only.</span></p>
+    </div>
+  </footer>
+<nav class="nav-tabbar" aria-label="快捷导航">
+  <a href="https://specul.com/"><span class="ti" aria-hidden="true">◎</span><span data-zh>首页</span><span data-en>Home</span></a>
+  <a href="https://learn.specul.com/"><span class="ti" aria-hidden="true">▤</span><span data-zh>学 AI</span><span data-en>Learn</span></a>
+  <a href="https://tools.specul.com/"><span class="ti" aria-hidden="true">◈</span><span data-zh>工具</span><span data-en>Tools</span></a>
+  <a href="https://models.specul.com/"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
+  <button type="button" id="tabMore" aria-controls="navDrawer" aria-expanded="false"><span class="ti" aria-hidden="true">⋯</span><span data-zh>更多</span><span data-en>More</span></button>
+</nav>
+</body>
+</html>

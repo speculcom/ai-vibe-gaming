@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>怎么处理引擎版本差异 · AI 做游戏</title>
+  <meta name="description" content="AI 示例面向的版本、你读的文档版本、你导出用的版本，三者经常不是同一个 —— 这篇讲怎么定基线、怎么升级。 版本问题先定基线再谈对错：一切 API、语法、导出行为的判断都以项目记录里写明的版本为准。" />
+  <link rel="canonical" href="https://vg.specul.com/怎么处理引擎版本差异.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="怎么处理引擎版本差异 · AI 做游戏" />
+  <meta property="og:url" content="https://vg.specul.com/怎么处理引擎版本差异.html" />
+  <meta property="og:title" content="怎么处理引擎版本差异 · AI 做游戏" />
+  <meta property="og:description" content="AI 示例面向的版本、你读的文档版本、你导出用的版本，三者经常不是同一个 —— 这篇讲怎么定基线、怎么升级。 版本问题先定基线再谈对错：一切 API、语法、导出行为的判断都以项目记录里写明的版本为准。" />
+  <meta name="theme-color" content="#16121f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <script src="brand.js?v=bf69a6d205ad"></script>
+  <link rel="stylesheet" href="brand.css?v=bf69a6d205ad" />
+  <link rel="stylesheet" href="site.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"怎么处理引擎版本差异","url":"https://vg.specul.com/怎么处理引擎版本差异.html","description":"AI 示例面向的版本、你读的文档版本、你导出用的版本，三者经常不是同一个 —— 这篇讲怎么定基线、怎么升级。 版本问题先定基线再谈对错：一切 API、语法、导出行为的判断都以项目记录里写明的版本为准。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
+</head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar">
+  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
+          <span class="brand-sub" id="markSub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://tools.specul.com/"><span data-zh>AI 工具</span><span data-en>AI Tools</span></a>
+        <a href="https://models.specul.com/"><span data-zh>AI 模型</span><span data-en>AI Models</span></a>
+        <a href="https://vg.specul.com/" aria-current="page"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
+      </nav>
+      <!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+      <span class="nav-tools">
+        <a class="icon-btn" href="https://specul.com/search.html" aria-label="搜索" data-ui-aria-label-zh="搜索" data-ui-aria-label-en="Search" title="搜索全站" data-ui-title-zh="搜索全站" data-ui-title-en="Search all sites"><span aria-hidden="true">⌕</span></a>
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+        <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+      </span>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <span class="brand-sub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://tools.specul.com/"><span><span data-zh>AI 工具</span><span data-en>AI Tools</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/"><span><span data-zh>AI 模型</span><span data-en>AI Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/" aria-current="page"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>AI 导航</span><span data-en>AI Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
+  <main id="main">
+<div class="container">
+        <p class="kicker"><a href="./learn.html"><span data-zh>学习路径</span><span data-en>Learning path</span></a> · <span data-zh>关键词</span><span data-en>Keyword</span></p>
+        <h1 class="t-hero"><span data-zh>怎么处理引擎版本差异</span><span data-en>How to handle engine version differences</span></h1>
+        <p class="lede">How to handle engine version differences</p>
+
+        <div class="panel term-meta">
+          <p class="t-lead"><span data-zh><strong>这一步决定什么</strong></span><span data-en><strong>What this stage decides</strong></span><span data-zh>：AI 示例面向的版本、你读的文档版本、你导出用的版本，三者经常不是同一个 —— 这篇讲怎么定基线、怎么升级。</span><span data-en>: The version AI's examples target, the version your docs describe and the version you export with are often three different ones. Here is how to pin one and how to upgrade.</span></p>
+          <p class="t-sm"><span data-zh><strong>本站的判断</strong></span><span data-en><strong>Our judgement</strong></span><span data-zh>：版本问题先定基线再谈对错：一切 API、语法、导出行为的判断都以项目记录里写明的版本为准。</span><span data-en>: Pin the baseline before arguing correctness: every API, syntax and export judgement is made against the version written in the project record.</span></p>
+          <p class="t-xs muted"><span data-zh>性质：本站的判断，未经实测</span><span data-en>Nature: the site's judgement, not measured</span></p>
+        </div>
+
+        <div class="term-body">
+<div class="bi-block"><span data-zh><p><strong>这篇解决什么</strong>：跨版本产生的三类漂移 —— AI 给的代码面向旧版本、你查的文档不是你的版本、导出模板和项目版本不匹配。它们大多不是「AI 能力」问题，而是版本事实没有被固定下来。</p></span><span data-en><p><strong>What this guide solves</strong>: three kinds of version drift — code from AI that targets an old version, documentation that is not for your version, and export templates that do not match the project. Most of it is not an &quot;AI capability&quot; problem; it is a version fact nobody pinned down.</p></span></div>
+<div class="bi-block"><span data-zh><h2>适用条件</h2>
+<ul>
+<li>✅ 你在用 AI 生成引擎代码，且项目有（或愿意现在定出）一个明确版本</li>
+<li>✅ 你考虑升级引擎，或正被「这段代码在我这跑不通」困扰</li>
+<li>⚠ 不适用：还没选引擎 —— 版本支持本来就是选择条件之一，见 <a href="./s1-选引擎.html">S1 · 选引擎</a></li>
+<li>各引擎的版本策略（大版本节奏、LTS 与否）请以官方文档为准；本站不跑引擎，也不比较哪个引擎版本更省心（没有依据）。</li>
+</ul></span><span data-en><h2>When this applies</h2>
+<ul>
+<li>✅ You generate engine code with AI and your project has (or will now get) one explicit version</li>
+<li>✅ You are considering an upgrade, or you keep hitting &quot;this code does not run here&quot;</li>
+<li>⚠ Not before the engine is chosen — version support is a selection condition: <a href="./s1-选引擎.html">S1 · Pick an engine</a></li>
+<li>Each engine's version policy (major cycles, LTS or not) is decided by its official docs. This site runs no engines and compares none — there is no basis here for claiming any engine &quot;manages versions better&quot;.</li>
+</ul></span></div>
+<div class="bi-block"><span data-zh><h2>步骤</h2>
+<p>1. <strong>写下版本基线。</strong> 一行进项目记录：引擎版本号、脚本语言版本、导出模板版本、文档版本入口（URL）。没有这行，后面全是口头争论。</p>
+<p>2. <strong>只读对应版本的文档。</strong> 多数引擎的官方文档按版本分开 —— 我们 2026-11-06 实际看到：Godot 4.3 的文档索引页独立存在且自标 outdated；Unity 在线手册的 URL 里直接带版本号 6000.6；PixiJS 文档挂 8.x 路径。核对你的版本入口，别读「最新版」时以为是你的版。</p>
+<p>3. <strong>AI 给的代码先对文档再运行。</strong> 判断顺序：这个 API 在你的版本文档里存在吗 → 用法与文档一致吗 → 才轮到运行验证（运行验收走 <a href="./怎么验收-ai-生成的游戏代码.html">怎么验收 AI 生成的游戏代码</a>）。</p>
+<p>4. <strong>旧代码报错先比对，不点改。</strong> 跨大版本的重命名与结构调整，官方迁移文档通常有清单 —— 例如 PixiJS 官方有 v7→v8 迁移指南，three.js 官方仓库的 Migration Guide 页按版本记录破坏性改动（链接见文末核验表）。逐处猜测改法，最容易改出半新半旧的混合体。</p>
+<p>5. <strong>试验版与项目版分开装。</strong> 学新版本用一个独立安装，项目版本不动 —— 与 <a href="./s1-选引擎.html">S1 · 选引擎</a> 里「按目标版本核对」是同一条纪律。</p>
+<p>6. <strong>升级走固定顺序。</strong> 读官方迁移清单 → 备份项目 → 先只升引擎、不改代码跑一次 → 按清单逐项改 → 重跑验收与导出（Web 构建注意导出模板必须与项目版本配套：Godot 官方 Web 导出文档写明需要可用的导出模板，见核验表）。</p></span><span data-en><h2>The steps</h2>
+<p>1. <strong>Write the version baseline.</strong> One line in the project record: engine version, scripting language version, export-template version, and the URL of your docs entry. Without it everything after is hearsay.</p>
+<p>2. <strong>Read only your version's docs.</strong> Official docs are usually split per version — seen by us on 2026-11-06: the Godot 4.3 docs index exists on its own and marks itself outdated; a Unity online-manual URL carries the version 6000.6 in its path; PixiJS docs live under an 8.x path. Find your version's entry point instead of assuming the &quot;latest&quot; page describes you.</p>
+<p>3. <strong>Check AI's code against your docs before running it.</strong> Order: does this API exist in your version's docs → is the usage as documented → only then run (running is covered by <a href="./怎么验收-ai-生成的游戏代码.html">How to accept AI-generated game code</a>).</p>
+<p>4. <strong>When old code fails, diff against the migration list — do not patch by guesswork.</strong> Official guides usually list the renames and structural changes: PixiJS has an official v7→v8 migration guide, and the three.js repository's official Migration Guide wiki records breaking changes per release (links in the table at the end). Guessing change-by-change produces half-migrated code.</p>
+<p>5. <strong>Install experiment versions separately from project versions.</strong> Learn a new version in its own install; the project's version stays put — the same discipline as &quot;check against the target version&quot; in <a href="./s1-选引擎.html">S1 · Pick an engine</a>.</p>
+<p>6. <strong>Upgrade in a fixed order.</strong> Read the official migration list → back up → upgrade the engine only and run once → apply changes item by item → re-run acceptance and export. For web builds the export template must match the project version: Godot's web-export docs state a runnable export template is required (see the table).</p></span></div>
+<div class="bi-block"><span data-zh><h2>一个可走查的例子</h2>
+<p>⚠ 本例的版本、现象与报错文本是<strong>虚构示例</strong>，只为演示流程；本站没有运行过任何引擎。</p>
+<ul>
+<li><strong>输入</strong>：项目基线记录为 4.3（虚构）。AI 交回一段协程写法被 3.x 使用、4.x 已变的脚本（虚构情况 —— 具体哪个语法在哪版怎么变，以对应版本文档为准，本站不代写结论）。</li>
+<li><strong>处理</strong>：第 3 步核对：在该版本文档中查找这个写法 → 未找到同名 API；打开 4.3 文档索引页（页面自标 outdated，指向 stable）确认当前写法的文档入口。</li>
+<li><strong>结果判断</strong>：失败 —— 代码面向的版本与项目基线不一致，属于版本问题而不是逻辑 bug；不要在此状态下「改到能跑」。</li>
+<li><strong>失败后下一步</strong>：把目标版本号与该页文档 URL 一起给 AI，要求按此版本重写并引用该页；重写后回到验收流程重走。</li>
+</ul></span><span data-en><h2>A walk-through example</h2>
+<p>⚠ The versions, symptoms and error text here are a <strong>fictitious example</strong> to show the flow; this site has run no engine.</p>
+<ul>
+<li><strong>Input</strong>: the baseline line says 4.3 (invented). AI returns a script whose coroutine style was 3.x usage that 4.x changed (situation invented — which syntax changed in which version is decided by that version's docs; this site does not write those conclusions for you).</li>
+<li><strong>Processing</strong>: step-3 check: look for that construct in your version's docs → no API of that name found; open the 4.3 docs index (it marks itself outdated and points to stable) to locate the current wording's entry.</li>
+<li><strong>Result</strong>: fail — the code targets a different version than the baseline. That is a version problem, not a logic bug; do not &quot;tweak until it runs&quot; in this state.</li>
+<li><strong>After the failure</strong>: give AI the target version number together with that docs page's URL, require a rewrite to that version citing the page; then re-enter the acceptance flow.</li>
+</ul></span></div>
+<div class="bi-block"><span data-zh><h2>失败分支</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>失败形态</th><th>下一步</th></tr></thead><tbody>
+<tr><td>找不到自己版本的官方文档</td><td>该版本行为一律标「未知」，不拿别版本文档硬套，也不让模型猜</td></tr>
+<tr><td>迁移清单里查不到这处改动</td><td>缩小复现（单场景单脚本），带版本号与文档入口重新问 AI；仍无果则改写法绕开</td></tr>
+<tr><td>升级后导出包异常、本地正常</td><td>优先核对导出模板与项目版本是否配套，见上文第 6 步</td></tr>
+<tr><td>同一项目里 AI 前后给出两种版本的写法</td><td>基线没有进提示词 —— 每次请求都带上版本号一行，见 <a href="./提示词的结构.html">提示词的结构</a></td></tr>
+</tbody></table></div></span><span data-en><h2>Failure branches</h2>
+<div class="table-wrap"><table class="src"><thead><tr><th>Shape of failure</th><th>Next step</th></tr></thead><tbody>
+<tr><td>Official docs for your version are gone</td><td>Mark that version's behaviour &quot;unknown&quot;; never stretch another version's docs over it, never let the model guess</td></tr>
+<tr><td>This change is not in the migration list</td><td>Shrink the repro (one scene, one script), re-ask AI with version + docs URL; if still stuck, restructure around it</td></tr>
+<tr><td>After the upgrade the export breaks while local runs fine</td><td>Check first whether the export template matches the project version — step 6 above</td></tr>
+<tr><td>AI alternates between two versions' styles in one project</td><td>The baseline was not in the prompt — put the version line in every request: <a href="./提示词的结构.html">Structuring the prompt</a></td></tr>
+</tbody></table></div></span></div>
+<div class="bi-block"><span data-zh><h2>下一步</h2>
+<ul>
+<li>引擎档案里记录了各引擎的版本相关事实与出处：<a href="./engines.html">引擎档案</a></li>
+<li>定完基线后的代码检查流程：<a href="./怎么验收-ai-生成的游戏代码.html">怎么验收 AI 生成的游戏代码</a></li>
+</ul></span><span data-en><h2>Next steps</h2>
+<ul>
+<li>Engine profiles carry version-relevant facts with their sources: <a href="./engines.html">Engine profiles</a></li>
+<li>The code check after pinning the baseline: <a href="./怎么验收-ai-生成的游戏代码.html">How to accept AI-generated game code</a></li>
+</ul></span></div>
+<h2>来源与核验日</h2>
+<ul>
+<li>Godot 文档按版本分开，4.3 索引页自标 outdated — <a href="https://docs.godotengine.org/en/4.3/index.html" target="_blank" rel="noopener">Godot 4.3 文档索引</a> · 2026-11-06</li>
+</ul>
+<blockquote>
+<p>Godot docs are versioned; the 4.3 index labels itself outdated — <a href="https://docs.godotengine.org/en/4.3/index.html" target="_blank" rel="noopener">Godot 4.3 docs index</a> · 2026-11-06</p>
+</blockquote>
+<ul>
+<li>Unity 在线手册 URL 带版本号（6000.6） — <a href="https://docs.unity.com/en-us/engine/6000.6/manual/unity-ai/ai-menu-access" target="_blank" rel="noopener">Unity 手册对应页</a> · 2026-11-06</li>
+</ul>
+<blockquote>
+<p>Unity’s manual URLs carry the version number (6000.6) — <a href="https://docs.unity.com/en-us/engine/6000.6/manual/unity-ai/ai-menu-access" target="_blank" rel="noopener">Unity manual page</a> · 2026-11-06</p>
+</blockquote>
+<ul>
+<li>PixiJS 官方 v7→v8 迁移指南存在 — <a href="https://pixijs.com/8.x/guides/migrations/v7" target="_blank" rel="noopener">PixiJS 8.x 迁移文档</a> · 2026-11-06</li>
+</ul>
+<blockquote>
+<p>PixiJS publishes an official v7 to v8 migration guide — <a href="https://pixijs.com/8.x/guides/migrations/v7" target="_blank" rel="noopener">PixiJS 8.x migration guide</a> · 2026-11-06</p>
+</blockquote>
+<ul>
+<li>three.js 官方仓库按版本记录破坏性改动 — <a href="https://github.com/mrdoob/three.js/wiki/Migration-Guide" target="_blank" rel="noopener">three.js Migration Guide（官方仓库 wiki）</a> · 2026-11-06</li>
+</ul>
+<blockquote>
+<p>The three.js repository wiki records breaking changes per release — <a href="https://github.com/mrdoob/three.js/wiki/Migration-Guide" target="_blank" rel="noopener">three.js migration guide (repo wiki)</a> · 2026-11-06</p>
+</blockquote>
+<ul>
+<li>Godot Web 导出需要可用的导出模板 — <a href="https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_web.html" target="_blank" rel="noopener">Godot Web 导出文档</a> · 2026-11-06</li>
+</ul>
+<blockquote>
+<p>Godot web export needs matching export templates installed — <a href="https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_web.html" target="_blank" rel="noopener">Godot docs: exporting for web</a> · 2026-11-06</p>
+</blockquote>
+<ul>
+<li>「三类漂移」的划分 — 本站的判断，无实测数据 · —</li>
+</ul>
+<blockquote>
+<p>Splitting drift into three kinds is our own framing, not measured data — our judgement, no measurements · —</p>
+</blockquote>
+<hr>
+        </div>
+
+        <div class="panel is-slim">
+          <p class="t-xs"><span data-zh>有序路径 · 第 26 / 26 篇</span><span data-en>Ordered path · item 26 of 26</span></p>
+          <nav class="term-nav" aria-label="上一篇 / 下一篇">
+            <a class="tn-prev" href="怎么定一个两周能做完的范围.html"><span class="tn-dir"><span data-zh>← 上一篇</span><span data-en>← Previous</span></span><b><span data-zh>怎么定一个两周能做完的范围</span><span data-en>How to scope a game down to two weeks</span></b></a>
+            <span class="tn-next is-empty" aria-hidden="true"></span>
+          </nav>
+          <p class="mt-2"><a href="./learn.html"><span data-zh>← 返回学习路径</span><span data-en>← Back to the learning path</span></a> · <a href="./"><span data-zh>首页</span><span data-en>Home</span></a></p>
+        </div>
+      </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 <span data-zh>投机取巧</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+          <a href="https://tools.specul.com/"><span data-zh>AI 工具</span><span data-en>AI Tools</span></a>
+          <a href="https://models.specul.com/"><span data-zh>AI 模型</span><span data-en>AI Models</span></a>
+          <a href="https://vg.specul.com/"><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
+          <a href="https://github.com/speculcom/ai-vibe-gaming" target="_blank" rel="noopener"><span data-zh>开源</span><span data-en>Open source</span></a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+    <div class="container">
+      <p><a href="https://specul.com/search.html"><span data-zh>搜索六站内容</span><span data-en>Search all six sites</span></a></p>
+      <p><a href="https://specul.com/correct.html"><span data-zh>发现错误？生成纠错草稿</span><span data-en>Spot an error? Compose a correction draft</span></a></p>
+      <p class="foot-trademark"><span data-zh>产品名与商标归各权利方所有，本站仅作识别与评论之用。</span><span data-en>Product names and trademarks belong to their respective owners and are used here for identification and commentary only.</span></p>
+    </div>
+  </footer>
+<nav class="nav-tabbar" aria-label="快捷导航">
+  <a href="https://specul.com/"><span class="ti" aria-hidden="true">◎</span><span data-zh>首页</span><span data-en>Home</span></a>
+  <a href="https://learn.specul.com/"><span class="ti" aria-hidden="true">▤</span><span data-zh>学 AI</span><span data-en>Learn</span></a>
+  <a href="https://tools.specul.com/"><span class="ti" aria-hidden="true">◈</span><span data-zh>工具</span><span data-en>Tools</span></a>
+  <a href="https://models.specul.com/"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
+  <button type="button" id="tabMore" aria-controls="navDrawer" aria-expanded="false"><span class="ti" aria-hidden="true">⋯</span><span data-zh>更多</span><span data-en>More</span></button>
+</nav>
+</body>
+</html>

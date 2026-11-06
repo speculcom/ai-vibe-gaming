@@ -555,6 +555,27 @@ fn collect(mut commands: Commands,
 > 3. All three criteria met → the prototype is done; move on to [game feel](./s3-手感调参.html)
 > 4. ⚠ **Do not add art during prototyping** (see [Minimal playable prototype](./最小可玩原型.html))
 
+## 本站自己写的那一份
+
+上面那张表收录的是**别人的作品**，规则是只放外链、不截图、不镜像代码。下面这一条不属于那张表，也不受它的收录规则约束。
+
+**「三颗星，一扇门」是本站自己编写的浏览器样例**：同一个游戏分六个阶段逐步做完整（核心循环 → 暂停 → 版本化存档 → 触屏与键盘 → 尺寸适配 → 打包发布），页面上可以直接玩，也能下载成品包。
+
+本页那三条判据在它身上是有记录的：能操作、有目标、有反馈都在浏览器里跑过，检查范围写在页面里。⚠ 它不证明任何引擎或 AI 产品的好坏，也不给通过率或正确率。
+
+→ [三颗星，一扇门：把同一个游戏逐步做完整](./three-stars.html)
+
+<!-- EN -->
+> ## The one this site wrote itself
+>
+> The table above lists **other people's work**, under rules of external links only — no screenshots, no mirrored code. The item below is not part of that table and is not governed by those rules.
+>
+> **"Three stars, one door" is a browser sample written by this site**, built out over six stages (core loop → pause → versioned saves → touch and keyboard → resizing → packaging and release). You can play it on the page and download the package.
+>
+> The three criteria on this page are recorded for it: operable, goal-directed and responsive were all run in a browser, and the scope of the checks is stated on the page. ⚠ It proves nothing about an engine or an AI product, and it publishes no pass rate or accuracy figure.
+>
+> → [Three stars, one door: complete one game step by step](./three-stars.html)
+
 ---
 
 <!-- 层：贯穿层 · 把「最小可玩原型」的三条判据落成可抄的骨架。 -->

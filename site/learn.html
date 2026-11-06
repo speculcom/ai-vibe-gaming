@@ -13,8 +13,8 @@
   <meta property="og:description" content="按做游戏的实际顺序分五个阶段 每阶段说明做什么、怎么做、常见失败与我们的判断；阶段之间交接处的失败点另有专页。" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
-  <script src="brand.js?v=6a580ac0420e"></script>
-  <link rel="stylesheet" href="brand.css?v=6a580ac0420e" />
+  <script src="brand.js?v=bf69a6d205ad"></script>
+  <link rel="stylesheet" href="brand.css?v=bf69a6d205ad" />
   <link rel="stylesheet" href="site.css" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"学习路径 · AI 做游戏","url":"https://vg.specul.com/learn.html","description":"按做游戏的实际顺序分五个阶段 每阶段说明做什么、怎么做、常见失败与我们的判断。 —— AI 做游戏：判断依据、失败点与我们的口径都在档案里。","inLanguage":"zh-Hans","isPartOf":{"@type":"WebSite","name":"AI 做游戏","url":"https://vg.specul.com/"}}</script>
 </head>
@@ -49,6 +49,7 @@
            （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
            链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
       <span class="nav-tools">
+        <a class="icon-btn" href="https://specul.com/search.html" aria-label="搜索" data-ui-aria-label-zh="搜索" data-ui-aria-label-en="Search" title="搜索全站" data-ui-title-zh="搜索全站" data-ui-title-en="Search all sites"><span aria-hidden="true">⌕</span></a>
         <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
         <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
       </span>
@@ -120,6 +121,11 @@
         <b><span data-zh>关卡数据的组织方式</span><span data-en>How to organise level data</span></b>
         <span class="t-sm"><span data-zh>关卡写死在代码里，每次改关卡都要 AI 重写一大段代码 —— 这是 AI 迭代最容易失控的地方。</span><span data-en>Levels hardcoded in the code mean every level change asks AI to rewrite a big chunk of it — the easiest place for AI iteration to spiral out of control.</span></span>
       </a>
+      <a class="stage-card" href="怎么验收-ai-生成的游戏代码.html">
+        <span class="stage-n">2</span>
+        <b><span data-zh>怎么验收 AI 生成的游戏代码</span><span data-en>How to accept AI-generated game code</span></b>
+        <span class="t-sm"><span data-zh>按固定流程检查 AI 写的代码：先写下它声称的行为，再逐条运行核对；能编译不等于验收通过。</span><span data-en>A fixed procedure for checking code written by AI: write down what it claims to do, then run each claim down. Compiling is not acceptance.</span></span>
+      </a>
       <a class="stage-card" href="s3-手感调参.html">
         <span class="stage-n">3</span>
         <b><span data-zh>S3 · 手感调参</span><span data-en>S3 · Game feel &amp; tuning</span></b>
@@ -150,6 +156,16 @@
         <b><span data-zh>美术风格的一致性</span><span data-en>Keeping the art style consistent</span></b>
         <span class="t-sm"><span data-zh>单张生成图都好看，拼进同一个游戏却像四个不同的游戏 —— 风格一致性是生成模型的弱项，但工具官方已有「锁风格」的机制。</span><span data-en>Each generated image looks fine; side by side in one game they look like four different games — style consistency is a generative-model weakness, but the tools ship official style-locking mechanisms.</span></span>
       </a>
+      <a class="stage-card" href="怎么做一份素材与许可台账.html">
+        <span class="stage-n">4</span>
+        <b><span data-zh>怎么做一份素材与许可台账</span><span data-en>How to build an asset and licence ledger</span></b>
+        <span class="t-sm"><span data-zh>台账的最小可用列设计，和每张素材从进项目到发布清零的走法：每个文件记来源、许可、核验日、商用与署名状态。</span><span data-en>The smallest useful set of columns, and the path each asset takes from entering the project to being cleared: source, licence, verification date, commercial and attribution status.</span></span>
+      </a>
+      <a class="stage-card" href="怎么给-ai-美术素材做商用可用性判断.html">
+        <span class="stage-n">4</span>
+        <b><span data-zh>怎么给 AI 美术素材做商用可用性判断</span><span data-en>How to check AI art for commercial use</span></b>
+        <span class="t-sm"><span data-zh>对每张 AI 生成的图走一遍三条线：服务条款的授予、你的输入素材、版权保护的未知 —— 结论按状态记录，不按感觉记录。</span><span data-en>Run every AI-generated image through three checks: what the service terms grant, what you fed the model, and the unsettled copyright question. Record states, not feelings.</span></span>
+      </a>
       <a class="stage-card" href="s5-导出发布.html">
         <span class="stage-n">5</span>
         <b><span data-zh>S5 · 导出与发布</span><span data-en>S5 · Ship it</span></b>
@@ -159,6 +175,11 @@
         <span class="stage-n">5</span>
         <b><span data-zh>先发极简版</span><span data-en>Ship a rough version first</span></b>
         <span class="t-sm"><span data-zh>游戏行业的最大风险不是「做得不好玩」，而是「你不知道它好不好玩」。</span><span data-en>The biggest risk in this industry is not &quot;the game is bad&quot; — it is &quot;you do not know whether it is bad&quot;.</span></span>
+      </a>
+      <a class="stage-card" href="怎么做一次发布前检查.html">
+        <span class="stage-n">5</span>
+        <b><span data-zh>怎么做一次发布前检查</span><span data-en>How to run a pre-release check</span></b>
+        <span class="t-sm"><span data-zh>把「开发机能跑」变成「别人拿到也能玩」之前的一轮固定检查：导出包、干净环境、目标设备、存档与声音。</span><span data-en>The fixed pass between 'it runs on my machine' and 'someone else can play it': export package, clean environment, target devices, saves and audio.</span></span>
       </a>
       <a class="stage-card" href="存档与离线行为.html">
         <span class="stage-n">5</span>
@@ -182,6 +203,10 @@
           <span class="t-sm"><span data-zh>「AI 生成的就都是我的」—— 这不一定成立，且各司法辖区结论不同。</span><span data-en>&quot;AI made it, so it's mine&quot; — not necessarily true, and jurisdictions disagree.</span></span></li>
         <li><a href="上下文窗口与-ai-写游戏.html"><b><span data-zh>上下文窗口与 AI 写游戏</span><span data-en>Context window and AI-written games</span></b></a>
           <span class="t-sm"><span data-zh>游戏代码天然是大文件、多文件、强耦合 —— 这正好是上下文窗口最弱的场景。</span><span data-en>Game code is naturally large, multi-file and tightly coupled — exactly where the context window is weakest.</span></span></li>
+        <li><a href="怎么定一个两周能做完的范围.html"><b><span data-zh>怎么定一个两周能做完的范围</span><span data-en>How to scope a game down to two weeks</span></b></a>
+          <span class="t-sm"><span data-zh>用两周作为一个练习周期，把首版范围裁到「周期内能导出来、能让陌生人验证」的那一小块。</span><span data-en>Treat two weeks as a practice cycle: cut the first version down to the piece you can export within it and show a stranger.</span></span></li>
+        <li><a href="怎么处理引擎版本差异.html"><b><span data-zh>怎么处理引擎版本差异</span><span data-en>How to handle engine version differences</span></b></a>
+          <span class="t-sm"><span data-zh>AI 示例面向的版本、你读的文档版本、你导出用的版本，三者经常不是同一个 —— 这篇讲怎么定基线、怎么升级。</span><span data-en>The version AI's examples target, the version your docs describe and the version you export with are often three different ones. Here is how to pin one and how to upgrade.</span></span></li>
           </ul>
         </div>
 
@@ -246,6 +271,8 @@
               <span class="t-sm"><span data-zh>五步串成一条线，专讲阶段之间的失败点</span><span data-en>The five steps as one line, focused on failures between stages</span></span></li>
             <li><a href="./demos.html"><b><span data-zh>作品库与最小可玩原型</span><span data-en>Showcase and minimal prototypes</span></b></a>
               <span class="t-sm"><span data-zh>6 个引擎各一份「能操作 / 有目标 / 有反馈」的骨架</span><span data-en>One operable / goal-directed / responsive skeleton per engine (6)</span></span></li>
+            <li><a href="./three-stars.html"><b><span data-zh>连续项目「三颗星，一扇门」</span><span data-en>The worked project “Three stars, one door”</span></b></a>
+              <span class="t-sm"><span data-zh>本站编写的浏览器样例：同一个游戏分六个阶段逐步做完整，可玩、可下载、附检查记录</span><span data-en>A browser sample written for this site: one game built out over six stages, playable, downloadable, with its checks recorded</span></span></li>
           </ul>
         </div>
 
@@ -276,6 +303,8 @@
       </nav>
     </div>
     <div class="container">
+      <p><a href="https://specul.com/search.html"><span data-zh>搜索六站内容</span><span data-en>Search all six sites</span></a></p>
+      <p><a href="https://specul.com/correct.html"><span data-zh>发现错误？生成纠错草稿</span><span data-en>Spot an error? Compose a correction draft</span></a></p>
       <p class="foot-trademark"><span data-zh>产品名与商标归各权利方所有，本站仅作识别与评论之用。</span><span data-en>Product names and trademarks belong to their respective owners and are used here for identification and commentary only.</span></p>
     </div>
   </footer>
