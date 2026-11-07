@@ -13,8 +13,8 @@
   "files": [
     {
       "path": "index.html",
-      "bytes": 59331,
-      "sha256": "c477b10d54e723ffd59dd393bc347ffeeedbbf1a40458644a2936558067d5be1"
+      "bytes": 59705,
+      "sha256": "eac698fc3170bcc4272c4a48cb0f02225c6a34a14dde16632558b626fb6b9297"
     },
     {
       "path": "game.js",

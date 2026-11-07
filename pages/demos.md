@@ -16,6 +16,8 @@ confidence: our-judgement
 
 ## 作品库
 
+> **2026-11-07 起，持续维护的策展目录在 [demos.specul.com](https://demos.specul.com/)**：含截图与沙箱嵌入的逐条许可台账、维度对照与模型发布轨。本页下表是 2026-11-03 的历史快照，只作留档；新收录与复核以新站为准。
+
 收录规则：原址可访问、无需登录/付费；必须有一手 AI 痕迹（项目页 / README / 作者公开帖点名工具或模型），目录转述不算；只放外链，不截图、不镜像；不做排名。核验日 **2026-11-03**。仓库型条目只核验 README / 在线 demo / 最近提交，**未在本地 clone 构建**；页面不声称已实测。
 
 | 作品（外链） | 类目 | AI 用在哪 | 授权 | 一手证据 / 备注 |
@@ -42,6 +44,8 @@ confidence: our-judgement
 > The showcase records authors’ public evidence of AI involvement. The skeletons below are **not run or verified by this site**; check the engine version and official documentation before using them.
 >
 > ## Showcase
+>
+> **From 2026-11-07 the maintained curated directory lives at [demos.specul.com](https://demos.specul.com/)**: per-entry licence ledger for screenshots and sandboxed embeds, dimension comparison and a model-release track. The table below is a historical snapshot checked 2026-11-03, kept for the record; new intake and re-checks happen on the new site.
 >
 > Acceptance rules: the original URL is reachable without login or paywall; there is first-party AI evidence (the project page, README or a public author post naming the tool or model) — directory descriptions do not count; links only, no screenshots or mirrors; no ranking. Verified **2026-11-03**. Repo-backed entries were checked via README / live demo / last commit, **not built locally**; the page does not claim they were measured.
 >
